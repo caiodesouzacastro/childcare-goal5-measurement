@@ -1,0 +1,22 @@
+% requer \usepackage{booktabs}. Tabela descritiva.
+\begin{table}[htbp]\centering
+\caption{Encaminhamento em janela fixa de 180 dias, por ano de solicitacao}
+\label{tab:R2a_janela180}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Ano solic. & N & \% enc.\ em 180d & Espera\_180 media (dias) \\
+\midrule
+2010 & 81,004 & 47.2 & 113.6 \\
+2011 & 124,240 & 32.3 & 133.8 \\
+2012 & 220,922 & 47.8 & 117.6 \\
+2013 & 191,149 & 43.8 & 123.6 \\
+2014 & 174,676 & 42.2 & 130.5 \\
+2015 & 179,869 & 50.9 & 122.7 \\
+2016 & 172,341 & 52.7 & 120.4 \\
+2017 & 163,922 & 53.3 & 123.2 \\
+2018 & 165,331 & 71.8 & 96.1 \\
+\bottomrule
+\end{tabular}
+\\[3pt]{\footnotesize \textit{Note:} Janela fixa comparavel entre coortes: espera\_180 = min(espera ate encaminhamento, 180); nao encaminhado em 180d entra como 180. Remove a variacao de truncamento entre coortes.}
+\end{table}

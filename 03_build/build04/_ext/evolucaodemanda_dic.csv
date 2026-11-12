@@ -1,0 +1,22 @@
+Dicionário de Variáveis;;;;;
+Secretaria Municipal de Educação de São Paulo;;;;;
+evolucaodemanda;;;;;
+N;NOME DA VARIÁVEL;DESCRIÇÃO;Tipo;Categoria;Observações
+1;DISTRITO;Nome do distrito;Char;;
+2;MAT_CRECHE;Total de matrículas  - Educação Infantil - Segmento Creche;Num;;
+3;MAT_PRE_ESCOLA;Total de matrículas  - Educação Infantil - Segmento Pré-Escola;Num;;
+4;MAT_FUND_I;Total de matrículas  - Ensino Fundamental - Anos Iniciais;Num;;
+5;MAT_FUND_II;Total de matrículas  - Ensino Fundamental - Anos Finais;Num;;
+6;MAT_EJA_I;Total de matrículas  - Educação de Jovens e Adultos - Anos Iniciais;Num;;
+7;MAT_EJA_II;Total de matrículas  - Educação de Jovens e Adultos - Anos Finais;Num;;
+8;MAT_ENS_MED;Total de matrículas  - Ensino Médio;Num;;
+9;MAT_ED_PROF;Total de matrículas  - Educação Profissional (Nível Técnico);Num;;
+10;MAT_PROC_CRECHE;Total de matrículas em processo - Educação Infantil - Segmento Creche;Num;;Matrículas já reservadas, no aguardo de confirmação pelos responsáveis pela criança
+11;MAT_PROC_PRE_ESC;Total de matrículas  em processo - Educação Infantil - Segmento Pré-Escola;Num;;Matrículas já reservadas, no aguardo de confirmação pelos responsáveis pela criança
+12;DEM_CRECHE;Total de candidatos inscritos na demanda de Educação Infantil - Segmento Creche;Num;;
+13;DEM_PRE;Total de candidatos inscritos na demanda de Educação Infantil - Segmento Pré-Escola;Num;;
+14;DEM_FUND_I;Total de candidatos inscritos na demanda de Ensino Fundamental - Anos Iniciais;Num;;
+15;DEM_FUND_II;Total de candidatos inscritos na demanda de Ensino Fundamental - Anos Finais;Num;;
+16;DEM_EJA_I;Total de candidatos inscritos na demanda de Educação de Jovens e Adultos - Anos Iniciais;Num;;
+17;DEM_EJA_II;Total de candidatos inscritos na demanda de Educação de Jovens e Adultos - Anos Finais;Num;;
+18;MES_ANO_REF;Ano e mês de referência dos dados;;;

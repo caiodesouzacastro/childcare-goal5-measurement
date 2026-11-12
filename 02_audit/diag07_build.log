@@ -1,0 +1,312 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag07_build.log
+  log type:  text
+ opened on:  22 Jul 2026, 13:48:36
+
+. 
+. *==============================================================
+. di "########## A1 — cada cpf_fila: N e cobertura de 'ano' ##########"
+########## A1 — cada cpf_fila: N e cobertura de 'ano' ##########
+
+. foreach f in cpf_fila_101 cpf_fila_102 cpf_fila_11 cpf_fila_12 cpf_fila_13 cpf_fila_14 {
+  2.     use ano cd_aluno_sme using "$dsme/`f'.dta", clear
+  3.     di ""
+  4.     di "==== `f' : N=`=_N' ===="
+  5.     tab ano
+  6. }
+
+==== cpf_fila_101 : N=256765 ====
+
+        Ano |      Freq.     Percent        Cum.
+------------+-----------------------------------
+       2010 |     12,477        4.86        4.86
+       2011 |     14,699        5.72       10.58
+       2012 |     28,887       11.25       21.83
+       2013 |     29,297       11.41       33.24
+       2014 |     27,593       10.75       43.99
+       2015 |     27,820       10.83       54.83
+       2016 |     34,680       13.51       68.33
+       2017 |     30,168       11.75       80.08
+       2018 |     51,144       19.92      100.00
+------------+-----------------------------------
+      Total |    256,765      100.00
+
+==== cpf_fila_102 : N=346485 ====
+
+        Ano |      Freq.     Percent        Cum.
+------------+-----------------------------------
+       2010 |     16,745        4.83        4.83
+       2011 |     19,988        5.77       10.60
+       2012 |     39,640       11.44       22.04
+       2013 |     40,043       11.56       33.60
+       2014 |     38,284       11.05       44.65
+       2015 |     38,088       10.99       55.64
+       2016 |     47,545       13.72       69.36
+       2017 |     38,861       11.22       80.58
+       2018 |     67,291       19.42      100.00
+------------+-----------------------------------
+      Total |    346,485      100.00
+
+==== cpf_fila_11 : N=677823 ====
+
+        Ano |      Freq.     Percent        Cum.
+------------+-----------------------------------
+       2010 |     31,627        4.67        4.67
+       2011 |     39,439        5.82       10.48
+       2012 |     73,246       10.81       21.29
+       2013 |     76,162       11.24       32.53
+       2014 |     73,380       10.83       43.35
+       2015 |     74,340       10.97       54.32
+       2016 |     91,224       13.46       67.78
+       2017 |     79,339       11.70       79.48
+       2018 |    139,066       20.52      100.00
+------------+-----------------------------------
+      Total |    677,823      100.00
+
+==== cpf_fila_12 : N=706676 ====
+
+        Ano |      Freq.     Percent        Cum.
+------------+-----------------------------------
+       2010 |     31,672        4.48        4.48
+       2011 |     41,888        5.93       10.41
+       2012 |     77,990       11.04       21.45
+       2013 |     75,041       10.62       32.06
+       2014 |     74,219       10.50       42.57
+       2015 |     76,928       10.89       53.45
+       2016 |     96,659       13.68       67.13
+       2017 |     82,516       11.68       78.81
+       2018 |    149,763       21.19      100.00
+------------+-----------------------------------
+      Total |    706,676      100.00
+
+==== cpf_fila_13 : N=731684 ====
+
+        Ano |      Freq.     Percent        Cum.
+------------+-----------------------------------
+       2010 |     31,437        4.30        4.30
+       2011 |     41,930        5.73       10.03
+       2012 |     83,434       11.40       21.43
+       2013 |     80,297       10.97       32.40
+       2014 |     73,095        9.99       42.39
+       2015 |     78,185       10.69       53.08
+       2016 |    101,027       13.81       66.89
+       2017 |     87,069       11.90       78.79
+       2018 |    155,210       21.21      100.00
+------------+-----------------------------------
+      Total |    731,684      100.00
+
+==== cpf_fila_14 : N=744703 ====
+
+        Ano |      Freq.     Percent        Cum.
+------------+-----------------------------------
+       2010 |     30,746        4.13        4.13
+       2011 |     41,496        5.57        9.70
+       2012 |     82,666       11.10       20.80
+       2013 |     84,233       11.31       32.11
+       2014 |     76,453       10.27       42.38
+       2015 |     75,403       10.13       52.50
+       2016 |    100,604       13.51       66.01
+       2017 |     88,950       11.94       77.96
+       2018 |    164,152       22.04      100.00
+------------+-----------------------------------
+      Total |    744,703      100.00
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## Painel RAIS a partir de cpf_fila_11..14 (esquema completo) ##########"
+########## Painel RAIS a partir de cpf_fila_11..14 (esquema completo) ##########
+
+. di "  (cpf_fila_101/102 tem esquema antigo diferente, sem idade/SM -> EXCLUIDOS do painel)"
+  (cpf_fila_101/102 tem esquema antigo diferente, sem idade/SM -> EXCLUIDOS do painel)
+
+. tempfile acc
+
+. clear
+
+. gen byte _x=.
+
+. save `acc', emptyok
+(dataset contains 0 observations)
+file <HOME>\AppData\Local\Temp\ST_3674_000001.tmp saved as .dta format
+
+. foreach f in cpf_fila_11 cpf_fila_12 cpf_fila_13 cpf_fila_14 {
+  2.     use cd_aluno_sme ano ano_nasc mes_nasc sexotrabalhador idade ///
+>         vínculoativo3112 vlremunmédiasm qtdhoracontr escolaridadeapós2005 cpf ///
+>         using "$dsme/`f'.dta", clear
+  3.     rename vínculoativo3112 vinc
+  4.     rename vlremunmédiasm remun_s
+  5.     rename qtdhoracontr horas
+  6.     rename escolaridadeapós2005 escol
+  7.     rename sexotrabalhador sexo
+  8.     append using `acc'
+  9.     save `acc', replace
+ 10. }
+file <HOME>\AppData\Local\Temp\ST_3674_000001.tmp saved as .dta format
+file <HOME>\AppData\Local\Temp\ST_3674_000001.tmp saved as .dta format
+file <HOME>\AppData\Local\Temp\ST_3674_000001.tmp saved as .dta format
+file <HOME>\AppData\Local\Temp\ST_3674_000001.tmp saved as .dta format
+
+. use `acc', clear
+
+. drop _x
+
+. egen long respid = group(cpf)
+
+. drop cpf
+
+. di "N linhas empilhadas (11-14) = " _N
+N linhas empilhadas (11-14) = 2860886
+
+. destring remun_s, gen(remun) force dpcomma
+remun_s: all characters numeric; remun generated as double
+
+. gen byte emp = (vinc==1)
+
+. collapse (max) emp (max) remun (max) horas (firstnm) sexo idade escol ano_nasc mes_nasc, ///
+>     by(cd_aluno_sme respid ano)
+
+. compress
+  (0 bytes saved)
+
+. save "$aud\rais_panel.dta", replace
+(file <NE_ROOT>\_audit\rais_panel.dta not found)
+file <NE_ROOT>\_audit\rais_panel.dta saved
+
+. di "N (crianca x responsavel x ano) = " _N
+N (crianca x responsavel x ano) = 757122
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## A2 — nº de ANOS RAIS distintos por crianca ##########"
+########## A2 — nº de ANOS RAIS distintos por crianca ##########
+
+. preserve
+
+.     keep cd_aluno_sme ano
+
+.     duplicates drop
+
+Duplicates in terms of all variables
+
+(0 observations are duplicates)
+
+.     bysort cd_aluno_sme: gen nanos = _N
+
+.     by cd_aluno_sme: keep if _n==1
+(0 observations deleted)
+
+.     gen nc = nanos
+
+.     replace nc = 5 if nanos>=5
+(0 real changes made)
+
+.     tab nc
+
+         nc |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |    757,122      100.00      100.00
+------------+-----------------------------------
+      Total |    757,122      100.00
+
+.     sum nanos, detail
+
+                            nanos
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            1              1
+ 5%            1              1
+10%            1              1       Obs             757,122
+25%            1              1       Sum of wgt.     757,122
+
+50%            1                      Mean                  1
+                        Largest       Std. dev.             0
+75%            1              1
+90%            1              1       Variance              0
+95%            1              1       Skewness              .
+99%            1              1       Kurtosis              .
+
+. restore
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## A3 — criancas de B_novo com vinculo do responsavel por ano ##########"
+########## A3 — criancas de B_novo com vinculo do responsavel por ano ##########
+
+. preserve
+
+.     keep cd_aluno_sme ano
+
+.     duplicates drop
+
+Duplicates in terms of all variables
+
+(0 observations are duplicates)
+
+.     merge m:1 cd_aluno_sme using "$aud\B_novo.dta", keep(match) keepusing(cd_aluno_sme) nogen
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                           757,102  
+    -----------------------------------------
+
+.     di "--- N criancas de B_novo com >=1 registro RAIS por ano ---"
+--- N criancas de B_novo com >=1 registro RAIS por ano ---
+
+.     tab ano if inrange(ano,2009,2018)
+
+        Ano |      Freq.     Percent        Cum.
+------------+-----------------------------------
+       2010 |     31,668        4.18        4.18
+       2011 |     42,673        5.64        9.82
+       2012 |     84,084       11.11       20.93
+       2013 |     85,186       11.25       32.18
+       2014 |     80,694       10.66       42.84
+       2015 |     80,873       10.68       53.52
+       2016 |    103,093       13.62       67.13
+       2017 |     89,401       11.81       78.94
+       2018 |    159,430       21.06      100.00
+------------+-----------------------------------
+      Total |    757,102      100.00
+
+. restore
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## A4 — vinculo em ano ANTES do nascimento (pre-parto) ##########"
+########## A4 — vinculo em ano ANTES do nascimento (pre-parto) ##########
+
+. gen byte pre = ano < ano_nasc
+
+. count if pre==1
+  0
+
+. di "  (linhas crianca-resp-ano com ano<ano_nasc acima)"
+  (linhas crianca-resp-ano com ano<ano_nasc acima)
+
+. preserve
+
+.     keep if pre==1
+(757,122 observations deleted)
+
+.     keep cd_aluno_sme
+
+.     duplicates drop
+no observations
+r(2000);
+
+end of do-file
+r(2000);

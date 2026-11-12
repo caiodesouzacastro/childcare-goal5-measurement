@@ -1,0 +1,41 @@
+% Apendice A (Fase 2): copia da antiga tabela do corpo, agora leitura do extrato completo. Origem: body/B02_standardization.tex
+% Float do corpo (revisao pos-EE). Tabulars copiados verbatim por 02_audit/build12_bodyfloats.py.
+\begin{table}[htbp]\centering
+\caption{Full extract: one-year referral incidence holding the composition of applicants fixed}
+\label{tab:P3series}
+\label{tab:P3boot}
+\label{tab:P3decomp}
+\footnotesize
+\par\medskip\textbf{Panel A. Raw and standardized series}\par\smallskip
+\fitbox{%
+\begin{tabular}{lrrrrrrrr}
+\toprule
+Standardization & 2010 & 2011 & 2012 & 2013 & 2014 & 2015 & 2016 & $\Delta$ \\
+\midrule
+Raw (unweighted) & 0.563 & 0.530 & 0.631 & 0.753 & 0.761 & 0.814 & 0.876 & +0.313 \\
+Applicant composition & 0.498 & 0.512 & 0.622 & 0.753 & 0.767 & 0.828 & 0.885 & +0.387 \\
+Applicant + service environment & 0.503 & 0.519 & 0.622 & 0.753 & 0.765 & 0.818 & 0.870 & +0.367 \\
+\bottomrule
+\end{tabular}}
+\par\medskip\textbf{Panel B. Sampling uncertainty of the 2010--2016 change}\par\smallskip
+\begin{tabular}{lrrc}
+\toprule
+Series & $\Delta$ (2016$-$2010) & Bootstrap s.e. & 95\% CI \\
+\midrule
+Raw (unweighted) & +0.313 & 0.002 & [+0.310, +0.317] \\
+Applicant composition (2013 target) & +0.387 & 0.002 & [+0.381, +0.390] \\
+\bottomrule
+\end{tabular}
+\par\medskip\textbf{Panel C. Exact decomposition of the raw change and sensitivity to the cell definition}\par\smallskip
+\fitbox{%
+\begin{tabular}{lrrrrrr}
+\toprule
+Cell definition & Raw & Appl. & Both & Appl.\ comp. & Service env. & \shortstack[r]{Adjusted\\service-side\\difference\\(residual)} \\
+\midrule
+Main (age$\times$prio$\times$income$\times$district$\times$sem) & +0.313 & +0.387 & +0.367 & $-$0.074 & +0.020 & +0.367 \\
+Coarse (age$\times$prio$\times$income) & +0.313 & +0.421 & +0.409 & $-$0.108 & +0.012 & +0.409 \\
+Fine (age8$\times$prio$\times$income$\times$district$\times$month) & +0.313 & +0.365 & +0.342 & $-$0.051 & +0.023 & +0.342 \\
+\bottomrule
+\end{tabular}}
+\tabnote{\emph{Source:} SME childcare request record, 2010--2018 applications, with referral and enrollment dates through November 2019. \emph{Sample:} duration sample of Table~\ref{tab:E1cohort}, birth cohorts 2010--2016. \emph{Variables:} cumulative incidence of referral within 365 days (aging out competing). Applicant attributes: age at application, priority stratum, postcode-income quartile, district and semester of application (main cells); coarse cells use age, priority and income only; fine cells use eight age bins and month of application. Service environment: number of centers open within 2\,km at the application date. \emph{Exercise:} each cohort is reweighted to the 2013 cohort's joint distribution of the attributes in a cell, with weights trimmed at the 1st and 99th percentiles; $\Delta$ is 2016 minus 2010. In Panel C, Appl.\ comp.\ $=$ Raw $-$ Appl., Service env.\ $=$ Appl.\ $-$ Both, and the three contributions add to the raw change. The final column is the standardized difference that remains after balancing observed attributes; unobserved determinants of referral, including any change in referral recording, are not held fixed. Panel B: 1,000 bootstrap replications resampling children within the 2010, 2013 and 2016 cohorts, weights recomputed in each; percentile interval. It reflects sampling variability only; the cell definition moves the standardized change between $+0.365$ and $+0.421$. Descriptive.}
+\end{table}

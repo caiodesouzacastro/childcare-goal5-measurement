@@ -1,0 +1,228 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag09_build2.log
+  log type:  text
+ opened on:  22 Jul 2026, 14:58:17
+
+. 
+. di "########## A1 — empem3112: quantos arquivos so tem empregados (rate=1)? ##########"
+########## A1 — empem3112: quantos arquivos so tem empregados (rate=1)? ##########
+
+. foreach spec in "cpf_fila_07 2007" "cpf_fila_081 2008" "cpf_fila_092 2009" "cpf_fila_101 2010" "cpf_fila_102 2010" "cpf_fila_11 2011" "cpf_fila_12 2012" "cpf_fila_13 2013" "cpf_fila_14 2014" {
+  2.     gettoken f yr : spec
+  3.     use "$rc/`f'.dta" in 1/1, clear
+  4.     * so contar a media de empem3112/vinc na base inteira
+.     cap use empem3112 using "$rc/`f'.dta", clear
+  5.     if !_rc {
+  6.         qui sum empem3112
+  7.         di "  `f' (`yr'): empem3112 media=" %5.3f r(mean) "  N=" r(N) "  (1.000 => so empregados)"
+  8.     }
+  9.     else {
+ 10.         use vínculoativo3112 using "$rc/`f'.dta", clear
+ 11.         qui sum vínculoativo3112
+ 12.         di "  `f' (`yr'): vinc media=" %5.3f r(mean) "  N=" r(N)
+ 13.     }
+ 14. }
+  cpf_fila_07 ( 2007): empem3112 media=0.615  N=409227  (1.000 => so empregados)
+  cpf_fila_081 ( 2008): empem3112 media=1.000  N=289810  (1.000 => so empregados)
+  cpf_fila_092 ( 2009): empem3112 media=1.000  N=311423  (1.000 => so empregados)
+  cpf_fila_101 ( 2010): empem3112 media=0.000  N=256765  (1.000 => so empregados)
+  cpf_fila_102 ( 2010): empem3112 media=1.000  N=346485  (1.000 => so empregados)
+  cpf_fila_11 ( 2011): vinc media=0.553  N=677823
+  cpf_fila_12 ( 2012): vinc media=0.561  N=706676
+  cpf_fila_13 ( 2013): vinc media=0.560  N=731684
+  cpf_fila_14 ( 2014): vinc media=0.561  N=744703
+
+. 
+. di ""
+
+
+. di "########## Painel corrigido (fem via string; salario em SM direto) ##########"
+########## Painel corrigido (fem via string; salario em SM direto) ##########
+
+. tempfile acc
+
+. clear
+
+. gen byte _x=.
+
+. save `acc', emptyok
+(dataset contains 0 observations)
+file <HOME>\AppData\Local\Temp\ST_1d28_000001.tmp saved as .dta format
+
+. foreach spec in "cpf_fila_07 2007" "cpf_fila_081 2008" "cpf_fila_092 2009" "cpf_fila_101 2010" "cpf_fila_102 2010" "cpf_fila_11 2011" "cpf_fila_12 2012" "cpf_fila_13 2013" "cpf_fila_14 2014" {
+  2.     gettoken f yr : spec
+  3.     use "$rc/`f'.dta", clear
+  4.     gen byte emp_raw = .
+  5.     cap replace emp_raw = empem3112
+  6.     cap replace emp_raw = vínculoativo3112
+  7.     * sexo
+.     gen byte fem = .
+  8.     cap replace fem = (genero=="FEMININO")
+  9.     cap replace fem = (sexotrabalhador==2)
+ 10.     * salario em SM (direto)
+.     gen double wsm = .
+ 11.     cap destring remmedia, gen(_r) force dpcomma
+ 12.     cap replace wsm = _r
+ 13.     cap drop _r
+ 14.     cap destring vlremunmédiasm, gen(_s) force dpcomma
+ 15.     cap replace wsm = _s
+ 16.     cap drop _s
+ 17.     * horas
+.     gen double hrs = .
+ 18.     cap destring horascontr, gen(_h) force dpcomma
+ 19.     cap replace hrs = _h
+ 20.     cap drop _h
+ 21.     cap replace hrs = qtdhoracontr
+ 22.     * estab e natjur
+.     gen double estabsz = .
+ 23.     cap replace estabsz = tamestab
+ 24.     cap replace estabsz = tamanhoestabelecimento
+ 25.     gen double njur = .
+ 26.     cap replace njur = naturjur
+ 27.     cap replace njur = natjuridica
+ 28.     cap replace njur = naturezajurídica
+ 29.     * nasc mae
+.     gen int maeb = .
+ 30.     cap replace maeb = `yr' - idade
+ 31.     cap replace maeb = floor(dtnasciment/10000) if missing(maeb) & dtnasciment>19000000 & dtnasciment<20200000
+ 32.     gen int rais_year = `yr'
+ 33.     keep cd_aluno_sme cpf emp_raw fem wsm hrs estabsz njur maeb rais_year ano_nasc mes_nasc
+ 34.     append using `acc'
+ 35.     save `acc', replace
+ 36. }
+(409,227 missing values generated)
+(409,227 missing values generated)
+(409,227 missing values generated)
+(409,227 missing values generated)
+(409,227 missing values generated)
+(409,227 missing values generated)
+(409,227 missing values generated)
+file <HOME>\AppData\Local\Temp\ST_1d28_000001.tmp saved as .dta format
+(289,810 missing values generated)
+(289,810 missing values generated)
+(289,810 missing values generated)
+(289,810 missing values generated)
+(289,810 missing values generated)
+(289,810 missing values generated)
+(289,810 missing values generated)
+file <HOME>\AppData\Local\Temp\ST_1d28_000001.tmp saved as .dta format
+(311,423 missing values generated)
+(311,423 missing values generated)
+(311,423 missing values generated)
+(311,423 missing values generated)
+(311,423 missing values generated)
+(311,423 missing values generated)
+(311,423 missing values generated)
+file <HOME>\AppData\Local\Temp\ST_1d28_000001.tmp saved as .dta format
+(256,765 missing values generated)
+(256,765 missing values generated)
+(256,765 missing values generated)
+(256,765 missing values generated)
+(256,765 missing values generated)
+(256,765 missing values generated)
+(256,765 missing values generated)
+file <HOME>\AppData\Local\Temp\ST_1d28_000001.tmp saved as .dta format
+(346,485 missing values generated)
+(346,485 missing values generated)
+(346,485 missing values generated)
+(346,485 missing values generated)
+(346,485 missing values generated)
+(346,485 missing values generated)
+(346,485 missing values generated)
+file <HOME>\AppData\Local\Temp\ST_1d28_000001.tmp saved as .dta format
+(677,823 missing values generated)
+(677,823 missing values generated)
+(677,823 missing values generated)
+(677,823 missing values generated)
+(677,823 missing values generated)
+(677,823 missing values generated)
+(677,823 missing values generated)
+file <HOME>\AppData\Local\Temp\ST_1d28_000001.tmp saved as .dta format
+(706,676 missing values generated)
+(706,676 missing values generated)
+(706,676 missing values generated)
+(706,676 missing values generated)
+(706,676 missing values generated)
+(706,676 missing values generated)
+(706,676 missing values generated)
+file <HOME>\AppData\Local\Temp\ST_1d28_000001.tmp saved as .dta format
+(731,684 missing values generated)
+(731,684 missing values generated)
+(731,684 missing values generated)
+(731,684 missing values generated)
+(731,684 missing values generated)
+(731,684 missing values generated)
+(731,684 missing values generated)
+file <HOME>\AppData\Local\Temp\ST_1d28_000001.tmp saved as .dta format
+(744,703 missing values generated)
+(744,703 missing values generated)
+(744,703 missing values generated)
+(744,703 missing values generated)
+(744,703 missing values generated)
+(744,703 missing values generated)
+(744,703 missing values generated)
+file <HOME>\AppData\Local\Temp\ST_1d28_000001.tmp saved as .dta format
+
+. use `acc', clear
+
+. drop _x
+
+. egen long respid = group(cpf)
+
+. drop cpf
+
+. gen byte emp = (emp_raw==1)
+
+. gen byte publico = inrange(njur,1000,1999) if !missing(njur)
+
+. * colapsar para (crianca, resp, ano): vinculo principal (maior salario)
+. gsort cd_aluno_sme respid rais_year -wsm
+
+. by cd_aluno_sme respid rais_year: gen byte _f=_n==1
+
+. collapse (max) emp (firstnm) fem maeb ano_nasc mes_nasc (max) wsm hrs publico (firstnm) estabsz, ///
+>     by(cd_aluno_sme respid rais_year)
+
+. compress
+  variable hrs was double now byte
+  variable estabsz was double now byte
+  (50,290,982 bytes saved)
+
+. save "$aud\panel_es.dta", replace
+file <NE_ROOT>\_audit\panel_es.dta saved
+
+. di "N painel (crianca x resp x ano) = " _N
+N painel (crianca x resp x ano) = 3592213
+
+. di "--- fem por ano (corrigido) ---"
+--- fem por ano (corrigido) ---
+
+. table rais_year, stat(mean fem) stat(mean emp) stat(p50 wsm) stat(count wsm)
+
+---------------------------------------------------------------------------------------
+          |             Mean             50th percentile   Number of non-missing values
+          |  (firstnm) fem   (max) emp         (max) wsm                      (max) wsm
+----------+----------------------------------------------------------------------------
+rais_year |                                                                            
+  2007    |       .8222343    .7498276              1.74                        327,746
+  2008    |       .8226376           1              1.72                        281,982
+  2009    |       .8274435           1              1.66                        303,970
+  2010    |        .838625    .7217069              1.58                        468,815
+  2011    |       .8459408    .7077438              1.61                        517,522
+  2012    |       .8503929    .7095253              1.56                        545,335
+  2013    |       .8542178    .7051948              1.56                        567,161
+  2014    |       .8566869     .702354              1.59                        579,682
+  Total   |       .8431454     .760076              1.62                      3,592,213
+---------------------------------------------------------------------------------------
+
+. 
+. di "=== FIM build2 ==="
+=== FIM build2 ===
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag09_build2.log
+  log type:  text
+ closed on:  22 Jul 2026, 15:00:17
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,36 @@
+% Float do corpo (revisao pos-EE). Tabulars copiados verbatim por 02_audit/build12_bodyfloats.py.
+\begin{table}[htbp]\centering
+\caption{Robustness of the one-year referral incidence}
+\label{tab:P2rob}
+\label{tab:P2fu}
+\footnotesize
+\par\medskip\textbf{Panel A. Alternative competing events, windows and samples}\par\smallskip
+\begin{tabular}{lrrrrr}
+\toprule
+Cohort & Base & +Withdr. & Excl.\ break & H1 only & +Late appl. \\
+\midrule
+2010 & 0.563 & 0.559 & 0.474 & 0.612 & 0.473 \\
+2011 & 0.530 & 0.527 & 0.508 & 0.605 & 0.463 \\
+2012 & 0.631 & 0.628 & 0.730 & 0.694 & 0.571 \\
+2013 & 0.753 & 0.750 & 0.793 & 0.820 & 0.698 \\
+2014 & 0.761 & 0.758 & 0.761 & 0.842 & 0.740 \\
+2015 & 0.814 & 0.810 & 0.814 & 0.849 & 0.814 \\
+2016 & 0.876 & 0.872 & 0.876 & 0.911 & 0.876 \\
+\bottomrule
+\end{tabular}
+\par\medskip\textbf{Panel B. Current follow-up versus a common 365-day administrative window}\par\smallskip
+\begin{tabular}{lrrrrrr}
+\toprule
+Cohort & CIF (cur) & RMST & N & CIF (fu) & RMST & N \\
+\midrule
+2010 & 0.563 & 218 & 106,300 & 0.563 & 218 & 106,300 \\
+2011 & 0.530 & 249 & 126,766 & 0.530 & 249 & 126,766 \\
+2012 & 0.631 & 237 & 139,440 & 0.631 & 237 & 139,440 \\
+2013 & 0.753 & 203 & 140,811 & 0.753 & 203 & 140,811 \\
+2014 & 0.761 & 215 & 146,665 & 0.761 & 215 & 146,665 \\
+2015 & 0.814 & 195 & 146,232 & 0.813 & 196 & 145,551 \\
+2016 & 0.876 & 181 & 128,143 & 0.876 & 182 & 127,130 \\
+\bottomrule
+\end{tabular}
+\tabnote{\emph{Source:} SME childcare request record, 2010--2018 applications, with referral and enrollment dates through November 2019. \emph{Sample:} duration sample of Table~\ref{tab:E1cohort}, except where a column says otherwise. \emph{Variables:} cumulative incidence of referral within 365 days; RMST in days. Panel A: Base, referral against aging out; +Withdr., recorded withdrawals added as a competing event; Excl.\ break, applications dated July 2012 to December 2013 excluded; H1 only, applications in the first calendar semester; +Late appl., children who first applied after 47 months added as immediate aging out. Panel B: right block keeps only applications with a full 365-day window before the panel closes. \emph{Exercise:} Aalen--Johansen estimator; descriptive.}
+\end{table}

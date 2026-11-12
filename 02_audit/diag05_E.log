@@ -1,0 +1,172 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag05_E.log
+  log type:  text
+ opened on:  22 Jul 2026, 12:22:01
+
+. 
+. *==============================================================
+. di "########## Mapa crianca -> ano_nasc (do Fila) ##########"
+########## Mapa crianca -> ano_nasc (do Fila) ##########
+
+. use cd_aluno_sme ano_nasc using "$fila", clear
+
+. collapse (firstnm) ano_nasc, by(cd_aluno_sme)
+
+. save "$aud\cid_ano.dta", replace
+(file <NE_ROOT>\_audit\cid_ano.dta not found)
+file <NE_ROOT>\_audit\cid_ano.dta saved
+
+. di "N criancas no mapa = " _N
+N criancas no mapa = 1524653
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## E1 — ano_nascimento dos que fizeram PSP 2o ano ##########"
+########## E1 — ano_nascimento dos que fizeram PSP 2o ano ##########
+
+. * 2017 nao tem 2o ano (menor serie = 3.ANO)
+. di "PSP 2017: 2o ano NAO EXISTE (menor serie = C.I 3.ANO F9)."
+PSP 2017: 2o ano NAO EXISTE (menor serie = C.I 3.ANO F9).
+
+. 
+. * 2018: C.I 2.ANO F9
+. use cd_aluno_sme desc_serie using "$ba/psp_2018.dta", clear
+
+. keep if strpos(desc_serie,"2.ANO")>0
+(347,326 observations deleted)
+
+. merge m:1 cd_aluno_sme using "$aud\cid_ano.dta", keep(master match) nogen
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                         9,183
+        from master                     9,183  
+        from using                          0  
+
+    Matched                            37,531  
+    -----------------------------------------
+
+. gen ano_psp=2018
+
+. save "$aud\psp2018_2ano.dta", replace
+(file <NE_ROOT>\_audit\psp2018_2ano.dta not found)
+file <NE_ROOT>\_audit\psp2018_2ano.dta saved
+
+. di "--- PSP 2018 2o ano: N=" _N " ; distribuicao ano_nasc ---"
+--- PSP 2018 2o ano: N=46714 ; distribuicao ano_nasc ---
+
+. tab ano_nasc, miss
+
+  (firstnm) |
+   ano_nasc |      Freq.     Percent        Cum.
+------------+-----------------------------------
+       2005 |          2        0.00        0.00
+       2006 |          4        0.01        0.01
+       2007 |         12        0.03        0.04
+       2008 |         77        0.16        0.20
+       2009 |        454        0.97        1.18
+       2010 |     26,894       57.57       58.75
+       2011 |     10,088       21.60       80.34
+          . |      9,183       19.66      100.00
+------------+-----------------------------------
+      Total |     46,714      100.00
+
+. 
+. * 2019: 2 Ano
+. use cd_aluno_sme desc_serie using "$ba/psp_2019.dta", clear
+
+. keep if strpos(desc_serie,"2 Ano")>0
+(339,570 observations deleted)
+
+. merge m:1 cd_aluno_sme using "$aud\cid_ano.dta", keep(master match) nogen
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                         2,949
+        from master                     2,949  
+        from using                          0  
+
+    Matched                            36,438  
+    -----------------------------------------
+
+. gen ano_psp=2019
+
+. save "$aud\psp2019_2ano.dta", replace
+(file <NE_ROOT>\_audit\psp2019_2ano.dta not found)
+file <NE_ROOT>\_audit\psp2019_2ano.dta saved
+
+. di "--- PSP 2019 2o ano: N=" _N " ; distribuicao ano_nasc ---"
+--- PSP 2019 2o ano: N=39387 ; distribuicao ano_nasc ---
+
+. tab ano_nasc, miss
+
+  (firstnm) |
+   ano_nasc |      Freq.     Percent        Cum.
+------------+-----------------------------------
+       2005 |          3        0.01        0.01
+       2006 |          5        0.01        0.02
+       2007 |          2        0.01        0.03
+       2008 |         23        0.06        0.08
+       2009 |         74        0.19        0.27
+       2010 |        531        1.35        1.62
+       2011 |     25,882       65.71       67.33
+       2012 |      9,918       25.18       92.51
+          . |      2,949        7.49      100.00
+------------+-----------------------------------
+      Total |     39,387      100.00
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## E2 — coorte modal x universo B_novo x casamento ##########"
+########## E2 — coorte modal x universo B_novo x casamento ##########
+
+. * coorte modal 2018 = 2011 ; 2019 = 2012 (confirmar acima). Reporto para 2010,2011,2012.
+. use "$aud\child_expo.dta", clear
+
+. di "--- N B_novo por ano_nasc (2009-2013) ---"
+--- N B_novo por ano_nasc (2009-2013) ---
+
+. tab ano_nasc if inrange(ano_nasc,2009,2013)
+
+   ano_nasc |      Freq.     Percent        Cum.
+------------+-----------------------------------
+       2009 |    114,708       16.43       16.43
+       2010 |    128,352       18.39       34.82
+       2011 |    146,693       21.01       55.83
+       2012 |    155,292       22.25       78.08
+       2013 |    153,033       21.92      100.00
+------------+-----------------------------------
+      Total |    698,078      100.00
+
+. 
+. foreach c in 2010 2011 2012 {
+  2.     di "===== coorte `c' ====="
+  3.     qui count if ano_nasc==`c'
+  4.     di "  B_novo nascidos em `c': " r(N)
+  5.     * casam com PSP 2018 2o ano
+.     preserve
+  6.         keep if ano_nasc==`c'
+  7.         merge 1:1 cd_aluno_sme using "$aud\psp2018_2ano.dta", keep(match) nogen
+  8.         di "    casam c/ PSP2018-2ano: " _N
+  9.     restore
+ 10.     preserve
+ 11.         keep if ano_nasc==`c'
+ 12.         merge 1:1 cd_aluno_sme using "$aud\psp2019_2ano.dta", keep(match) nogen
+ 13.         di "    casam c/ PSP2019-2ano: " _N
+ 14.     restore
+ 15. }
+===== coorte 2010 =====
+  B_novo nascidos em 2010: 128352
+(1,396,208 observations deleted)
+variable cd_aluno_sme does not uniquely identify observations in the using data
+r(459);
+
+end of do-file
+r(459);

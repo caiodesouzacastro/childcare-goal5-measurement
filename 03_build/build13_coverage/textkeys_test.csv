@@ -1,0 +1,11 @@
+merge,script,uso_no_paper,n_A,n_B,casam,perda_A,exemplos_sem_par
+CEP -> evolucaodemanda (C6),build10.py,tab:C6 (versao submetida),96,96,64,32,"<C1>GUA RASA, BEL<C9>M, BR<C1>S, BRASIL<C2>NDIA"
+CEP -> evolucaodemanda (C6 corrigida),build13_c6fix.py,tab:C6 (atual),96,96,96,0,
+CEP -> evolucaodemanda (V11),verificacao_final.py,nenhum (checagem),96,96,64,32,"<C1>GUA RASA, BEL<C9>M, BR<C1>S, BRASIL<C2>NDIA"
+"CEP -> SINASC (renda por distrito, S6b)",build03_demog.py,tab:S6b_nascidos_renda,96,96,96,0,
+"perfil -> SINASC (capacidade/pool, S6c)",build03_demog.py,tab:S6c_cobertura,96,96,96,0,
+"CEP -> SINASC (quartil de renda, S8)",build03_s7s8.py,tab:S8a/S8b/S8c,96,96,96,0,
+CEP -> perfil (D15 distrito),build04_diag15.py,nenhum no corpo (diagnostico D15),96,96,96,0,
+CEP -> painel (distrito da crianca),build05_panel.py,"N3 (tab:districtmix), irmaos",96,96,96,0,
+CEP -> SINASC (lib.norm),d14_*.py,"Apendice B, linha 12",96,96,96,0,
+perfil -> SINASC (lib.norm),d14_*.py,"Apendice B, linha 12",96,96,96,0,

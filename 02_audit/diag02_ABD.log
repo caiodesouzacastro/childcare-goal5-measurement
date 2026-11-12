@@ -1,0 +1,545 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag02_ABD.log
+  log type:  text
+ opened on:  22 Jul 2026, 10:30:00
+
+. 
+. *==============================================================
+. di "########## A2 — estatísticas das variáveis candidatas ##########"
+########## A2 — estatísticas das variáveis candidatas ##########
+
+. *--- corteescolaunique: dt_corte, dt_corte_escola ---
+. use "$dsme\corteescolaunique.dta", clear
+
+. di "corteescolaunique.dta: N=" _N
+corteescolaunique.dta: N=50058
+
+. foreach v in dt_corte dt_corte_escola {
+  2.     qui count if !missing(`v')
+  3.     di "  `v': N nao-missing=" r(N)
+  4.     sum `v', detail
+  5.     di "    (mostrar como data) min=" %td r(min) "  max=" %td r(max)
+  6. }
+  dt_corte: N nao-missing=50058
+
+                       (mean) dt_corte
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%        18262          18262
+ 5%        18627          18262
+10%        19358          18262       Obs              50,058
+25%        19723          18262       Sum of wgt.      50,058
+
+50%        20453                      Mean           20351.68
+                        Largest       Std. dev.       902.346
+75%        21184          21549
+90%        21549          21549       Variance       814228.3
+95%        21549          21549       Skewness       -.441595
+99%        21549          21549       Kurtosis       2.308209
+    (mostrar como data) min=31dec2009  max=31dec2018
+  dt_corte_escola: N nao-missing=50058
+
+                   (mean) dt_corte_escola
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%        17990          16834
+ 5%        18498          16881
+10%        18983          16883       Obs              50,058
+25%        19647          16891       Sum of wgt.      50,058
+
+50%        20417                      Mean           20266.91
+                        Largest       Std. dev.      931.2978
+75%        21108          21531
+90%        21486          21531       Variance       867315.7
+95%        21523          21531       Skewness      -.5232576
+99%        21530          21531       Kurtosis        2.51973
+    (mostrar como data) min=02feb2006  max=13dec2018
+
+. 
+. *--- tipo_prioridade_encaminhamento no fila bruto ---
+. use "$dsme\matriculas\fila1018.dta", clear
+
+. di "matriculas/fila1018.dta: N=" _N
+matriculas/fila1018.dta: N=86046
+
+. di "--- tabulate tipo_prioridade_encaminhamento (miss) ---"
+--- tabulate tipo_prioridade_encaminhamento (miss) ---
+
+. tab tipo_prioridade_encaminhamento, miss
+
+tipo_priori |
+dade_encami |
+   nhamento |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |      1,707        1.98        1.98
+          3 |          4        0.00        1.99
+          6 |          3        0.00        1.99
+          . |     84,332       98.01      100.00
+------------+-----------------------------------
+      Total |     86,046      100.00
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## A3 — corteescolaunique: 1 linha por escola-ano-serie? ##########"
+########## A3 — corteescolaunique: 1 linha por escola-ano-serie? ##########
+
+. use "$dsme\corteescolaunique.dta", clear
+
+. duplicates report an_letivo_encaminhamento serie_aluno cd_esc_encaminhamento
+
+Duplicates in terms of an_letivo_encaminhamento serie_aluno cd_esc_encaminhamento
+
+--------------------------------------
+   Copies | Observations       Surplus
+----------+---------------------------
+        1 |        50058             0
+--------------------------------------
+
+. di "--- tab serie_aluno x ano (contagem de escolas) ---"
+--- tab serie_aluno x ano (contagem de escolas) ---
+
+. tab serie_aluno an_letivo_encaminhamento
+
+serie_alun |                                           an_letivo_encaminhamento
+         o |      2010       2011       2012       2013       2014       2015       2016       2017       2018       2019 |     Total
+-----------+--------------------------------------------------------------------------------------------------------------+----------
+         1 |       320        169        196        974        968      1,061      1,145      1,221      1,280      1,439 |     8,773 
+         2 |       396        243        357      1,337      1,320      1,472      1,684      1,692      1,943      2,119 |    12,563 
+         3 |         0        272        463      1,338      1,236      1,297      1,357      1,654      1,923      1,991 |    11,531 
+         4 |         0         66        468      1,277      1,043      1,035      1,224      1,325      1,586      1,467 |     9,491 
+         5 |         0        218        298        530        481        408        544        545        545        321 |     3,890 
+         6 |         0        144        253        474        314        285        445        362        259        202 |     2,738 
+         7 |       176          0          0          0          0          0          0          0          0          0 |       176 
+         8 |       317          0          0          0          0          0          0          0          0          0 |       317 
+         9 |       278          0          0          0          0          0          0          0          0          0 |       278 
+        10 |       267          0          0          0          0          0          0          0          0          0 |       267 
+-----------+--------------------------------------------------------------------------------------------------------------+----------
+     Total |     1,754      1,112      2,035      5,930      5,362      5,558      6,399      6,799      7,536      7,539 |    50,024 
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## B2/B3/B5/B6/D — base b1_2011 ##########"
+########## B2/B3/B5/B6/D — base b1_2011 ##########
+
+. use "$aud\b1_2011_audit.dta", clear
+
+. di "N b1_2011 = " _N
+N b1_2011 = 991
+
+. 
+. * datas de matricula
+. gen double dt_mat = date(dt_matricula, "DMY hms")
+(28 missing values generated)
+
+. format dt_mat %td
+
+. gen mat_nm  = !missing(dt_mat)
+
+. gen esc_trat_nm = !missing(esc_trat)
+
+. gen anmat_nm = !missing(an_letivo_matricula)
+
+. gen esc_mat_nm = !missing(cd_esc_matricula)
+
+. 
+. di ""
+
+
+. di "===== B2 — tabulate exp_tratamento (b1_2011) ====="
+===== B2 — tabulate exp_tratamento (b1_2011) =====
+
+. tab exp_tratamento, miss
+
+exp_tratame |
+        nto |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |          2        0.20        0.20
+          1 |          6        0.61        0.81
+          2 |          5        0.50        1.31
+          3 |         33        3.33        4.64
+          4 |         48        4.84        9.49
+          5 |         56        5.65       15.14
+          6 |         59        5.95       21.09
+          7 |         72        7.27       28.36
+          8 |         91        9.18       37.54
+          9 |        111       11.20       48.74
+         10 |        154       15.54       64.28
+         11 |        205       20.69       84.96
+         12 |         66        6.66       91.62
+         13 |         80        8.07       99.70
+          . |          3        0.30      100.00
+------------+-----------------------------------
+      Total |        991      100.00
+
+. 
+. di ""
+
+
+. di "===== B3 — cruzamentos exp_tratamento x ... ====="
+===== B3 — cruzamentos exp_tratamento x ... =====
+
+. di "--- exp_tratamento x dt_matricula não-missing ---"
+--- exp_tratamento x dt_matricula não-missing ---
+
+. tab exp_tratamento mat_nm, miss
+
+exp_tratam |        mat_nm
+      ento |         0          1 |     Total
+-----------+----------------------+----------
+         0 |         1          1 |         2 
+         1 |         4          2 |         6 
+         2 |         1          4 |         5 
+         3 |         3         30 |        33 
+         4 |         1         47 |        48 
+         5 |         4         52 |        56 
+         6 |         1         58 |        59 
+         7 |         0         72 |        72 
+         8 |         2         89 |        91 
+         9 |         1        110 |       111 
+        10 |         4        150 |       154 
+        11 |         0        205 |       205 
+        12 |         2         64 |        66 
+        13 |         2         78 |        80 
+         . |         2          1 |         3 
+-----------+----------------------+----------
+     Total |        28        963 |       991 
+
+. di "--- exp_tratamento x an_letivo_matricula ---"
+--- exp_tratamento x an_letivo_matricula ---
+
+. tab exp_tratamento an_letivo_matricula, miss
+
+exp_tratam |                  an_letivo_matricula
+      ento |      2010       2011       2012       2013          . |     Total
+-----------+-------------------------------------------------------+----------
+         0 |         0          0          1          0          1 |         2 
+         1 |         0          2          0          0          4 |         6 
+         2 |         0          3          1          0          1 |         5 
+         3 |         0         30          0          0          3 |        33 
+         4 |         0         46          0          1          1 |        48 
+         5 |         0         52          0          0          4 |        56 
+         6 |         0         58          0          0          1 |        59 
+         7 |         0         72          0          0          0 |        72 
+         8 |         0         89          0          0          2 |        91 
+         9 |         0        110          0          0          1 |       111 
+        10 |         0        150          0          0          4 |       154 
+        11 |         1        204          0          0          0 |       205 
+        12 |         0         64          0          0          2 |        66 
+        13 |        13         65          0          0          2 |        80 
+         . |         0          1          0          0          2 |         3 
+-----------+-------------------------------------------------------+----------
+     Total |        14        946          2          1         28 |       991 
+
+. di "--- exp_tratamento x esc_trat não-missing ---"
+--- exp_tratamento x esc_trat não-missing ---
+
+. tab exp_tratamento esc_trat_nm, miss
+
+exp_tratam |      esc_trat_nm
+      ento |         0          1 |     Total
+-----------+----------------------+----------
+         0 |         2          0 |         2 
+         1 |         6          0 |         6 
+         2 |         5          0 |         5 
+         3 |        32          1 |        33 
+         4 |        45          3 |        48 
+         5 |        52          4 |        56 
+         6 |        53          6 |        59 
+         7 |        67          5 |        72 
+         8 |        84          7 |        91 
+         9 |        98         13 |       111 
+        10 |       133         21 |       154 
+        11 |       176         29 |       205 
+        12 |        56         10 |        66 
+        13 |        10         70 |        80 
+         . |         3          0 |         3 
+-----------+----------------------+----------
+     Total |       822        169 |       991 
+
+. di "--- exp_tratamento x trat2011ber ---"
+--- exp_tratamento x trat2011ber ---
+
+. tab exp_tratamento trat2011ber, miss
+
+exp_tratam |           trat2011ber
+      ento |         0          1          . |     Total
+-----------+---------------------------------+----------
+         0 |         2          0          0 |         2 
+         1 |         6          0          0 |         6 
+         2 |         5          0          0 |         5 
+         3 |        32          1          0 |        33 
+         4 |        45          3          0 |        48 
+         5 |        52          4          0 |        56 
+         6 |        53          6          0 |        59 
+         7 |        67          5          0 |        72 
+         8 |        84          7          0 |        91 
+         9 |        98         13          0 |       111 
+        10 |       133         21          0 |       154 
+        11 |       176         29          0 |       205 
+        12 |        55         10          1 |        66 
+        13 |        10         70          0 |        80 
+         . |         3          0          0 |         3 
+-----------+---------------------------------+----------
+     Total |       821        169          1 |       991 
+
+. di "--- exp_tratamento x encaminhado ---"
+--- exp_tratamento x encaminhado ---
+
+. tab exp_tratamento encaminhado, miss
+
+exp_tratam |      encaminhado
+      ento |         0          1 |     Total
+-----------+----------------------+----------
+         0 |         2          0 |         2 
+         1 |         0          6 |         6 
+         2 |         1          4 |         5 
+         3 |         0         33 |        33 
+         4 |         0         48 |        48 
+         5 |         0         56 |        56 
+         6 |         0         59 |        59 
+         7 |         0         72 |        72 
+         8 |         0         91 |        91 
+         9 |         0        111 |       111 
+        10 |         0        154 |       154 
+        11 |         1        204 |       205 
+        12 |         0         66 |        66 
+        13 |        15         65 |        80 
+         . |         0          3 |         3 
+-----------+----------------------+----------
+     Total |        19        972 |       991 
+
+. 
+. di ""
+
+
+. di "===== B4 (cruzamentos) — encaminhado x esc_trat/ dt_matricula ====="
+===== B4 (cruzamentos) — encaminhado x esc_trat/ dt_matricula =====
+
+. tab encaminhado esc_trat_nm, miss
+
+encaminhad |      esc_trat_nm
+         o |         0          1 |     Total
+-----------+----------------------+----------
+         0 |         7         12 |        19 
+         1 |       815        157 |       972 
+-----------+----------------------+----------
+     Total |       822        169 |       991 
+
+. tab encaminhado mat_nm, miss
+
+encaminhad |        mat_nm
+         o |         0          1 |     Total
+-----------+----------------------+----------
+         0 |         3         16 |        19 
+         1 |        25        947 |       972 
+-----------+----------------------+----------
+     Total |        28        963 |       991 
+
+. 
+. di ""
+
+
+. di "===== B5 — dt_matricula / an_letivo_matricula ====="
+===== B5 — dt_matricula / an_letivo_matricula =====
+
+. di "N dt_matricula não-missing = "
+N dt_matricula não-missing = 
+
+. count if mat_nm==1
+  963
+
+. di "N an_letivo_matricula não-missing = "
+N an_letivo_matricula não-missing = 
+
+. count if anmat_nm==1
+  963
+
+. di "--- distribuição por an_letivo_matricula ---"
+--- distribuição por an_letivo_matricula ---
+
+. tab an_letivo_matricula, miss
+
+an_letivo_m |
+   atricula |      Freq.     Percent        Cum.
+------------+-----------------------------------
+       2010 |         14        1.41        1.41
+       2011 |        946       95.46       96.87
+       2012 |          2        0.20       97.07
+       2013 |          1        0.10       97.17
+          . |         28        2.83      100.00
+------------+-----------------------------------
+      Total |        991      100.00
+
+. di "--- distribuição por ano de dt_matricula ---"
+--- distribuição por ano de dt_matricula ---
+
+. gen ano_mat = year(dt_mat)
+(28 missing values generated)
+
+. tab ano_mat, miss
+
+    ano_mat |      Freq.     Percent        Cum.
+------------+-----------------------------------
+       2010 |         16        1.61        1.61
+       2011 |        939       94.75       96.37
+       2012 |          8        0.81       97.17
+          . |         28        2.83      100.00
+------------+-----------------------------------
+      Total |        991      100.00
+
+. * idade em meses na matricula (usa ano_nasc/mes_nasc; sem dia de nascimento)
+. gen idade_mat_meses = (year(dt_mat) - ano_nasc)*12 + (month(dt_mat) - mes_nasc) if mat_nm==1
+(28 missing values generated)
+
+. di "--- idade em meses na data de matricula ---"
+--- idade em meses na data de matricula ---
+
+. sum idade_mat_meses, detail
+
+                       idade_mat_meses
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            2              1
+ 5%            4              1
+10%            5              2       Obs                 963
+25%            7              2       Sum of wgt.         963
+
+50%            9                      Mean           9.202492
+                        Largest       Std. dev.      3.645621
+75%           11             22
+90%           14             23       Variance       13.29056
+95%           15             25       Skewness       .5013445
+99%           18             25       Kurtosis       3.600493
+
+. 
+. di ""
+
+
+. di "===== B6 — quantas crianças têm matrícula em CEI (algum momento) ====="
+===== B6 — quantas crianças têm matrícula em CEI (algum momento) =====
+
+. di "com an_letivo_matricula não-missing:"
+com an_letivo_matricula não-missing:
+
+. count if anmat_nm==1
+  963
+
+. di "com cd_esc_matricula não-missing:"
+com cd_esc_matricula não-missing:
+
+. count if esc_mat_nm==1
+  963
+
+. di "com dt_matricula não-missing:"
+com dt_matricula não-missing:
+
+. count if mat_nm==1
+  963
+
+. di "NUNCA (an_letivo_matricula missing):"
+NUNCA (an_letivo_matricula missing):
+
+. count if anmat_nm==0
+  28
+
+. di "NUNCA (cd_esc_matricula missing):"
+NUNCA (cd_esc_matricula missing):
+
+. count if esc_mat_nm==0
+  28
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## D — quantificar o artefato rvar==0 ##########"
+########## D — quantificar o artefato rvar==0 ##########
+
+. * padronização de prof_mat já feita dentro de b1_2011 no build audit
+. scalar h = 54.549695
+
+. di "===== D1 — prof_mat: rvar==0 vs tratados 0<rvar<=h vs controles -h<=rvar<0 ====="
+===== D1 — prof_mat: rvar==0 vs tratados 0<rvar<=h vs controles -h<=rvar<0 =====
+
+. di "--- (i) rvar==0 ---"
+--- (i) rvar==0 ---
+
+. sum prof_mat if rvar==0
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+    prof_mat |         18    .5145634    1.297812  -1.571827   2.901977
+
+. di "--- (ii) tratados 0<rvar<=h ---"
+--- (ii) tratados 0<rvar<=h ---
+
+. sum prof_mat if rvar>0 & rvar<=h & !missing(rvar)
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+    prof_mat |         66    .0443849    1.139783  -2.500895   2.934986
+
+. di "--- (iii) controles -h<=rvar<0 ---"
+--- (iii) controles -h<=rvar<0 ---
+
+. sum prof_mat if rvar>=-h & rvar<0 & !missing(rvar)
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+    prof_mat |        100   -.0960281    .9901042  -2.012608   2.915176
+
+. 
+. di ""
+
+
+. di "===== D2 — especificação principal excluindo APENAS rvar==0 ====="
+===== D2 — especificação principal excluindo APENAS rvar==0 =====
+
+. rdrobust prof_mat rvar if rvar!=0, c(0) kernel(triangular) bwselect(mserd) vce(cluster escola_rdd)
+Mass points detected in the running variable.
+
+Sharp RD estimates using local polynomial regression.
+
+      Cutoff c = 0 | Left of c  Right of c            Number of obs =        655
+-------------------+----------------------            BW type       =      mserd
+     Number of obs |       529         126            Kernel        = Triangular
+Eff. Number of obs |       141          72            VCE method    =    Cluster
+    Order est. (p) |         1           1
+    Order bias (q) |         2           2
+       BW est. (h) |    68.996      68.996
+       BW bias (b) |   107.783     107.783
+         rho (h/b) |     0.640       0.640
+        Unique obs |       267          82
+Number of clusters |        77          53
+
+Outcome: prof_mat. Running variable: rvar.
+--------------------------------------------------------------------------------
+                   | Point         | Robust Inference
+                   | Estimate      | z-stat        P>|z|    [95% Conf. Interval]
+-------------------+------------------------------------------------------------
+         RD Effect |  .28069       | 0.8687        0.385    -.393273     1.01937
+--------------------------------------------------------------------------------
+Std. Err. adjusted for clusters in escola_rdd
+Estimates adjusted for mass points in the running variable.
+
+. di "D2: tau_cl=" e(tau_cl) "  se_rb=" e(se_tau_rb) "  p_rb=" e(pv_rb) "  h=" e(h_l) "  Nl=" e(N_h_l) "  Nr=" e(N_h_r)
+D2: tau_cl=.28068975  se_rb=.36037408  p_rb=.38502531  h=68.996204  Nl=141  Nr=72
+
+. 
+. di "=== FIM diag02_ABD ==="
+=== FIM diag02_ABD ===
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag02_ABD.log
+  log type:  text
+ closed on:  22 Jul 2026, 10:30:01
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

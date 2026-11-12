@@ -1,0 +1,23 @@
+% requer \usepackage{booktabs}. Tabela descritiva; sem interpretacao causal.
+\begin{table}[htbp]\centering
+\caption{Decomposicao da idade de entrada em creche (medias, criancas matriculadas), por ano de solicitacao}
+\label{tab:T3_decomp}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrrr}
+\toprule
+Ano solic. & (1) N & (2) Idade solic. & (3) Espera & (4) Idade entrada & (5)=(2)+(3)-(4) \\
+\midrule
+2010 & 57,378 & 32.62 & 8.10 & 40.71 & 0.001 \\
+2011 & 101,708 & 25.25 & 11.85 & 37.07 & 0.023 \\
+2012 & 194,100 & 25.98 & 9.08 & 35.04 & 0.024 \\
+2013 & 171,477 & 23.35 & 9.59 & 32.91 & 0.042 \\
+2014 & 157,985 & 20.21 & 9.28 & 29.49 & 0.000 \\
+2015 & 165,717 & 18.91 & 8.08 & 26.95 & 0.039 \\
+2016 & 157,534 & 17.70 & 7.88 & 25.60 & -0.017 \\
+2017 & 148,710 & 17.28 & 6.76 & 24.06 & -0.020 \\
+2018 & 135,065 & 17.30 & 4.35 & 21.63 & 0.029 \\
+\bottomrule
+\end{tabular}
+\\[3pt]{\footnotesize \textit{Note:} Identidade contabil: idade de entrada = idade na solicitacao + espera/30,44. Todas as colunas em meses, exceto (1). Espera = (dt\_mat\_first $-$ dt\_sol) em dias / 30,44. Coluna (5) e a verificacao da identidade nas medias (deve ser $\approx 0$); diferencas residuais vem do arredondamento mes-a-mes das idades vs. espera em dias. Amostra: criancas que se matricularam.}
+\end{table}

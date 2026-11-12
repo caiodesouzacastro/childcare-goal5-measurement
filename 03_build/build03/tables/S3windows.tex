@@ -1,0 +1,19 @@
+% requer booktabs. Descritivo.
+\begin{table}[htbp]\centering
+\caption{Decomposition of the change in age at entry under three observation windows, measuring the interval to enrolment and to referral}
+\label{tab:S3windows}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{p{4.6cm}rrrrrr}
+\toprule
+ & \multicolumn{3}{c}{Interval to enrolment} & \multicolumn{3}{c}{Interval to referral} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Unit and window & Change (mo.) & Share appl. & Share wait & Change (mo.) & Share appl. & Share wait \\
+\midrule
+Year of application, 2010--2018 & $-19.09$ & 80\% & 20\% & $-20.52$ & 79\% & 21\% \\
+Year of application, 2010--2016 (full 730-day follow-up) & $-15.11$ & 99\% & 1\% & $-16.41$ & 93\% & 8\% \\
+Birth cohort, 2010--2014 (entry at or before 48 months) & $-9.37$ & 93\% & 7\% & $-9.62$ & 87\% & 13\% \\
+\bottomrule
+\end{tabular}
+\\[3pt]{\footnotesize \textit{Note:} The three specifications differ in the unit of indexing and in the treatment of censoring. Change in age at entry is in months; the two shares give the fraction of that change attributable to earlier application and to shorter waiting. Under \emph{Enrolment} the interval is application to enrolment (the paper's headline); under \emph{Referral} it is application to first referral, which precedes enrolment by a median of five to seven days. Row 3 is the paper's preferred specification: indexing by birth cohort removes changes in the composition of the applicant pool, and the entry restriction imposes identical truncation across cohorts. Both are lower bounds on the waiting share, because children who age out of eligibility unreferred never enter and are absent by construction. Descriptive.}
+\end{table}

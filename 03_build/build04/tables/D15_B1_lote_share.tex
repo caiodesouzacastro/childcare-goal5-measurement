@@ -1,0 +1,22 @@
+% requer booktabs. Diagnostico descritivo.
+\begin{table}[htbp]\centering
+\caption{Share of first applications carrying a timestamp shared with other children, by year}
+\label{tab:D15_B1_lote_share}
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+Year & N & $\geq$2 & $\geq$10 & $\geq$50 & $\geq$100 \\
+\midrule
+2010 & 81,004 & 1.7 & 0.1 & 0.0 & 0.0 \\
+2011 & 124,240 & 1.8 & 0.0 & 0.0 & 0.0 \\
+2012 & 220,922 & 3.0 & 0.0 & 0.0 & 0.0 \\
+2013 & 191,149 & 2.4 & 0.0 & 0.0 & 0.0 \\
+2014 & 174,676 & 2.7 & 0.0 & 0.0 & 0.0 \\
+2015 & 179,869 & 2.9 & 0.6 & 0.6 & 0.6 \\
+2016 & 172,341 & 2.5 & 0.0 & 0.0 & 0.0 \\
+2017 & 163,922 & 2.7 & 0.0 & 0.0 & 0.0 \\
+2018 & 165,331 & 2.7 & 0.0 & 0.0 & 0.0 \\
+\bottomrule
+\end{tabular}
+\\[3pt]{\footnotesize \textit{Note:} Each child's first application is dated to the second (day and hour:minute:second) in the raw queue register. Columns give the share of first applications whose exact timestamp is shared by at least 2, 10, 50 or 100 children. Batch (bulk) registration would show a high share sharing a timestamp; individual online applications do not. Source: build04\_diag15.py (Fila1018).}
+\end{table}

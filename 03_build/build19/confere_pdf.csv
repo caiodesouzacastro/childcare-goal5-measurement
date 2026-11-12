@@ -1,0 +1,99 @@
+ano,mes,arquivo,aberto,dem_aberto,dem_no_pdf,mat_aberto,mat_no_pdf,chars_pdf
+2007,6,5680.pdf,,88218.0,True,78474.0,True,27834.0
+2007,9,5682.pdf,,158689.0,True,81054.0,True,28859.0
+2007,12,5681.pdf,,79231.0,True,83364.0,True,28924.0
+2008,3,5683.pdf,,93476.0,True,96217.0,True,29452.0
+2008,6,5686.pdf,,110091.0,True,101966.0,True,34700.0
+2008,9,5685.pdf,,134497.0,True,106519.0,True,34890.0
+2008,12,5684.pdf,,57607.0,True,109717.0,True,38227.0
+2009,3,5690.pdf,,67619.0,True,116167.0,True,37094.0
+2009,6,5691.pdf,,84807.0,True,119747.0,True,37367.0
+2009,9,5692.pdf,,86858.0,True,120902.0,True,37647.0
+2009,12,5693.pdf,,74707.0,True,123155.0,True,33895.0
+2010,3,5694.pdf,,78284.0,True,123485.0,True,35641.0
+2010,6,5696.pdf,,94974.0,True,127135.0,True,36077.0
+2010,9,5697.pdf,,125437.0,True,130705.0,True,35113.0
+2010,12,5695.pdf,,100401.0,True,130412.0,True,34376.0
+2011,1,5733.pdf,sem mes nos dados abertos,,,,,
+2011,3,5698.pdf,,127651.0,True,190691.0,True,34260.0
+2011,6,5701.pdf,,147027.0,True,193602.0,True,34595.0
+2011,9,5700.pdf,,174168.0,True,196291.0,True,37349.0
+2011,10,5732.pdf,sem mes nos dados abertos,,,,,
+2011,12,5699.pdf,,101165.0,False,195561.0,True,39246.0
+2012,2,5702.pdf,sem mes nos dados abertos,,,,,
+2012,3,5704.pdf,,126662.0,False,203509.0,True,51527.0
+2012,3,5734.pdf,,126662.0,False,203509.0,False,1425.0
+2012,6,5706.pdf,,148185.0,False,207605.0,True,51961.0
+2012,9,5705.pdf,,174213.0,False,210599.0,True,50461.0
+2012,12,5703.pdf,,97160.0,False,214094.0,True,51178.0
+2013,1,5711.pdf,sem mes nos dados abertos,,,,,
+2013,3,5710.pdf,,103309.0,True,206900.0,True,53381.0
+2013,4,5714.pdf,sem mes nos dados abertos,,,,,
+2013,5,5709.pdf,sem mes nos dados abertos,,,,,
+2013,6,5708.pdf,,127361.0,True,211541.0,True,29208.0
+2013,7,5712.pdf,sem mes nos dados abertos,,,,,
+2013,8,5713.pdf,sem mes nos dados abertos,,,,,
+2013,9,5715.pdf,,156982.0,True,213275.0,True,29102.0
+2013,10,5707.pdf,sem mes nos dados abertos,,,,,
+2014,1,5723.pdf,sem mes nos dados abertos,,,,,
+2014,3,5721.pdf,,110639.0,True,218062.0,True,29097.0
+2014,6,5722.pdf,,128519.0,True,222495.0,True,29098.0
+2014,9,5720.pdf,,160495.0,True,225806.0,True,29078.0
+2014,11,8052.pdf,sem mes nos dados abertos,,,,,
+2014,12,10626.pdf,,94191.0,True,228204.0,True,28911.0
+2015,3,12158.pdf,,105967.0,True,236505.0,True,29236.0
+2015,6,16167.pdf,,124741.0,True,240840.0,True,28922.0
+2015,9,20833.pdf,,145864.0,True,250303.0,True,28990.0
+2015,11,23271.pdf,sem mes nos dados abertos,,,,,
+2015,12,24577.pdf,,75194.0,True,260785.0,True,28869.0
+2016,1,2016-Janeiro.pdf,sem mes nos dados abertos,,,,,
+2016,3,2016-Marco.pdf,,88356.0,True,270540.0,True,29118.0
+2016,6,2016-Junho.pdf,,103496.0,True,277899.0,True,28402.0
+2016,9,2016-Setembro.pdf,,133005.0,True,283556.0,True,28314.0
+2016,12,2016-Dezembro.pdf,,65040.0,True,284179.0,True,28384.0
+2017,3,2017-marco.pdf,,87906.0,True,287122.0,True,28313.0
+2017,6,39663.pdf,,104268.0,True,288294.0,True,18897.0
+2017,9,41889.pdf,,132365.0,True,289962.0,True,18499.0
+2017,12,44753.pdf,,44092.0,True,296260.0,True,19496.0
+2018,3,46203.pdf,sem mes nos dados abertos,,,,,
+2018,6,47469.pdf,sem mes nos dados abertos,,,,,
+2018,9,49056.pdf,sem mes nos dados abertos,,,,,
+2018,12,50367.pdf,sem mes nos dados abertos,,,,,
+2019,3,51381.pdf,sem mes nos dados abertos,,,,,
+2019,6,52438.pdf,sem mes nos dados abertos,,,,,
+2019,9,2019-setembro.pdf,sem mes nos dados abertos,,,,,
+2019,12,2019-dezembro.pdf,sem mes nos dados abertos,,,,,
+2020,3,Matriculas-e-Demanda-Trimestral_-Março_2020.pdf,sem mes nos dados abertos,,,,,
+2020,6,Matriculas-e-Demanda-Trimestral_Junho2020.pdf,sem mes nos dados abertos,,,,,
+2020,9,Demanda_Matrículas-Publicação-trimestral-setembro_2020.pdf,sem mes nos dados abertos,,,,,
+2020,12,Matrículas-e-Demanda-Trimestral_Dezembro_2020.pdf,sem mes nos dados abertos,,,,,
+2021,3,PUBLICACAO_TRIMESTRAL_DEMANDA_MATRICULA_31.03.2021.pdf,sem mes nos dados abertos,,,,,
+2021,6,PUBLICACAO_TRIMESTRAL_DEMANDA_MATRICULA_JUNHO.pdf,sem mes nos dados abertos,,,,,
+2021,9,PUBLICACAO_TRIMESTRAL_DEMANDA_SET-2021.pdf,sem mes nos dados abertos,,,,,
+2021,12,PUBLICACAO_TRIMESTRAL_DEMANDA_MATRICULA_DEZEMBRO2021.pdf,sem mes nos dados abertos,,,,,
+2022,3,Publicacao-trimestral-Marco-2022.pdf,sem mes nos dados abertos,,,,,
+2022,6,Publicacao-trimestal-junho-2022.pdf,sem mes nos dados abertos,,,,,
+2022,9,DEMANDA_MATRICULA_30.09.2022.pdf,sem mes nos dados abertos,,,,,
+2022,12,publicacao-trimestral-demanda-e-matriculas-dezembro-2022.pdf,sem mes nos dados abertos,,,,,
+2023,2,Demanda-e-Matriculas-fevereiro-2023.pdf,sem mes nos dados abertos,,,,,
+2023,4,Publicacao-Bimestral-Abril-2023.pdf,sem mes nos dados abertos,,,,,
+2023,6,Publicacao-Bimestral-junho-2023.pdf,sem mes nos dados abertos,,,,,
+2023,8,Publicacao-Bimestral-Agosto-2023.pdf,sem mes nos dados abertos,,,,,
+2023,10,Publicacao-Bimestral-Outubro-2023.pdf,sem mes nos dados abertos,,,,,
+2023,12,Publicacao-Bimestral-Dezembro-2023.pdf,sem mes nos dados abertos,,,,,
+2024,2,Publicacao-demanda-e-matricula-Fev-2024.pdf,sem mes nos dados abertos,,,,,
+2024,4,Publicacao-demanda-e-matricula-Abr-2024.pdf,sem mes nos dados abertos,,,,,
+2024,6,Publicacao-demanda-e-matricula-Jun-2024.pdf,sem mes nos dados abertos,,,,,
+2024,8,Publicacao-demanda-e-matricula-Ago-2024.pdf,sem mes nos dados abertos,,,,,
+2024,10,Publicacao-Bimestral-Outubro-2024.pdf,sem mes nos dados abertos,,,,,
+2024,12,Publicacao-demanda-e-matriculas-Dez-2024.pdf,sem mes nos dados abertos,,,,,
+2025,2,Publicacao-demanda-e-matriculas-fev-2025.pdf,sem mes nos dados abertos,,,,,
+2025,4,Publicacao-demanda-e-matriculas-abril-2025.pdf,sem mes nos dados abertos,,,,,
+2025,6,Publicacao-demanda-e-matriculas-junho-2025.pdf,sem mes nos dados abertos,,,,,
+2025,8,Publicacao-demanda-e-matriculas-ago-2025.pdf,sem mes nos dados abertos,,,,,
+2025,10,Publicacao-demanda-e-matriculas-outubro-2025.pdf,sem mes nos dados abertos,,,,,
+2025,12,Publicacao-demanda-e-matriculas-dez-2025.pdf,sem mes nos dados abertos,,,,,
+2026,2,Publicacao-Demanda-e-Matricula-Fev-2026.pdf,sem mes nos dados abertos,,,,,
+2026,4,Publicacao-Demanda-e-Matricula-Abr-2026.pdf,sem mes nos dados abertos,,,,,
+2026,6,Demanda-e-matriculas-Junho-2026.pdf,sem mes nos dados abertos,,,,,
+2026,8,Publicacao-Demanda-e-Matricula-Ago-2026.pdf,sem mes nos dados abertos,,,,,

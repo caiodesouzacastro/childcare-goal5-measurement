@@ -1,0 +1,81 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag10_III2.log
+  log type:  text
+ opened on:  22 Jul 2026, 18:29:36
+
+. use cd_aluno_sme dt_solicitacao cd_esc_encaminhamento an_letivo_encaminhamento cd_serie_ensino_encaminhamento tipo_prioridade_encaminhamento dt_encaminhamento using "$fila", clear
+
+. gen double clk_sol = clock(dt_solicitacao,"DMY hms")
+
+. gen double clk_enc = clock(dt_encaminhamento,"DMY hms")
+(417,675 missing values generated)
+
+. keep if !missing(clk_enc) & !missing(cd_esc_encaminhamento) & missing(tipo_prioridade_encaminhamento)
+(731,766 observations deleted)
+
+. keep if inlist(cd_serie_ensino_encaminhamento,1,4,27,28)
+(660,118 observations deleted)
+
+. di "N = " _N
+N = 1906180
+
+. egen cell = group(cd_esc_encaminhamento cd_serie_ensino_encaminhamento an_letivo_encaminhamento)
+
+. di "########## III2 (clock/segundos) — empates de dt_solicitacao ##########"
+########## III2 (clock/segundos) — empates de dt_solicitacao ##########
+
+. duplicates tag cell clk_sol, gen(emp)
+
+Duplicates in terms of cell clk_sol
+
+. gen byte empatado = emp>0
+
+. di "--- fracao com dt_sol empatado (nivel SEGUNDO) na celula ---"
+--- fracao com dt_sol empatado (nivel SEGUNDO) na celula ---
+
+. sum empatado
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+    empatado |  1,906,180     .323993    .4679975          0          1
+
+. di "########## III3 (clock) — ordem sol vs enc ##########"
+########## III3 (clock) — ordem sol vs enc ##########
+
+. bysort cell (clk_sol): gen rank_sol = _n
+
+. bysort cell (clk_enc): gen rank_enc = _n
+
+. bysort cell: gen ncell=_N
+
+. keep if ncell>=5
+(22,162 observations deleted)
+
+. corr rank_sol rank_enc
+(obs=1,884,018)
+
+             | rank_sol rank_enc
+-------------+------------------
+    rank_sol |   1.0000
+    rank_enc |   0.8853   1.0000
+
+
+. di "  corr rank_sol x rank_enc (segundos, celulas>=5) = " r(rho)
+  corr rank_sol x rank_enc (segundos, celulas>=5) = .88528796
+
+. * fracao de inversoes exatas
+. gen byte inv = (clk_sol < clk_sol[_n+1]) & (clk_enc > clk_enc[_n+1]) if cell==cell[_n+1]
+(50,189 missing values generated)
+
+. qui sum inv
+
+. di "  fracao de inversoes (par consecutivo por sol tem enc invertido) = " r(mean)
+  fracao de inversoes (par consecutivo por sol tem enc invertido) = 0
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag10_III2.log
+  log type:  text
+ closed on:  22 Jul 2026, 18:29:55
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

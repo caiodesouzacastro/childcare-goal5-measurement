@@ -1,0 +1,35 @@
+% P7. Support evidence: what the SME publishes. Requires amssymb (\checkmark), natbib.
+\begin{table}[htbp]\centering
+\caption{What the municipal education secretariat publishes about childcare demand}
+\label{tab:SMEpub}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{p{3.9cm}p{1.5cm}p{1.4cm}cp{1.9cm}cc}
+\toprule
+Indicator & Frequency & Source & Stock? & Duration? & Age at appl.? & Flows? \\
+\midrule
+Registered demand stock, by district & Bimonthly & Open Data (EOL) & \checkmark & binary ($\le$/$>$30d) & --- & --- \\
+Demand with option for a specific centre & Bimonthly & Open Data (EOL) & \checkmark & --- & --- & --- \\
+Enrolments by stage, by district & Bimonthly & Open Data (EOL) & \checkmark & --- & --- & --- \\
+``Vaga na Creche'' public tool (current local counts and vacancies) & Not a fixed series & SME & \checkmark\,(local) & --- & --- & --- \\
+\bottomrule
+\end{tabular}
+\\[3pt]{\footnotesize \textit{Note:} Recurring public products of the S\~ao Paulo
+municipal education secretariat bearing on childcare demand, drawn from the
+secretariat's Demanda Escolar reporting \citep{sme_demanda_escolar} and the
+S\~ao Paulo Open Data Portal series on registered demand and enrolments (EOL)
+\citep{sme_dados_abertos}. \checkmark\ denotes reported, --- not reported. The
+published files---a representative bimonthly district release is the June 2026
+file \citep{sme_demanda_junho2026}---report stocks and, for childcare, a binary
+duration split (waits up to versus over 30 days); they do not report the
+distribution of age at application, exact or mean waiting duration, or the entry,
+referral and exit flows that generate the stock. The ``Vaga na Creche'' platform
+reports current local counts and vacancies rather than a fixed published series
+\citep{sme_vaga_creche}. All sources accessed 24 July 2026. Periodicity differs
+between the historical series and the current releases: the quarterly snapshots
+plotted in Figure~\ref{fig:F10} are the historical series, whereas the recurring
+release current at the time of writing is bimonthly, as the Frequency column
+records. Table~\ref{tab:SMEshort} in the body gives an abbreviated version of this
+table.}
+\end{table}

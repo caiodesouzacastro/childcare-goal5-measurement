@@ -1,0 +1,38 @@
+% Apendice A (revisao pos-EE). Gerado por 02_audit/build12_appendix.py; tabulars verbatim.
+\begin{table}[htbp]\centering
+\caption{Kaplan--Meier diagnostics that censor aging out}
+\label{tab:E1d}
+\label{tab:R2b_km}
+\footnotesize
+\par\medskip\textbf{Panel A. Net Kaplan--Meier and competing-risks medians, by birth cohort}\par\smallskip
+\begin{tabular}{lrr}
+\toprule
+Birth cohort & Net KM median & Competing-risks median \\
+\midrule
+2010 & 296 & 304 \\
+2011 & 329 & 346 \\
+2012 & 283 & 287 \\
+2013 & 221 & 223 \\
+2014 & 231 & 233 \\
+2015 & 194 & 194 \\
+2016 & 171 & 171 \\
+\bottomrule
+\end{tabular}
+\par\medskip\textbf{Panel B. Kaplan--Meier survivor function, by year of application}\par\smallskip
+\begin{tabular}{lrrrrr}
+\toprule
+Year of application & S(90) & S(180) & S(365) & S(730) & Median KM (days) \\
+\midrule
+2010 & 0.612 & 0.528 & 0.420 & 0.293 & 220 \\
+2011 & 0.732 & 0.677 & 0.549 & 0.137 & 387 \\
+2012 & 0.649 & 0.522 & 0.279 & 0.072 & 198 \\
+2013 & 0.684 & 0.562 & 0.295 & 0.074 & 227 \\
+2014 & 0.725 & 0.578 & 0.269 & 0.037 & 226 \\
+2015 & 0.677 & 0.491 & 0.172 & 0.026 & 176 \\
+2016 & 0.662 & 0.473 & 0.194 & 0.012 & 167 \\
+2017 & 0.684 & 0.467 & 0.077 &  & 163 \\
+2018 & 0.518 & 0.282 & 0.039 &  & 96 \\
+\bottomrule
+\end{tabular}
+\tabnote{\emph{Source:} SME childcare request record, 2010--2018 applications, with referral and enrollment dates through November 2019. \emph{Sample:} Panel A, duration sample of Table~\ref{tab:E1cohort}; Panel B, applications by year. \emph{Variables:} days from application to referral; S($t$): share not yet referred at day $t$. \emph{Exercise:} Kaplan--Meier with aging out treated as censoring, which estimates a hypothetical distribution in which no child ages out; children never referred are censored at the end of the panel; blank cells lack full follow-up. Reported as a diagnostic only.}
+\end{table}

@@ -1,0 +1,79 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag04_E.log
+  log type:  text
+ opened on:  22 Jul 2026, 11:40:12
+
+. 
+. *==============================================================
+. di "########## D1 (compl.) — vars de proficiencia nos PSP ##########"
+########## D1 (compl.) — vars de proficiencia nos PSP ##########
+
+. foreach fy in "psp_2017" "psp_2018" "psp_2019" {
+  2.     di "==== `fy' (1 obs) ===="
+  3.     use "$ba/`fy'.dta" in 1, clear
+  4.     ds *prof* *serie* cd_aluno*
+  5. }
+==== psp_2017 (1 obs) ====
+proficienc~p  proficienc~t  proficienc~e  cd_serie      desc_serie    cd_aluno_sme
+==== psp_2018 (1 obs) ====
+proficienc~p  prof~p_arred  proficienc~t  prof~t_arred  proficienc~e  prof~e_arred  cd_serie      desc_serie    cd_aluno_sme
+==== psp_2019 (1 obs) ====
+proficienc~p  prof~p_arred  proficienc~e  proficienc~t  prof~t_arred  prof~e_arred  cd_serie      desc_serie    cd_aluno_sme
+
+. di "==== Microdados_PSP_2018_2ano (1 obs) ===="
+==== Microdados_PSP_2018_2ano (1 obs) ====
+
+. use "$dsme\Microdados_PSP_2018_2ano.dta" in 1, clear
+
+. ds
+id            nome_distr~o  desc_serie    desc_ciclo~o  desc_tp_p~at  caderno_mat   in_presenc~e  vetor_corr~t  acertos_al~e  prof~p_arred  nota_red      nivel_cie
+ano_letivo    cd_turma      modalidade    cd_aluno_sme  desc_tp_pr~e  prova_cie     in_presenc~d  vetor_cie     per_aluno_lp  proficienc~t  nivel_lp      desc_nivel~e
+cd_unidade~o  cd_turno      modalidade~o  cd_inep_al~o  prova_lpt     caderno_cie   vetor_lp      vetor_corr~e  per_aluno_~t  prof~t_arred  desc_nivel~p  nivel_red
+tipo_escola   desc_turno    nome_turma    possui_nee    caderno_lpt   in_presenc~p  vetor_corr~p  acertos_al~p  per_aluno_~e  proficienc~e  nivel_mat     desc_nivel~d
+dre           cd_serie      cd_ciclo_e~o  desc_tp_p~pt  prova_mat     in_presenc~t  vetor_mat     acertos_al~t  proficienc~p  prof~e_arred  desc_nivel~t
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## E1 — matriculas por escola-ano-serie (tamanho de turma) ##########"
+########## E1 — matriculas por escola-ano-serie (tamanho de turma) ##########
+
+. use "$dsme\matriculas\matriculas1018.dta", clear
+
+. di "N linhas = " _N
+N linhas = 86122
+
+. * matriculas1018.dta ja possui serie_aluno (nao recriar)
+. di "--- tab serie_aluno (existente) ---"
+--- tab serie_aluno (existente) ---
+
+. tab serie_aluno, miss
+
+serie_aluno |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |          9        0.01        0.01
+          2 |          9        0.01        0.02
+          3 |          9        0.01        0.03
+          4 |          9        0.01        0.04
+          5 |          9        0.01        0.05
+          6 |          9        0.01        0.06
+          7 |          4        0.00        0.07
+          8 |          7        0.01        0.08
+          9 |          5        0.01        0.08
+         10 |          6        0.01        0.09
+          . |     86,046       99.91      100.00
+------------+-----------------------------------
+      Total |     86,122      100.00
+
+. keep if !missing(cd_esc_matricula) & !missing(an_letivo_matricula) & !missing(serie_aluno)
+(86,122 observations deleted)
+
+. contract cd_esc_matricula an_letivo_matricula serie_aluno, freq(turma)
+no observations
+r(2000);
+
+end of do-file
+r(2000);

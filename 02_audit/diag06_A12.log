@@ -1,0 +1,138 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag06_A12.log
+  log type:  text
+ opened on:  22 Jul 2026, 12:58:13
+
+. 
+. use "$aud\B_novo.dta", clear
+
+. di "N B_novo = " _N
+N B_novo = 1524560
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## A1 — distribuicao mes_nasc + qui-quadrado vs uniforme ##########"
+########## A1 — distribuicao mes_nasc + qui-quadrado vs uniforme ##########
+
+. tab mes_nasc, miss
+
+   mes_nasc |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |    125,465        8.23        8.23
+          2 |    121,913        8.00       16.23
+          3 |    138,065        9.06       25.28
+          4 |    134,479        8.82       34.10
+          5 |    138,617        9.09       43.20
+          6 |    129,558        8.50       51.69
+          7 |    130,368        8.55       60.24
+          8 |    126,385        8.29       68.53
+          9 |    125,112        8.21       76.74
+         10 |    119,647        7.85       84.59
+         11 |    113,597        7.45       92.04
+         12 |    121,354        7.96      100.00
+------------+-----------------------------------
+      Total |  1,524,560      100.00
+
+. * chi2 GOF vs uniforme
+. qui count if inrange(mes_nasc,1,12)
+
+. local Ntot = r(N)
+
+. local exp = `Ntot'/12
+
+. local chi2 = 0
+
+. forvalues m=1/12 {
+  2.     qui count if mes_nasc==`m'
+  3.     local o = r(N)
+  4.     local chi2 = `chi2' + (`o'-`exp')^2/`exp'
+  5. }
+
+. di "N (mes 1-12) = `Ntot' ; esperado/mes = `exp'"
+N (mes 1-12) = 1524560 ; esperado/mes = 127046.6666666667
+
+. di "Qui-quadrado(11 df) vs uniforme = " `chi2'
+Qui-quadrado(11 df) vs uniforme = 4950.5109
+
+. di "  p-valor = " chi2tail(11,`chi2')
+  p-valor = 0
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## A2 — mes_nasc por quartil de renda do CEP ##########"
+########## A2 — mes_nasc por quartil de renda do CEP ##########
+
+. rename cep_aluno cep
+
+. merge m:1 cep using "$ba\cep_renda_pop_2010.dta", keepusing(renda) keep(master match) nogen
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                        25,004
+        from master                    25,004  
+        from using                          0  
+
+    Matched                         1,499,556  
+    -----------------------------------------
+
+. qui sum renda, detail
+
+. xtile rq = renda if !missing(renda), nq(4)
+
+. di "--- % nascidos em MARCO (3) e ABRIL (4) por quartil de renda ---"
+--- % nascidos em MARCO (3) e ABRIL (4) por quartil de renda ---
+
+. forvalues q=1/4 {
+  2.     qui count if rq==`q'
+  3.     local nq=r(N)
+  4.     qui count if rq==`q' & mes_nasc==3
+  5.     local m3=r(N)
+  6.     qui count if rq==`q' & mes_nasc==4
+  7.     local m4=r(N)
+  8.     di "  Q`q' (N=`nq'): marco=" %5.2f 100*`m3'/`nq' "%  abril=" %5.2f 100*`m4'/`nq' "%  (razao mar/abr=" %5.3f `m3'/`m4' ")"
+  9. }
+  Q1 (N=374987): marco= 9.03%  abril= 8.84%  (razao mar/abr=1.022)
+  Q2 (N=374857): marco= 9.11%  abril= 8.83%  (razao mar/abr=1.032)
+  Q3 (N=374883): marco= 9.05%  abril= 8.83%  (razao mar/abr=1.026)
+  Q4 (N=374829): marco= 9.02%  abril= 8.79%  (razao mar/abr=1.027)
+
+. di "--- tabela completa mes_nasc x quartil (%) ---"
+--- tabela completa mes_nasc x quartil (%) ---
+
+. tab mes_nasc rq, col nofreq
+
+           |            4 quantiles of renda 
+  mes_nasc |         1          2          3          4 |     Total
+-----------+--------------------------------------------+----------
+         1 |      8.23       8.26       8.25       8.19 |      8.23 
+         2 |      7.97       8.00       7.99       8.01 |      7.99 
+         3 |      9.03       9.11       9.05       9.02 |      9.05 
+         4 |      8.84       8.83       8.83       8.79 |      8.82 
+         5 |      9.07       9.13       9.11       9.07 |      9.09 
+         6 |      8.48       8.51       8.51       8.49 |      8.50 
+         7 |      8.55       8.51       8.53       8.60 |      8.55 
+         8 |      8.29       8.27       8.28       8.32 |      8.29 
+         9 |      8.18       8.16       8.24       8.25 |      8.21 
+        10 |      7.89       7.85       7.82       7.86 |      7.85 
+        11 |      7.47       7.45       7.47       7.41 |      7.45 
+        12 |      8.00       7.92       7.92       7.99 |      7.96 
+-----------+--------------------------------------------+----------
+     Total |    100.00     100.00     100.00     100.00 |    100.00 
+
+. 
+. di "=== FIM A12 ==="
+=== FIM A12 ===
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag06_A12.log
+  log type:  text
+ closed on:  22 Jul 2026, 12:58:22
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,403 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag04_A.log
+  log type:  text
+ opened on:  22 Jul 2026, 11:11:02
+
+. 
+. *==============================================================
+. di "########## Códigos de escola presentes em Fila1018 ##########"
+########## Códigos de escola presentes em Fila1018 ##########
+
+. use cd_esc_encaminhamento cd_esc_matricula using "$fila", clear
+
+. di "N linhas Fila = " _N
+N linhas Fila = 3298064
+
+. preserve
+
+.     keep cd_esc_encaminhamento
+
+.     rename cd_esc_encaminhamento codesc
+
+.     drop if missing(codesc)
+(417,675 observations deleted)
+
+.     tempfile a
+
+.     save `a'
+file <HOME>\AppData\Local\Temp\ST_43e4_000002.tmp saved as .dta format
+
+. restore
+
+. keep cd_esc_matricula
+
+. rename cd_esc_matricula codesc
+
+. drop if missing(codesc)
+(1,169,483 observations deleted)
+
+. append using `a'
+
+. keep codesc
+
+. duplicates drop
+
+Duplicates in terms of all variables
+
+(5,005,225 observations deleted)
+
+. di "N códigos distintos (enc+mat) em Fila = " _N
+N códigos distintos (enc+mat) em Fila = 3745
+
+. save "$aud\fila_codesc.dta", replace
+(file <NE_ROOT>\_audit\fila_codesc.dta not found)
+file <NE_ROOT>\_audit\fila_codesc.dta saved
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## A parsing de escolassite ##########"
+########## A parsing de escolassite ##########
+
+. use "$dsme\escolas\escolassite.dta", clear
+
+. di "N=" _N
+N=4753
+
+. 
+. * --- parse datas str (DD/MM/YYYY) ---
+. foreach d in dt_criacao dt_ini_func dt_ini_conv dt_autoriza {
+  2.     gen `d'_d = date(`d', "DMY")
+  3.     format `d'_d %td
+  4. }
+(970 missing values generated)
+(2,654 missing values generated)
+(3,183 missing values generated)
+(1,705 missing values generated)
+
+. * --- parse coordenadas (separadores de milhar; parte inteira 2 dígitos) ---
+. foreach c in latitude longitude {
+  2.     gen `c'_s = subinstr(`c', ".", "", .)
+  3.     gen neg = strpos(`c'_s,"-")>0
+  4.     replace `c'_s = subinstr(`c'_s,"-","",.)
+  5.     gen double `c'_n = real(`c'_s) / (10^(strlen(`c'_s)-2))
+  6.     replace `c'_n = -`c'_n if neg==1
+  7.     drop neg `c'_s
+  8. }
+(24 missing values generated)
+(4,728 real changes made)
+(25 missing values generated)
+(4,728 real changes made)
+(24 missing values generated)
+(4,728 real changes made)
+(25 missing values generated)
+(4,728 real changes made)
+
+. rename latitude_n lat
+
+. rename longitude_n lon
+
+. 
+. * --- flag CEI ---
+. gen byte cei = inlist(tipoesc,"CEI DIRET","CEI INDIR","CEU CEI","CR.P.CONV","CEMEI","CCI/CIPS")
+
+. 
+. save "$aud\escolas_parsed.dta", replace
+(file <NE_ROOT>\_audit\escolas_parsed.dta not found)
+file <NE_ROOT>\_audit\escolas_parsed.dta saved
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## A2 — datas de criação/inauguração ##########"
+########## A2 — datas de criação/inauguração ##########
+
+. foreach d in dt_criacao_d dt_ini_func_d dt_ini_conv_d {
+  2.     di "==== `d' ===="
+  3.     qui count if !missing(`d')
+  4.     di "  N nao-missing = " r(N)
+  5.     sum `d'
+  6.     di "  min = " %td r(min) "   max = " %td r(max)
+  7.     gen yr_`d' = year(`d')
+  8.     di "  --- distribuicao por ano (2005-2018) ---"
+  9.     tab yr_`d' if inrange(yr_`d',2005,2018)
+ 10. }
+==== dt_criacao_d ====
+  N nao-missing = 3783
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+dt_criacao_d |      3,783    16486.81    5445.015      -1461      21549
+  min = 01jan1956   max = 31dec2018
+(970 missing values generated)
+  --- distribuicao por ano (2005-2018) ---
+
+yr_dt_criac |
+       ao_d |      Freq.     Percent        Cum.
+------------+-----------------------------------
+       2005 |          5        0.19        0.19
+       2006 |         24        0.94        1.13
+       2007 |         92        3.59        4.72
+       2008 |        236        9.20       13.91
+       2009 |        143        5.57       19.49
+       2010 |        206        8.03       27.51
+       2011 |        182        7.09       34.61
+       2012 |        217        8.46       43.06
+       2013 |        101        3.94       47.00
+       2014 |        208        8.11       55.11
+       2015 |        358       13.95       69.06
+       2016 |        219        8.53       77.59
+       2017 |        255        9.94       87.53
+       2018 |        320       12.47      100.00
+------------+-----------------------------------
+      Total |      2,566      100.00
+==== dt_ini_func_d ====
+  N nao-missing = 2099
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+dt_ini_fun~d |      2,099    11799.77    6438.409      -9131      21607
+  min = 01jan1935   max = 27feb2019
+(2,654 missing values generated)
+  --- distribuicao por ano (2005-2018) ---
+
+yr_dt_ini_f |
+      unc_d |      Freq.     Percent        Cum.
+------------+-----------------------------------
+       2005 |         16        2.47        2.47
+       2006 |         40        6.16        8.63
+       2007 |         62        9.55       18.18
+       2008 |        101       15.56       33.74
+       2009 |         73       11.25       44.99
+       2010 |         57        8.78       53.78
+       2011 |         64        9.86       63.64
+       2012 |         55        8.47       72.11
+       2013 |         52        8.01       80.12
+       2014 |         79       12.17       92.30
+       2015 |         34        5.24       97.53
+       2016 |          7        1.08       98.61
+       2017 |          6        0.92       99.54
+       2018 |          3        0.46      100.00
+------------+-----------------------------------
+      Total |        649      100.00
+==== dt_ini_conv_d ====
+  N nao-missing = 1570
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+dt_ini_con~d |      1,570    18702.61    1385.949       9388      21462
+  min = 14sep1985   max = 05oct2018
+(3,183 missing values generated)
+  --- distribuicao por ano (2005-2018) ---
+
+yr_dt_ini_c |
+      onv_d |      Freq.     Percent        Cum.
+------------+-----------------------------------
+       2005 |         25        1.72        1.72
+       2006 |         34        2.34        4.07
+       2007 |        157       10.83       14.90
+       2008 |         80        5.52       20.41
+       2009 |         89        6.14       26.55
+       2010 |        192       13.24       39.79
+       2011 |        135        9.31       49.10
+       2012 |        211       14.55       63.66
+       2013 |        162       11.17       74.83
+       2014 |        219       15.10       89.93
+       2015 |         28        1.93       91.86
+       2016 |          8        0.55       92.41
+       2017 |         96        6.62       99.03
+       2018 |         14        0.97      100.00
+------------+-----------------------------------
+      Total |      1,450      100.00
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## A3 — tipo de unidade ##########"
+########## A3 — tipo de unidade ##########
+
+. tab tipoesc, miss
+
+     tipoesc |      Freq.     Percent        Cum.
+-------------+-----------------------------------
+CCI/CIPS     |          3        0.06        0.06
+CEI DIRET    |        317        6.67        6.73
+CEI INDIR    |        376        7.91       14.64
+CEMEI        |         14        0.29       14.94
+CEU CEI      |         45        0.95       15.88
+CEU EMEF     |         46        0.97       16.85
+CEU EMEI     |         47        0.99       17.84
+CIEJA        |         16        0.34       18.18
+CMCT         |          2        0.04       18.22
+CR.P.CONV    |      1,629       34.27       52.49
+EMEBS        |          6        0.13       52.62
+EMEF         |        501       10.54       63.16
+EMEFM        |          8        0.17       63.33
+EMEI         |        508       10.69       74.02
+ESC.PART.    |        892       18.77       92.78
+MOVA         |        343        7.22      100.00
+-------------+-----------------------------------
+       Total |      4,753      100.00
+
+. di "--- CEI (flag) por tipoesc ---"
+--- CEI (flag) por tipoesc ---
+
+. tab tipoesc cei, miss
+
+             |    cei
+     tipoesc |         0 |     Total
+-------------+-----------+----------
+CCI/CIPS     |         3 |         3 
+CEI DIRET    |       317 |       317 
+CEI INDIR    |       376 |       376 
+CEMEI        |        14 |        14 
+CEU CEI      |        45 |        45 
+CEU EMEF     |        46 |        46 
+CEU EMEI     |        47 |        47 
+CIEJA        |        16 |        16 
+CMCT         |         2 |         2 
+CR.P.CONV    |     1,629 |     1,629 
+EMEBS        |         6 |         6 
+EMEF         |       501 |       501 
+EMEFM        |         8 |         8 
+EMEI         |       508 |       508 
+ESC.PART.    |       892 |       892 
+MOVA         |       343 |       343 
+-------------+-----------+----------
+       Total |     4,753 |     4,753 
+
+. di "--- total CEI ---"
+--- total CEI ---
+
+. count if cei==1
+  0
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## A5 — sanidade das coordenadas ##########"
+########## A5 — sanidade das coordenadas ##########
+
+. sum lat lon, detail
+
+                             lat
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%    -23.78399      -23.90708
+ 5%    -23.72994      -23.88053
+10%    -23.68653      -23.87412       Obs               4,728
+25%    -23.62662      -23.87048       Sum of wgt.       4,728
+
+50%    -23.56573                      Mean          -23.57284
+                        Largest       Std. dev.      .0851686
+75%    -23.50708      -23.40161
+90%    -23.46793      -23.40122       Variance       .0072537
+95%    -23.45066      -23.40084       Skewness      -.4940845
+99%    -23.41209      -23.39961       Kurtosis        2.91724
+
+                             lon
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     -46.7942      -46.80745
+ 5%    -46.77729      -46.80573
+10%    -46.75841      -46.80446       Obs               4,728
+25%    -46.71187      -46.80168       Sum of wgt.       4,728
+
+50%    -46.63467                      Mean          -46.60452
+                        Largest       Std. dev.      .1259758
+75%    -46.48688      -46.36724
+90%    -46.41514       -46.3672       Variance       .0158699
+95%    -46.39806      -46.36685       Skewness       .2829226
+99%    -46.37978      -46.36622       Kurtosis        1.75313
+
+. gen byte fora_sp = !(inrange(lat,-24.1,-23.3) & inrange(lon,-46.9,-46.3))
+
+. di "--- coord non-missing ---"
+--- coord non-missing ---
+
+. count if !missing(lat,lon)
+  4,727
+
+. di "--- fora do retangulo de SP (entre as non-missing) ---"
+--- fora do retangulo de SP (entre as non-missing) ---
+
+. count if !missing(lat,lon) & fora_sp==1
+  0
+
+. di "--- dentro do retangulo ---"
+--- dentro do retangulo ---
+
+. count if !missing(lat,lon) & fora_sp==0
+  4,727
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## A4 — CEIs com criacao 2008-2016 + coord + casa com Fila ##########"
+########## A4 — CEIs com criacao 2008-2016 + coord + casa com Fila ##########
+
+. gen long codesc = escola
+
+. merge m:1 codesc using "$aud\fila_codesc.dta", gen(mfila)
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                         1,814
+        from master                     1,411  (mfila==1)
+        from using                        403  (mfila==2)
+
+    Matched                             3,342  (mfila==3)
+    -----------------------------------------
+
+. * mfila==2 sao codigos do Fila sem cadastro em escolassite; remover para nao contaminar
+. drop if mfila==2
+(403 observations deleted)
+
+. gen byte in_fila = (mfila==3)
+
+. 
+. di "--- usando dt_criacao ---"
+--- usando dt_criacao ---
+
+. count if cei==1 & inrange(year(dt_criacao_d),2008,2016) & !missing(lat,lon) & in_fila==1
+  0
+
+. di "--- usando dt_ini_func ---"
+--- usando dt_ini_func ---
+
+. count if cei==1 & inrange(year(dt_ini_func_d),2008,2016) & !missing(lat,lon) & in_fila==1
+  0
+
+. di "--- (sem exigir casar com Fila) dt_criacao ---"
+--- (sem exigir casar com Fila) dt_criacao ---
+
+. count if cei==1 & inrange(year(dt_criacao_d),2008,2016) & !missing(lat,lon)
+  0
+
+. di "--- quantos CEI casam com Fila (qualquer data) ---"
+--- quantos CEI casam com Fila (qualquer data) ---
+
+. count if cei==1 & in_fila==1
+  0
+
+. 
+. di "=== FIM diag04_A ==="
+=== FIM diag04_A ===
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag04_A.log
+  log type:  text
+ closed on:  22 Jul 2026, 11:11:18
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

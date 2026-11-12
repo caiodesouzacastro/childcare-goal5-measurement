@@ -1,0 +1,467 @@
+
+############################################################
+DATASET: turmas-e-matriculas | (Descontinuada) Alunos por turma e módulos previstos em legislação
+  notes: ***Atualizado em: 28/06/2017***   (Atualização Única) ## Registro de matrículas por escola e turma, comparando com o módulo de atendimento de alunos previsto em legislações específicas, para cálculo de alunos por turma. Portarias que orientam a base de dados: Portaria nº 5.506, de 05 de de agosto
+  N recursos: 3
+   - [CSV] Dicionário de Variáveis   (2939 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/464f54e0-1a1c-4397-9ca6-2dee33851e36/resource/f129426b-6502-4dcb-8e19-28174bfce1ac/download/dicionario_aluno_turma_modulo.csv
+   - [XLSX] Dicionário de Variáveis   (18123 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/464f54e0-1a1c-4397-9ca6-2dee33851e36/resource/659fe10c-f204-486d-a784-560d22f70884/download/dicionario_aluno_turma_modulo.xlsx
+   - [CSV] Turmas e matrículas - Mai/2016 e Mai/2017  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/464f54e0-1a1c-4397-9ca6-2dee33851e36/resource/e37fa8f7-19ed-45c7-8be6-d7cd3c145489/download/turmas-e-matriculas-31-05.csv
+
+############################################################
+DATASET: perfil-das-turmas-e-unidades-educacionais-em-funcionamento | Perfil das turmas e unidades educacionais em funcionamento
+  notes: ***Atualizado em: 08/07/2026***   (Atualização Semestral) # Desde 2013, esta base apresenta semestralmente (junho e dezembro) registros divididos por escola e por Diretoria Regional de Educação, incluindo informações sobre educandos matriculados, turmas, turnos de funcionamento, portadores de nece
+  N recursos: 31
+   - [XLSX] Dicionário de Variáveis  (19400 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/afa17bfd-3286-4c40-87c9-52933066a592/resource/2be5d9d6-579f-4d2f-b02b-85f91aaa45e9/download/nova_perfil_turmas_ue.xlsx
+   - [CSV] Dicionário de Variáveis  (5648 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/afa17bfd-3286-4c40-87c9-52933066a592/resource/570dd256-17e3-4e02-8feb-7a57da114eb5/download/nova_perfil_turmas_ue.csv
+   - [CSV] Perfil de turmas e turnos  (22060745 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/afa17bfd-3286-4c40-87c9-52933066a592/resource/b3229396-8bff-4c50-aa29-1a9b4b28a653/download/perfil-das-turmas_062026.csv
+   - [CSV] Perfil de turmas e turnos  (22633572 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/afa17bfd-3286-4c40-87c9-52933066a592/resource/7f6cfcd9-96cb-4300-8fa3-d29f9bac6a45/download/perfil_das_turmas_122025.csv
+   - [CSV] Perfil de turmas e turnos  (20825694 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/afa17bfd-3286-4c40-87c9-52933066a592/resource/8ab39aa8-44d1-419f-bfc6-81759e802685/download/perfil_das_turmas_062025.csv
+   - [CSV] Perfil de turmas e turnos  (21708317 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/afa17bfd-3286-4c40-87c9-52933066a592/resource/e5bd6a6c-2c19-49ae-b22d-0fed82a68316/download/perfil_das_turmas_122024.csv
+   - [XLSX] Dicionário de Variáveis  (18113 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/afa17bfd-3286-4c40-87c9-52933066a592/resource/459706f7-52a8-4ce6-9dd4-d26e0db7f845/download/dicionariodevariaveis_turmas.xlsx
+   - [CSV] Dicionário de Variáveis  (10834 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/afa17bfd-3286-4c40-87c9-52933066a592/resource/56954742-6f4a-40d4-905e-2d9eec2d0007/download/dicionariodevariaveis_turmas-5.csv
+   - [CSV] Perfil de turmas e turnos  (26898607 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/afa17bfd-3286-4c40-87c9-52933066a592/resource/7dd9ecb3-e545-43a9-9215-66860b17e1bc/download/turmas_062024.csv
+   - [CSV] Perfil de turmas e turnos   (25088123 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/afa17bfd-3286-4c40-87c9-52933066a592/resource/fc534608-e807-4850-a933-7f4bd0533b33/download/turmas_122023.csv
+   - [CSV] Perfil de turmas e turnos   (25090115 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/afa17bfd-3286-4c40-87c9-52933066a592/resource/952f06cc-5489-4bd3-99ea-f860a971c481/download/turmas_062023.csv
+   - [CSV] Perfil de turmas e turnos  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/afa17bfd-3286-4c40-87c9-52933066a592/resource/6f6d2924-8bc7-4625-ae13-069418d666be/download/turmas122022-v3.csv
+   - [CSV] Perfil de turmas e turnos   (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/afa17bfd-3286-4c40-87c9-52933066a592/resource/5aa5ce20-e804-4e2f-8d01-d7882128792a/download/turmas062022.csv
+   - [CSV] Perfil de turmas e turnos  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/afa17bfd-3286-4c40-87c9-52933066a592/resource/d132c803-0ba4-465f-ac66-bd972c445e0a/download/turmas122021.csv
+   - [CSV] Perfil de turmas e turnos   (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/afa17bfd-3286-4c40-87c9-52933066a592/resource/2b9ce570-fb52-475e-9eda-9bf93925b732/download/perfil-das-turmas-e-unidades-em-funcionamentojun2021.csv
+   - [CSV] Perfil de turmas e turnos  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/afa17bfd-3286-4c40-87c9-52933066a592/resource/086a9b3a-9a3f-4302-98dd-00b324e92014/download/perfil-das-turmas-e-unidades-em-funcionamentodez2020.csv
+   - [CSV] Perfil de turmas e turnos  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/afa17bfd-3286-4c40-87c9-52933066a592/resource/47891e64-5a7a-40f8-899e-9fa376154deb/download/perfil-das-turmas-e-unidades-educacionais-em-funcionamentojun2020.csv
+   - [CSV] Perfil de turmas e turnos  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/afa17bfd-3286-4c40-87c9-52933066a592/resource/177e46dc-ae86-485a-b7d2-3525b21a26c7/download/turmas122019.csv
+   - [CSV] Perfil de turmas e turnos  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/afa17bfd-3286-4c40-87c9-52933066a592/resource/2721da16-964f-4891-96d7-082ee1058534/download/turmas062019.csv
+   - [CSV] Perfil de Turmas e Turnos  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/afa17bfd-3286-4c40-87c9-52933066a592/resource/56fc800c-1e41-4b6e-9bc7-9bef7c9a3271/download/turmasdez2018.csv
+   - [CSV] Perfil de turmas e turnos  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/afa17bfd-3286-4c40-87c9-52933066a592/resource/383dc680-ad8e-47ac-9c43-154325399eba/download/turmasjun18.csv
+   - [CSV] Perfil de turmas e turnos  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/afa17bfd-3286-4c40-87c9-52933066a592/resource/38182c9a-940e-4f4c-9635-897996899fd6/download/turmasdez2017.csv
+   - [CSV] Perfil de turmas e turnos  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/afa17bfd-3286-4c40-87c9-52933066a592/resource/34a34661-d9cd-4571-b5db-ec2dc8bd101d/download/turmasjun2017.csv
+   - [CSV] Perfil de turmas e turnos  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/afa17bfd-3286-4c40-87c9-52933066a592/resource/953414df-a3b5-4b2a-af5b-598a81a5188a/download/turmasmatriculas20161231.csv
+   - [CSV] Perfil de turmas e turnos  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/afa17bfd-3286-4c40-87c9-52933066a592/resource/f3f5a749-27cf-4dc3-9bde-d48a1d4e19f5/download/turmasjun2016.csv
+   - [CSV] Perfil de turmas e turnos  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/afa17bfd-3286-4c40-87c9-52933066a592/resource/9f8352cc-f445-46a0-8d7d-bdca8d9e65dd/download/r30-turmas-para-dre-20151231.csv
+   - [CSV] Perfil de turmas e turnos  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/afa17bfd-3286-4c40-87c9-52933066a592/resource/f095fe9a-23f0-4716-bdff-5ce38f79ab0f/download/turmasjun2015.csv
+   - [CSV] Perfil de turmas e turnos  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/afa17bfd-3286-4c40-87c9-52933066a592/resource/3eb4ffc2-fc24-4523-bd6b-8afd9c0878b8/download/r30-turmas-para-dre-20141231.csv
+   - [CSV] Perfil de turmas e turnos  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/afa17bfd-3286-4c40-87c9-52933066a592/resource/f70b0cdb-0ea8-417f-8bd8-c82369b965e3/download/turmasjun2014.csv
+   - [CSV] Perfil de turmas e turnos  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/afa17bfd-3286-4c40-87c9-52933066a592/resource/8216bfeb-8cb8-40b6-83f9-0f1a62759280/download/r30-turmas-para-dre-20131231.csv
+   - [CSV] Perfil de turmas e turnos  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/afa17bfd-3286-4c40-87c9-52933066a592/resource/7f55a6a9-a93d-4d67-a8fa-81c11e61ba7a/download/turmasjun2013.csv
+
+############################################################
+DATASET: microdados-matriculas | Microdados da Rede Municipal de Educação - Matrículas
+  notes: ***Atualizado em: 07/05/2026***   (Atualização Anual) # A presente base de dados contém informações de matrículas realizadas na Rede Municipal de Educação de São Paulo para Educação Infantil (creches e pré-escolas), Educação Fundamental (1º ao 9º ano), Ensino Médio, Educação de Jovens e Adultos (E
+  N recursos: 16
+   - [PDF] Leia-me  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/8b89fbee-63f2-4084-bfac-58687ea351d0/resource/023bf262-6289-46a6-bd1d-644e13660621/download/leiamemicrodadosmatriculas.pdf
+   - [ODT] Leia-me  (136925 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/8b89fbee-63f2-4084-bfac-58687ea351d0/resource/cc06e4fe-ef96-417f-84cb-5af60bdddc92/download/leiamemicrodadosmatriculas.pdf.odt
+   - [XLSX] Metadados  (16388 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/8b89fbee-63f2-4084-bfac-58687ea351d0/resource/0f334081-9885-45c1-bd72-3363e2105f7a/download/metadados_microdados.xlsx
+   - [CSV] Metadados  (6090 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/8b89fbee-63f2-4084-bfac-58687ea351d0/resource/59853e7d-70a8-4b90-9694-3bddaec305b9/download/metadados_microdados.csv
+   - [XLSX] Dicionário de Variáveis  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/8b89fbee-63f2-4084-bfac-58687ea351d0/resource/cd7ec27f-5a32-4a04-9308-035060c23432/download/dicionariovariaveismicrodadosmatriculas.xlsx
+   - [CSV] Dicionário de Variáveis  (14203 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/8b89fbee-63f2-4084-bfac-58687ea351d0/resource/4ab4e0de-93ab-4755-8bb4-bcfa0c76d467/download/dicionariovariaveismicrodadosmatriculas.csv
+   - [.zip] Microdados de Matrícula - 2025  (71315410 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/8b89fbee-63f2-4084-bfac-58687ea351d0/resource/e641d8a1-ad9a-43c8-b0f7-5002bb4aea90/download/microdados_matriculas_ano_2025.zip
+   - [ZIP] Microdados de Matrícula - 2024  (64097878 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/8b89fbee-63f2-4084-bfac-58687ea351d0/resource/36f6f49d-d436-4ed5-8e6c-88fb14e9edec/download/microdados-de-matricula-2024.zip
+   - [ZIP] Microdados de Matrícula - 2023  (35150369 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/8b89fbee-63f2-4084-bfac-58687ea351d0/resource/0d1334be-62ab-4032-ab97-2a05ffa7c46f/download/microdados-de-matricula-2023.zip
+   - [ZIP] Microdados de Matrículas - 2022  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/8b89fbee-63f2-4084-bfac-58687ea351d0/resource/1621f175-18ae-42b9-b109-f1b8c8771a10/download/microdados-de-matricula-2022.zip
+   - [ZIP] Microdados de Matrículas - 2019-2021  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/8b89fbee-63f2-4084-bfac-58687ea351d0/resource/1cd547cf-0c4c-4bcf-a14f-7292041e6e27/download/micmatv2019-2021.rar
+   - [ZIP] Microdados de Matrículas - 2015-2018  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/8b89fbee-63f2-4084-bfac-58687ea351d0/resource/ae7c5a92-ee2d-4e20-bf19-286d4665d84c/download/micmatv2015-2018.zip
+   - [ZIP] Microdados de Matrículas - 2012-2014  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/8b89fbee-63f2-4084-bfac-58687ea351d0/resource/0e633ac4-804a-4e8c-840e-b53258030aa2/download/micmatv22012-2014.zip
+   - [ZIP] Microdados de Matrículas - 2009-2011  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/8b89fbee-63f2-4084-bfac-58687ea351d0/resource/9297b4c5-4d4d-440e-88e0-642f3a55864c/download/micmatv22009-2011.zip
+   - [ZIP] Microdados de Matrículas - 2006-2008  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/8b89fbee-63f2-4084-bfac-58687ea351d0/resource/d7704226-4a3c-462c-a19d-0f3e5829063c/download/micmatv22006-2008-1.zip
+   - [ZIP] Microdados de Matrículas - 2000-2005  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/8b89fbee-63f2-4084-bfac-58687ea351d0/resource/90756c29-cd59-498e-9b5b-3fea4e02482d/download/micmatv22000-2005.zip
+
+############################################################
+DATASET: parcerias-ed-infantil | Parcerias de Educação Infantil
+  notes: ***Atualizado em: 17/06/2026*** (Atualização em 3 ciclos anuais) # O presente conjunto de dados possui como objetivo a transparência de informações sobre as Unidades de Educação Infantil mantidas por instituições parceiras.  É possível observar as Unidades Educacionais e suas respectivas Organiz
+  N recursos: 64
+   - [XLS] DICIONÁRIO  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/8afc8089-85a1-4945-9f7c-170b673f862d/download/dicionarioparceriasapartirdez17.xlsx
+   - [CSV] DICIONÁRIO  (2426 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/62c0f0cd-fd9f-4719-a28a-5585eabe401b/download/dicionarioparceriasapartirdez17.csv
+   - [XLSX] Parcerias Educação Infantil - Mar/2026  (809970 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/df7b7997-04e4-48e7-b1b1-337b777bf994/download/parceria_marco_2026.xlsx
+   - [CSV] Parcerias Educação Infantil - Mar/2026  (1533457 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/83ab07b8-4f96-455b-9741-882bd6dbdb0e/download/parceria_marco_2026.csv
+   - [XLSX] Parcerias Educação Infantil - Dez/2025  (780996 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/37ffa850-8203-47a2-8b4c-bb6e7df2e92f/download/parceria_dezembro_2025.xlsx
+   - [CSV] Parcerias Educação Infantil - Dez/2025  (1365683 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/9fc13793-a67d-4095-8913-1d94acac6836/download/parceria_dezembro_2025.csv
+   - [XLSX] Parcerias Educação Infantil - Set/2025  (775214 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/5d1af791-124d-412f-a135-880a8ae35819/download/parceria_setembro20251.xlsx
+   - [CSV] Parcerias Educação Infantil - Set/2025  (1362189 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/ae678b0d-b627-41a1-8747-f09a8ff33240/download/parceria_setembro20251.csv
+   - [XLSX] Parcerias Educação Infantil - Mar/2025  (782927 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/1625ad45-5c3a-464a-bdda-128671eae8a2/download/parcerias_marco_2024-7.xlsx
+   - [CSV] Parcerias Educação Infantil - Mar/2025  (1356390 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/242c6215-3a7a-4138-9186-94349e69dc7d/download/parcerias_marco_2024.csv
+   - [XLSX] Parcerias Educação Infantil - Dez/2024  (789472 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/3281c2bd-ee8a-42cb-a406-d48563b9bf08/download/parceria_dezembro_2024.xlsx
+   - [CSV] Parcerias Educação Infantil - Dez/2024  (1478452 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/83a31ffe-7d60-4726-9a6d-f5bdd501db92/download/parceria_dezembro_2024.csv
+   - [XLSX] Parcerias Educação Infantil - Set/2024  (803932 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/c0f9237f-1497-436c-9e70-7183873c223e/download/parcerias-educacao-infantil-set2024.xlsx
+   - [CSV] Parcerias Educação Infantil - Set/2024  (1432944 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/2666e3f3-533b-499e-b67e-0054340c6a7d/download/parcerias-educacao-infantil-set2024.csv
+   - [XLSX] Parcerias Educação Infantil - Mar/2024  (821980 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/e2b4c2b5-5d39-4b68-ac45-34a67d95c606/download/parcerias_marco_2024-2.xlsx
+   - [CSV] Parcerias Educação Infantil - Mar/2024  (1576699 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/128091ae-60a5-42a0-adc9-9646bbfe44a0/download/parcerias_marco_2024-2.csv
+   - [XLSX] Parcerias Educação Infantil - Dez/2023  (803341 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/c9e69095-b0c0-43ab-b673-4ab8ed3f4022/download/parcerias_dezembro_2023.xlsx
+   - [CSV] Parcerias Educação Infantil - Dez/2023  (1465009 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/aa954eb9-e6ad-4e79-ac19-1ca8162c92d7/download/parcerias_dezembro_2023.csv
+   - [XLSX] Parcerias Educação Infantil - Set/2023  (905687 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/32cb9bfa-1b5b-4007-915d-9d8ba243c93c/download/parcerias09_2023.xlsx
+   - [CSV] Parcerias Educação Infantil - Set/2023  (1619133 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/b4e1594f-a771-474a-bb14-722b01358ac4/download/parcerias09_2023.csv
+   - [XLSX] Parcerias Educação Infantil - Mar/2023  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/467d23b0-122e-4701-b797-c33520362aac/download/parcerias032023.xlsx
+   - [CSV] Parcerias Educação Infantil - Mar/2023  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/8891f476-d118-44f0-ab03-b1930a7315dc/download/parcerias032023.csv
+   - [XLSX] Parcerias Educação Infantil - Dez/2022  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/a189ad47-1282-407b-acae-8ab922a9db87/download/parcerias122022.xlsx
+   - [CSV] Parcerias Educação Infantil - Dez/2022  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/122e01c9-b4fc-40f1-8332-a04dc3e2fbb3/download/parcerias122022.csv
+   - [XLSX] Parcerias Educação Infantil - Set/2022  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/9b5bcd46-62b7-4c46-b826-29d8a79ac4d2/download/parcerias092022.xlsx
+   - [CSV] Parcerias Educação Infantil - Set/2022  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/32b4f4ef-c58a-43d8-8309-c41049575b23/download/parcerias092022.csv
+   - [XLS] Parcerias Educação Infantil - Mar/2022  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/1865b432-7928-41b8-883f-3b9ec1a44430/download/parcerias-educacao-infantilmar2022.xls
+   - [CSV] Parcerias Educação Infantil - Mar/2022  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/fd97c3a4-6a9c-48ec-83b7-f4cd4cb73993/download/parcerias-educacao-infantilmar2022.csv
+   - [XLS] Parcerias Educação Infantil - Dez/2021  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/d8993579-343a-4b0b-9a6d-c9fcbcb2db37/download/dez2021.xls
+   - [CSV] Parcerias Educação Infantil - Dez/2021  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/f4002c33-f60b-46f4-a79b-9e4cb513771c/download/dez2021.csv
+   - [XLSX] Parcerias Educação Infantil - Set/2021  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/ad1a1518-ff2a-4c65-beee-7754ddfce4c2/download/parcerias092021.xlsx
+   - [CSV] Parcerias Educação Infantil - Set/2021  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/de26104b-382f-469d-a411-7c12b9015576/download/parcerias092021.csv
+   - [XLSX] Parcerias Educação Infantil - Mar/2021  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/6c3e6670-59da-465b-a0f4-a21c80c86945/download/parcerias032021.xlsx
+   - [CSV] Parcerias Educação Infantil - Mar/2021  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/4d18fb61-62a8-45e9-a4ca-54249fa34c92/download/parcerias032021.csv
+   - [XLSX] Parcerias Educação Infantil - Dez/2020  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/c8c3ec41-7d36-429d-be1a-a8d25b132ec4/download/parcerias122020.xlsx
+   - [CSV] Parcerias Educação Infantil - Dez/2020  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/a496f1c8-565b-4075-882a-1e9a1e75d394/download/parcerias122020.csv
+   - [XLSX] Parcerias Educação Infantil - Set/2020  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/62844bba-6883-48a8-bfe8-40fd97a2450f/download/parcerias092020.xlsx
+   - [CSV] Parcerias Educação Infantil - Set/2020  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/0de1265a-ae1f-45a3-8f59-640957d14ccc/download/parcerias092020.csv
+   - [XLS] Parcerias Educação Infantil - Mar/2020  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/4d4f0cb3-b5f9-456e-8b3f-b2acc998f863/download/parcerias032020.xlsx
+   - [CSV] Parcerias Educação Infantil - Mar/2020  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/355deaf6-7ee0-4b59-8d40-32754af74d30/download/parcerias032020.csv
+   - [XLS] Parcerias Educação Infantil - Dez/2019  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/0671e7a4-27eb-4d1f-af2c-3d42a3b4b9f1/download/parcerias122019.xlsx
+   - [CSV] Parcerias Educação Infantil - Dez/2019  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/1412acee-8bf4-4b50-afdd-2657332296fc/download/parcerias122019.csv
+   - [XLSX] Parcerias Educação Infantil - Set/2019  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/fa4b4605-ddf3-4e16-b2df-72e7af5a1348/download/parcerias092019.xlsx
+   - [CSV] Parcerias Educação Infantil - Set/2019  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/ee88cb49-807a-483c-9b1a-3b4febfbbc5e/download/parcerias092019.csv
+   - [XLSX] Parcerias Educação Infantil - Mar/2019  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/3c916501-15eb-43e7-b2f5-0c7c41c81b5b/download/parcerias032019.xlsx
+   - [CSV] Parcerias Educação Infantil - Mar/2019  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/90e5856a-074f-428f-87fe-db577e637a5d/download/parcerias032019.csv
+   - [XLSX] Parcerias Educação Infantil - Dez/2018  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/f0a786d4-dfc3-4ac3-94a3-77e2df1a0420/download/parcerias122018.xlsx
+   - [CSV] Parcerias Educação Infantil - Dez/2018  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/c293d9e9-70e0-4b89-baea-e4024a2b2448/download/parcerias122018.csv
+   - [XLSX] Parcerias Educação Infantil - Set/2018  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/893d7dc4-f5ab-4143-93a8-d023743ce584/download/parcerias122018.xlsx
+   - [CSV] Parcerias Educação Infantil - Set/2018  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/05a4a025-7957-4c18-9e68-2a254c42dd61/download/parcerias092018.csv
+   - [XLSX] Convênios Educação Infantil - Mar/2018  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/fd63f92c-d1f6-40e6-87c7-488573dafaf0/download/convenios032018.xlsx
+   - [CSV] Convênios Educação Infantil - Mar/2018  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/8b5b02cb-f518-4cee-be45-6708aa9ec09e/download/convenios032018.csv
+   - [XLSX] Convênios Educação Infantil - Dez/2017  (455807 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/67b597bf-855d-4ee3-a460-72815672c076/download/convenioceidez2017.xlsx
+   - [CSV] Convênios Educação Infantil - Dez/2017  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/ec603ca2-6f08-452e-9d8f-46a1c7da1aff/download/parcerias31122017.csv
+   - [XLSX] Convênios Educação Infantil - Set/2017  (438698 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/26a8c99e-6b19-4af6-815e-7b474862b69d/download/conveniosceiset2017.xlsx
+   - [CSV] Convênios Educação Infantil - Set/2017  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/0e661559-423f-476a-8359-53959f1899c3/download/conveniosceiset2017.csv
+   - [XLSX] Convênios Educação Infantil - Mar/2017  (408321 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/5c0bbd06-494d-4957-a824-a0046ef5ed9d/download/conveniosmar2017.xlsx
+   - [CSV] Convênios Educação Infantil - Mar/2017  (734353 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/38010b21-2273-4be0-89db-a4c67df4fca2/download/conveniosmar2017.csv
+   - [XLSX] Convênios Educação Infantil - Dez/2016  (377444 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/b7c8dcb7-c045-4629-b8f9-abffce4222a3/download/conveniosceidez2016.xlsx
+   - [CSV] Convênios Educação Infantil - Dez/2016  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/b0b2a8d4-ecc5-4a18-aeba-ca3da49d11d6/download/conveniosceijan2017.csv
+   - [XLSX] Convênios Educação Infantil - Set/2016  (224068 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/3f92bdce-e441-481a-92ec-531ffac3a996/download/conveniosceiset2016.xlsx
+   - [CSV] Convênios Educação Infantil - Set/2016  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/d9b310f9-c475-4fec-aaa5-bd227a5f62ca/download/conveniosceiset2016.csv
+   - [XLSX] Convênios Educação Infantil - Mar/2016  (201061 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/4b45dba8-d3c6-4330-903f-0889d4cbbfeb/download/conveniosmar2016.xlsx
+   - [CSV] Convênios Educação Infantil - Mar/2016  (353763 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/0fe868fc-4d8d-468a-a3e0-a2b512da96e3/resource/7a5af45e-bfee-4f26-8ace-7757e076a568/download/conveniosmar2016.csv
+
+############################################################
+DATASET: demanda-e-matriculas | Demanda Registrada e Matrículas - Educação Infantil, Fundamental e EJA
+  notes: ***Atualizado em: 08/07/2026***   (Atualização Bimestral) # Em cumprimento ao Decreto nº 47.155, de 30/03/2006 regulamentador da Lei nº 14.127 de 05/01/2006, que dispõe sobre a criação do Programa de Informação sobre Demanda por Acesso e Permanência de crianças, jovens e adultos na Rede Municipal 
+  N recursos: 94
+   - [XLSX] Dicionário - Demanda e Matrículas   (17085 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/d8213103-d255-4a75-9764-5bd2e846a061/download/dic_dem_reg_matr.xlsx
+   - [CSV] Dicionário - Demanda e Matrículas  (4227 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/bb7c0039-9450-4e54-bca2-f3bf24334a44/download/dic_dem_reg_matr.csv
+   - [XLS] Demanda e Matrículas - Jun/2026  (54784 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/9477d6f4-3053-4feb-8fb2-2032684855db/download/publicacao-demanda-e-matriculas-jun-2026.xls
+   - [CSV] Demanda e Matrículas - Jun/2026  (7709 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/43bb4773-570f-4c1a-a9ea-c04881fb6d9b/download/publicacao-demanda-e-matriculas-jun-2026.csv
+   - [XLS] Demanda e Matrículas - Abr/2026  (62976 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/2bf81c7b-cc36-4d7b-8a5e-81bd4f66106d/download/publicacao-demanda-e-matricula-abr-2026.xls
+   - [CSV] Demanda e Matrículas - Abr/2026  (7709 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/3002ba58-b688-48cd-9b5b-7bbfde2e8ab8/download/publicacao-demanda-e-matricula-abr-2026.csv
+   - [XLS] Demanda e Matrículas - Fev/2026  (79872 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/7aec4de0-1151-4134-94fa-83c2937b489a/download/publicacao-demanda-e-matricula-fev-2026.xls
+   - [CSV] Demanda e Matrículas - Fev/2026  (7723 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/1c67f4f2-574e-4a49-806b-54b7e50f29b6/download/publicacao-demanda-e-matricula-fev-2026.csv
+   - [XLS] Demanda e Matrículas - Dez/2025  (69120 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/6a0daab1-52f6-45db-b1a2-aa09ad6014df/download/publicacao-demanda-e-matriculas-dez-2025.xls
+   - [CSV] Demanda e Matrículas - Dez/2025  (7542 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/1d00c546-1792-4cdf-8fad-a609a4cffefe/download/publicacao-demanda-e-matriculas-dez-2025-.csv
+   - [XLS] Demanda e Matrículas - Out/2025  (66048 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/b1d76382-60da-427c-be58-0fc9304a0425/download/publicacao-demanda-e-matriculas-outubro-2025.xls
+   - [CSV] Demanda e Matrículas - Out/2025  (7855 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/317be56b-b303-428c-adc9-98b572541dd8/download/publicacao-demanda-e-matriculas-outubro-2025.csv
+   - [XLS] Demanda e Matrículas - Ago/2025  (66048 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/3a80fb93-8abe-40ee-b144-b4d43661e233/download/publicacao-demanda-e-matriculas-ago-2025.xls
+   - [CSV] Demanda e Matrículas - Ago/2025  (7823 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/5e54443a-b4d4-4e73-8d9c-5f6c7019ce48/download/publicacao-demanda-e-matriculas-ago-2025.csv
+   - [XLS] Demanda e Matrículas - Jun/2025  (66048 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/7e893040-5a4b-4203-a1c1-20f97b9dea49/download/publicacao-demanda-e-matriculas-junho-2025-1.xls
+   - [CSV] Demanda e Matrículas - Jun/2025  (7762 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/3adbe408-763d-43cb-b81d-b0e8fd9c0029/download/publicacao-demanda-e-matriculas-junho-2025.csv
+   - [XLS] Demanda e Matrículas - Abr/2025  (62464 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/bcbb45f1-f1d8-4ecd-9cf5-65a6881c4d1e/download/publicacao-demanda-e-matriculas-abril-2025.xls
+   - [CSV] Demanda e Matrículas - Abr/2025  (7725 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/dfe663f7-b58c-41c3-a4e6-64e920839c3f/download/publicacao-demanda-e-matriculas-abril-2025.csv
+   - [XLS] Demanda e Matrículas - Fev/2025  (62464 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/a42ae363-b737-4697-afbe-9fbd47e1aa07/download/publicacao-demanda-e-matriculas-fev-2025.xls
+   - [CSV] Demanda e Matrículas - Fev/2025  (7551 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/ed572426-cf8d-49bc-9e64-97392ebf0700/download/publicacao-demanda-e-matriculas-fev-2025.csv
+   - [XLS] Demanda e Matrículas - Dez/2024  (62464 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/23081b4e-7866-4c3e-843b-489354c00a3e/download/publicacao-demanda-e-matriculas-dez-2024.xls
+   - [CSV] Demanda e Matrículas - Dez/2024  (7477 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/8afd9653-8977-486e-928e-ae0dd5cff21c/download/publicacao-demanda-e-matriculas-dez-2024.csv
+   - [XLS] Demanda e Matrículas - Out/2024  (58368 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/08856956-7c46-4dd1-ad3b-e1b7f0d4ab25/download/publicacao-demanda-e-matricula-out-2024.xls
+   - [CSV] Demanda e Matrículas - Out/2024  (7888 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/7b5c0318-23ea-4cc8-9c3b-7936f00a340a/download/publicacao-demanda-e-matricula-out-2024.csv
+   - [XLS] Demanda e Matrículas - Ago/2024  (62464 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/7993891c-8daf-42c0-8b51-2ee07549d2c3/download/publicacao-demanda-e-matricula-ago-2024.xls
+   - [CSV] Demanda e Matrículas - Ago/2024  (7863 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/055bf531-c2f5-422a-9351-3e5befaad067/download/publicacao-demanda-e-matricula-ago-2024.csv
+   - [XLS] Demanda e Matrículas - Jun/2024  (62464 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/2ec394f1-79d9-4574-846c-223d42080db2/download/publicacao-demanda-e-matricula-jun-2024.xls
+   - [CSV] Demanda e Matrículas - Jun/2024  (7803 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/229db40e-78af-4789-b57d-7960b8deb020/download/publicacao-demanda-e-matricula-jun-2024.csv
+   - [XLS] Demanda e Matrículas - Abr/2024  (62464 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/4e930d83-59f3-4665-b48a-9f38de626170/download/publicacao-demanda-e-matricula-abr-2024.xls
+   - [CSV] Demanda e Matrículas - Abr/2024  (7793 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/614437a7-07df-49b3-80cc-340417a77ccb/download/publicacao-demanda-e-matricula-abr-2024.csv
+   - [XLS] Demanda e Matrículas - Fev/2024  (62464 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/7c89ef85-1423-4842-b1a8-750cb081deda/download/publicacao-demanda-e-matricula-fev-2024.xls
+   - [CSV] Demanda e Matrículas - Fev/2024  (7890 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/3765efa6-7b4f-41a1-b5f9-ea5d9162a0dc/download/publicacao-demanda-e-matricula-fev-2024.csv
+   - [XLS] Demanda e Matrículas - Dez/2023  (62464 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/a63afccb-1a19-4438-96b1-7a13c4ccb586/download/publicacao-bimestral-dezembro-2023.xls
+   - [CSV] Demanda e Matrículas - Dez/2023  (7576 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/ae930fc2-c3c8-41bb-b31e-5012736e212c/download/publicacao-bimestral-dezembro-2023.csv
+   - [XLS] Demanda e Matrículas - Out/2023  (54784 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/f217087c-b2b8-4e76-a282-567075afe30c/download/publicacao-bimestral-outubro-2023.xls
+   - [CSV] Demanda e Matrículas - Out/2023  (7945 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/a6a776b9-72ed-47d0-8020-8287eac01230/download/publicacao-bimestral-outubro-2023.csv
+   - [XLS] Demanda e Matrículas - Ago/2023  (62464 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/ecb51533-e2dc-4298-8d66-878be3bab9d8/download/publicacao-bimestral-agosto-2023.xls
+   - [CSV] Demanda e Matrículas - Ago/2023  (7651 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/947baa01-730c-406f-accb-49f6f84ae786/download/publicacao-bimestral-agosto-2023.csv
+   - [XLS] Demanda e Matrículas - Jun/2023  (62464 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/e67654b3-d1cd-455b-a97a-7df12627c9d0/download/publicacao-bimestral-junho-2023.xls
+   - [CSV] Demanda e Matrículas - Jun/2023  (7829 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/ef53af2b-9f4d-4be6-a91a-10b27b9e690e/download/publicacao-bimestral-junho-2023.csv
+   - [XLS] Demanda e Matrículas - Abr/2023  (62976 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/06cde754-44d9-40f6-b5fe-6f162486e58c/download/publicacao-bimestral-abril-2023.xls
+   - [CSV] Demanda e Matrículas - Abr/2023  (7801 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/ac02d83e-49f2-4d81-9301-5e3b988f3b92/download/publicacao-bimestral-abril-2023.csv
+   - [XLS] Demanda e Matrículas - Fev/2023  (62464 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/7a51ef28-17fa-4d99-b1cd-5cb974e1ead9/download/demanda-e-matriculas-fevereiro-2023.xls
+   - [CSV] Demanda e Matrículas - Fev/2023  (7912 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/8fa22297-d483-42e5-a702-7109bbbd9bea/download/demanda-e-matriculas-fevereiro-2023.csv
+   - [XLS] Demanda e Matrículas - Dez/2022  (55296 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/66dbab4e-9393-4726-bead-b40c8132c3bf/download/demanda-e-matricula-dezembro-2022.xls
+   - [CSV] Demanda e Matrículas - Dez/2022  (7376 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/12c8c919-1383-4960-8135-578189d0122a/download/demanda-e-matricula-dezembro-2022.csv
+   - [XLS] Demanda e Matrículas - Set/2022  (62464 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/ea8909a5-04e7-41fd-a0b7-69672e09d377/download/demanda-e-matriculas-setembro-2022.xls
+   - [CSV] Demanda e Matrículas - Set/2022  (7921 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/1d4bece7-0f26-444c-abdc-a9e85cef3f9c/download/demanda-e-matriculas-setembro-2022.csv
+   - [XLS] Demanda e Matrículas - Jun/2022  (62464 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/ba4c8a45-fab6-4a60-ac7d-0d528d24b10c/download/demanda-e-matriculas-junho-2022.xls
+   - [CSV] Demanda e Matrículas - Jun/2022  (7916 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/9d203a50-4428-4801-8577-e99a341fc816/download/demanda-e-matriculas-junho-2022.csv
+   - [XLS] Demanda e Matrículas - Mar/2022  (55296 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/07ffd153-6626-40e3-9e6c-61e9c01a8eb4/download/demanda-e-matriculas-marco-2022.xls
+   - [CSV] Demanda e Matrículas - Mar/2022  (7811 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/4e916a61-8da8-4965-b95b-6e5a05cfed37/download/demanda-e-matriculas-marco-2022.csv
+   - [XLS] Demanda e Matrículas - Dez/2021  (62976 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/66693c14-cb8e-4bf0-918d-1e79a70a09ed/download/demanda-e-matricula-dezembro-2021.xls
+   - [CSV] Demanda e Matrículas - Dez/2021  (7629 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/a8f5113c-6866-485e-ac8f-4967832e6a21/download/demanda-e-matricula-dezembro-2021.csv
+   - [XLS] Demanda e Matrículas - Set/2021  (64512 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/a968b7f6-66bd-49d1-98c9-c2502337a5ee/download/demanda-e-matriculas-setembro-2021.xls
+   - [CSV] Demanda e Matrículas - Set/2021  (7853 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/d3b4758c-1ae9-48aa-ac2d-6eeda6b55041/download/demanda-e-matriculas-setembro-2021.csv
+   - [XLS] Demanda e Matrículas - Jun/2021  (59392 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/bb66a876-5918-42cb-aaf6-8946df6babaf/download/demanda-e-matriculas-junho-2021.xls
+   - [CSV] Demanda e Matrículas - Jun/2021  (7954 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/326c791e-aed3-4aaa-b400-71997ccfe1f8/download/demanda-e-matriculas-junho-2021.csv
+   - [XLSX] Demanda e Matrículas - Mar/2021  (22926 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/4f8971c5-17d6-40c9-b153-455c8da30972/download/demanda-e-matriculas-marco-2021.xlsx
+   - [CSV] Demanda e Matrículas - Mar/2021  (7852 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/577bb6a6-e5fe-42b5-b204-43d12ba63e47/download/demanda-e-matriculas-marco-2021.csv
+   - [XLS] Demanda e Matrículas - Dez/2020  (47616 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/b54ffee6-ce6b-4759-8379-7bf8b8df058d/download/demanda-e-matriculas-dezembro-2020.xls
+   - [CSV] Demanda e Matrículas - Dez/2020  (7623 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/1a2f5dea-fe4e-4557-8cc7-2d78b7db2558/download/demanda-e-matriculas-dezembro-2020.csv
+   - [XLSX] Demanda e Matrículas - Set/2020  (25065 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/bd0a71f1-deba-4609-946b-d19b67979e63/download/demanda-e-matriculas-setembro-2020.xlsx
+   - [CSV] Demanda e Matrículas - Set/2020  (9992 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/a32538a6-7990-4f5e-b655-79c36893839b/download/demanda-e-matriculas-setembro-2020.csv
+   - [XLS] Demanda e Matrículas - Jun/2020  (53760 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/5e541d7e-d10b-4b4b-ba43-918d8e6ebdb5/download/matriculas-e-demanda-junho-2020.xls
+   - [CSV] Demanda e Matrículas - Jun/2020  (7584 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/e579b2dc-14c9-4780-bf96-80d92f0eed8b/download/matriculas-e-demanda-junho-2020.csv
+   - [XLS] Demanda e Matrículas - Mar/2020  (53760 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/38ac0e25-24d0-4adc-ad1d-fe52f0f7aee3/download/matriculas-e-demanda-marco-2020.xls
+   - [CSV] Demanda e Matrículas - Mar/2020  (7414 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/24c2fba2-a355-432e-96cd-0f37613ac603/download/matriculas-e-demanda-marco-2020.csv
+   - [XLS] Demanda e Matrículas - Dez/2019  (45568 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/6222043e-b65f-46e2-af36-f10f267c1dcc/download/matriculas-e-demanda-dezembro-2019.xls
+   - [CSV] Demanda e Matrículas - Dez/2019  (7263 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/ebbd87b6-1dd8-42e0-9965-d0699a8c81da/download/matriculas-e-demanda-dezembro-2019.csv
+   - [XLS] Demanda e Matrículas - Set/2019  (44032 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/2e22f788-d209-4094-9153-62744268923a/download/matriculas-e-demanda-setembro-2019.xls
+   - [CSV] Demanda e Matrículas - Set/2019  (6445 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/a0cacb5a-8cd7-4877-b088-6ab4d9cf77b2/download/matriculas-e-demanda-setembro-2019.csv
+   - [XLS] Demanda e Matrículas - Jun/2019  (41472 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/0129d247-88ef-488e-ba48-dee4beba9308/download/matriculas-e-demanda-junho-2019.xls
+   - [CSV] Demanda e Matrículas - Jun/2019  (6011 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/a632b5eb-7ab2-4f33-991c-488855366dbc/download/matriculas-e-demanda-junho-2019.csv
+   - [XLS] Demanda e Matrículas - Mar/2019  (51200 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/b439816c-130c-480d-b5f4-295df527d14c/download/demanda-e-matriculas-marco-2019.xls
+   - [CSV] Demanda e Matrículas - Mar/2019  (6040 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/94f6eeb6-db01-4c30-82cc-3fe4308373ce/download/demanda-e-matriculas-marco-2019.csv
+   - [XLS] Demanda e Matrículas - Dez/2018  (43520 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/fd02b8ad-9b16-4ade-90ef-ec8aac2afb13/download/demanda-e-matriculas-dezembro-2018.xls
+   - [CSV] Demanda e Matrículas - Dez/2018  (6133 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/7c77625f-99c9-49ee-a39a-38d608cbe845/download/demanda-e-matriculas-dezembro-2018.csv
+   - [XLS] Demanda e Matrículas - Set/2018  (51200 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/efe86dc1-ef9a-4015-a8a9-318cb56d0643/download/demanda-e-matriculas-setembro-2018.xls
+   - [CSV] Demanda e Matrículas - Set/2018  (6327 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/2b78ef5a-e62c-48d0-b490-8dc485f64bc2/download/demanda-e-matriculas-setembro-2018.csv
+   - [XLS] Demanda e Matrículas - Jun/2018  (41984 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/6af8049c-8d6f-4894-8df1-8b10a21262c7/download/demanda-e-matriculas-junho-2018.xls
+   - [CSV] Demanda e Matrículas - Jun/2018  (6311 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/5dc7f382-3727-40e4-9439-6485ae2eb77d/download/demanda-e-matriculas-junho-2018.csv
+   - [XLS] Demanda e Matrículas - Mar/2018  (54272 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/3b397da4-0bf5-4dce-9b96-0bc40785786f/download/demanda-e-matriculas-marco-2018.xls
+   - [CSV] Demanda e Matrículas - Mar/2018  (7735 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/169d341c-2431-4a39-8c66-e5e44447aae7/download/demanda-e-matriculas-marco-2018.csv
+   - [PDF] Nota Técnica Demanda 2018  (66237 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/8d0b1c82-0178-4227-b12c-2eb10f9deb52/download/nota-tecnica-demanda-2018.pdf
+   - [ODT] Nota Técnica Demanda 2018  (16799 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/7063fd5d-5c3a-4fc6-8057-0379e8a777c6/download/nota-tecnica-demanda-2018.odt
+   - [XLSX] Dicionário - Demanda por Vagas - 2006 a 2017  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/c4d722e3-b68a-413c-8d96-a78b58210134/download/evolucaodemanda30.06.17-dicionario.xlsx
+   - [CSV] Dicionário - Demanda por Vagas - 2006 a 2017  (1866 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/a56c0456-6701-47a3-8b71-e721e0303c4b/download/evolucaodemanda30.06.17-dicionario.csv
+   - [XLS] Demanda por Vagas - 2006 a 2017  (737280 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/6d27dc38-c862-4de8-9c5e-de371071aac1/download/evolucaodemanda.xls
+   - [CSV] Demanda por Vagas - 2006 a 2017  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/f2894653-b2c0-48af-a412-56944017b323/download/evolucaodemanda.csv
+   - [PDF] Nota Técnica Demanda 2012  (36142 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/b92fd1ca-0245-4fd5-b47a-b33c525159eb/download/nota-tecnica-demanda-2012.pdf
+   - [ODT] Nota Técnica Demanda 2012  (5800 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/80a85aaa-d97a-4a56-b1ad-f853370d2c22/download/nota-tecnica-demanda-2012.odt
+   - [PDF] Nota Técnica Demanda 2011  (60002 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/9b8b5523-0dab-4b20-b3d1-a0cef49f531b/download/nota-tecnica-demanda-2011.pdf
+   - [ODT] Nota Técnica Demanda 2011  (7357 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/45612acc-edd3-4134-ac7f-9a0026f60c97/resource/7c876d66-9311-4084-8861-55e9987c055c/download/nota-tecnica-demanda-2011.odt
+
+############################################################
+DATASET: evolutivo-das-vagas-em-creche-e-demanda-por-distrito-2017 | (Descontinuada) Evolutivo das vagas criadas em creche e demanda por distrito - 2017
+  notes: ###### ***Atualizado em: 05/05/2019 ***   (Atualização Única) # Esta base de dados contém o número de matrículas e a demanda por vagas em creche registradas por distrito em dezembro de 2016 e dezembro de 2017. São contabilizadas as matrículas ativas e as chamadas em processo, que representam o enc
+  N recursos: 5
+   - [XLSX] Dicionário de Variáveis  (18641 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/40cf54ea-2254-4c69-b31d-30d897dc8d82/resource/50e816a0-a28b-495a-aa48-c68e9f5ae8bc/download/dic_comparavagas.xlsx
+   - [CSV] Dicionário de Variáveis  (1152 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/40cf54ea-2254-4c69-b31d-30d897dc8d82/resource/973ecebc-f339-4bd4-bfb0-02b190c30cd0/download/dic_comparavagas.csv
+   - [XLS] Comparativo 2017 x 2016 - Vagas e demanda  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/40cf54ea-2254-4c69-b31d-30d897dc8d82/resource/3cb90c61-b723-4b4f-b2bc-9e29e3f297e5/download/vagasdemandacomparativo20162017.xls
+   - [ODS] Comparativo 2017 x 2016 - Vagas e demanda  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/40cf54ea-2254-4c69-b31d-30d897dc8d82/resource/b745bbea-b274-46bc-83a0-51864d2456e1/download/vagasdemandacomparativo20162017.ods
+   - [CSV] Comparativo 2017 x 2016 - Vagas e demanda  (6189 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/40cf54ea-2254-4c69-b31d-30d897dc8d82/resource/5f203c5a-383d-4911-893b-531b6af669dd/download/vagasdemandacomparativo20162017-1.csv
+
+############################################################
+DATASET: organizacoes-credenciadas-para-atendimento-da-educacao-infantil | (Descontinuada) Organizações credenciadas para atendimento da educação infantil
+  notes: __Atualizado em: 24/04/2018__   (Atualização Única)  Série Histórica que contém a relação de organizações que solicitaram o credenciamento para ofertar o atendimento de educação infantil - creche no município de São Paulo. O credenciamento é uma etapa necessária para o estabelecimento de Termos de
+  N recursos: 3
+   - [CSV] Dicionário - Organizações Credenciadas Ed. Infantil  (3199 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/16ad0d46-a427-4e12-b0f0-51fe6d12fd66/resource/f4bda145-eef5-4725-86dd-09c88044ef64/download/dic_org_cred_ed_inf.csv
+   - [XLS] Dicionário - Organizações Credenciadas Ed. Infantil  (18010 bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/16ad0d46-a427-4e12-b0f0-51fe6d12fd66/resource/15381f9e-160d-4d6d-941c-a7b6c2e85744/download/dic_org_cred_ed_inf.xlsx
+   - [CSV] Instituições Credenciadas - Abr/2018  (None bytes)
+       url: https://dados.prefeitura.sp.gov.br/dataset/16ad0d46-a427-4e12-b0f0-51fe6d12fd66/resource/8314ba9a-e0b5-4646-96ad-30ff68363b50/download/osccredenciamentoabr18.csv

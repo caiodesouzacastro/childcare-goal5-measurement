@@ -1,0 +1,38 @@
+==================== (a) deriva da SEADE
+SEADE/Censo - 1: 2010 +1.0% | 2022 +14.4%
+ ano  pop_0a3    pop_main  seade_err     r
+2010   569975 564,210.000      1.022 1.228
+2011   568777 564,367.238      0.781 1.232
+2012   567578 565,567.746      0.355 1.236
+2013   566380 564,475.499      0.337 1.240
+2014   565181 562,664.422      0.447 1.244
+2015   563983 561,446.145      0.452 1.249
+2016   561221 556,631.059      0.825 1.253
+2017   558459 549,574.207      1.617 1.257
+2018   555696 542,607.177      2.412 1.261
+2019   552934 530,170.970      4.294 1.265
+2020   550172 513,695.900      7.101 1.269
+2021   540995 492,140.240      9.927 1.274
+2022   531819 464,826.000     14.412 1.278
+anos da secao 4 (2010-2018): erro da SEADE contra a serie ajustada, de 0.3 a 2.4 %
+==================== (b) secao 4: sensibilidade das parcelas por coorte ao ajuste nascidos/Censo
+matriculados <24m, registro de pedidos {2010: (7.4, 9.1), 2011: (22.8, 28.1), 2012: (33.2, 41.0), 2016: (53.8, 67.4)} | (observado, reescalado)
+matriculados <24m, registros de matricula (EOL) {2010: (25.1, 30.8), 2011: (28.3, 34.9), 2012: (31.9, 39.4), 2016: (53.2, 66.6)} | (observado, reescalado)
+registrados <12m {2010: (11.0, 13.5), 2012: (38.3, 47.3), 2016: (50.1, 62.8)} | (observado, reescalado)
+registrados <47m (coortes 2012-2014) {2012: (79.4, 98.1), 2013: (81.5, 101.1), 2014: (83.7, 104.2)} | (observado, reescalado)
+  artefato <24m 2010->2016 (observado): pedidos 46.4 p.p., EOL 28.1 p.p., parcela de cobertura 39.4%
+  artefato <24m 2010->2016 (reescalado): pedidos 58.3 p.p., EOL 35.8 p.p., parcela de cobertura 38.6%
+  registro <12m 2012->2016 (observado): 11.8 p.p.
+  registro <12m 2012->2016 (reescalado): 15.4 p.p.
+  fator r de 2010 a 2016: {2010: 1.228, 2011: 1.232, 2012: 1.236, 2013: 1.24, 2014: 1.244, 2015: 1.249, 2016: 1.253} | variacao relativa 2010->2016: 2.0%
+  razoes que nao dependem do denominador: cobertura de entrantes (pedidos/EOL), completude por semestre, encaminhamento entre solicitantes
+[gravado e relido] denominador_serie.csv
+==================== (c) bracos com a serie ajustada (principal)
+Traceback (most recent call last):
+  File "<NE_ROOT>\02_audit\build23_denominador.py", line 47, in <module>
+    M["AB"] = 0.75 * M.pop_main / M.exigB_dez
+                                  ^^^^^^^^^^^
+  File "<HOME>\AppData\Roaming\Python\Python313\site-packages\pandas\core\generic.py", line 6434, in __getattr__
+    return object.__getattribute__(self, name)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AttributeError: 'DataFrame' object has no attribute 'exigB_dez'. Did you mean: 'exigB_dez_x'?

@@ -1,0 +1,14 @@
+,valor
+linhas_universo,1884018.0
+share_linhas_empatadas,0.32727872026700383
+empate_so_mesma_crianca,0.32656375894497824
+empate_criancas_diferentes,0.0007149613220255857
+dif_criancas_mesmo_cpf_unico,1.1677170812593086e-05
+dif_criancas_cpfs_diferentes,0.0007032841512129926
+grupos_criancas_dif,408.0
+grupo_mediana_criancas,2.0
+grupo_p99_criancas,13.860000000000014
+grupos_com_>=10_criancas,11.0
+primeiras_solic,1524653.0
+share_primeiras_segundo_compartilhado,0.026911697284562455
+linhas_por_crianca_fila,2.1631571249326895

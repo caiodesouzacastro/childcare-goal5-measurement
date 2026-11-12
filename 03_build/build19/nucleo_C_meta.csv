@@ -1,0 +1,90 @@
+ano,mes,dem_total,dem_1,dem_2,dem_3,matric_creche,mat_processo_creche,fonte,notas,atendida_pct,crit_conf_75,crit_literal_100,sem_opcao_mais30,sem_opcao_total
+2006,6,84408,,,,61729,0.0,dados abertos (evolucaodemanda),,42.24050035240904,False,False,,
+2006,9,111574,,,,64028,0.0,dados abertos (evolucaodemanda),,36.4619992938577,False,False,,
+2006,12,129594,,,,64436,0.0,dados abertos (evolucaodemanda),,33.209297531309595,False,False,,
+2007,3,96249,,,,69916,0.0,dados abertos (evolucaodemanda),,42.076249511028195,False,False,,
+2007,6,88218,,,,78474,0.0,dados abertos (evolucaodemanda),,47.07724425887265,False,False,,
+2007,9,158689,,,,81054,0.0,dados abertos (evolucaodemanda),,33.80870348665029,False,False,,
+2007,12,79231,,,,83364,0.0,dados abertos (evolucaodemanda),,51.27094929118361,False,False,,
+2008,3,93476,,,,96217,0.0,dados abertos (evolucaodemanda),,50.72248317017497,False,False,,
+2008,6,110091,,,,101966,1485.0,dados abertos (evolucaodemanda),,48.084241501105836,False,False,,
+2008,9,134497,,,,106519,1105.0,dados abertos (evolucaodemanda),,44.195821024330336,False,False,,
+2008,12,57607,,,,109717,213.0,dados abertos (evolucaodemanda),,65.57158566613278,False,False,,
+2009,3,67619,,,,116167,1801.0,dados abertos (evolucaodemanda),,63.20775249474933,False,False,,
+2009,6,84807,,,,119747,1063.0,dados abertos (evolucaodemanda),,58.54053208443736,False,False,,
+2009,9,86858,,,,120902,1240.0,dados abertos (evolucaodemanda),,58.1931074316519,False,False,,
+2009,12,74707,,,,123155,0.0,dados abertos (evolucaodemanda),,62.24287634816185,False,False,,
+2010,3,78284,,,,123485,1705.0,dados abertos (evolucaodemanda),,61.20117560180206,False,False,,
+2010,6,94974,,,,127135,1208.0,dados abertos (evolucaodemanda),,57.239913736048514,False,False,,
+2010,9,125437,,,,130705,938.0,dados abertos (evolucaodemanda),,51.028335844961,False,False,,
+2010,12,100401,,,,130412,4738.0,dados abertos (evolucaodemanda),,56.50115028182988,False,False,,
+2011,3,127651,,,,190691,1252.0,dados abertos (evolucaodemanda),,59.9013011164094,False,False,,
+2011,6,147027,,,,193602,944.0,dados abertos (evolucaodemanda),,56.836616964498035,False,False,,
+2011,9,174168,,,,196291,788.0,dados abertos (evolucaodemanda),,52.985890476409,False,False,,
+2011,12,101165,,,,195561,5480.0,dados abertos (evolucaodemanda),,65.90625695085701,False,False,,
+2012,3,126662,,,,203509,1415.0,dados abertos (evolucaodemanda),,61.637454531136896,False,False,,
+2012,6,148185,,,,207605,1294.0,dados abertos (evolucaodemanda),,58.35043143427303,False,False,,
+2012,9,174213,,,,210599,1205.0,dados abertos (evolucaodemanda),,54.72776316746879,False,False,,
+2012,12,97160,,,,214094,1.0,dados abertos (evolucaodemanda),,68.78433690812005,False,False,,
+2013,3,103309,,,,206900,2093.0,dados abertos (evolucaodemanda),,66.69696881779703,False,False,,
+2013,6,127361,,,,211541,950.0,dados abertos (evolucaodemanda),,62.41951950711415,False,False,,
+2013,9,156982,,,,213275,813.0,dados abertos (evolucaodemanda),,57.60188193606063,False,False,,
+2013,12,96696,,,,214460,0.0,dados abertos (evolucaodemanda),,68.92362673385698,False,False,,
+2014,3,110639,,,,218062,1552.0,dados abertos (evolucaodemanda),,66.3405344066492,False,False,,
+2014,6,128519,,,,222495,795.0,dados abertos (evolucaodemanda),,63.38636065797945,False,False,,
+2014,9,160495,,,,225806,706.0,dados abertos (evolucaodemanda),,58.45338220713899,False,False,,
+2014,12,94191,,,,228204,0.0,dados abertos (evolucaodemanda),,70.7839761782906,False,False,,
+2015,3,105967,,,,236505,1269.0,dados abertos (evolucaodemanda),,69.0582003784251,False,False,,
+2015,6,124741,,,,240840,1229.0,dados abertos (evolucaodemanda),,65.8786971970644,False,False,,
+2015,9,145864,,,,250303,2593.0,dados abertos (evolucaodemanda),,63.18118369273564,False,False,,
+2015,12,75194,,,,260785,21.0,dados abertos (evolucaodemanda),,77.61943454799258,True,False,,
+2016,3,88356,,,,270540,2694.0,dados abertos (evolucaodemanda),,75.38116891801525,True,False,,
+2016,6,103496,,,,277899,1609.0,dados abertos (evolucaodemanda),,72.86382883886785,False,False,,
+2016,9,133005,,,,283556,762.0,dados abertos (evolucaodemanda),,68.07070273021237,False,False,,
+2016,12,65040,,,,284179,38.0,dados abertos (evolucaodemanda),,81.37558380271406,True,False,,
+2017,3,87906,,,,287122,1534.0,XLS SME,,76.56015017545357,True,False,,
+2017,6,104268,,,,288294,1191.0,XLS SME,,73.4391000657221,False,False,,
+2017,9,132365,,,,289962,2017.0,XLS SME,,68.65817245878193,False,False,,
+2017,12,44092,,,,296260,14016.0,XLS SME,,87.04517675817976,True,False,,
+2018,3,57819,,,,309854,1864.0,XLS SME,,84.27434160245653,True,False,,
+2018,6,66714,,,,313598,6997.0,XLS SME,,82.4580870443215,True,False,,
+2018,9,85407,,,,323885,5203.0,XLS SME,,79.13299062771812,True,False,,
+2018,12,19697,,,,333922,638.0,XLS SME,,94.42988074735803,True,False,,
+2019,3,34317,,,,330026,4059.0,XLS SME,,90.58112822258147,True,False,,
+2019,6,48910,,,,333876,1945.0,XLS SME,,87.22262569686457,True,False,,
+2019,9,75267,71078.0,4189.0,,337022,1797.0,XLS SME,(1) - Demanda sem opção por unidade específica | (2) - Demanda que recusou vaga oferecida e optou por aguradr numa unidade específica,81.74411638438086,True,False,,71078.0
+2019,12,9670,8083.0,1587.0,,345452,5008.0,XLS SME,(1) - Demanda sem opção por unidade específica | (2) - Demanda com opção por unidade específica,97.27699213228131,True,False,,8083.0
+2020,3,21419,17217.0,4202.0,,339475,1714.0,XLS SME,(1) - Demanda sem opção por unidade específica | (2) - Demanda com opção por unidade específica,94.06501632058166,True,False,,17217.0
+2020,6,22732,18919.0,3813.0,,341966,1060.0,XLS SME,(1) - Demanda sem opção por unidade específica | (2) - Demanda com opção por unidade específica,93.7668975426243,True,False,,18919.0
+2020,9,6670,1451.0,2771.0,2448.0,357512,10779.0,XLS SME,(1) - Cadastros aguardando vaga a menos de 30 dias. | (2) - Cadastros aguardando vaga a mais de 30 dias | (3) - Cadastros com opção por unidade específica | (*) - vagas disponibilizadas aguardando documentação da família para efetivação. | (**) - período de 30 dias para análise da possibilidade de atendimento com transporte escolar.,98.16849816849818,True,False,2771.0,4222.0
+2020,12,540,0.0,0.0,540.0,374631,929.0,XLS SME,(1) - Demanda sem opção por unidade específica em espera até 30 dias | (2) - Demanda sem opção por unidade específica em espera a mais de 30 dias | (3) - Demanda com opção por unidade específica,99.85606563407086,True,False,0.0,0.0
+2021,3,2664,1339.0,0.0,1325.0,340255,931.0,XLS SME,(1) - Demanda sem opção por unidade específica em espera até 30 dias | (2) - Demanda sem opção por unidade específica em espera a mais de 30 dias | (3) - Demanda com opção por unidade específica,99.22314015846308,True,False,0.0,1339.0
+2021,6,8767,6618.0,0.0,2149.0,360946,3781.0,XLS SME,(1) - Demanda sem opção por unidade específica em espera até 30 dias | (2) - Demanda sem opção por unidade específica em espera a mais de 30 dias | (3) - Demanda com opção por unidade específica,97.62870118172745,True,False,0.0,6618.0
+2021,9,28592,16248.0,9013.0,3331.0,371923,4651.0,XLS SME,(1) - Demanda sem opção por unidade específica em espera até 30 dias | (2) - Demanda sem opção por unidade específica em espera a mais de 30 dias | (3) - Demanda com opção por unidade específica,92.861191216309,True,False,9013.0,25261.0
+2021,12,595,0.0,0.0,595.0,385100,1546.0,XLS SME,(1) - Demanda sem opção por unidade específica em espera até 30 dias | (2) - Demanda sem opção por unidade específica em espera a mais de 30 dias | (3) - Demanda com opção por unidade específica,99.84573302739211,True,False,0.0,0.0
+2022,3,3949,2643.0,0.0,1306.0,348471,1717.0,XLS SME,(1) - Demanda sem opção por unidade específica em espera até 30 dias | (2) - Demanda sem opção por unidade específica em espera a mais de 30 dias | (3) - Demanda com opção por unidade específica,98.87946200556155,True,False,0.0,2643.0
+2022,6,4761,2921.0,0.0,1840.0,348975,1958.0,XLS SME,(1) - Demanda sem opção por unidade específica em espera até 30 dias | (2) - Demanda sem opção por unidade específica em espera a mais de 30 dias | (3) - Demanda com opção por unidade específica,98.65408100956645,True,False,0.0,2921.0
+2022,9,9332,5108.0,0.0,4224.0,358043,1950.0,XLS SME,(1) - Demanda sem opção por unidade específica em espera até 30 dias | (2) - Demanda sem opção por unidade específica em espera a mais de 30 dias | (3) - Demanda com opção por unidade específica,97.45981626403538,True,False,0.0,5108.0
+2022,12,681,0.0,0.0,681.0,361257,1224.0,XLS SME,(1) - Demanda sem opção por unidade específica em espera até 30 dias | (2) - Demanda sem opção por unidade específica em espera a mais de 30 dias | (3) - Demanda com opção por unidade específica,99.81184622780697,True,False,0.0,0.0
+2023,2,6039,3400.0,0.0,2639.0,322027,2612.0,XLS SME,(1) - Demanda sem opção por unidade específica em espera até 30 dias | (2) - Demanda sem opção por unidade específica em espera a mais de 30 dias | (3) - Demanda com opção por unidade específica,98.15921186590504,True,False,0.0,3400.0
+2023,4,3338,987.0,0.0,2351.0,333117,1743.0,XLS SME,(1) - Demanda sem opção por unidade específica em espera até 30 dias | (2) - Demanda sem opção por unidade específica em espera a mais de 30 dias | (3) - Demanda com opção por unidade específica,99.0078910998499,True,False,0.0,987.0
+2023,6,4913,1987.0,0.0,2904.0,338786,1413.0,XLS SME,(1) - Demanda sem opção por unidade específica em espera até 30 dias | (2) - Demanda sem opção por unidade específica em espera a mais de 30 dias | (3) - Demanda com opção por unidade específica,98.57055155819482,True,False,0.0,1987.0
+2023,8,8907,4554.0,0.0,4327.0,347183,1685.0,XLS SME,(1) - Demanda sem opção por unidade específica em espera até 30 dias | (2) - Demanda sem opção por unidade específica em espera a mais de 30 dias | (3) - Demanda com opção por unidade específica,97.49866606756719,True,False,0.0,4554.0
+2023,10,11965,6112.0,0.0,5853.0,352594,1655.0,XLS SME,(1) - Demanda sem opção por unidade específica em espera até 30 dias | (2) - Demanda sem opção por unidade específica em espera a mais de 30 dias | (3) - Demanda com opção por unidade específica,96.71795237533568,True,False,0.0,6112.0
+2023,12,555,0.0,0.0,555.0,354093,356.0,XLS SME,(1) - Demanda sem opção por unidade específica em espera até 30 dias | (2) - Demanda sem opção por unidade específica em espera a mais de 30 dias | (3) - Demanda com opção por unidade específica,99.84350680110984,True,False,0.0,0.0
+2024,2,4897,2489.0,0.0,2408.0,315164,2372.0,XLS SME,(1) - Demanda sem opção por unidade específica em espera até 30 dias | (2) - Demanda sem opção por unidade específica em espera a mais de 30 dias | (3) - Demanda com opção por unidade específica,98.46997916022258,True,False,0.0,2489.0
+2024,4,3589,1282.0,0.0,2307.0,326048,1259.0,XLS SME,(1) - Demanda sem opção por unidade específica em espera até 30 dias | (2) - Demanda sem opção por unidade específica em espera a mais de 30 dias | (3) - Demanda com opção por unidade específica,98.91122659167509,True,False,0.0,1282.0
+2024,6,3633,1131.0,0.0,2502.0,332464,1900.0,XLS SME,(1) - Demanda sem opção por unidade específica em espera até 30 dias | (2) - Demanda sem opção por unidade específica em espera a mais de 30 dias | (3) - Demanda com opção por unidade específica,98.91906205648965,True,False,0.0,1131.0
+2024,8,6190,2498.0,0.0,3692.0,339480,2028.0,XLS SME,(1) - Demanda sem opção por unidade específica em espera até 30 dias | (2) - Demanda sem opção por unidade específica em espera a mais de 30 dias | (3) - Demanda com opção por unidade específica,98.20927474180577,True,False,0.0,2498.0
+2024,10,8803,4011.0,0.0,4792.0,343848,1294.0,XLS SME,(1) - Demanda sem opção por unidade específica em espera até 30 dias | (2) - Demanda sem opção por unidade específica em espera a mais de 30 dias | (3) - Demanda com opção por unidade específica,97.50376434491892,True,False,0.0,4011.0
+2024,12,528,0.0,0.0,528.0,345019,0.0,XLS SME,(2) - Demanda sem opção por unidade específica em espera a mais de 30 dias | (3) - Demanda com opção por unidade específica,99.84719878916616,True,False,0.0,0.0
+2025,2,3049,1067.0,0.0,1982.0,303477,1626.0,XLS SME,(1) - Demanda sem opção por unidade específica em espera até 30 dias | (2) - Demanda sem opção por unidade específica em espera a mais de 30 dias | (3) - Demanda com opção por unidade específica,99.00530460711326,True,False,0.0,1067.0
+2025,4,2548,891.0,0.0,1645.0,311542,794.0,XLS SME,(1) - Demanda sem opção por unidade específica em espera até 30 dias | (2) - Demanda sem opção por unidade específica em espera a mais de 30 dias | (3) - Demanda com opção por unidade específica,99.18876755070202,True,False,0.0,891.0
+2025,6,3108,1135.0,0.0,1973.0,316438,900.0,XLS SME,(1) - Demanda sem opção por unidade específica em espera até 30 dias | (2) - Demanda sem opção por unidade específica em espera a mais de 30 dias | (3) - Demanda com opção por unidade específica,99.02737008130285,True,False,0.0,1135.0
+2025,8,4776,1842.0,0.0,2934.0,324375,1758.0,XLS SME,(1) - Demanda sem opção por unidade específica em espera até 30 dias | (2) - Demanda sem opção por unidade específica em espera a mais de 30 dias | (3) - Demanda com opção por unidade específica,98.54899423061148,True,False,0.0,1842.0
+2025,10,6721,2694.0,0.0,4027.0,328977,1026.0,XLS SME,(1) - Demanda sem opção por unidade específica em espera até 30 dias | (2) - Demanda sem opção por unidade específica em espera a mais de 30 dias | (3) - Demanda com opção por unidade específica,97.99790287699062,True,False,0.0,2694.0
+2025,12,500,0.0,0.0,500.0,330106,25.0,XLS SME,(1) - Demanda sem opção por unidade específica em espera até 30 dias | (2) - Demanda sem opção por unidade específica em espera a mais de 30 dias | (3) - Demanda com opção por unidade específica,99.84876257539186,True,False,0.0,0.0
+2026,2,1789,294.0,0.0,1495.0,289817,2678.0,XLS SME,(1) - Demanda sem opção por unidade específica em espera até 30 dias | (2) - Demanda sem opção por unidade específica em espera a mais de 30 dias | (3) - Demanda com opção por unidade específica,99.386500963629,True,False,0.0,294.0
+2026,4,2632,955.0,0.0,1671.0,299736,982.0,XLS SME,(1) - Demanda sem opção por unidade específica em espera até 30 dias | (2) - Demanda sem opção por unidade específica em espera a mais de 30 dias | (3) - Demanda com opção por unidade específica,99.12953751719759,True,False,0.0,955.0
+2026,6,2900,930.0,0.0,1970.0,303322,801.0,XLS SME,(1) - Demanda sem opção por unidade específica em espera até 30 dias | (2) - Demanda sem opção por unidade específica em espera a mais de 30 dias | (3) - Demanda com opção por unidade específica,99.05297463931396,True,False,0.0,930.0
+2026,8,5030,2135.0,0.0,2895.0,309940,985.0,XLS SME,(1) - Demanda sem opção por unidade específica em espera até 30 dias | (2) - Demanda sem opção por unidade específica em espera a mais de 30 dias | (3) - Demanda com opção por unidade específica,98.40302251008032,True,False,0.0,2135.0

@@ -1,0 +1,259 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag08_B.log
+  log type:  text
+ opened on:  22 Jul 2026, 14:29:01
+
+. 
+. * painel emprego a nivel crianca x ano de RAIS
+. use "$aud\panel_rais.dta", clear
+
+. collapse (max) emp, by(cd_aluno_sme rais_year)
+
+. tempfile cy
+
+. save `cy'
+file <HOME>\AppData\Local\Temp\ST_28d4_000001.tmp saved as .dta format
+
+. 
+. * grade B_novo x anos 2007-2014
+. use cd_aluno_sme ano_nasc mes_nasc using "$aud\B_novo.dta", clear
+
+. merge 1:1 cd_aluno_sme using "$aud\child_expo.dta", keep(master match) keepusing(expo12_1km) nogen
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                         1,524,560  
+    -----------------------------------------
+
+. expand 8
+(10,671,920 observations created)
+
+. bysort cd_aluno_sme: gen rais_year = 2006 + _n
+
+. merge 1:1 cd_aluno_sme rais_year using `cy', keep(master match) nogen
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                     8,604,342
+        from master                 8,604,342  
+        from using                          0  
+
+    Matched                         3,592,138  
+    -----------------------------------------
+
+. replace emp = 0 if missing(emp)
+(8,604,342 real changes made)
+
+. gen rel = rais_year - ano_nasc
+
+. gen byte abril = mes_nasc==4
+
+. gen byte marco = mes_nasc==3
+
+. gen byte expo1 = expo12_1km>=1 if !missing(expo12_1km)
+
+. 
+. di "########## B1 — emp por ano relativo ao nascimento (todo B_novo, sem RAIS=0) ##########"
+########## B1 — emp por ano relativo ao nascimento (todo B_novo, sem RAIS=0) ##########
+
+. di "  (so anos de calendario 2007-2014 sao observaveis)"
+  (so anos de calendario 2007-2014 sao observaveis)
+
+. table rel if inrange(rel,-5,6), stat(mean emp) stat(count emp)
+
+--------------------------------------------------
+        |      Mean   Number of non-missing values
+--------+-----------------------------------------
+rel     |                                         
+  -5    |  .2222932                        890,846
+  -4    |   .239752                      1,037,539
+  -3    |  .2535614                      1,115,864
+  -2    |  .2653275                      1,124,286
+  -1    |  .2633618                      1,098,561
+  0     |  .2202253                        999,499
+  1     |  .2030573                        894,777
+  2     |  .2208341                        771,688
+  3     |  .2230145                        632,793
+  4     |  .2191915                        486,456
+  5     |  .2144432                        358,356
+  6     |  .2098856                        243,871
+  Total |  .2346406                      9,654,536
+--------------------------------------------------
+
+. 
+. di ""
+
+
+. di "########## B2 — emp por ano relativo: MARCO vs ABRIL ##########"
+########## B2 — emp por ano relativo: MARCO vs ABRIL ##########
+
+. di "--- MARCO (mes_nasc==3) ---"
+--- MARCO (mes_nasc==3) ---
+
+. table rel if inrange(rel,-5,6) & marco==1, stat(mean emp) stat(count emp)
+
+--------------------------------------------------
+        |      Mean   Number of non-missing values
+--------+-----------------------------------------
+rel     |                                         
+  -5    |  .2277036                         85,765
+  -4    |  .2460264                         98,713
+  -3    |  .2596964                        103,286
+  -2    |  .2701386                        102,614
+  -1    |  .2567969                         98,280
+  0     |  .1921484                         87,651
+  1     |  .2127107                         76,959
+  2     |  .2225094                         65,395
+  3     |  .2242346                         52,231
+  4     |  .2220894                         39,304
+  5     |  .2122683                         28,219
+  6     |  .2075513                         18,169
+  Total |  .2353074                        856,586
+--------------------------------------------------
+
+. di "--- ABRIL (mes_nasc==4) ---"
+--- ABRIL (mes_nasc==4) ---
+
+. table rel if inrange(rel,-5,6) & abril==1, stat(mean emp) stat(count emp)
+
+--------------------------------------------------
+        |      Mean   Number of non-missing values
+--------+-----------------------------------------
+rel     |                                         
+  -5    |  .2261672                         80,666
+  -4    |   .242077                         93,210
+  -3    |  .2537551                         98,134
+  -2    |  .2633675                         98,167
+  -1    |  .2531369                         95,158
+  0     |   .192102                         86,022
+  1     |  .2063218                         76,909
+  2     |  .2203211                         65,577
+  3     |  .2211038                         53,744
+  4     |  .2195104                         41,219
+  5     |  .2167878                         30,546
+  6     |  .2075773                         20,667
+  Total |  .2313471                        840,019
+--------------------------------------------------
+
+. 
+. di ""
+
+
+. di "########## B3 — emp por ano relativo: expo12_1km 0 vs >=1 ##########"
+########## B3 — emp por ano relativo: expo12_1km 0 vs >=1 ##########
+
+. di "--- expo12_1km==0 ---"
+--- expo12_1km==0 ---
+
+. table rel if inrange(rel,-5,6) & expo1==0, stat(mean emp)
+
+-------------------
+        |      Mean
+--------+----------
+rel     |          
+  -5    |  .2259366
+  -4    |  .2426611
+  -3    |  .2543857
+  -2    |  .2667753
+  -1    |  .2622675
+  0     |  .2196196
+  1     |  .2033935
+  2     |  .2210246
+  3     |  .2238163
+  4     |  .2194127
+  5     |  .2152774
+  6     |  .2098026
+  Total |  .2350909
+-------------------
+
+. di "--- expo12_1km>=1 ---"
+--- expo12_1km>=1 ---
+
+. table rel if inrange(rel,-5,6) & expo1==1, stat(mean emp)
+
+-------------------
+        |      Mean
+--------+----------
+rel     |          
+  -5    |  .2179658
+  -4    |  .2362661
+  -3    |  .2525838
+  -2    |  .2635317
+  -1    |  .2647191
+  0     |  .2209789
+  1     |  .2026157
+  2     |  .2205718
+  3     |  .2218712
+  4     |  .2188641
+  5     |  .2131708
+  6     |   .210018
+  Total |  .2340635
+-------------------
+
+. 
+. di ""
+
+
+. di "########## B4 — N com >=2 anos pre-nascimento e >=3 pos (observados no painel) ##########"
+########## B4 — N com >=2 anos pre-nascimento e >=3 pos (observados no painel) ##########
+
+. * observado = crianca aparece no painel naquele ano (merge do cy) -> usar emp nao-missing original
+. * recomputar: obs = 1 se (child,year) estava no painel cy
+. preserve
+
+.     use `cy', clear
+
+.     merge m:1 cd_aluno_sme using "$aud\B_novo.dta", keep(match) keepusing(ano_nasc) nogen
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                         3,592,138  
+    -----------------------------------------
+
+.     gen byte prey = rais_year < ano_nasc
+
+.     gen byte posy = rais_year >= ano_nasc
+
+.     bysort cd_aluno_sme: egen npre = total(prey)
+
+.     bysort cd_aluno_sme: egen npos = total(posy)
+
+.     by cd_aluno_sme: keep if _n==1
+(2,779,908 observations deleted)
+
+.     di "--- N criancas com >=2 anos pre-nasc E >=3 pos, por coorte ---"
+--- N criancas com >=2 anos pre-nasc E >=3 pos, por coorte ---
+
+.     forvalues c=2008/2014 {
+  2.         qui count if ano_nasc==`c' & npre>=2 & npos>=3
+  3.         di "  coorte `c': " r(N)
+  4.     }
+  coorte 2008: 0
+  coorte 2009: 15599
+  coorte 2010: 22990
+  coorte 2011: 30652
+  coorte 2012: 30900
+  coorte 2013: 0
+  coorte 2014: 0
+
+.     di "--- total (coortes 2008-2014) ---"
+--- total (coortes 2008-2014) ---
+
+.     count if inrange(ano_nasc,2008,2014) & npre>=2 & npos>=3
+  100,141
+
+. restore
+
+. 
+. di "=== FIM B ==="
+=== FIM B ===
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag08_B.log
+  log type:  text
+ closed on:  22 Jul 2026, 14:30:48
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

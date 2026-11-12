@@ -1,0 +1,335 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag09_BCDE.log
+  log type:  text
+ opened on:  22 Jul 2026, 15:03:56
+
+. 
+. *==============================================================
+. di "########## PARTE B — amostra do event study (maes) ##########"
+########## PARTE B — amostra do event study (maes) ##########
+
+. use "$aud\panel_es.dta", clear
+
+. * primeira crianca (menor ano_nasc) por responsavel
+. bysort respid: egen firstbirth = min(ano_nasc)
+
+. * manter responsaveis femininos
+. keep if fem==1
+(563,455 observations deleted)
+
+. 
+. di "--- B1: criancas e maes distintas (responsavel feminino) ---"
+--- B1: criancas e maes distintas (responsavel feminino) ---
+
+. egen tagcm = tag(cd_aluno_sme)
+
+. count if tagcm==1
+  712,639
+
+. di "  criancas com responsavel feminino = " r(N)
+  criancas com responsavel feminino = 712639
+
+. egen tagm = tag(respid)
+
+. count if tagm==1
+  712,639
+
+. di "  maes distintas = " r(N)
+  maes distintas = 712639
+
+. 
+. di ""
+
+
+. di "--- B2: maes com 1o filho nascido 2009-2013 ---"
+--- B2: maes com 1o filho nascido 2009-2013 ---
+
+. preserve
+
+.     keep respid firstbirth
+
+.     duplicates drop
+
+Duplicates in terms of all variables
+
+(2,316,119 observations deleted)
+
+.     count if inrange(firstbirth,2009,2013)
+  333,746
+
+.     di "  maes com 1o filho 2009-2013 = " r(N)
+  maes com 1o filho 2009-2013 = 333746
+
+. restore
+
+. 
+. di ""
+
+
+. di "--- B3: anos RAIS pre/pos primeiro nascimento (por mae) ---"
+--- B3: anos RAIS pre/pos primeiro nascimento (por mae) ---
+
+. preserve
+
+.     keep respid rais_year firstbirth
+
+.     duplicates drop
+
+Duplicates in terms of all variables
+
+(0 observations are duplicates)
+
+.     gen byte pre = rais_year < firstbirth
+
+.     gen byte pos = rais_year >= firstbirth
+
+.     bysort respid: egen npre = total(pre)
+
+.     bysort respid: egen npos = total(pos)
+
+.     by respid: keep if _n==1
+(2,316,119 observations deleted)
+
+.     keep if inrange(firstbirth,2009,2013)
+(378,893 observations deleted)
+
+.     di "  --- tab npre x npos ---"
+  --- tab npre x npos ---
+
+.     tab npre npos
+
+           |                                     npos
+      npre |         0          1          2          3          4          5          6 |     Total
+-----------+-----------------------------------------------------------------------------+----------
+         0 |         0     31,544     24,992     15,347      8,661      3,691        692 |    84,927 
+         1 |    20,628     10,891     13,378      9,747      7,400      4,545      1,836 |    68,425 
+         2 |    11,479      8,618     13,264      9,615      7,558      6,192      6,609 |    63,335 
+         3 |     5,666      6,232     11,177      8,308      6,891      7,562          0 |    45,836 
+         4 |     4,414      4,522     10,003      8,022      8,620          0          0 |    35,581 
+         5 |     2,322      3,033      8,952      9,167          0          0          0 |    23,474 
+         6 |       896      1,648      9,624          0          0          0          0 |    12,168 
+-----------+-----------------------------------------------------------------------------+----------
+     Total |    45,405     66,488     91,390     60,206     39,130     21,990      9,137 |   333,746 
+
+.     count if npre>=2 & npos>=3
+  78,544
+
+.     di "  N maes com >=2 pre E >=3 pos = " r(N)
+  N maes com >=2 pre E >=3 pos = 78544
+
+. restore
+
+. 
+. di ""
+
+
+. di "--- B4: idade da mae no 1o nascimento (firstbirth - maeb) ---"
+--- B4: idade da mae no 1o nascimento (firstbirth - maeb) ---
+
+. preserve
+
+.     keep respid firstbirth maeb
+
+.     duplicates drop
+
+Duplicates in terms of all variables
+
+(1,893,508 observations deleted)
+
+.     gen idade_mae = firstbirth - maeb
+(439,107 missing values generated)
+
+.     keep if inrange(firstbirth,2009,2013)
+(597,503 observations deleted)
+
+.     sum idade_mae, detail
+
+                          idade_mae
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            4             -4
+ 5%           17             -3
+10%           19             -3       Obs             321,022
+25%           22             -3       Sum of wgt.     321,022
+
+50%           26                      Mean           28.25794
+                        Largest       Std. dev.      14.00427
+75%           32            112
+90%           37            112       Variance       196.1196
+95%           40            112       Skewness       3.775904
+99%          106            112       Kurtosis         21.826
+
+.     count if idade_mae<18 & !missing(idade_mae)
+  20,977
+
+.     di "  <18 anos: " r(N)
+  <18 anos: 20977
+
+.     count if idade_mae>40 & !missing(idade_mae)
+  15,960
+
+.     di "  >40 anos: " r(N)
+  >40 anos: 15960
+
+.     count if missing(idade_mae)
+  216,725
+
+.     di "  missing: " r(N)
+  missing: 216725
+
+. restore
+
+. di "--- B5: escolaridade NAO foi retida no painel (grinstrucao vs escolaridadeapos2005 = escalas diferentes) ---"
+--- B5: escolaridade NAO foi retida no painel (grinstrucao vs escolaridadeapos2005 = escalas diferentes) ---
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## PARTE C — desfechos por tempo relativo (maes, 1o filho 2009-2013) ##########"
+########## PARTE C — desfechos por tempo relativo (maes, 1o filho 2009-2013) ##########
+
+. di "  ATENCAO: 2008/2009 sao arquivos so-empregados -> emp inflado nesses anos (artefato)"
+  ATENCAO: 2008/2009 sao arquivos so-empregados -> emp inflado nesses anos (artefato)
+
+. * painel mae-ano em torno do 1o filho
+. keep if inrange(firstbirth,2009,2013)
+(1,612,275 observations deleted)
+
+. gen rel = rais_year - firstbirth
+
+. collapse (max) emp wsm hrs publico (firstnm) estabsz, by(respid rel firstbirth)
+
+. 
+. di "--- C1: emp (incondicional; mae-ano presente) ---"
+--- C1: emp (incondicional; mae-ano presente) ---
+
+. table rel if inrange(rel,-5,6), stat(mean emp) stat(count emp)
+
+--------------------------------------------------
+        |      Mean   Number of non-missing values
+--------+-----------------------------------------
+rel     |                                         
+  -5    |  .8645537                         56,192
+  -4    |  .9106694                         84,775
+  -3    |  .8464257                        126,766
+  -2    |  .7995873                        174,470
+  -1    |  .7643662                        193,805
+  0     |  .7415916                        173,249
+  1     |  .6267074                        198,035
+  2     |  .6847042                        159,501
+  3     |  .6895842                        116,650
+  4     |  .6909993                         71,372
+  5     |  .7013067                         32,371
+  Total |  .7461033                      1,387,186
+--------------------------------------------------
+
+. di "--- C2: salario SM incondicional (sem vinculo=0) ---"
+--- C2: salario SM incondicional (sem vinculo=0) ---
+
+. gen wsm0 = wsm
+
+. replace wsm0 = 0 if emp==0 | missing(wsm)
+(352,668 real changes made)
+
+. table rel if inrange(rel,-5,6), stat(mean wsm0)
+
+-------------------
+        |      Mean
+--------+----------
+rel     |          
+  -5    |  1.887325
+  -4    |   1.92862
+  -3    |  1.776151
+  -2    |  1.679981
+  -1    |  1.597908
+  0     |  1.549758
+  1     |  1.347755
+  2     |  1.424429
+  3     |  1.417676
+  4     |  1.422691
+  5     |   1.47552
+  Total |  1.567754
+-------------------
+
+. di "--- C3: salario SM condicional a emprego ---"
+--- C3: salario SM condicional a emprego ---
+
+. table rel if inrange(rel,-5,6) & emp==1, stat(mean wsm) stat(p50 wsm)
+
+-------------------------------------
+        |      Mean   50th percentile
+--------+----------------------------
+rel     |                            
+  -5    |  2.183005              1.71
+  -4    |  2.117805              1.67
+  -3    |  2.098414              1.65
+  -2    |  2.101061              1.65
+  -1    |    2.0905              1.62
+  0     |  2.089772               1.6
+  1     |  2.150533              1.63
+  2     |  2.080357               1.6
+  3     |  2.055841              1.59
+  4     |  2.058889              1.61
+  5     |  2.103958              1.64
+  Total |  2.101256              1.63
+-------------------------------------
+
+. di "--- C4: horas condicional a emprego ---"
+--- C4: horas condicional a emprego ---
+
+. table rel if inrange(rel,-5,6) & emp==1, stat(mean hrs)
+
+-------------------
+        |      Mean
+--------+----------
+rel     |          
+  -5    |         .
+  -4    |         .
+  -3    |         .
+  -2    |  41.92881
+  -1    |  41.97332
+  0     |  41.79841
+  1     |  41.77743
+  2     |  41.90566
+  3     |  41.98504
+  4     |  42.01109
+  5     |  42.03894
+  Total |  41.90026
+-------------------
+
+. di "--- C5: setor publico (natjur 1xxx) condicional a emprego ---"
+--- C5: setor publico (natjur 1xxx) condicional a emprego ---
+
+. table rel if inrange(rel,-5,6) & emp==1, stat(mean publico)
+
+-------------------
+        |      Mean
+--------+----------
+rel     |          
+  -5    |  .0532719
+  -4    |  .0527059
+  -3    |  .0515946
+  -2    |  .0505864
+  -1    |  .0507162
+  0     |  .0588652
+  1     |  .0661993
+  2     |  .0606349
+  3     |  .0610269
+  4     |  .0625127
+  5     |  .0657651
+  Total |  .0566666
+-------------------
+
+. 
+. di "=== FIM BCDE ==="
+=== FIM BCDE ===
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag09_BCDE.log
+  log type:  text
+ closed on:  22 Jul 2026, 15:05:03
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

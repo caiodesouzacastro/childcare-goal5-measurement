@@ -1,0 +1,32 @@
+# Parte E: open data PMSP, 96 distritos x 47 trimestres (jun/2006-dez/2017).
+# MAT_CRECHE=matriculas creche; DEM_CRECHE=demanda registrada (fila) creche; DEM_PREF_CRECHE=demanda preferencial.
+
+E2/E3: matriculas em creche (MAT) e demanda registrada/fila (DEM) no MUNICIPIO, snapshot dezembro:
+  ano   MAT_creche   cresc%   DEM_creche   DEM_total(+pref)
+  2006      64,436      --      129,594     129,594
+  2007      83,364    +29.4      79,231      79,231
+  2008     109,717    +31.6      57,607      61,089
+  2009     123,155    +12.2      74,707      74,707
+  2010     130,412     +5.9     100,401     100,401
+  2011     195,561    +50.0     101,165     101,165
+  2012     214,094     +9.5      97,160      97,160
+  2013     214,460     +0.2      96,696      96,696
+  2014     228,204     +6.4      94,191      94,191
+  2015     260,785    +14.3      75,194      75,194
+  2016     284,179     +9.0      65,040      65,040
+  2017     296,260     +4.3      44,092      44,092
+
+E2 crescimento de MATRICULAS em creche (municipio, dez):
+  2006->2012: 64,436 -> 214,094  (+232.3% total; 22.2%/ano)
+  2010->2012: 130,412 -> 214,094  (+64.2% total; 28.1%/ano)
+  2013->2017: 214,460 -> 296,260  (+38.1% total; 8.4%/ano)
+  2006->2017: 64,436 -> 296,260  (+359.8% total; 14.9%/ano)
+
+E3 crescimento da DEMANDA registrada em creche (fila, municipio, dez):
+  2006->2012: 129,594 -> 97,160  (+-25.0% total; -4.7%/ano)
+  2010->2012: 100,401 -> 97,160  (+-3.2% total; -1.6%/ano)
+  2013->2017: 96,696 -> 44,092  (+-54.4% total; -17.8%/ano)
+
+E3 pico da fila (DEM_creche, dez): 129,594 em 2006; minimo 44,092 em 2017.
+
+sanidade: MAT_creche(dez2013)=214,460 vs VAGOFER perfil 2013s1~214.561 (ordens de grandeza compativeis).

@@ -1,0 +1,20 @@
+% requer booktabs. Descritivo.
+\begin{table}[htbp]\centering
+\caption{Robustness of the within-family birth-order coefficient to the cohort-trend control}
+\label{tab:S5_robustez}
+\small
+\begin{tabular}{llrrr}
+\toprule
+Specification & Dep.\ var & Coef.\ (birth order) & (SE) & N \\
+\midrule
+Linear birth-year trend (S2d) & Age at application & -7.091 & (0.113) & 159,786 \\
+Birth-year dummies (S5a) & Age at application & -7.201 & (0.112) & 159,786 \\
+Birth year-month dummies (S5b) & Age at application & -6.757 & (0.116) & 159,786 \\
+Year dummies + district$\times$year (S5c) & Age at application & -7.147 & (0.112) & 159,786 \\
+Year dummies, spacing 24--48m (S5e) & Age at application & -10.599 & (0.322) & 79,728 \\
+Placebo: female $\sim$ order (S5f) & Female & 0.010 & (0.006) & 159,786 \\
+Placebo: Black $\sim$ order (S5f) & Black & -0.005 & (0.004) & 159,786 \\
+\bottomrule
+\end{tabular}
+\\[3pt]{\footnotesize \textit{Note:} Long sibling panel (two children per family, both born 2010--2016). Dependent = age at first application (months), except the last two rows (placebo: sex and race, pre-determined at birth). All specifications absorb family fixed effects; the cohort trend is controlled linearly (row 1), by birth-year dummies, by birth year-month dummies, or by district$\times$birth-year dummies. Standard errors clustered by family in parentheses. The birth-order coefficient is the change from the older to the younger sibling.}
+\end{table}

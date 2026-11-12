@@ -1,0 +1,234 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag09_DE.log
+  log type:  text
+ opened on:  22 Jul 2026, 15:06:18
+
+. 
+. use "$aud\panel_es.dta", clear
+
+. keep if fem==1
+(563,455 observations deleted)
+
+. bysort respid: egen firstbirth = min(ano_nasc)
+
+. keep if inrange(firstbirth,2009,2013)
+(1,612,275 observations deleted)
+
+. * primeiro filho (menor ano_nasc) e nº de filhos
+. gsort respid ano_nasc cd_aluno_sme
+
+. by respid: gen firstchild = cd_aluno_sme[1]
+
+. egen tagrc = tag(respid cd_aluno_sme)
+
+. bysort respid: egen nkids = total(tagrc)
+
+. * colapsar mae-ano
+. gen rel = rais_year - firstbirth
+
+. collapse (max) emp (firstnm) firstchild nkids firstbirth, by(respid rel)
+
+. * caracteristicas do 1o filho
+. rename firstchild cd_aluno_sme
+
+. merge m:1 cd_aluno_sme using "$aud\child_expo.dta", keep(master match) keepusing(expo12_1km estoque_1km dt_mat_first ano_nasc mes_nasc ever_mat cep_aluno) nogen
+(variable cd_aluno_sme was float, now double to accommodate using data's values)
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                            10
+        from master                        10  
+        from using                          0  
+
+    Matched                         1,416,473  
+    -----------------------------------------
+
+. gen idade_ei = (year(dt_mat_first)-ano_nasc)*12 + (month(dt_mat_first)-mes_nasc) if ever_mat==1
+(136,606 missing values generated)
+
+. gen byte ei12 = (ever_mat==1 & idade_ei<12)
+
+. rename cep_aluno cep
+
+. merge m:1 cep using "$ba\cep_renda_pop_2010.dta", keepusing(renda) keep(master match) nogen
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                        22,031
+        from master                    22,031  
+        from using                          0  
+
+    Matched                         1,394,452  
+    -----------------------------------------
+
+. 
+. di "########## D1 — emp por rel x expo12_1km (0 vs >=1) ##########"
+########## D1 — emp por rel x expo12_1km (0 vs >=1) ##########
+
+. gen byte expo1 = expo12_1km>=1 if !missing(expo12_1km)
+(10 missing values generated)
+
+. di "--- expo12==0 ---"
+--- expo12==0 ---
+
+. table rel if inrange(rel,-3,4) & expo1==0, stat(mean emp) nototals
+
+----------------
+     |      Mean
+-----+----------
+rel  |          
+  -3 |  .8506053
+  -2 |  .8042536
+  -1 |  .7724413
+  0  |  .7460293
+  1  |   .631192
+  2  |  .6883929
+  3  |  .6928643
+  4  |  .6924114
+----------------
+
+. di "--- expo12>=1 ---"
+--- expo12>=1 ---
+
+. table rel if inrange(rel,-3,4) & expo1==1, stat(mean emp) nototals
+
+----------------
+     |      Mean
+-----+----------
+rel  |          
+  -3 |  .8412883
+  -2 |  .7937993
+  -1 |  .7544459
+  0  |  .7360388
+  1  |  .6210809
+  2  |  .6798924
+  3  |  .6851609
+  4  |  .6890215
+----------------
+
+. di ""
+
+
+. di "--- por quartil de estoque_1km (rel 0,+1) ---"
+--- por quartil de estoque_1km (rel 0,+1) ---
+
+. xtile eq = estoque_1km, nq(4)
+
+. table rel eq if inlist(rel,0,1), stat(mean emp) nototals
+
+------------------------------------------------
+    |          4 quantiles of estoque_1km       
+    |         1          2          3          4
+----+-------------------------------------------
+rel |                                           
+  0 |  .7506687   .7450543   .7417825    .723454
+  1 |  .6326039   .6281512   .6271986   .6151195
+------------------------------------------------
+
+. 
+. di ""
+
+
+. di "########## D2 — emp por rel x quartil de renda do CEP ##########"
+########## D2 — emp por rel x quartil de renda do CEP ##########
+
+. xtile rq = renda if !missing(renda), nq(4)
+
+. table rel rq if inrange(rel,-1,2), stat(mean emp) nototals
+
+-------------------------------------------------
+     |             4 quantiles of renda          
+     |         1          2          3          4
+-----+-------------------------------------------
+rel  |                                           
+  -1 |  .7432155   .7546042   .7689462   .7908654
+  0  |  .7254503   .7331199   .7440726   .7632265
+  1  |  .6096134   .6179727   .6301782   .6498913
+  2  |  .6674571   .6751618   .6898202   .7090816
+-------------------------------------------------
+
+. 
+. di ""
+
+
+. di "########## D3 — emp por rel x EI antes 12m (endogeno) ##########"
+########## D3 — emp por rel x EI antes 12m (endogeno) ##########
+
+. di "--- 1o filho matriculado EI <12m ---"
+--- 1o filho matriculado EI <12m ---
+
+. table rel if inrange(rel,-3,4) & ei12==1, stat(mean emp) nototals
+
+----------------
+     |      Mean
+-----+----------
+rel  |          
+  -3 |  .8440591
+  -2 |  .7607786
+  -1 |  .7619799
+  0  |  .7509765
+  1  |  .6679109
+  2  |  .7090641
+  3  |  .7185919
+  4  |  .7279188
+----------------
+
+. di "--- nao <12m ---"
+--- nao <12m ---
+
+. table rel if inrange(rel,-3,4) & ei12==0, stat(mean emp) nototals
+
+----------------
+     |      Mean
+-----+----------
+rel  |          
+  -3 |  .8467571
+  -2 |  .8049752
+  -1 |  .7646846
+  0  |  .7403155
+  1  |  .6209954
+  2  |   .682439
+  3  |  .6884082
+  4  |  .6894047
+----------------
+
+. 
+. di ""
+
+
+. di "########## D4 — emp por rel x nº de filhos (1 vs 2+) ##########"
+########## D4 — emp por rel x nº de filhos (1 vs 2+) ##########
+
+. gen byte multi = nkids>=2
+
+. di "--- 1 filho ---"
+--- 1 filho ---
+
+. table rel if inrange(rel,-3,4) & multi==0, stat(mean emp) nototals
+
+----------------
+     |      Mean
+-----+----------
+rel  |          
+  -3 |  .8464257
+  -2 |  .7995873
+  -1 |  .7643662
+  0  |  .7415916
+  1  |  .6267074
+  2  |  .6847042
+  3  |  .6895842
+  4  |  .6909993
+----------------
+
+. di "--- 2+ filhos ---"
+--- 2+ filhos ---
+
+. table rel if inrange(rel,-3,4) & multi==1, stat(mean emp) nototals
+       _table::compute():  3301  subscript invalid
+      st_collect_table():     -  function returned error
+                 <istmt>:     -  function returned error
+r(3301);
+
+end of do-file
+r(3301);

@@ -1,0 +1,20 @@
+% requer \usepackage{booktabs}. Tabela descritiva.
+\begin{table}[htbp]\centering
+\caption{Kaplan--Meier do tempo do nascimento ate a primeira solicitacao, por coorte}
+\label{tab:S2d_km}
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+Coorte & S(6) & S(12) & S(18) & S(24) & Mediana KM (m) \\
+\midrule
+2010 & 0.958 & 0.890 & 0.782 & 0.663 & 36 \\
+2011 & 0.873 & 0.726 & 0.593 & 0.497 & 24 \\
+2012 & 0.765 & 0.617 & 0.494 & 0.406 & 18 \\
+2013 & 0.739 & 0.585 & 0.466 & 0.377 & 17 \\
+2014 & 0.719 & 0.559 & 0.429 & 0.337 & 15 \\
+2015 & 0.686 & 0.514 & 0.391 & 0.306 & 13 \\
+2016 & 0.666 & 0.499 & 0.376 & 0.291 & 12 \\
+\bottomrule
+\end{tabular}
+\\[3pt]{\footnotesize \textit{Note:} Coortes plenamente observaveis 0--24 (2010--2016). $S(t)$ = fracao ainda sem solicitacao em $t$ meses de idade; nao-solicitantes censurados (risco = nascidos vivos). Para estas coortes nao ha censura antes de 24 meses. Mediana KM = idade em que $S$ cruza 0,5.}
+\end{table}

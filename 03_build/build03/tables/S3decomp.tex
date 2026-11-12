@@ -1,0 +1,34 @@
+% requer booktabs. Descritivo (fusao S3a + S3windows).
+\begin{table}[htbp]\centering
+\caption{Decomposing the fall in age at entry: cohort means and three observation windows}
+\label{tab:S3decomp}
+\small
+\textbf{Panel A. Mean age at application, wait, and age at entry by birth cohort}\\[3pt]
+\begin{tabular}{lrrrr}
+\toprule
+Birth cohort & N & Age at application & Wait & Age at entry \\
+\midrule
+2010 & 85,602 & 22.13 & 9.94 & 32.03 \\
+2011 & 101,164 & 16.10 & 11.41 & 27.47 \\
+2012 & 120,633 & 14.27 & 10.81 & 25.05 \\
+2013 & 125,780 & 13.78 & 8.75 & 22.51 \\
+2014 & 133,685 & 13.45 & 9.24 & 22.66 \\
+\bottomrule
+\end{tabular}
+
+\vspace{7pt}
+\textbf{Panel B. Change in age at entry and the share from each margin}\\[3pt]
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{p{4.6cm}rrrrrr}
+\toprule
+ & \multicolumn{3}{c}{Interval to enrolment} & \multicolumn{3}{c}{Interval to referral} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Unit and window & Change (mo.) & Share appl. & Share wait & Change (mo.) & Share appl. & Share wait \\
+\midrule
+Year of application, 2010--2018 & $-19.09$ & 80\% & 20\% & $-20.52$ & 79\% & 21\% \\
+Year of application, 2010--2016 (full 730-day follow-up) & $-15.11$ & 99\% & 1\% & $-16.41$ & 93\% & 8\% \\
+Birth cohort, 2010--2014 (entry at or before 48 months) & $-9.37$ & 93\% & 7\% & $-9.62$ & 87\% & 13\% \\
+\bottomrule
+\end{tabular}
+\\[3pt]{\footnotesize \textit{Note:} Panel A gives the underlying means, in months since birth, for the paper's preferred window (enrolled children entering at or before 48 months, birth cohorts 2010--2014); the identity age at entry $=$ age at application $+$ wait holds in means with a residual below 0.04 months. Panel B reports the change in age at entry and the share attributable to earlier application and to shorter waiting, under three windows and two definitions of the interval. Under \emph{Enrolment} the interval is application to enrolment (the headline); under \emph{Referral} it is application to first referral, which precedes enrolment by a median of five to seven days. Both figures are conditional on eventual entry within the common window. Descriptive.}
+\end{table}

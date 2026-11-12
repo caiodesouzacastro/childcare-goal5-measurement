@@ -1,0 +1,638 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag02_descB.log
+  log type:  text
+ opened on:  22 Jul 2026, 10:25:43
+
+. 
+. local files `" "<NE_ROOT>\dados_restritos\Dados - SME/Atual (25.06)/corteescolaunique.dta" "<NE_ROOT>\dados_restritos\Dados - SME/Atual (25.06)/escolas/escolassite.dta" "<NE_ROOT>\dados_restritos\Dados - SME/Atual (25.06)/escolas/escolasPSP2.dta" "<NE_ROOT>\dados_restritos\Dados - SME/Atual (25.06)/escolas/censo2018.dta" "<D>/Dad
+> os - SME/Atual (25.06)/matriculas/fila1018.dta" "<NE_ROOT>\dados_restritos\Dados - SME/Atual (25.06)/matriculas/matriculas1018.dta" "<NE_ROOT>\dados_restritos\Dados - SME/Atual (25.06)/matriculas/filamatriculasite.dta" "<NE_ROOT>\dados_restritos\Dados - SME/Atual (25.06)/Microdados_Demanda_Infantil_Escola_
+> Especifica_FGV/fila_preferencia.dta" "'
+
+. 
+. foreach f of local files {
+  2.     di ""
+  3.     di "=================================================================="
+  4.     di "FILE: `f'"
+  5.     di "=================================================================="
+  6.     cap use "`f'", clear
+  7.     if _rc {
+  8.         di "  ERRO rc=" _rc
+  9.         continue
+ 10.     }
+ 11.     di "  N obs = " _N "   N vars = " c(k)
+ 12.     describe, fullnames
+ 13. }
+
+==================================================================
+FILE: <NE_ROOT>\dados_restritos\Dados - SME/Atual (25.06)/corteescolaunique.dta
+==================================================================
+  N obs = 50058   N vars = 5
+
+Contains data from <NE_ROOT>\dados_restritos\Dados - SME/Atual (25.06)/corteescolaunique.dta
+ Observations:        50,058                  
+    Variables:             5                  14 Aug 2020 23:35
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+an_letivo_encaminhamento
+                int     %8.0g                 
+cd_esc_encaminhamento
+                long    %12.0g                
+serie_aluno     float   %9.0g                 
+dt_corte_escola float   %td                   (mean) dt_corte_escola
+dt_corte        float   %td                   (mean) dt_corte
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Sorted by: an_letivo_encaminhamento  serie_aluno  cd_esc_encaminhamento
+
+==================================================================
+FILE: <NE_ROOT>\dados_restritos\Dados - SME/Atual (25.06)/escolas/escolassite.dta
+==================================================================
+  N obs = 4753   N vars = 34
+
+Contains data from <NE_ROOT>\dados_restritos\Dados - SME/Atual (25.06)/escolas/escolassite.dta
+ Observations:         4,753                  
+    Variables:            34                  30 Jun 2020 23:57
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ïdre            str3    %9s                   ï»¿dre
+escola          long    %12.0g                
+tipoesc         str12   %12s                  
+nomesc          str60   %60s                  
+ceu             str19   %19s                  
+diretoria       str52   %52s                  
+subpref         str25   %25s                  
+endereco        str68   %68s                  
+numero          str6    %9s                   
+bairro          str51   %51s                  
+cep             long    %12.0g                
+tel1            long    %12.0g                
+tel2            str10   %10s                  
+fax             long    %12.0g                
+situacao        str5    %9s                   
+coddist         byte    %8.0g                 
+distrito        str18   %18s                  
+setor           int     %8.0g                 
+codinep         long    %12.0g                
+cd_cie          long    %12.0g                
+eh              str11   %11s                  
+fx_etaria       str37   %37s                  
+dt_criacao      str10   %10s                  
+ato_criacao     str19   %19s                  
+doc_criacao     str10   %10s                  
+dt_ini_conv     str10   %10s                  
+dt_ini_func     str10   %10s                  
+dt_autoriza     str10   %10s                  
+dt_extintao     str10   %10s                  
+nome_ant        str60   %60s                  
+rede            str3    %9s                   
+latitude        str11   %11s                  
+longitude       str11   %11s                  
+database        str10   %10s                  
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Sorted by: 
+
+==================================================================
+FILE: <NE_ROOT>\dados_restritos\Dados - SME/Atual (25.06)/escolas/escolasPSP2.dta
+==================================================================
+  N obs = 554   N vars = 34
+
+Contains data from <NE_ROOT>\dados_restritos\Dados - SME/Atual (25.06)/escolas/escolasPSP2.dta
+ Observations:           554                  
+    Variables:            34                  1 Jul 2020 00:01
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+escola          long    %12.0g                CD_UNIDADE_EDUCACAO
+ïdre            str3    %9s                   ï»¿dre
+tipoesc         str12   %12s                  
+nomesc          str60   %60s                  
+ceu             str19   %19s                  
+diretoria       str52   %52s                  
+subpref         str25   %25s                  
+endereco        str68   %68s                  
+numero          str6    %9s                   
+bairro          str51   %51s                  
+cep             long    %12.0g                
+tel1            long    %12.0g                
+tel2            str10   %10s                  
+fax             long    %12.0g                
+situacao        str5    %9s                   
+coddist         byte    %8.0g                 
+distrito        str18   %18s                  
+setor           int     %8.0g                 
+codinep         long    %12.0g                
+cd_cie          long    %12.0g                
+eh              str11   %11s                  
+fx_etaria       str37   %37s                  
+dt_criacao      str10   %10s                  
+ato_criacao     str19   %19s                  
+doc_criacao     str10   %10s                  
+dt_ini_conv     str10   %10s                  
+dt_ini_func     str10   %10s                  
+dt_autoriza     str10   %10s                  
+dt_extintao     str10   %10s                  
+nome_ant        str60   %60s                  
+rede            str3    %9s                   
+latitude        str11   %11s                  
+longitude       str11   %11s                  
+database        str10   %10s                  
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Sorted by: 
+
+==================================================================
+FILE: <NE_ROOT>\dados_restritos\Dados - SME/Atual (25.06)/escolas/censo2018.dta
+==================================================================
+  N obs = 286014   N vars = 166
+
+Contains data from <NE_ROOT>\dados_restritos\Dados - SME/Atual (25.06)/escolas/censo2018.dta
+ Observations:       286,014                  
+    Variables:           166                  1 Jul 2020 00:00
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+nu_ano_censo    int     %8.0g                 NU_ANO_CENSO
+codinep         long    %12.0g                CO_ENTIDADE
+no_entidade     str100  %100s                 NO_ENTIDADE
+co_orgao_regional
+                str5    %9s                   CO_ORGAO_REGIONAL
+tp_situacao_funcionamento
+                byte    %8.0g                 TP_SITUACAO_FUNCIONAMENTO
+dt_ano_letivo_inicio
+                str10   %10s                  DT_ANO_LETIVO_INICIO
+dt_ano_letivo_termino
+                str10   %10s                  DT_ANO_LETIVO_TERMINO
+co_regiao       byte    %8.0g                 CO_REGIAO
+co_mesorregiao  int     %8.0g                 CO_MESORREGIAO
+co_microrregiao long    %8.0g                 CO_MICRORREGIAO
+co_uf           byte    %8.0g                 CO_UF
+co_municipio    long    %12.0g                CO_MUNICIPIO
+co_distrito     long    %12.0g                CO_DISTRITO
+tp_dependencia  byte    %8.0g                 TP_DEPENDENCIA
+tp_localizacao  byte    %8.0g                 TP_LOCALIZACAO
+tp_categoria_escola_privada
+                byte    %8.0g                 TP_CATEGORIA_ESCOLA_PRIVADA
+in_conveniada_pp
+                byte    %8.0g                 IN_CONVENIADA_PP
+tp_convenio_poder_publico
+                byte    %8.0g                 TP_CONVENIO_PODER_PUBLICO
+in_mant_escola_privada_emp
+                byte    %8.0g                 IN_MANT_ESCOLA_PRIVADA_EMP
+in_mant_escola_privada_ong
+                byte    %8.0g                 IN_MANT_ESCOLA_PRIVADA_ONG
+in_mant_escola_privada_sind
+                byte    %8.0g                 IN_MANT_ESCOLA_PRIVADA_SIND
+in_mant_escola_privada_sist_s
+                byte    %8.0g                 IN_MANT_ESCOLA_PRIVADA_SIST_S
+in_mant_escola_privada_s_fins
+                byte    %8.0g                 IN_MANT_ESCOLA_PRIVADA_S_FINS
+co_escola_sede_vinculada
+                long    %12.0g                CO_ESCOLA_SEDE_VINCULADA
+co_ies_ofertante
+                int     %8.0g                 CO_IES_OFERTANTE
+tp_regulamentacao
+                byte    %8.0g                 TP_REGULAMENTACAO
+in_local_func_predio_escolar
+                byte    %8.0g                 IN_LOCAL_FUNC_PREDIO_ESCOLAR
+tp_ocupacao_predio_escolar
+                byte    %8.0g                 TP_OCUPACAO_PREDIO_ESCOLAR
+in_local_func_salas_empresa
+                byte    %8.0g                 IN_LOCAL_FUNC_SALAS_EMPRESA
+in_local_func_socioeducativo
+                byte    %8.0g                 IN_LOCAL_FUNC_SOCIOEDUCATIVO
+in_local_func_unid_prisional
+                byte    %8.0g                 IN_LOCAL_FUNC_UNID_PRISIONAL
+in_local_func_prisional_socio
+                byte    %8.0g                 IN_LOCAL_FUNC_PRISIONAL_SOCIO
+in_local_func_templo_igreja
+                byte    %8.0g                 IN_LOCAL_FUNC_TEMPLO_IGREJA
+in_local_func_casa_professor
+                byte    %8.0g                 IN_LOCAL_FUNC_CASA_PROFESSOR
+in_local_func_galpao
+                byte    %8.0g                 IN_LOCAL_FUNC_GALPAO
+tp_ocupacao_galpao
+                byte    %8.0g                 TP_OCUPACAO_GALPAO
+in_local_func_salas_outra_esc
+                byte    %8.0g                 IN_LOCAL_FUNC_SALAS_OUTRA_ESC
+in_local_func_outros
+                byte    %8.0g                 IN_LOCAL_FUNC_OUTROS
+in_predio_compartilhado
+                byte    %8.0g                 IN_PREDIO_COMPARTILHADO
+in_agua_filtrada
+                byte    %8.0g                 IN_AGUA_FILTRADA
+in_agua_rede_publica
+                byte    %8.0g                 IN_AGUA_REDE_PUBLICA
+in_agua_poco_artesiano
+                byte    %8.0g                 IN_AGUA_POCO_ARTESIANO
+in_agua_cacimba byte    %8.0g                 IN_AGUA_CACIMBA
+in_agua_fonte_rio
+                byte    %8.0g                 IN_AGUA_FONTE_RIO
+in_agua_inexistente
+                byte    %8.0g                 IN_AGUA_INEXISTENTE
+in_energia_rede_publica
+                byte    %8.0g                 IN_ENERGIA_REDE_PUBLICA
+in_energia_gerador
+                byte    %8.0g                 IN_ENERGIA_GERADOR
+in_energia_outros
+                byte    %8.0g                 IN_ENERGIA_OUTROS
+in_energia_inexistente
+                byte    %8.0g                 IN_ENERGIA_INEXISTENTE
+in_esgoto_rede_publica
+                byte    %8.0g                 IN_ESGOTO_REDE_PUBLICA
+in_esgoto_fossa byte    %8.0g                 IN_ESGOTO_FOSSA
+in_esgoto_inexistente
+                byte    %8.0g                 IN_ESGOTO_INEXISTENTE
+in_lixo_coleta_periodica
+                byte    %8.0g                 IN_LIXO_COLETA_PERIODICA
+in_lixo_queima  byte    %8.0g                 IN_LIXO_QUEIMA
+in_lixo_joga_outra_area
+                byte    %8.0g                 IN_LIXO_JOGA_OUTRA_AREA
+in_lixo_recicla byte    %8.0g                 IN_LIXO_RECICLA
+in_lixo_enterra byte    %8.0g                 IN_LIXO_ENTERRA
+in_lixo_outros  byte    %8.0g                 IN_LIXO_OUTROS
+in_sala_diretoria
+                byte    %8.0g                 IN_SALA_DIRETORIA
+in_sala_professor
+                byte    %8.0g                 IN_SALA_PROFESSOR
+in_laboratorio_informatica
+                byte    %8.0g                 IN_LABORATORIO_INFORMATICA
+in_laboratorio_ciencias
+                byte    %8.0g                 IN_LABORATORIO_CIENCIAS
+in_sala_atendimento_especial
+                byte    %8.0g                 IN_SALA_ATENDIMENTO_ESPECIAL
+in_quadra_esportes_coberta
+                byte    %8.0g                 IN_QUADRA_ESPORTES_COBERTA
+in_quadra_esportes_descoberta
+                byte    %8.0g                 IN_QUADRA_ESPORTES_DESCOBERTA
+in_quadra_esportes
+                byte    %8.0g                 IN_QUADRA_ESPORTES
+in_cozinha      byte    %8.0g                 IN_COZINHA
+in_biblioteca   byte    %8.0g                 IN_BIBLIOTECA
+in_sala_leitura byte    %8.0g                 IN_SALA_LEITURA
+in_biblioteca_sala_leitura
+                byte    %8.0g                 IN_BIBLIOTECA_SALA_LEITURA
+in_parque_infantil
+                byte    %8.0g                 IN_PARQUE_INFANTIL
+in_bercario     byte    %8.0g                 IN_BERCARIO
+in_banheiro_fora_predio
+                byte    %8.0g                 IN_BANHEIRO_FORA_PREDIO
+in_banheiro_dentro_predio
+                byte    %8.0g                 IN_BANHEIRO_DENTRO_PREDIO
+in_banheiro_ei  byte    %8.0g                 IN_BANHEIRO_EI
+in_banheiro_pne byte    %8.0g                 IN_BANHEIRO_PNE
+in_dependencias_pne
+                byte    %8.0g                 IN_DEPENDENCIAS_PNE
+in_secretaria   byte    %8.0g                 IN_SECRETARIA
+in_banheiro_chuveiro
+                byte    %8.0g                 IN_BANHEIRO_CHUVEIRO
+in_refeitorio   byte    %8.0g                 IN_REFEITORIO
+in_despensa     byte    %8.0g                 IN_DESPENSA
+in_almoxarifado byte    %8.0g                 IN_ALMOXARIFADO
+in_auditorio    byte    %8.0g                 IN_AUDITORIO
+in_patio_coberto
+                byte    %8.0g                 IN_PATIO_COBERTO
+in_patio_descoberto
+                byte    %8.0g                 IN_PATIO_DESCOBERTO
+in_alojam_aluno byte    %8.0g                 IN_ALOJAM_ALUNO
+in_alojam_professor
+                byte    %8.0g                 IN_ALOJAM_PROFESSOR
+in_area_verde   byte    %8.0g                 IN_AREA_VERDE
+in_lavanderia   byte    %8.0g                 IN_LAVANDERIA
+in_dependencias_outras
+                byte    %8.0g                 IN_DEPENDENCIAS_OUTRAS
+qt_salas_existentes
+                int     %8.0g                 QT_SALAS_EXISTENTES
+qt_salas_utilizadas
+                int     %8.0g                 QT_SALAS_UTILIZADAS
+in_equip_tv     byte    %8.0g                 IN_EQUIP_TV
+in_equip_videocassete
+                byte    %8.0g                 IN_EQUIP_VIDEOCASSETE
+in_equip_dvd    byte    %8.0g                 IN_EQUIP_DVD
+in_equip_parabolica
+                byte    %8.0g                 IN_EQUIP_PARABOLICA
+in_equip_copiadora
+                byte    %8.0g                 IN_EQUIP_COPIADORA
+in_equip_retroprojetor
+                byte    %8.0g                 IN_EQUIP_RETROPROJETOR
+in_equip_impressora
+                byte    %8.0g                 IN_EQUIP_IMPRESSORA
+in_equip_impressora_mult
+                byte    %8.0g                 IN_EQUIP_IMPRESSORA_MULT
+in_equip_som    byte    %8.0g                 IN_EQUIP_SOM
+in_equip_multimidia
+                byte    %8.0g                 IN_EQUIP_MULTIMIDIA
+in_equip_fax    byte    %8.0g                 IN_EQUIP_FAX
+in_equip_foto   byte    %8.0g                 IN_EQUIP_FOTO
+in_computador   byte    %8.0g                 IN_COMPUTADOR
+qt_equip_tv     int     %8.0g                 QT_EQUIP_TV
+qt_equip_videocassete
+                int     %8.0g                 QT_EQUIP_VIDEOCASSETE
+qt_equip_dvd    int     %8.0g                 QT_EQUIP_DVD
+qt_equip_parabolica
+                byte    %8.0g                 QT_EQUIP_PARABOLICA
+qt_equip_copiadora
+                int     %8.0g                 QT_EQUIP_COPIADORA
+qt_equip_retroprojetor
+                byte    %8.0g                 QT_EQUIP_RETROPROJETOR
+qt_equip_impressora
+                int     %8.0g                 QT_EQUIP_IMPRESSORA
+qt_equip_impressora_mult
+                byte    %8.0g                 QT_EQUIP_IMPRESSORA_MULT
+qt_equip_som    int     %8.0g                 QT_EQUIP_SOM
+qt_equip_multimidia
+                int     %8.0g                 QT_EQUIP_MULTIMIDIA
+qt_equip_fax    int     %8.0g                 QT_EQUIP_FAX
+qt_equip_foto   int     %8.0g                 QT_EQUIP_FOTO
+qt_computador   int     %8.0g                 QT_COMPUTADOR
+qt_comp_administrativo
+                int     %8.0g                 QT_COMP_ADMINISTRATIVO
+qt_comp_aluno   int     %8.0g                 QT_COMP_ALUNO
+in_internet     byte    %8.0g                 IN_INTERNET
+in_banda_larga  byte    %8.0g                 IN_BANDA_LARGA
+qt_funcionarios int     %8.0g                 QT_FUNCIONARIOS
+in_alimentacao  byte    %8.0g                 IN_ALIMENTACAO
+tp_aee          byte    %8.0g                 TP_AEE
+tp_atividade_complementar
+                byte    %8.0g                 TP_ATIVIDADE_COMPLEMENTAR
+in_fundamental_ciclos
+                byte    %8.0g                 IN_FUNDAMENTAL_CICLOS
+tp_localizacao_diferenciada
+                byte    %8.0g                 TP_LOCALIZACAO_DIFERENCIADA
+in_material_esp_quilombola
+                byte    %8.0g                 IN_MATERIAL_ESP_QUILOMBOLA
+in_material_esp_indigena
+                byte    %8.0g                 IN_MATERIAL_ESP_INDIGENA
+in_material_esp_nao_utiliza
+                byte    %8.0g                 IN_MATERIAL_ESP_NAO_UTILIZA
+in_educacao_indigena
+                byte    %8.0g                 IN_EDUCACAO_INDIGENA
+tp_indigena_lingua
+                byte    %8.0g                 TP_INDIGENA_LINGUA
+co_lingua_indigena
+                int     %8.0g                 CO_LINGUA_INDIGENA
+in_brasil_alfabetizado
+                byte    %8.0g                 IN_BRASIL_ALFABETIZADO
+in_final_semana byte    %8.0g                 IN_FINAL_SEMANA
+in_formacao_alternancia
+                byte    %8.0g                 IN_FORMACAO_ALTERNANCIA
+in_mediacao_presencial
+                byte    %8.0g                 IN_MEDIACAO_PRESENCIAL
+in_mediacao_semipresencial
+                byte    %8.0g                 IN_MEDIACAO_SEMIPRESENCIAL
+in_mediacao_ead byte    %8.0g                 IN_MEDIACAO_EAD
+in_especial_exclusiva
+                byte    %8.0g                 IN_ESPECIAL_EXCLUSIVA
+in_regular      byte    %8.0g                 IN_REGULAR
+in_eja          byte    %8.0g                 IN_EJA
+in_profissionalizante
+                byte    %8.0g                 IN_PROFISSIONALIZANTE
+in_comum_creche byte    %8.0g                 IN_COMUM_CRECHE
+in_comum_pre    byte    %8.0g                 IN_COMUM_PRE
+in_comum_fund_ai
+                byte    %8.0g                 IN_COMUM_FUND_AI
+in_comum_fund_af
+                byte    %8.0g                 IN_COMUM_FUND_AF
+in_comum_medio_medio
+                byte    %8.0g                 IN_COMUM_MEDIO_MEDIO
+in_comum_medio_integrado
+                byte    %8.0g                 IN_COMUM_MEDIO_INTEGRADO
+in_comum_medio_normal
+                byte    %8.0g                 IN_COMUM_MEDIO_NORMAL
+in_esp_exclusiva_creche
+                byte    %8.0g                 IN_ESP_EXCLUSIVA_CRECHE
+in_esp_exclusiva_pre
+                byte    %8.0g                 IN_ESP_EXCLUSIVA_PRE
+in_esp_exclusiva_fund_ai
+                byte    %8.0g                 IN_ESP_EXCLUSIVA_FUND_AI
+in_esp_exclusiva_fund_af
+                byte    %8.0g                 IN_ESP_EXCLUSIVA_FUND_AF
+in_esp_exclusiva_medio_medio
+                byte    %8.0g                 IN_ESP_EXCLUSIVA_MEDIO_MEDIO
+in_esp_exclusiva_medio_integr
+                byte    %8.0g                 IN_ESP_EXCLUSIVA_MEDIO_INTEGR
+in_esp_exclusiva_medio_normal
+                byte    %8.0g                 IN_ESP_EXCLUSIVA_MEDIO_NORMAL
+in_comum_eja_fund
+                byte    %8.0g                 IN_COMUM_EJA_FUND
+in_comum_eja_medio
+                byte    %8.0g                 IN_COMUM_EJA_MEDIO
+in_comum_eja_prof
+                byte    %8.0g                 IN_COMUM_EJA_PROF
+in_esp_exclusiva_eja_fund
+                byte    %8.0g                 IN_ESP_EXCLUSIVA_EJA_FUND
+in_esp_exclusiva_eja_medio
+                byte    %8.0g                 IN_ESP_EXCLUSIVA_EJA_MEDIO
+in_esp_exclusiva_eja_prof
+                byte    %8.0g                 IN_ESP_EXCLUSIVA_EJA_PROF
+in_comum_prof   byte    %8.0g                 IN_COMUM_PROF
+in_esp_exclusiva_prof
+                byte    %8.0g                 IN_ESP_EXCLUSIVA_PROF
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Sorted by: 
+
+==================================================================
+FILE: <NE_ROOT>\dados_restritos\Dados - SME/Atual (25.06)/matriculas/fila1018.dta
+==================================================================
+  N obs = 86046   N vars = 32
+
+Contains data from <NE_ROOT>\dados_restritos\Dados - SME/Atual (25.06)/matriculas/fila1018.dta
+ Observations:        86,046                  
+    Variables:            32                  5 Jul 2020 21:52
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ano             int     %8.0g                 Ano
+cd_aluno_sme    long    %12.0g                
+dt_solicitacao  str19   %19s                  
+cd_esc_solicitacao
+                long    %12.0g                
+an_letivo_solicitacao
+                int     %8.0g                 
+cd_serie_ensino_solicitacao
+                byte    %8.0g                 
+dt_encaminhamento
+                str19   %19s                  
+an_letivo_encaminhamento
+                int     %8.0g                 
+cd_esc_encaminhamento
+                long    %12.0g                
+cd_serie_ensino_encaminhamento
+                byte    %8.0g                 
+dt_matricula    str19   %19s                  
+an_letivo_matricula
+                int     %8.0g                 
+cd_esc_matricula
+                long    %12.0g                
+cd_serie_ensino_matricula
+                byte    %8.0g                 
+dt_desistencia  str19   %19s                  
+an_letivo_desistencia
+                int     %8.0g                 
+cd_esc_desistencia
+                long    %12.0g                
+cd_serie_ensino_desistencia
+                int     %8.0g                 
+cd_tipo_motivo_desistencia
+                byte    %8.0g                 
+dt_recusa       str19   %19s                  
+an_letivo_recusa
+                int     %8.0g                 
+cd_esc_recusa   long    %12.0g                
+cd_serie_ensino_recusa
+                byte    %8.0g                 
+cd_tipo_motivo_recusa
+                byte    %8.0g                 
+tipo_prioridade_encaminhamento
+                byte    %8.0g                 
+cd_sexo_aluno   str1    %9s                   
+tp_raca_cor     byte    %8.0g                 
+mes_nasc        byte    %8.0g                 
+ano_nasc        int     %8.0g                 
+cd_pais_mec     int     %8.0g                 
+cep_aluno       long    %12.0g                
+cpf_resp_aluno  double  %10.0g                
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Sorted by: 
+
+==================================================================
+FILE: <NE_ROOT>\dados_restritos\Dados - SME/Atual (25.06)/matriculas/matriculas1018.dta
+==================================================================
+  N obs = 86122   N vars = 34
+
+Contains data from <NE_ROOT>\dados_restritos\Dados - SME/Atual (25.06)/matriculas/matriculas1018.dta
+ Observations:        86,122                  
+    Variables:            34                  5 Jul 2020 21:54
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+serie_aluno     float   %9.0g                 
+total           double  %9.0g                 (sum) total
+ano             float   %9.0g                 
+cd_aluno_sme    long    %12.0g                
+dt_solicitacao  str19   %19s                  
+cd_esc_solicitacao
+                long    %12.0g                
+an_letivo_solicitacao
+                int     %8.0g                 
+cd_serie_ensino_solicitacao
+                byte    %8.0g                 
+dt_encaminhamento
+                str19   %19s                  
+an_letivo_encaminhamento
+                int     %8.0g                 
+cd_esc_encaminhamento
+                long    %12.0g                
+cd_serie_ensino_encaminhamento
+                byte    %8.0g                 
+dt_matricula    str19   %19s                  
+an_letivo_matricula
+                int     %8.0g                 
+cd_esc_matricula
+                long    %12.0g                
+cd_serie_ensino_matricula
+                byte    %8.0g                 
+dt_desistencia  str19   %19s                  
+an_letivo_desistencia
+                int     %8.0g                 
+cd_esc_desistencia
+                long    %12.0g                
+cd_serie_ensino_desistencia
+                int     %8.0g                 
+cd_tipo_motivo_desistencia
+                byte    %8.0g                 
+dt_recusa       str19   %19s                  
+an_letivo_recusa
+                int     %8.0g                 
+cd_esc_recusa   long    %12.0g                
+cd_serie_ensino_recusa
+                byte    %8.0g                 
+cd_tipo_motivo_recusa
+                byte    %8.0g                 
+tipo_prioridade_encaminhamento
+                byte    %8.0g                 
+cd_sexo_aluno   str1    %9s                   
+tp_raca_cor     byte    %8.0g                 
+mes_nasc        byte    %8.0g                 
+ano_nasc        int     %8.0g                 
+cd_pais_mec     int     %8.0g                 
+cep_aluno       long    %12.0g                
+cpf_resp_aluno  double  %10.0g                
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Sorted by: 
+
+==================================================================
+FILE: <NE_ROOT>\dados_restritos\Dados - SME/Atual (25.06)/matriculas/filamatriculasite.dta
+==================================================================
+  N obs = 12   N vars = 21
+
+Contains data from <NE_ROOT>\dados_restritos\Dados - SME/Atual (25.06)/matriculas/filamatriculasite.dta
+ Observations:            12                  
+    Variables:            21                  30 Jun 2020 23:50
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+mes_ano_ref     str6    %9s                   MES_ANO_REF
+mat_creche      double  %9.0g                 (sum) mat_creche
+mat_pre_escola  double  %9.0g                 (sum) mat_pre_escola
+mat_fund_i      double  %9.0g                 (sum) mat_fund_i
+mat_fund_ii     double  %9.0g                 (sum) mat_fund_ii
+mat_eja_i       double  %9.0g                 (sum) mat_eja_i
+mat_eja_ii      double  %9.0g                 (sum) mat_eja_ii
+mat_ens_med     double  %9.0g                 (sum) mat_ens_med
+mat_ed_prof     double  %8.0g                 (sum) mat_ed_prof
+mat_proc_creche double  %8.0g                 (sum) mat_proc_creche
+mat_proc_pre_esc
+                double  %8.0g                 (sum) mat_proc_pre_esc
+dem_creche      double  %9.0g                 (sum) dem_creche
+dem_pre         double  %9.0g                 (sum) dem_pre
+dem_fund_i      double  %8.0g                 (sum) dem_fund_i
+dem_fund_ii     double  %8.0g                 (sum) dem_fund_ii
+dem_eja_i       double  %8.0g                 (sum) dem_eja_i
+dem_eja_ii      double  %8.0g                 (sum) dem_eja_ii
+dem_pref_creche double  %8.0g                 (sum) dem_pref_creche
+dem_pref_pre    double  %8.0g                 (sum) dem_pref_pre
+ano             str2    %9s                   
+mes             str3    %9s                   
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Sorted by: mes_ano_ref
+
+==================================================================
+FILE: <NE_ROOT>\dados_restritos\Dados - SME/Atual (25.06)/Microdados_Demanda_Infantil_Escola_Especifica_FGV/fila_preferencia.dta
+==================================================================
+  N obs = 563105   N vars = 7
+
+Contains data from <NE_ROOT>\dados_restritos\Dados - SME/Atual (25.06)/Microdados_Demanda_Infantil_Escola_Especifica_FGV/fila_preferencia.dta
+ Observations:       563,105                  
+    Variables:             7                  21 Sep 2020 01:33
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+cd_aluno_sme    long    %12.0g                
+cd_unidade_educacao
+                long    %12.0g                
+dt_inicio       str19   %19s                  
+dt_fim          str19   %19s                  
+tp_preferencia  str1    %9s                   
+data_inicio     double  %td                   
+data_fim        double  %td                   
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Sorted by: 
+
+. di "=== FIM DESC B ==="
+=== FIM DESC B ===
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag02_descB.log
+  log type:  text
+ closed on:  22 Jul 2026, 10:25:49
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

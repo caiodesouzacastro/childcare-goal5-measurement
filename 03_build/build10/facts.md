@@ -1,0 +1,14 @@
+# BUILD10 facts (seis correcoes empiricas)
+
+- **C1 (duracao com censura por idade)** [build10.py]: reproduzindo a analise atual (censura so no fim do painel), a mediana KM do tempo ate encaminhamento cai de 220 (2010) para 163 dias (2017), queda de 57d. Corrigindo a censura para $\min$(painel, 47 meses de idade), a mediana passa a 301 (2010) e 185 (2017), queda de 116d. A correcao AUMENTA as medianas (mais nas coortes iniciais, que tinham solicitantes mais velhos) e AMPLIA a variacao entre 2010 e 2017. A afirmacao 'waiting barely moved' NAO se sustenta como antes: a queda e maior.
+
+- **C2 (elegivel dinamico)** [build10.py]: contando so os CEIs a <=2km JA ABERTOS na data de solicitacao, a mediana do conjunto elegivel cai de 32 (estatica) para 18; por ano, sobe ao longo do tempo com a rede. 0 pares <=2km (0.0%) nao tem dt_abertura; incluindo-os como sempre abertos a mediana dinamica seria 18. A diluicao multiescola sobrevive (mediana ainda alta).
+
+- **C3 (irmaos, experiencia previa)** [build10.py]: dos 113,467 pares, 36% do irmao mais velho estava so inscrito na inscricao do mais novo, 56% matriculado e 2% ja tinha saido. O coeficiente de ordem (mais novo inscrito mais cedo) e 8.5 no grupo matriculado e -0.8 no grupo so-inscrito; nao maior onde houve contato.
+
+- **C5 (reconstrucao)** [build10.py]: a saida faltante na aritmetica de 2010 do build07 (81.004-33.559-37.783=9.662 vs estoque 6.515) sao as DESISTENCIAS/retiradas antes do encaminhamento (6,093 em 2010) mais outras remocoes administrativas (-72); a identidade que fecha e new = encaminhamentos + saidas por idade + desistencias + outras + delta-estoque. O estoque proprio do universo em dez/2009 e 26,004 (oficial 74.707). A serie construida do paper e um limite INFERIOR do estoque oficial: razao construido/oficial ~0.31 em 2010, subindo a ~0.94 em 2017 --- a distancia inicial vem sobretudo da censura por idade (muitos solicitantes >47m nos primeiros anos). O numerador e a fila de primeiras solicitacoes ainda em espera, nao o estoque total registrado.
+
+- **C6 (associacao local)** [build10.py]: no painel distrito x coorte com FE de distrito e coorte, a fracao precoce (<12m) associa-se ao crescimento contemporaneo da matricula do distrito com coeficiente +0.004 (EP (0.014)); leads/lags reportados. Ha associacao local positiva, o que sustenta a interpretacao de resposta a um servico em melhoria.
+
+
+> **Nota de 25/10/2026 (OQ-21):** a reconstrução C5 deste build (estoque inicial 26.004) foi substituída pela P5 do build11 (`02_audit/build_p5.py`, `03_build/build11/p5.log`: estoque inicial 25.999), que é a tab:P5queue do paper. A diferença de 5 crianças entre os dois universos não foi investigada. A C6 deste build exclui 32 distritos por um erro de decodificação dos nomes acentuados (OQ-5; ver `03_build/build13_coverage/c6_fix.csv`).

@@ -1,0 +1,25 @@
+#### base: resolucao = 1o evento (referral/mat/aging/retirada), retirada=resolucao ####
+   c      n   age_res   age_sol     ival    resid
+2010 128352 36.728849 29.071909 7.639408 0.017531
+2011 146693 32.674069 23.428069 9.227829 0.018171
+2012 155292 28.847677 19.957816 8.870871 0.018990
+2013 153033 25.402283 18.174535 7.204704 0.023045
+2014 151772 23.361362 15.513176 7.825816 0.022370
+
+  QUEDA 2010->2014 na idade na resolucao = -13.37 m
+  (a) antecipacao da solicitacao = -13.56 m  (101%)
+  (b) intervalo ate resolucao    = +0.19 m  (-1%)
+  residuo max identidade = 2.30e-02 m (~0)
+
+#### matriz coorte x tipo de resolucao (%) ####
+  2010: ref=71.7% mat=0.0% aging=25.8% retirada=2.5%  (N=128,352)
+  2011: ref=74.6% mat=0.0% aging=24.0% retirada=1.4%  (N=146,693)
+  2012: ref=83.7% mat=0.0% aging=15.4% retirada=0.9%  (N=155,292)
+  2013: ref=87.8% mat=0.0% aging=11.5% retirada=0.6%  (N=153,033)
+  2014: ref=94.2% mat=0.0% aging=5.0% retirada=0.7%  (N=151,772)
+  >> aging-out 2010->2014: 25.8% -> 5.0%
+
+#### ROBUSTEZ ####
+  [base: referral-first, retirada=resol] queda=-13.37m  antecip=-13.56m (101%)  intervalo=+0.19m (-1%)  N2014=151,772
+  [(i) matricula preferida qdo ocorre] queda=-14.05m  antecip=-13.56m (96%)  intervalo=-0.49m (4%)  N2014=151,772
+  [(ii) retirada como censura (excluida)] queda=-13.80m  antecip=-13.56m (98%)  intervalo=-0.25m (2%)  N2014=151,772

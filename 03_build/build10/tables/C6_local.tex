@@ -1,0 +1,17 @@
+% requer booktabs. Descritivo (BUILD10).
+\begin{table}[htbp]\centering
+\caption{Local association between capacity growth and early registration (district and cohort fixed effects)}
+\label{tab:C6}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrr}
+\toprule
+Timing & Coef. & (SE) & N \\
+\midrule
+contemporaneous (birth year) & +0.004 & (0.014) & 448 \\
+lag (expansion year before) & -0.005 & (0.012) & 448 \\
+lead (expansion year after) & +0.011 & (0.018) & 448 \\
+\bottomrule
+\end{tabular}
+\\[3pt]{\footnotesize \textit{Note:} Panel of district $\times$ birth cohort (2010--2016). Dependent: share of the district-cohort's applicants who applied before 12 months. Regressor: log growth in December childcare enrolment (MAT\_CRECHE) in the district, at the contemporaneous birth year and one-year lead/lag. District and cohort fixed effects; standard errors clustered by district.}
+\end{table}

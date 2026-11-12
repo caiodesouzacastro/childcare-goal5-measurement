@@ -1,0 +1,42 @@
+%=======================================================================
+% Appendix B: discarded identification designs. State on 3 Nov 2026 (rounds apxB-final-2026-11-03b and fim-2026-11-03):
+% section title, opening paragraph, column header, third column, caption and note of Table B1 written by the author.
+% Columns 1-2 (with row numbers) and continuation lines kept from _arquivo_texto_IA_2026-10-27/v3. Written by hand; no generator.
+%=======================================================================
+
+\section{Discarded identification designs}
+\label{sec:appendix-designs}
+Table~\ref{tab:designs} records the candidate identification designs examined for this study, with the variation each would exploit and the test that terminated it. Every design was held to diagnostic criteria set in advance, and each row reports the criterion it failed and the statistic behind the failure. These statistics are diagnostics, not results: none is an estimate the paper relies on. Where a design has an outcome, it is access to childcare (centre openings, the statutory 31 March cut-off, capacity shocks, and pivotal centres), distance to the assigned centre (the July 2016 allocation reform), or, for the school admission threshold alone, mathematics proficiency in 2018, the only child outcome in the table.
+
+{\footnotesize
+\begin{longtable}{p{3.3cm}p{4.2cm}p{7.1cm}}
+\caption{Candidate identification designs and the tests that ruled them out}
+\label{tab:designs}\\
+\toprule
+Candidate design & Variation exploited & Outcome and terminating test \\
+\midrule
+\endfirsthead
+\multicolumn{3}{l}{\emph{Table \ref{tab:designs}, continued}}\\
+\toprule
+Candidate design & Variation exploited & Outcome and terminating test \\
+\midrule
+\endhead
+\multicolumn{3}{r}{\emph{continued on next page}}\\
+\endfoot
+\bottomrule
+\endlastfoot
+1. School admission threshold & Date of last referred child, by centre--band--year & Outcome: mathematics proficiency, 2018. Treatment coincides with $\mathbf{1}[Z\geq 0]$, and the estimate rests on the 18 children at $Z=0$: without them, $\tau$ falls from $0.683$ to $0.281$ and $p$ rises from $0.014$ to $0.385$ \\
+2. Leave-one-out threshold & Same, excluding the index child & Not estimable: the threshold is defined for 91 of 991 children, and only 5 lie within $\pm 10$ days of it \\
+3. Centre openings & Centres opened within 1\,km in a 12-month window & Outcome: age in months at first enrolment. Placebo not null: openings 12--24 months \emph{after} application have a larger coefficient ($+0.078$) than the instrument ($-0.044$) \\
+4. Statutory 31 March cut-off & Month of birth & Outcome: enrolment before 12 months. No first stage at the childcare margin: no break at the cut-off (March 0.154, April 0.167), while the share falls from 0.155 for January births to 0.045 for December births \\
+5. Within-radius assignment & Centre assigned within postcode $\times$ month & Balance of the assigned centre rejected on every characteristic, including infant room ($F=2754$) and partner status ($F=3464$) \\
+6. Capacity shocks & Places lost or gained in the grid within 180 days & Outcome: days waiting. The pre-application placebo exceeds the instrument ($+4.87$ vs.\ $+3.29$ days), and the estimate vanishes under sector $\times$ semester fixed effects ($+0.42$, n.s.) \\
+7. Transfer-formula notches & Contracted places at 60/90/120 steps & No excess mass below any of the three steps: $+0.35$, $-1.34$, $+0.45$ (s.e.\ 0.44, 0.32, 0.34) \\
+8. Pivotal centres & Shocks in concentrated grids & Outcomes: entry age and days waiting. The first stage on entry age has the wrong sign ($-0.52$), and the placebo on days waiting is $+7.40$ days \\
+9. Class-formation rule & $\lceil N/M \rceil$, $M \in \{7,9,12,25\}$ & The only design to pass its first stage: $F = 53.5$, $575$, $282$, $1208$ for actual on predicted class size. Terminated by the class-formation validity test \\
+10. Class-formation validity & Same & Timing test failed: in 94.9\% of cases, authorized places rise in the same semester as the enrolment crossing \\
+11. Allocation reform, July 2016 & Daily matching on the 2\,km grid & Outcome: distance to the assigned centre. No break at the reform ($+0.037$\,km, s.e.\ 0.026); assignments beyond 2\,km lie at a median of 4.73\,km \\
+12. Reversed estimand & District births as a shifter of capacity & Peak lags are not ordered across age bands, and a placebo on municipal elementary schools (EMEF) reproduces the childcare pattern; the standard deviation of births is 1,296 in total, 100 within districts, and 85.6 net of district and year effects \\
+\end{longtable}
+}
+\tabnote{\emph{Source:} diagnostic reports DIAG01, DIAG02 and DIAG04--14, archived with the replication files (DIAG01, DIAG02 and DIAG04--10 reconstructed from execution logs). \emph{Sample and variables:} as stated in each report. Each row corresponds to one design, except rows 9 and 10, which are two stages of the same design. The last column reports the test that ruled out each design and its statistic.}

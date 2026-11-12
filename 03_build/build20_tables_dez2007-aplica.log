@@ -1,0 +1,9 @@
+[gravado e relido] <NE_ROOT>/04_paper/assets/tables/c/C_series_body.tex 28 linhas
+estabilidade | Registered demand, snapshot at month end (\%) | {3: np.float64(-20.547), 6: np.float64(-18.87), 9: np.float64(-17.527), 12: np.float64(-53.189)} | dez/set 3.035
+estabilidade | New first requests, 12 months to month end (\%) | {3: np.float64(-8.318), 6: np.float64(-5.381), 9: np.float64(-8.181), 12: np.float64(-6.157)} | dez/set 0.753
+estabilidade | Median age at first request, same window (months) | {3: np.float64(-5.2), 6: np.float64(-4.6), 9: np.float64(-4.1), 12: np.float64(-3.8)} | dez/set 0.927
+estabilidade | Referred within 365 days, same window (share) | {3: np.float64(0.13), 6: np.float64(0.146), 9: np.float64(0.172), 12: np.float64(0.191)} | dez/set 1.11
+[gravado e relido] <NE_ROOT>/04_paper/assets/tables/c/C_stab_body.tex 13 linhas
+[gravado e relido] <NE_ROOT>/04_paper/assets/tables/c/C_recon_body.tex 18 linhas
+[gravado e relido] <NE_ROOT>/04_paper/assets/tables/c/C_dates_body.tex 27 linhas
+[copiado] <NE_ROOT>/04_paper/assets/figures/C_fig_goal.pdf

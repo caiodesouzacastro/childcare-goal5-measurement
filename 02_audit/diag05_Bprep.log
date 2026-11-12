@@ -1,0 +1,186 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag05_Bprep.log
+  log type:  text
+ opened on:  22 Jul 2026, 11:58:56
+
+. 
+. *==============================================================
+. di "########## Pares CEP-CEI com dt_abertura (grade 0.02deg 3x3) ##########"
+########## Pares CEP-CEI com dt_abertura (grade 0.02deg 3x3) ##########
+
+. use "$aud\cei_openings_novo.dta", clear
+
+. gen clat0 = round(ceilat/0.02)
+
+. gen clon0 = round(ceilon/0.02)
+
+. expand 9
+(18,504 observations created)
+
+. bysort ceicode: gen j=_n-1
+
+. gen clat = clat0 + (mod(j,3)-1)
+
+. gen clon = clon0 + (floor(j/3)-1)
+
+. keep ceicode ceilat ceilon dt_abertura clat clon
+
+. tempfile grid
+
+. save `grid'
+file <HOME>\AppData\Local\Temp\ST_1d6c_000001.tmp saved as .dta format
+
+. 
+. use "$dsme\cepcentroide.dta", clear
+
+. rename latitude ceplat
+
+. rename longitude ceplon
+
+. gen clat = round(ceplat/0.02)
+
+. gen clon = round(ceplon/0.02)
+
+. joinby clat clon using `grid'
+
+. gen double a = sin((ceilat-ceplat)*_pi/360)^2 + cos(ceplat*_pi/180)*cos(ceilat*_pi/180)*sin((ceilon-ceplon)*_pi/360)^2
+
+. gen double dist_km = 2*6371*asin(sqrt(a))
+
+. keep if dist_km <= 2
+(2,390,415 observations deleted)
+
+. keep cep ceicode dt_abertura dist_km
+
+. di "N pares novo (<=2km) = " _N
+N pares novo (<=2km) = 1326550
+
+. save "$aud\cep_cei_pairs_novo.dta", replace
+(file <NE_ROOT>\_audit\cep_cei_pairs_novo.dta not found)
+file <NE_ROOT>\_audit\cep_cei_pairs_novo.dta saved
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## B_novo: TODAS criancas com sol+nasc+cep (incl. nao-matriculadas) ##########"
+########## B_novo: TODAS criancas com sol+nasc+cep (incl. nao-matriculadas) ##########
+
+. * Pass 1 - primeira matricula por crianca (DESFECHO)
+. use cd_aluno_sme dt_matricula using "$fila", clear
+
+. gen double dt_mat = date(dt_matricula,"DMY hms")
+(1,169,483 missing values generated)
+
+. keep if !missing(dt_mat)
+(1,169,483 observations deleted)
+
+. collapse (min) dt_mat_first=dt_mat, by(cd_aluno_sme)
+
+. gen byte ever_mat = 1
+
+. tempfile matf
+
+. save `matf'
+file <HOME>\AppData\Local\Temp\ST_1d6c_000002.tmp saved as .dta format
+
+. di "N criancas com alguma matricula = " _N
+N criancas com alguma matricula = 1320889
+
+. 
+. * Pass 2 - primeira solicitacao por crianca + covariaveis
+. use cd_aluno_sme dt_solicitacao ano_nasc mes_nasc cep_aluno an_letivo_solicitacao using "$fila", clear
+
+. gen double dt_sol = date(dt_solicitacao,"DMY hms")
+
+. keep if !missing(dt_sol)
+(0 observations deleted)
+
+. gsort cd_aluno_sme dt_sol
+
+. by cd_aluno_sme: keep if _n==1
+(1,773,411 observations deleted)
+
+. di "N criancas com alguma solicitacao = " _N
+N criancas com alguma solicitacao = 1524653
+
+. * validade
+. gen byte nasc_ok = !missing(ano_nasc) & !missing(mes_nasc)
+
+. gen byte cep_ok  = !missing(cep_aluno) & cep_aluno>0
+
+. keep if nasc_ok & cep_ok
+(93 observations deleted)
+
+. di "N com nasc+cep validos = " _N
+N com nasc+cep validos = 1524560
+
+. gen ano_sol = year(dt_sol)
+
+. * juntar matricula (desfecho)
+. merge 1:1 cd_aluno_sme using `matf', keep(master match) nogen
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                       203,715
+        from master                   203,715  
+        from using                          0  
+
+    Matched                         1,320,845  
+    -----------------------------------------
+
+. replace ever_mat = 0 if missing(ever_mat)
+(203,715 real changes made)
+
+. compress
+  variable ano_sol was float now int
+  variable dt_sol was double now int
+  variable dt_mat_first was double now int
+  (21,343,840 bytes saved)
+
+. save "$aud\B_novo.dta", replace
+(file <NE_ROOT>\_audit\B_novo.dta not found)
+file <NE_ROOT>\_audit\B_novo.dta saved
+
+. di "--- N B_novo = " _N
+--- N B_novo = 1524560
+
+. di "--- nunca matricularam ---"
+--- nunca matricularam ---
+
+. count if ever_mat==0
+  203,715
+
+. di "--- por ano de solicitacao ---"
+--- por ano de solicitacao ---
+
+. tab ano_sol if inrange(ano_sol,2008,2018)
+
+    ano_sol |      Freq.     Percent        Cum.
+------------+-----------------------------------
+       2008 |      7,747        0.51        0.51
+       2009 |     39,560        2.60        3.11
+       2010 |     81,004        5.33        8.44
+       2011 |    124,240        8.17       16.61
+       2012 |    220,922       14.53       31.13
+       2013 |    191,149       12.57       43.70
+       2014 |    174,676       11.49       55.19
+       2015 |    179,869       11.83       67.02
+       2016 |    172,341       11.33       78.35
+       2017 |    163,922       10.78       89.13
+       2018 |    165,331       10.87      100.00
+------------+-----------------------------------
+      Total |  1,520,761      100.00
+
+. 
+. di "=== FIM Bprep ==="
+=== FIM Bprep ===
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag05_Bprep.log
+  log type:  text
+ closed on:  22 Jul 2026, 11:59:25
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

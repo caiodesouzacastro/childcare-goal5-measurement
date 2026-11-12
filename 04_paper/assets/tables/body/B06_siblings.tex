@@ -1,0 +1,55 @@
+% Float do corpo (revisao pos-EE). Tabulars copiados verbatim por 02_audit/build12_bodyfloats.py.
+\begin{table}[htbp]\centering
+\caption{Within-family differences in age at first application}
+\label{tab:S5_robustez}
+\label{tab:P4stage}
+\label{tab:siblingsN2}
+\footnotesize
+\par\medskip\textbf{Panel A. Birth-order coefficient under alternative cohort controls}\par\smallskip
+\fitbox{%
+\begin{tabular}{llrrr}
+\toprule
+Specification & Dep.\ var & Coef.\ (birth order) & (SE) & N \\
+\midrule
+Linear birth-year trend & Age at application & $-$7.091 & (0.113) & 159,786 \\
+Birth-year dummies & Age at application & $-$7.201 & (0.112) & 159,786 \\
+Birth year-month dummies & Age at application & $-$6.757 & (0.116) & 159,786 \\
+Year dummies + district$\times$year & Age at application & $-$7.147 & (0.112) & 159,786 \\
+Year dummies, spacing 24--48m & Age at application & $-$10.599 & (0.322) & 79,728 \\
+Placebo: female $\sim$ order & Female & 0.010 & (0.006) & 159,786 \\
+Placebo: Black $\sim$ order & Black & $-$0.005 & (0.004) & 159,786 \\
+\bottomrule
+\end{tabular}}
+\par\medskip\textbf{Panel B. By the older sibling's position}\par\smallskip
+\begin{tabular}{lrrr}
+\toprule
+Sample & Coef. & (SE) & Pairs \\
+\midrule
+All pairs (baseline) & $-$7.20 & (0.11) & 79,893 \\
+(a) older applied only & $-$5.89 & (0.18) & 24,439 \\
+(b) older referred, not enrolled & 3.42 & (0.52) & 4,246 \\
+(c) older already enrolled & 4.22 & (0.15) & 51,208 \\
+Older applied before younger's birth & 3.21 & (0.13) & 53,561 \\
+\bottomrule
+\end{tabular}
+\par\medskip\textbf{Panel C. Joint registration, residential moves and spacing}\par\smallskip
+\fitbox{%
+\begin{tabular}{lrrrrr}
+\toprule
+Sample of sibling pairs & Coef. & (SE) & Pairs & Median raw & Younger \\
+ & & & & difference & earlier (\%) \\
+\midrule
+All pairs (baseline) & $-7.20$ & (0.11) & 79,893 & $-10$ & 78.1 \\
+Both children registered on the same day & $-4.98$ & (0.11) & 6,950 & $-21$ & 100.0 \\
+Excluding same-day registration & $-5.03$ & (0.12) & 72,943 & $-8$ & 76.0 \\
+Both registered within 30 days of each other & $-4.44$ & (0.07) & 16,330 & $-21$ & 100.0 \\
+Excluding registrations within 30 days & $-0.88$ & (0.14) & 63,563 & $-6$ & 72.4 \\
+Older applied before the younger's birth & $+3.21$ & (0.13) & 53,561 & $-5$ & 70.1 \\
+Older applied on or after the younger's birth & $-4.00$ & (0.16) & 26,332 & $-20$ & 94.4 \\
+Same postcode for both children & $-8.25$ & (0.14) & 49,658 & $-11$ & 80.1 \\
+Birth spacing of 9 months or more & $-7.65$ & (0.11) & 78,649 & $-10$ & 78.2 \\
+Excl.\ 30-day registration, same postcode, spacing $\geq$ 9 & $-1.20$ & (0.18) & 36,934 & $-6$ & 73.7 \\
+\bottomrule
+\end{tabular}}
+\tabnote{\emph{Source:} SME childcare request record; guardian taxpayer identifier. \emph{Sample:} guardians with exactly two children, both born 2010--2016 (79,893 pairs; 159,786 children); the identifier groups children by registered guardian, not by biological siblinghood. \emph{Variables:} age at first application in months, except the two placebo rows of Panel A (female, Black). \emph{Exercise:} regression of the outcome on birth order with family fixed effects and the stated cohort controls (birth-year dummies unless stated), standard errors clustered by family. Because the cohort controls absorb the common trend, Coef.\ is the younger-minus-older gap beyond the cohort profile. Panel B rows (a)--(c) classify the older child's furthest stage on the day the younger applied, which selects on the younger's own timing; the last row, older applied before the younger was born, does not. Panel C: same-day and 30-day refer to the absolute difference between the two children's first application dates; median raw difference and share with the younger earlier are unadjusted and include the cohort trend. Descriptive.}
+\end{table}

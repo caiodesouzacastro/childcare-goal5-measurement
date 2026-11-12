@@ -1,0 +1,14 @@
+% requer \usepackage{booktabs}. Tabela descritiva.
+\begin{table}[htbp]\centering
+\caption{Busca por variavel que registre COMO a solicitacao foi feita}
+\label{tab:S7d}
+\small
+\begin{tabular}{p{6cm}p{5cm}p{3.5cm}}
+\toprule
+Termos buscados & Onde & Resultado \\
+\midrule
+online, internet, portal, autoatendimento, canal, posto, presencial, forma\_cadastro, origem\_cadastro, meio\_solicitacao & 02\_audit\*.do/*.py ; 01\_dados\_publicos dicionarios ; colunas de Fila1018 & nao existe variavel de canal na microdados da fila \\
+\bottomrule
+\end{tabular}
+\\[3pt]{\footnotesize \textit{Note:} Busca (grep) por online/internet/portal/autoatendimento/canal/posto/presencial/forma\_cadastro/origem\_cadastro/meio\_solicitacao nos scripts de 02\_audit, nos dicionarios de 01\_dados\_publicos e nas colunas de Fila1018. As ocorrencias ``CANAL''/``POSTO'' aparecem apenas no perfil das turmas (campos de escola), nao na fila. A microdados da demanda (Fila1018) contem apenas datas, codigos de escola/serie, prioridade, sexo, raca, mes/ano de nascimento, CEP e CPF do responsavel.}
+\end{table}

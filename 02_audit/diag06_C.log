@@ -1,0 +1,308 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag06_C.log
+  log type:  text
+ opened on:  22 Jul 2026, 13:10:49
+
+. 
+. use "$aud\child_expo.dta", clear
+
+. gen idade_entrada = (year(dt_mat_first)-ano_nasc)*12 + (month(dt_mat_first)-mes_nasc) if ever_mat==1
+(203,715 missing values generated)
+
+. replace idade_entrada=. if !inrange(idade_entrada,0,72)
+(5,966 real changes made, 5,966 to missing)
+
+. gen espera_dias = dt_mat_first - dt_sol if ever_mat==1
+(203,715 missing values generated)
+
+. gen byte mat12 = (ever_mat==1 & dt_mat_first<=dt_sol+365)
+
+. gen anomat = year(dt_mat_first)
+(203,715 missing values generated)
+
+. gen mesmat = month(dt_mat_first)
+(203,715 missing values generated)
+
+. rename cep_aluno cep
+
+. merge m:1 cep using "$ba\cep_renda_pop_2010.dta", keepusing(renda) keep(master match) nogen
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                        25,004
+        from master                    25,004  
+        from using                          0  
+
+    Matched                         1,499,556  
+    -----------------------------------------
+
+. 
+. *==============================================================
+. di "########## C1 — idade de entrada por ANO de matricula ##########"
+########## C1 — idade de entrada por ANO de matricula ##########
+
+. table anomat if inrange(anomat,2010,2018), stat(count idade_entrada) stat(mean idade_entrada) stat(p50 idade_entrada)
+
+--------------------------------------------------------------------
+        |  Number of non-missing values       Mean   50th percentile
+--------+-----------------------------------------------------------
+anomat  |                                                           
+  2010  |                        53,094   39.28352                42
+  2011  |                        49,322   39.72219                37
+  2012  |                       162,853   34.69192                34
+  2013  |                       165,025   33.53439                32
+  2014  |                       170,572   29.84398                27
+  2015  |                       156,759   27.81142                24
+  2016  |                       187,744   27.57619                23
+  2017  |                       105,034   30.92276                28
+  2018  |                       211,106   23.26718                20
+  Total |                     1,261,509   30.13524                27
+--------------------------------------------------------------------
+
+. di "--- MENSAL 2012-2014 (localizar o degrau): mediana idade ---"
+--- MENSAL 2012-2014 (localizar o degrau): mediana idade ---
+
+. gen ym = ym(anomat,mesmat)
+(203,715 missing values generated)
+
+. format ym %tm
+
+. table ym if inrange(anomat,2012,2014), stat(p50 idade_entrada) stat(count idade_entrada) nototals
+
+-------------------------------------------------------
+      |  50th percentile   Number of non-missing values
+------+------------------------------------------------
+ym    |                                                
+  624 |               51                          9,184
+  625 |               42                         15,568
+  626 |               41                         13,761
+  627 |               40                          8,432
+  628 |               42                          7,386
+  629 |               42                          5,929
+  630 |               42                          5,560
+  631 |               45                          6,987
+  632 |               40                          3,539
+  633 |               39                          4,807
+  634 |               37                          3,476
+  635 |               26                         78,224
+  636 |               45                         20,708
+  637 |               37                         24,096
+  638 |               40                         15,057
+  639 |               39                         10,026
+  640 |               40                          8,545
+  641 |               39                          4,329
+  642 |               41                          3,847
+  643 |               42                          5,380
+  644 |               42                          3,889
+  645 |               41                          2,773
+  646 |               41                          2,245
+  647 |               22                         64,130
+  648 |               37                         26,896
+  649 |               33                         22,147
+  650 |               36                         12,740
+  651 |               36                          7,541
+  652 |               35                          6,119
+  653 |               35                          3,460
+  654 |               39                          4,783
+  655 |               38                          4,392
+  656 |               36                          4,606
+  657 |               36                          3,594
+  658 |               34                          2,631
+  659 |               18                         71,663
+-------------------------------------------------------
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## C2 — espera / solic / mat12 por ANO de solicitacao ##########"
+########## C2 — espera / solic / mat12 por ANO de solicitacao ##########
+
+. table ano_sol if inrange(ano_sol,2010,2018), stat(count cd_aluno_sme) stat(p50 espera_dias) stat(mean mat12)
+
+--------------------------------------------------------------------
+        |  Number of non-missing values   50th percentile       Mean
+        |                  cd_aluno_sme       espera_dias      mat12
+--------+-----------------------------------------------------------
+ano_sol |                                                           
+  2010  |                        81,004                93   .5222458
+  2011  |                       124,240               384     .37632
+  2012  |                       220,922               217   .6134156
+  2013  |                       191,149               243   .6155355
+  2014  |                       174,676               251   .6303385
+  2015  |                       179,869               206    .713497
+  2016  |                       172,341               199   .6974313
+  2017  |                       163,922               192   .7989227
+  2018  |                       165,331               113   .8074045
+  Total |                     1,473,454               201   .6551416
+--------------------------------------------------------------------
+
+. 
+. di ""
+
+
+. di "########## C3 — idade de entrada por ano de matricula x quartil renda / estoque ##########"
+########## C3 — idade de entrada por ano de matricula x quartil renda / estoque ##########
+
+. xtile rq = renda if !missing(renda), nq(4)
+
+. xtile eq = estoque_1km, nq(4)
+
+. di "--- mediana idade por anomat x quartil de RENDA ---"
+--- mediana idade por anomat x quartil de RENDA ---
+
+. table anomat rq if inrange(anomat,2010,2018), stat(p50 idade_entrada) nototals
+
+------------------------------------
+       |     4 quantiles of renda   
+       |      1      2      3      4
+-------+----------------------------
+anomat |                            
+  2010 |     41     42     42     43
+  2011 |     36     37     37     38
+  2012 |     34     34     34     33
+  2013 |     32     32     32     32
+  2014 |     27     27     27     26
+  2015 |     23     25     24     23
+  2016 |     24     24     23     23
+  2017 |     28     28     29     29
+  2018 |     19     20     20     20
+------------------------------------
+
+. di "--- mediana idade por anomat x quartil de ESTOQUE_1km ---"
+--- mediana idade por anomat x quartil de ESTOQUE_1km ---
+
+. table anomat eq if inrange(anomat,2010,2018), stat(p50 idade_entrada) nototals
+
+------------------------------------------
+       |     4 quantiles of estoque_1km   
+       |       1        2        3       4
+-------+----------------------------------
+anomat |                                  
+  2010 |      44       41       35      28
+  2011 |      38       38       36      32
+  2012 |      36       34       33      29
+  2013 |      34       33       32      27
+  2014 |      30       28       26      21
+  2015 |      27       26       23      19
+  2016 |      27       25       23      20
+  2017 |      32       30       29      25
+  2018 |      23       22       20      18
+------------------------------------------
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## C2b/C5 — encaminhamentos e prioridade por ano (Fila) ##########"
+########## C2b/C5 — encaminhamentos e prioridade por ano (Fila) ##########
+
+. use an_letivo_encaminhamento dt_encaminhamento tipo_prioridade_encaminhamento using "$fila", clear
+
+. gen double dt_enc = date(dt_encaminhamento,"DMY hms")
+(417,675 missing values generated)
+
+. di "--- N encaminhamentos por ano (an_letivo_encaminhamento) ---"
+--- N encaminhamentos por ano (an_letivo_encaminhamento) ---
+
+. tab an_letivo_encaminhamento if inrange(an_letivo_encaminhamento,2010,2018)
+
+an_letivo_e |
+ncaminhamen |
+         to |      Freq.     Percent        Cum.
+------------+-----------------------------------
+       2010 |     62,546        2.27        2.27
+       2011 |     56,733        2.05        4.32
+       2012 |    110,205        3.99        8.31
+       2013 |    341,031       12.35       20.66
+       2014 |    342,376       12.40       33.06
+       2015 |    366,932       13.29       46.35
+       2016 |    465,536       16.86       63.21
+       2017 |    418,809       15.17       78.37
+       2018 |    597,188       21.63      100.00
+------------+-----------------------------------
+      Total |  2,761,356      100.00
+
+. di "--- tipo_prioridade_encaminhamento por ano (so encaminhados) ---"
+--- tipo_prioridade_encaminhamento por ano (so encaminhados) ---
+
+. gen byte prior = !missing(tipo_prioridade_encaminhamento)
+
+. table an_letivo_encaminhamento if inrange(an_letivo_encaminhamento,2010,2018), stat(count dt_enc) stat(mean prior)
+
+-------------------------------------------------------------------
+                         |  Number of non-missing values       Mean
+                         |                        dt_enc      prior
+-------------------------+-----------------------------------------
+an_letivo_encaminhamento |                                         
+  2010                   |                        62,546   .0233268
+  2011                   |                        56,733   .0494421
+  2012                   |                       110,205   .0564584
+  2013                   |                       341,031   .0524087
+  2014                   |                       342,376   .1141494
+  2015                   |                       366,932   .1259143
+  2016                   |                       465,536   .1546755
+  2017                   |                       418,809   .1421101
+  2018                   |                       597,188   .0926074
+  Total                  |                     2,761,356   .1088128
+-------------------------------------------------------------------
+
+. di "--- composicao tipo_prioridade por ano ---"
+--- composicao tipo_prioridade por ano ---
+
+. tab an_letivo_encaminhamento tipo_prioridade_encaminhamento if inrange(an_letivo_encaminhamento,2010,2018), row
+
++----------------+
+| Key            |
+|----------------|
+|   frequency    |
+| row percentage |
++----------------+
+
+an_letivo_ |
+encaminham |             tipo_prioridade_encaminhamento
+      ento |         1          3          4          5          6 |     Total
+-----------+-------------------------------------------------------+----------
+      2010 |     1,459          0          0          0          0 |     1,459 
+           |    100.00       0.00       0.00       0.00       0.00 |    100.00 
+-----------+-------------------------------------------------------+----------
+      2011 |     2,805          0          0          0          0 |     2,805 
+           |    100.00       0.00       0.00       0.00       0.00 |    100.00 
+-----------+-------------------------------------------------------+----------
+      2012 |     6,180         40          2          0          0 |     6,222 
+           |     99.32       0.64       0.03       0.00       0.00 |    100.00 
+-----------+-------------------------------------------------------+----------
+      2013 |    17,238        573         62          0          0 |    17,873 
+           |     96.45       3.21       0.35       0.00       0.00 |    100.00 
+-----------+-------------------------------------------------------+----------
+      2014 |    20,616        708         18     17,740          0 |    39,082 
+           |     52.75       1.81       0.05      45.39       0.00 |    100.00 
+-----------+-------------------------------------------------------+----------
+      2015 |    22,590        751          9     17,874      4,978 |    46,202 
+           |     48.89       1.63       0.02      38.69      10.77 |    100.00 
+-----------+-------------------------------------------------------+----------
+      2016 |    22,808        454          0      3,482     45,263 |    72,007 
+           |     31.67       0.63       0.00       4.84      62.86 |    100.00 
+-----------+-------------------------------------------------------+----------
+      2017 |    29,044        477          0     14,376     15,620 |    59,517 
+           |     48.80       0.80       0.00      24.15      26.24 |    100.00 
+-----------+-------------------------------------------------------+----------
+      2018 |    16,614        320          0     19,347     19,023 |    55,304 
+           |     30.04       0.58       0.00      34.98      34.40 |    100.00 
+-----------+-------------------------------------------------------+----------
+     Total |   139,354      3,323         91     72,819     84,884 |   300,471 
+           |     46.38       1.11       0.03      24.23      28.25 |    100.00 
+
+. 
+. di "=== FIM C ==="
+=== FIM C ===
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag06_C.log
+  log type:  text
+ closed on:  22 Jul 2026, 13:11:35
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

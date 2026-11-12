@@ -1,0 +1,49 @@
+==================== (a) deriva da SEADE
+SEADE/Censo - 1: 2010 +1.0% | 2022 +14.4%
+ ano  pop_0a3    pop_main  seade_err     r
+2010   569975 564,210.000      1.022 1.228
+2011   568777 564,367.238      0.781 1.232
+2012   567578 565,567.746      0.355 1.236
+2013   566380 564,475.499      0.337 1.240
+2014   565181 562,664.422      0.447 1.244
+2015   563983 561,446.145      0.452 1.249
+2016   561221 556,631.059      0.825 1.253
+2017   558459 549,574.207      1.617 1.257
+2018   555696 542,607.177      2.412 1.261
+2019   552934 530,170.970      4.294 1.265
+2020   550172 513,695.900      7.101 1.269
+2021   540995 492,140.240      9.927 1.274
+2022   531819 464,826.000     14.412 1.278
+anos da secao 4 (2010-2018): erro da SEADE contra a serie ajustada, de 0.3 a 2.4 %
+==================== (b) secao 4: sensibilidade das parcelas por coorte ao ajuste nascidos/Censo
+matriculados <24m, registro de pedidos {2010: (7.4, 9.1), 2011: (22.8, 28.1), 2012: (33.2, 41.0), 2016: (53.8, 67.4)} | (observado, reescalado)
+matriculados <24m, registros de matricula (EOL) {2010: (25.1, 30.8), 2011: (28.3, 34.9), 2012: (31.9, 39.4), 2016: (53.2, 66.6)} | (observado, reescalado)
+registrados <12m {2010: (11.0, 13.5), 2012: (38.3, 47.3), 2016: (50.1, 62.8)} | (observado, reescalado)
+registrados <47m (coortes 2012-2014) {2012: (79.4, 98.1), 2013: (81.5, 101.1), 2014: (83.7, 104.2)} | (observado, reescalado)
+  artefato <24m 2010->2016 (observado): pedidos 46.4 p.p., EOL 28.1 p.p., parcela de cobertura 39.4%
+  artefato <24m 2010->2016 (reescalado): pedidos 58.3 p.p., EOL 35.8 p.p., parcela de cobertura 38.6%
+  registro <12m 2012->2016 (observado): 11.8 p.p.
+  registro <12m 2012->2016 (reescalado): 15.4 p.p.
+  fator r de 2010 a 2016: {2010: 1.228, 2011: 1.232, 2012: 1.236, 2013: 1.24, 2014: 1.244, 2015: 1.249, 2016: 1.253} | variacao relativa 2010->2016: 2.0%
+  razoes que nao dependem do denominador: cobertura de entrantes (pedidos/EOL), completude por semestre, encaminhamento entre solicitantes
+[gravado e relido] denominador_serie.csv
+==================== (c) bracos com a serie ajustada (principal)
+ ano   pop_main  A_stage  A_age  A_mun  B_set  B_dez   AB obriga  conf_reportado
+2010 564,210.00    30.26  38.72  22.72  51.03  56.50 1.83      A             NaN
+2011 564,367.24    43.59  37.89  34.61  52.99  65.91 1.43      A             NaN
+2012 565,567.75    46.43  40.47  36.37  54.73  68.78 1.36      A             NaN
+2013 564,475.50    47.35  44.98  36.89  57.60  68.92 1.36      A             NaN
+2014 562,664.42    50.16  47.71  39.19  58.45  70.78 1.31      A             NaN
+2015 561,446.15    53.17  50.90  42.33  63.18  77.62 1.25      A           77.62
+2016 556,631.06    59.44  56.97  49.04  68.07  81.38 1.20      A           81.38
+2017 549,574.21    62.47  59.54  52.18  68.66  87.05 1.21      A           87.05
+2018 542,607.18    67.43  64.46  57.12  79.13  94.43 1.15      A           94.43
+2019 530,170.97    73.03  69.68  62.41  81.74  97.28 1.12      A           96.31
+2020 513,695.90    74.13  70.28  65.55  98.17  99.86 1.03      A           99.86
+2021 492,140.24    76.78  72.26  70.30  92.86  99.85 0.96      B           99.85
+2022 464,826.00    83.81  78.61    NaN  97.46  99.81 0.96      B           99.99
+2023        NaN      NaN    NaN    NaN    NaN  99.84  NaN     --             NaN
+2024        NaN      NaN    NaN    NaN    NaN  99.85  NaN     --             NaN
+2025        NaN      NaN    NaN    NaN    NaN  99.85  NaN     --             NaN
+A (etapa) >= 75 em: [2021, 2022] | B obriga em: [2021, 2022] | A obriga e A >= 75 em: [] | min A/B quando A obriga: 1.03 max: 1.83
+[gravado] C_arms_v3_body.tex 28 linhas

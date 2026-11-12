@@ -1,0 +1,79 @@
+item,valor,origem
+cobertura entrantes 2010,42.1,build15_tables.py (= cob_por_ano.csv)
+cobertura fev 2010,42.0,build15_tables.py
+cobertura outros meses 2010,58.1,build15_tables.py
+unidades fev 2010: N/p50/%>=90,"1,324 / 0.41 / 0.1",build15_tables.py
+cobertura entrantes 2011,47.9,build15_tables.py (= cob_por_ano.csv)
+cobertura fev 2011,47.9,build15_tables.py
+cobertura outros meses 2011,60.1,build15_tables.py
+unidades fev 2011: N/p50/%>=90,"1,328 / 0.47 / 0.8",build15_tables.py
+cobertura entrantes 2012,57.2,build15_tables.py (= cob_por_ano.csv)
+cobertura fev 2012,41.4,build15_tables.py
+cobertura outros meses 2012,98.3,build15_tables.py
+unidades fev 2012: N/p50/%>=90,"1,493 / 0.40 / 1.9",build15_tables.py
+cobertura entrantes 2013,98.6,build15_tables.py (= cob_por_ano.csv)
+cobertura fev 2013,98.3,build15_tables.py
+cobertura outros meses 2013,99.3,build15_tables.py
+unidades fev 2013: N/p50/%>=90,"1,519 / 1.00 / 97.0",build15_tables.py
+cobertura entrantes 2014,99.2,build15_tables.py (= cob_por_ano.csv)
+cobertura fev 2014,99.0,build15_tables.py
+cobertura outros meses 2014,99.6,build15_tables.py
+unidades fev 2014: N/p50/%>=90,"1,550 / 1.00 / 98.8",build15_tables.py
+cobertura entrantes 2015,98.8,build15_tables.py (= cob_por_ano.csv)
+cobertura fev 2015,98.3,build15_tables.py
+cobertura outros meses 2015,99.7,build15_tables.py
+unidades fev 2015: N/p50/%>=90,"1,660 / 1.00 / 97.3",build15_tables.py
+cobertura entrantes 2016,99.3,build15_tables.py (= cob_por_ano.csv)
+cobertura fev 2016,99.0,build15_tables.py
+cobertura outros meses 2016,99.8,build15_tables.py
+unidades fev 2016: N/p50/%>=90,"1,838 / 1.00 / 98.5",build15_tables.py
+cobertura entrantes 2017,98.9,build15_tables.py (= cob_por_ano.csv)
+cobertura fev 2017,98.4,build15_tables.py
+cobertura outros meses 2017,99.8,build15_tables.py
+unidades fev 2017: N/p50/%>=90,"1,881 / 1.00 / 96.7",build15_tables.py
+cobertura entrantes 2018,99.9,build15_tables.py (= cob_por_ano.csv)
+cobertura fev 2018,99.9,build15_tables.py
+cobertura outros meses 2018,99.9,build15_tables.py
+unidades fev 2018: N/p50/%>=90,"1,999 / 1.00 / 99.9",build15_tables.py
+matriculados <24m coorte 2010: fila / EOL,7.4 / 25.1,N4_enrolled.tex; cob_eol_coorte.csv
+matriculados <24m coorte 2011: fila / EOL,22.8 / 28.3,N4_enrolled.tex; cob_eol_coorte.csv
+matriculados <24m coorte 2012: fila / EOL,33.2 / 31.9,N4_enrolled.tex; cob_eol_coorte.csv
+matriculados <24m coorte 2013: fila / EOL,43.4 / 42.9,N4_enrolled.tex; cob_eol_coorte.csv
+matriculados <24m coorte 2014: fila / EOL,44.1 / 43.2,N4_enrolled.tex; cob_eol_coorte.csv
+matriculados <24m coorte 2015: fila / EOL,46.6 / 45.6,N4_enrolled.tex; cob_eol_coorte.csv
+matriculados <24m coorte 2016: fila / EOL,53.8 / 53.2,N4_enrolled.tex; cob_eol_coorte.csv
+"ingenua x corrigida: One-year referral, by birth cohort",0.563 $\rightarrow$ 0.876 (+0.313) || 0.753 $\rightarrow$ 0.876 (+0.123),janela_cif.csv; P3_series.tex; N4_enrolled.tex; janela_distritos.csv
+"ingenua x corrigida: One-year referral, by year of application",0.510 $\rightarrow$ 0.903 (+0.393) || 0.646 $\rightarrow$ 0.903 (+0.257),janela_cif.csv; P3_series.tex; N4_enrolled.tex; janela_distritos.csv
+"ingenua x corrigida: One-year enrollment, by birth cohort",0.468 $\rightarrow$ 0.747 (+0.279) || 0.644 $\rightarrow$ 0.747 (+0.103),janela_cif.csv; P3_series.tex; N4_enrolled.tex; janela_distritos.csv
+"ingenua x corrigida: One-year referral, composition held at 2013",0.498 $\rightarrow$ 0.885 (+0.387) || 0.753 $\rightarrow$ 0.885 (+0.132),janela_cif.csv; P3_series.tex; N4_enrolled.tex; janela_distritos.csv
+ingenua x corrigida: Registered before 12 months (\% of births),11.0 $\rightarrow$ 50.1 (+39.1) || 41.5 $\rightarrow$ 50.1 (+8.6),janela_cif.csv; P3_series.tex; N4_enrolled.tex; janela_distritos.csv
+ingenua x corrigida: Districts where early registration rose,96 of 96; median +0.407 || 85 of 96; median +0.042,janela_cif.csv; P3_series.tex; N4_enrolled.tex; janela_distritos.csv
+Tabela servico coorte 2013,"140,811 0.417 0.753 0.945 0.023 203 223 | mat 0.644 RMST 230",E1_cohort.tex; P2_endpoint.tex
+Tabela servico coorte 2016,"128,143 0.522 0.876 0.993 0.000 181 171 | mat 0.747 RMST 220",E1_cohort.tex; P2_endpoint.tex
+encaminhamento 365d por semestre 2013S1,"0.707 / mat 0.611 (N 87,365)",reforma_semestral.csv
+encaminhamento 365d por semestre 2013S2,"0.568 / mat 0.474 (N 67,559)",reforma_semestral.csv
+encaminhamento 365d por semestre 2014S1,"0.739 / mat 0.638 (N 80,344)",reforma_semestral.csv
+encaminhamento 365d por semestre 2014S2,"0.620 / mat 0.519 (N 69,068)",reforma_semestral.csv
+encaminhamento 365d por semestre 2015S1,"0.810 / mat 0.691 (N 82,977)",reforma_semestral.csv
+encaminhamento 365d por semestre 2015S2,"0.760 / mat 0.639 (N 74,548)",reforma_semestral.csv
+encaminhamento 365d por semestre 2016S1,"0.800 / mat 0.682 (N 87,782)",reforma_semestral.csv
+encaminhamento 365d por semestre 2016S2,"0.724 / mat 0.616 (N 66,841)",reforma_semestral.csv
+encaminhamento 365d por semestre 2017S1,"0.916 / mat 0.765 (N 83,849)",reforma_semestral.csv
+encaminhamento 365d por semestre 2017S2,"0.887 / mat 0.762 (N 64,418)",reforma_semestral.csv
+encaminhamento 365d por semestre 2018S1,"0.974 / mat 0.821 (N 85,583)",reforma_semestral.csv
+"especificacao: Base: referral, aging out competing",0.753 & 0.876 & +0.123 | --,P2_robust.tex; P2_endpoint.tex; P3_series.tex; build15/p3boot_2013_2016.log; build15/p3_2013_2016.log
+especificacao: Recorded withdrawal as a further competing event,0.750 & 0.872 & +0.122 | --,P2_robust.tex; P2_endpoint.tex; P3_series.tex; build15/p3boot_2013_2016.log; build15/p3_2013_2016.log
+especificacao: Children who applied after 47 months counted as aging out,0.698 & 0.876 & +0.178 | --,P2_robust.tex; P2_endpoint.tex; P3_series.tex; build15/p3boot_2013_2016.log; build15/p3_2013_2016.log
+especificacao: Applications in the first calendar semester only,0.820 & 0.911 & +0.091 | --,P2_robust.tex; P2_endpoint.tex; P3_series.tex; build15/p3boot_2013_2016.log; build15/p3_2013_2016.log
+especificacao: Applications dated July 2012--December 2013 excluded,0.793 & 0.876 & +0.083 | --,P2_robust.tex; P2_endpoint.tex; P3_series.tex; build15/p3boot_2013_2016.log; build15/p3_2013_2016.log
+especificacao: Window starting with the 2014 cohort,0.761 & 0.876 & +0.115 | --,P2_robust.tex; P2_endpoint.tex; P3_series.tex; build15/p3boot_2013_2016.log; build15/p3_2013_2016.log
+especificacao: Enrollment as the terminal event,0.644 & 0.747 & +0.103 | --,P2_robust.tex; P2_endpoint.tex; P3_series.tex; build15/p3boot_2013_2016.log; build15/p3_2013_2016.log
+especificacao: Composition held at 2013 (main cells),"0.753 & 0.885 & +0.132 | [+0.1282, +0.1335]",P2_robust.tex; P2_endpoint.tex; P3_series.tex; build15/p3boot_2013_2016.log; build15/p3_2013_2016.log
+"especificacao: Composition held at 2013, coarse / fine cells",-- & -- & +0.132 / +0.124 | --,P2_robust.tex; P2_endpoint.tex; P3_series.tex; build15/p3boot_2013_2016.log; build15/p3_2013_2016.log
+especificacao: Composition and service environment held fixed,"0.753 & 0.870 & +0.116 | coarse +0.127, fine +0.115",P2_robust.tex; P2_endpoint.tex; P3_series.tex; build15/p3boot_2013_2016.log; build15/p3_2013_2016.log
+"especificacao: Unweighted, bootstrap interval","0.753 & 0.876 & +0.123 | [+0.1201, +0.1260]",P2_robust.tex; P2_endpoint.tex; P3_series.tex; build15/p3boot_2013_2016.log; build15/p3_2013_2016.log
+decomposicao exata 2013-2016: composicao / oferta / residual,-0.009 / +0.016 / +0.116,build15/p3_2013_2016.log
+"timing coorte 2013: <6/<12/<24 (% nascidos), <12|<24, pesos 2010, pesos 2016",26.1 41.5 62.3 | 0.666 0.666 0.666,build15_tables.py (spine+SINASC; valida N4); P5_timing.tex; N3_district.tex
+"timing coorte 2014: <6/<12/<24 (% nascidos), <12|<24, pesos 2010, pesos 2016",28.1 44.1 66.3 | 0.664 0.665 0.664,build15_tables.py (spine+SINASC; valida N4); P5_timing.tex; N3_district.tex
+"timing coorte 2015: <6/<12/<24 (% nascidos), <12|<24, pesos 2010, pesos 2016",31.4 48.6 69.4 | 0.701 0.702 0.701,build15_tables.py (spine+SINASC; valida N4); P5_timing.tex; N3_district.tex
+"timing coorte 2016: <6/<12/<24 (% nascidos), <12|<24, pesos 2010, pesos 2016",33.4 50.1 70.9 | 0.707 0.708 0.707,build15_tables.py (spine+SINASC; valida N4); P5_timing.tex; N3_district.tex

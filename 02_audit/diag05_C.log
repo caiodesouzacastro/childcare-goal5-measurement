@@ -1,0 +1,180 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag05_C.log
+  log type:  text
+ opened on:  22 Jul 2026, 12:12:45
+
+. 
+. use "$aud\child_expo.dta", clear
+
+. di "N = " _N
+N = 1524560
+
+. 
+. * --- DESFECHOS (dt_matricula so aqui) ---
+. gen byte mat12 = (ever_mat==1 & dt_mat_first<=dt_sol+365)
+
+. gen idade_entrada = (year(dt_mat_first)-ano_nasc)*12 + (month(dt_mat_first)-mes_nasc) if ever_mat==1
+(203,715 missing values generated)
+
+. gen espera_dias = dt_mat_first - dt_sol if ever_mat==1
+(203,715 missing values generated)
+
+. gen byte valid = inrange(idade_entrada,0,72)
+
+. di "--- mat12 (matriculou <=365d da solicitacao) ---"
+--- mat12 (matriculou <=365d da solicitacao) ---
+
+. tab mat12
+
+      mat12 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |    541,871       35.54       35.54
+          1 |    982,689       64.46      100.00
+------------+-----------------------------------
+      Total |  1,524,560      100.00
+
+. di "--- idade_entrada valida (0..72) N ---"
+--- idade_entrada valida (0..72) N ---
+
+. count if valid==1
+  1,314,879
+
+. 
+. * FE setor x ano
+. gen setor = floor(cep_aluno/10000)
+
+. egen setoryear = group(setor ano_sol)
+
+. di "N setores (floor cep/10000): "
+N setores (floor cep/10000): 
+
+. codebook setor, compact
+
+Variable       Obs Unique      Mean  Min   Max  Label
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+setor      1524560    729  508.6476    0  9999  
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+. 
+. program define run1
+  1.     * args: dep instr spec  ; usa global cond
+.     args dep instr spec
+  2.     if `spec'==1 {
+  3.         qui reg `dep' `instr' estoque_1km i.ano_sol i.mes_nasc $cond
+  4.     }
+  5.     else {
+  6.         qui areg `dep' `instr' estoque_1km i.mes_nasc $cond, absorb(setoryear)
+  7.     }
+  8.     qui test `instr'
+  9.     di "RES| `dep' | `instr' | spec`spec' | coef=" %10.5f _b[`instr'] " se=" %9.5f _se[`instr'] ///
+>        " t=" %8.2f _b[`instr']/_se[`instr'] " N=" %9.0f e(N) " r2=" %6.4f e(r2) " F=" %10.2f r(F)
+ 10. end
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## C1 (spec1) e C2 (spec2, FE setor x ano) — instrumento = expo12_1km ##########"
+########## C1 (spec1) e C2 (spec2, FE setor x ano) — instrumento = expo12_1km ##########
+
+. global cond ""
+
+. run1 mat12 expo12_1km 1
+RES| mat12 | expo12_1km | spec1 | coef=   0.01836 se=  0.00034 t=   53.91 N=  1524560 r2=0.0853 F=   2906.32
+
+. run1 mat12 expo12_1km 2
+RES| mat12 | expo12_1km | spec2 | coef=   0.00904 se=  0.00043 t=   21.00 N=  1524560 r2=0.1861 F=    441.02
+
+. global cond "if valid==1"
+
+. run1 idade_entrada expo12_1km 1
+RES| idade_entrada | expo12_1km | spec1 | coef=  -0.11199 se=  0.01340 t=   -8.36 N=  1314879 r2=0.1018 F=     69.87
+
+. run1 idade_entrada expo12_1km 2
+RES| idade_entrada | expo12_1km | spec2 | coef=  -0.04386 se=  0.01767 t=   -2.48 N=  1314879 r2=0.1336 F=      6.16
+
+. run1 espera_dias  expo12_1km 1
+RES| espera_dias | expo12_1km | spec1 | coef=  -6.38533 se=  0.18450 t=  -34.61 N=  1314879 r2=0.0794 F=   1197.73
+
+. run1 espera_dias  expo12_1km 2
+RES| espera_dias | expo12_1km | spec2 | coef=  -1.01451 se=  0.22793 t=   -4.45 N=  1314879 r2=0.2207 F=     19.81
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## C3 — PLACEBO 1 = pre12_1km ##########"
+########## C3 — PLACEBO 1 = pre12_1km ##########
+
+. global cond ""
+
+. run1 mat12 pre12_1km 1
+RES| mat12 | pre12_1km | spec1 | coef=   0.01638 se=  0.00038 t=   43.15 N=  1524560 r2=0.0847 F=   1861.91
+
+. run1 mat12 pre12_1km 2
+RES| mat12 | pre12_1km | spec2 | coef=   0.00119 se=  0.00048 t=    2.49 N=  1524560 r2=0.1859 F=      6.20
+
+. global cond "if valid==1"
+
+. run1 idade_entrada pre12_1km 1
+RES| idade_entrada | pre12_1km | spec1 | coef=  -0.08424 se=  0.01492 t=   -5.64 N=  1314879 r2=0.1018 F=     31.86
+
+. run1 idade_entrada pre12_1km 2
+RES| idade_entrada | pre12_1km | spec2 | coef=   0.03452 se=  0.01958 t=    1.76 N=  1314879 r2=0.1336 F=      3.11
+
+. run1 espera_dias  pre12_1km 1
+RES| espera_dias | pre12_1km | spec1 | coef= -11.06174 se=  0.20539 t=  -53.86 N=  1314879 r2=0.0806 F=   2900.69
+
+. run1 espera_dias  pre12_1km 2
+RES| espera_dias | pre12_1km | spec2 | coef=  -3.06110 se=  0.25257 t=  -12.12 N=  1314879 r2=0.2207 F=    146.89
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## C4 — PLACEBO 2 = post_1km ##########"
+########## C4 — PLACEBO 2 = post_1km ##########
+
+. global cond ""
+
+. run1 mat12 post_1km 1
+RES| mat12 | post_1km | spec1 | coef=  -0.00678 se=  0.00036 t=  -18.75 N=  1524560 r2=0.0838 F=    351.42
+
+. run1 mat12 post_1km 2
+RES| mat12 | post_1km | spec2 | coef=  -0.00435 se=  0.00046 t=   -9.49 N=  1524560 r2=0.1859 F=     90.15
+
+. global cond "if valid==1"
+
+. run1 idade_entrada post_1km 1
+RES| idade_entrada | post_1km | spec1 | coef=   0.20665 se=  0.01427 t=   14.48 N=  1314879 r2=0.1019 F=    209.68
+
+. run1 idade_entrada post_1km 2
+RES| idade_entrada | post_1km | spec2 | coef=   0.07773 se=  0.01882 t=    4.13 N=  1314879 r2=0.1336 F=     17.06
+
+. run1 espera_dias  post_1km 1
+RES| espera_dias | post_1km | spec1 | coef=   3.36999 se=  0.19660 t=   17.14 N=  1314879 r2=0.0788 F=    293.83
+
+. run1 espera_dias  post_1km 2
+RES| espera_dias | post_1km | spec2 | coef=   1.48616 se=  0.24275 t=    6.12 N=  1314879 r2=0.2207 F=     37.48
+
+. 
+. di ""
+
+
+. di "########## C5 — coeficientes (spec2 FE) lado a lado: ver linhas RES spec2 acima ##########"
+########## C5 — coeficientes (spec2 FE) lado a lado: ver linhas RES spec2 acima ##########
+
+. 
+. di "=== FIM diag05_C ==="
+=== FIM diag05_C ===
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag05_C.log
+  log type:  text
+ closed on:  22 Jul 2026, 12:15:54
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

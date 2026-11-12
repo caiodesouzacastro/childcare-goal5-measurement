@@ -1,0 +1,50 @@
+carregando child_master + spine...
+  N=1,524,560
+
+########## C1 - duracao (censura por idade) ##########
+  C1h ANTES: 2010=220 2017=163 (queda 57d). DEPOIS: 2010=301 2017=185 (queda 116d).
+
+########## C2 - conjunto elegivel dinamico ##########
+  pares <=2km: 1,326,550; sem dt_abertura: 0 (0.0%)
+  contando CEIs abertos na data de solicitacao (pode levar ~1min)...
+  mediana estatica=32 | dinamica=18 | dinamica(incl missing)=18
+
+########## C3 - irmaos (experiencia previa) ##########
+  pares (2 filhos, ambos 2010-2016) = 113,467
+    i_applied: 40,847 (36.0%)
+    ii_referred: 6,440 (5.7%)
+    iii_enrolled: 63,583 (56.0%)
+    iv_exited: 2,597 (2.3%)
+  reg i_applied: coef(ordem)=-0.83 (EP 0.06) N=81,694
+  reg ii_referred: coef(ordem)=11.88 (EP 0.32) N=12,880
+  reg iii_enrolled: coef(ordem)=8.49 (EP 0.14) N=127,166
+  reg iv_exited: coef(ordem)=14.60 (EP 0.64) N=5,194
+  spacing 12--23m: coef=-7.74 (EP 0.24) pares=24,953
+  spacing 24--35m: coef=-10.27 (EP 0.47) pares=25,972
+  spacing 36--47m: coef=-12.59 (EP 0.86) pares=18,902
+  spacing 48m+: coef=nan (EP nan) pares=19,191
+  spacing 24--48m: coef=-9.77 (EP 0.30) pares=47,927
+
+########## C4 - matriz de oferta rapida ##########
+
+########## C5 - reconstrucao da fila ##########
+  DEM_CRECHE dez oficial: 2009=74707, 2010=100401
+  estoque proprio do universo em dez/2009 = 26,004 (oficial dez/2009 = 74,707)
+  ano | start   new    ref   aged   des   resid  official recon ratio
+  2010 |   26004  81004  32616  36975  6093     -72  100,401  31396 0.31
+  2011 |   31396 124240  33314  30245  5527      61  101,165  86489 0.85
+  2012 |   86489 220922 154171  66695  6225      14   97,160  80306 0.83
+  2013 |   80306 191149 135383  46421  1605    -297   96,696  88343 0.91
+  2014 |   88343 174676 143089  36237  1207       9   94,191  82477 0.88
+  2015 |   82477 179869 157859  36998  1076      26   75,194  66387 0.88
+  2016 |   66387 172341 151989  25344  1223      69   65,040  60103 0.92
+  2017 |   60103 163922 160351  20778  1460     181   44,092  41255 0.94
+  2018 |   41255 165331 170470  16346  1138      -4      n/d  18636 nan
+  C5a 2010 identidade interna: start 26,004 + new 81,004 - ref 32,616 - aged 36,975 - des 6,093 - resid -72 = recon_stock 31,396
+       (a saida que faltava na tabela do build07 sao DESISTENCIAS 6,093 + outras remocoes -72)
+
+########## C6 - associacao local ##########
+  painel distrito x coorte: 448 celulas, 64 distritos
+  early ~ gcap_l0: +0.0043 (EP 0.0139) N=448
+  early ~ gcap_l1: -0.0049 (EP 0.0123) N=448
+  early ~ gcap_l-1: +0.0115 (EP 0.0185) N=448

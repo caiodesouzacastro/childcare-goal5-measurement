@@ -1,0 +1,246 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag04_Eredo.log
+  log type:  text
+ opened on:  22 Jul 2026, 11:44:39
+
+. 
+. *==============================================================
+. di "########## E1 — tamanho de turma via matriculas do Fila ##########"
+########## E1 — tamanho de turma via matriculas do Fila ##########
+
+. use cd_aluno_sme cd_esc_matricula an_letivo_matricula cd_serie_ensino_matricula dt_matricula ///
+>     using "$fila", clear
+
+. gen double dt_mat = date(dt_matricula,"DMY hms")
+(1,169,483 missing values generated)
+
+. keep if !missing(dt_mat) & !missing(cd_esc_matricula) & !missing(an_letivo_matricula)
+(1,169,483 observations deleted)
+
+. gen serie_aluno = .
+(2,128,581 missing values generated)
+
+. replace serie_aluno = 1 if inlist(cd_serie_ensino_matricula,1,2,3)
+(302,910 real changes made)
+
+. replace serie_aluno = 2 if inlist(cd_serie_ensino_matricula,4,5,6)
+(510,979 real changes made)
+
+. replace serie_aluno = 3 if inlist(cd_serie_ensino_matricula,11,27)
+(437,416 real changes made)
+
+. replace serie_aluno = 4 if inlist(cd_serie_ensino_matricula,28,29)
+(288,825 real changes made)
+
+. replace serie_aluno = 5 if inlist(cd_serie_ensino_matricula,23,24)
+(381,158 real changes made)
+
+. replace serie_aluno = 6 if inlist(cd_serie_ensino_matricula,25,26)
+(172,367 real changes made)
+
+. keep if !missing(serie_aluno)
+(34,926 observations deleted)
+
+. * dedup: 1 registro por crianca x escola x ano x serie
+. duplicates drop cd_aluno_sme cd_esc_matricula an_letivo_matricula serie_aluno, force
+
+Duplicates in terms of cd_aluno_sme cd_esc_matricula an_letivo_matricula serie_aluno
+
+(311,163 observations deleted)
+
+. contract cd_esc_matricula an_letivo_matricula serie_aluno, freq(turma)
+
+. di "N celulas escola-ano-serie = " _N
+N celulas escola-ano-serie = 70590
+
+. di "--- distribuicao tamanho de turma (todas series creche/pre 1-6) ---"
+--- distribuicao tamanho de turma (todas series creche/pre 1-6) ---
+
+. sum turma, detail
+
+                          Frequency
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            1              1
+ 5%            2              1
+10%            3              1       Obs              70,590
+25%            8              1       Sum of wgt.      70,590
+
+50%           17                      Mean           25.25134
+                        Largest       Std. dev.      29.70475
+75%           32            551
+90%           54            574       Variance       882.3719
+95%           73            591       Skewness       4.392758
+99%          144            595       Kurtosis       39.07728
+
+. foreach s in 1 2 3 {
+  2.     di "--- serie `s' ---"
+  3.     sum turma if serie_aluno==`s', detail
+  4. }
+--- serie 1 ---
+
+                          Frequency
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            1              1
+ 5%            2              1
+10%            3              1       Obs              12,099
+25%            9              1       Sum of wgt.      12,099
+
+50%           17                      Mean           21.21853
+                        Largest       Std. dev.      19.17647
+75%           27            202
+90%           42            225       Variance       367.7372
+95%           54            229       Skewness       3.054902
+99%           91            296       Kurtosis       21.48699
+--- serie 2 ---
+
+                          Frequency
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            1              1
+ 5%            2              1
+10%            4              1       Obs              16,805
+25%            9              1       Sum of wgt.      16,805
+
+50%           20                      Mean           24.88307
+                        Largest       Std. dev.      22.22292
+75%           34            209
+90%           52            224       Variance       493.8582
+95%           65            314       Skewness       2.299904
+99%          105            322       Kurtosis       13.71665
+--- serie 3 ---
+
+                          Frequency
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            1              1
+ 5%            2              1
+10%            3              1       Obs              16,535
+25%            7              1       Sum of wgt.      16,535
+
+50%           15                      Mean           21.74702
+                        Largest       Std. dev.      22.04327
+75%           29            267
+90%           49            289       Variance       485.9059
+95%           63            297       Skewness       2.793284
+99%          103            349       Kurtosis       18.37578
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## E2 — censo2018 casa com CEIs de Fila? ##########"
+########## E2 — censo2018 casa com CEIs de Fila? ##########
+
+. use "$aud\escolas_parsed.dta", clear
+
+. cap drop cei
+
+. gen byte cei = (strpos(tipoesc,"CEI")>0 | strpos(tipoesc,"CR.P")>0 | strpos(tipoesc,"CEMEI")>0 | strpos(tipoesc,"CCI")>0)
+
+. keep if cei==1
+(2,369 observations deleted)
+
+. gen long codesc = escola
+
+. merge m:1 codesc using "$aud\fila_codesc.dta", keep(match) nogen
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                             2,379  
+    -----------------------------------------
+
+. di "N CEI que casam com Fila = " _N
+N CEI que casam com Fila = 2379
+
+. keep escola codinep
+
+. gen byte tem_codinep = !missing(codinep) & codinep>0
+
+. di "  com codinep valido:"
+  com codinep valido:
+
+. count if tem_codinep==1
+  2,379
+
+. preserve
+
+.     use codinep using "$dsme\escolas\censo2018.dta", clear
+
+.     duplicates drop
+
+Duplicates in terms of all variables
+
+(0 observations are duplicates)
+
+.     drop if missing(codinep)
+(0 observations deleted)
+
+.     gen byte no_censo=1
+
+.     tempfile cs
+
+.     save `cs'
+file <HOME>\AppData\Local\Temp\ST_52e4_000002.tmp saved as .dta format
+
+.     di "  codinep distintos em censo2018 = " _N
+  codinep distintos em censo2018 = 286014
+
+. restore
+
+. merge m:1 codinep using `cs', keep(master match) gen(mc)
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                           177
+        from master                       177  (mc==1)
+        from using                          0  (mc==2)
+
+    Matched                             2,202  (mc==3)
+    -----------------------------------------
+
+. di "--- CEI-em-Fila cujo codinep casa com censo2018 ---"
+--- CEI-em-Fila cujo codinep casa com censo2018 ---
+
+. count if mc==3
+  2,202
+
+. di "--- CEI-em-Fila com codinep valido ---"
+--- CEI-em-Fila com codinep valido ---
+
+. count if tem_codinep==1
+  2,379
+
+. di "--- taxa: casam / com codinep ---"
+--- taxa: casam / com codinep ---
+
+. count if mc==3 & tem_codinep==1
+  2,202
+
+. 
+. di ""
+
+
+. di "--- variaveis de infraestrutura em censo2018 ---"
+--- variaveis de infraestrutura em censo2018 ---
+
+. use "$dsme\escolas\censo2018.dta" in 1, clear
+
+. ds qt_* in_bercario in_agua_rede_publica in_esgoto_rede_publica in_energia_rede_publica in_banheiro_ei in_parque_infantil in_cozinha in_refeitorio tp_dependencia in_conveniada_pp
+qt_salas_e~s  qt_equip_tv   qt_equip_dvd  qt_equip_c~a  qt_equip_i~a  qt_equip_som  qt_equip_fax  qt_computa~r  qt_comp_al~o  in_bercario   in_esgoto~ca  in_banheir~i  in_cozinha    tp_depende~a
+qt_salas_u~s  qt_equip_v~e  qt_equip_p~a  qt_equip_r~r  qt_equip_i~t  qt_equip_m~a  qt_equip_f~o  qt_comp_ad~o  qt_funcion~s  in_agua_re~a  in_energia~a  in_parque_~l  in_refeito~o  in_conveni~p
+
+. 
+. di "=== FIM Eredo ==="
+=== FIM Eredo ===
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag04_Eredo.log
+  log type:  text
+ closed on:  22 Jul 2026, 11:44:57
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

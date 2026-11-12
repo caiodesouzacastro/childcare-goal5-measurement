@@ -1,0 +1,284 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag06_explore.log
+  log type:  text
+ opened on:  22 Jul 2026, 12:55:10
+
+. 
+. di "########## Fila: codigos de serie e vars de pessoa ##########"
+########## Fila: codigos de serie e vars de pessoa ##########
+
+. use "$fila" in 1, clear
+
+. ds
+ano           cd_esc_sol~o  dt_encamin~o  cd_serie_~to  cd_esc_mat~a  an_letivo~ia  cd_tipo_m~ia  cd_esc_rec~a  tipo_prior~o  mes_nasc      cep_aluno
+cd_aluno_sme  an_letivo~ao  an_letivo~to  dt_matricula  cd_serie_~la  cd_esc_des~a  dt_recusa     cd_serie_~sa  cd_sexo_al~o  ano_nasc      cpf_resp_a~o
+dt_solicit~o  cd_serie_~ao  cd_esc_enc~o  an_letivo~la  dt_desiste~a  cd_serie_~ia  an_letivo~sa  cd_tipo_m~sa  tp_raca_cor   cd_pais_mec
+
+. di "--- serie de matricula / encaminhamento existem? sexo/raca/cpf_resp ---"
+--- serie de matricula / encaminhamento existem? sexo/raca/cpf_resp ---
+
+. 
+. use cd_serie_ensino_matricula cd_serie_ensino_encaminhamento cd_sexo_aluno tp_raca_cor cpf_resp_aluno using "$fila", clear
+
+. di "--- tab cd_serie_ensino_matricula ---"
+--- tab cd_serie_ensino_matricula ---
+
+. tab cd_serie_ensino_matricula, miss
+
+cd_serie_en |
+sino_matric |
+        ula |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |    302,909        9.18        9.18
+          3 |          1        0.00        9.18
+          4 |    510,976       15.49       24.68
+          6 |          3        0.00       24.68
+          8 |      3,452        0.10       24.78
+         12 |          1        0.00       24.78
+         14 |     11,329        0.34       25.13
+         15 |          3        0.00       25.13
+         16 |     10,437        0.32       25.44
+         18 |      8,897        0.27       25.71
+         23 |    381,156       11.56       37.27
+         24 |          2        0.00       37.27
+         25 |    172,367        5.23       42.50
+         27 |    437,416       13.26       55.76
+         28 |    288,825        8.76       64.52
+        297 |        747        0.02       64.54
+          . |  1,169,543       35.46      100.00
+------------+-----------------------------------
+      Total |  3,298,064      100.00
+
+. di "--- tab cd_sexo_aluno ---"
+--- tab cd_sexo_aluno ---
+
+. tab cd_sexo_aluno, miss
+
+cd_sexo_alu |
+         no |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          F |  1,611,610       48.87       48.87
+          M |  1,686,454       51.13      100.00
+------------+-----------------------------------
+      Total |  3,298,064      100.00
+
+. di "--- tab tp_raca_cor ---"
+--- tab tp_raca_cor ---
+
+. tab tp_raca_cor, miss
+
+tp_raca_cor |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |  1,049,248       31.81       31.81
+          2 |     91,117        2.76       34.58
+          3 |    829,109       25.14       59.72
+          4 |     11,561        0.35       60.07
+          5 |      6,881        0.21       60.28
+          6 |  1,127,996       34.20       94.48
+          7 |    182,152        5.52      100.00
+------------+-----------------------------------
+      Total |  3,298,064      100.00
+
+. di "--- cpf_resp_aluno: N nao-missing, N distintos ---"
+--- cpf_resp_aluno: N nao-missing, N distintos ---
+
+. count if !missing(cpf_resp_aluno) & cpf_resp_aluno>0
+  3,262,077
+
+. preserve
+
+.     keep cpf_resp_aluno
+
+.     keep if !missing(cpf_resp_aluno) & cpf_resp_aluno>0
+(35,987 observations deleted)
+
+.     duplicates drop
+
+Duplicates in terms of all variables
+
+(2,086,377 observations deleted)
+
+.     di "  CPF resp distintos = " _N
+  CPF resp distintos = 1175700
+
+. restore
+
+. 
+. di ""
+
+
+. di "########## cpf_fila_14.dta (maior) — estrutura ##########"
+########## cpf_fila_14.dta (maior) — estrutura ##########
+
+. use "$dsme\cpf_fila_14.dta" in 1, clear
+
+. di "vars:"
+vars:
+
+. ds
+município       tiposalário     naturezaju~a    vlremunde~om    númeroctps      cnae20subc~e    diainiaf2       mêsfimaf3       cd_esc_sol~o    an_letivo~la    dt_recusa       mes_nasc
+cnae95classe    cbo94ocupa~o    indceivinc~o    vlremunde~sm    cpf             tipodefic       mêsiniaf2       qtddiasafa~o    an_letivo~ao    cd_esc_mat~a    an_letivo~sa    ano_nasc
+vínculo~3112    escolar~2005    tipoestab       tempoemprego    ceivinculado    causaafast~1    diafimaf2       idade           cd_serie_~ao    cd_serie_~la    cd_esc_rec~a    cd_pais_mec
+tipovínculo     sexotrabal~r    indestabpa~t    qtdhoracontr    cnpjcei         diainiaf1       mêsfimaf2       diadedesli~o    dt_encamin~o    dt_desiste~a    cd_serie_~sa    cep_aluno
+motivodesl~o    nacionalid~e    indsimples      vlúltimare~o    cnpjraiz        mêsiniaf1       causaafast~3    uf              an_letivo~to    an_letivo~ia    cd_tipo_m~sa    dup
+mêsdesliga~o    raçacor         dataadmiss~a    vlsalárioc~l    nometrabal~r    diafimaf1       diainiaf3       ano             cd_esc_enc~o    cd_esc_des~a    tipo_prior~o    _merge
+indvínculo~á    indportado~c    vlremunmé~om    pis             cboocup~2002    mêsfimaf1       mêsiniaf3       cd_aluno_sme    cd_serie_~to    cd_serie_~ia    cd_sexo_al~o
+tipoadmissão    tamanhoest~o    vlremunmé~sm    datadenasc~o    cnae20classe    causaafast~2    diafimaf3       dt_solicit~o    dt_matricula    cd_tipo_m~ia    tp_raca_cor
+
+. di "--- describe completo ---"
+--- describe completo ---
+
+. describe, fullnames
+
+Contains data from <NE_ROOT>\dados_restritos\Dados - SME\Atual (25.06)\cpf_fila_14.dta
+ Observations:             1                  
+    Variables:            94                  1 Jul 2020 12:45
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+município       long    %12.0g                Município
+cnae95classe    long    %12.0g                CNAE 95 Classe
+vínculoativo3112
+                byte    %8.0g                 Vínculo Ativo 31/12
+tipovínculo     byte    %8.0g                 Tipo Vínculo
+motivodesligamento
+                byte    %8.0g                 Motivo Desligamento
+mêsdesligamento byte    %8.0g                 Mês Desligamento
+indvínculoalvará
+                byte    %8.0g                 Ind Vínculo Alvará
+tipoadmissão    byte    %8.0g                 Tipo Admissão
+tiposalário     byte    %8.0g                 Tipo Salário
+cbo94ocupação   str6    %9s                   CBO 94 Ocupação
+escolaridadeapós2005
+                byte    %8.0g                 Escolaridade após 2005
+sexotrabalhador byte    %8.0g                 Sexo Trabalhador
+nacionalidade   byte    %8.0g                 Nacionalidade
+raçacor         byte    %8.0g                 Raça Cor
+indportadordefic
+                byte    %8.0g                 Ind Portador Defic
+tamanhoestabelecimento
+                byte    %8.0g                 Tamanho Estabelecimento
+naturezajurídica
+                int     %8.0g                 Natureza Jurídica
+indceivinculado byte    %8.0g                 Ind CEI Vinculado
+tipoestab       byte    %8.0g                 Tipo Estab
+indestabparticipapat
+                byte    %8.0g                 Ind Estab Participa PAT
+indsimples      byte    %8.0g                 Ind Simples
+dataadmissãodeclarada
+                long    %12.0g                Data Admissão Declarada
+vlremunmédianom str13   %13s                  Vl Remun Média Nom
+vlremunmédiasm  str9    %9s                   Vl Remun Média (SM)
+vlremundezembronom
+                str13   %13s                  Vl Remun Dezembro Nom
+vlremundezembrosm
+                str9    %9s                   Vl Remun Dezembro (SM)
+tempoemprego    str6    %9s                   Tempo Emprego
+qtdhoracontr    byte    %8.0g                 Qtd Hora Contr
+vlúltimaremuneraçãoano
+                str10   %10s                  Vl Última Remuneração Ano
+vlsaláriocontratual
+                str10   %10s                  Vl Salário Contratual
+pis             double  %10.0g                PIS
+datadenascimento
+                long    %12.0g                Data de Nascimento
+númeroctps      long    %12.0g                Número CTPS
+cpf             double  %10.0g                CPF
+ceivinculado    double  %10.0g                CEI Vinculado
+cnpjcei         double  %10.0g                CNPJ / CEI
+cnpjraiz        long    %12.0g                CNPJ Raiz
+nometrabalhador str55   %55s                  Nome Trabalhador
+cboocupação2002 str6    %9s                   CBO Ocupação 2002
+cnae20classe    long    %12.0g                CNAE 2.0 Classe
+cnae20subclasse long    %12.0g                CNAE 2.0 Subclasse
+tipodefic       byte    %8.0g                 Tipo Defic
+causaafastamento1
+                byte    %8.0g                 Causa Afastamento 1
+diainiaf1       byte    %8.0g                 Dia Ini AF1
+mêsiniaf1       byte    %8.0g                 Mês Ini AF1
+diafimaf1       byte    %8.0g                 Dia Fim AF1
+mêsfimaf1       byte    %8.0g                 Mês Fim AF1
+causaafastamento2
+                byte    %8.0g                 Causa Afastamento 2
+diainiaf2       byte    %8.0g                 Dia Ini AF2
+mêsiniaf2       byte    %8.0g                 Mês Ini AF2
+diafimaf2       byte    %8.0g                 Dia Fim AF2
+mêsfimaf2       byte    %8.0g                 Mês Fim AF2
+causaafastamento3
+                byte    %8.0g                 Causa Afastamento 3
+diainiaf3       byte    %8.0g                 Dia Ini AF3
+mêsiniaf3       byte    %8.0g                 Mês Ini AF3
+diafimaf3       byte    %8.0g                 Dia Fim AF3
+mêsfimaf3       byte    %8.0g                 Mês Fim AF3
+qtddiasafastamento
+                int     %8.0g                 Qtd Dias Afastamento
+idade           byte    %8.0g                 Idade
+diadedesligamento
+                str3    %9s                   Dia de Desligamento
+uf              str2    %9s                   
+ano             int     %8.0g                 Ano
+cd_aluno_sme    long    %12.0g                
+dt_solicitacao  str19   %19s                  
+cd_esc_solicitacao
+                long    %12.0g                
+an_letivo_solicitacao
+                int     %8.0g                 
+cd_serie_ensino_solicitacao
+                byte    %8.0g                 
+dt_encaminhamento
+                str19   %19s                  
+an_letivo_encaminhamento
+                int     %8.0g                 
+cd_esc_encaminhamento
+                long    %12.0g                
+cd_serie_ensino_encaminhamento
+                int     %8.0g                 
+dt_matricula    str19   %19s                  
+an_letivo_matricula
+                int     %8.0g                 
+cd_esc_matricula
+                long    %12.0g                
+cd_serie_ensino_matricula
+                int     %8.0g                 
+dt_desistencia  str19   %19s                  
+an_letivo_desistencia
+                int     %8.0g                 
+cd_esc_desistencia
+                long    %12.0g                
+cd_serie_ensino_desistencia
+                int     %8.0g                 
+cd_tipo_motivo_desistencia
+                byte    %8.0g                 
+dt_recusa       str19   %19s                  
+an_letivo_recusa
+                int     %8.0g                 
+cd_esc_recusa   long    %12.0g                
+cd_serie_ensino_recusa
+                int     %8.0g                 
+cd_tipo_motivo_recusa
+                byte    %8.0g                 
+tipo_prioridade_encaminhamento
+                byte    %8.0g                 
+cd_sexo_aluno   str1    %9s                   
+tp_raca_cor     byte    %8.0g                 
+mes_nasc        byte    %8.0g                 
+ano_nasc        int     %8.0g                 
+cd_pais_mec     int     %8.0g                 
+cep_aluno       long    %12.0g                
+dup             byte    %9.0g                 
+_merge          byte    %23.0g     _merge     
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Sorted by: 
+
+. 
+. di "=== FIM explore ==="
+=== FIM explore ===
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag06_explore.log
+  log type:  text
+ closed on:  22 Jul 2026, 12:55:22
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

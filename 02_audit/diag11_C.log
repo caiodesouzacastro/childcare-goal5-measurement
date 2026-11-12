@@ -1,0 +1,288 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag11_C.log
+  log type:  text
+ opened on:  22 Jul 2026, 19:18:18
+
+. 
+. *==============================================================
+. di "########## Preparar eventos e niveis de capacidade (perfil) ##########"
+########## Preparar eventos e niveis de capacidade (perfil) ##########
+
+. import delimited "$aud\esc_sem_cap.csv", clear varnames(1) case(preserve)
+(encoding automatically selected: ISO-8859-1)
+(7 vars, 25,932 obs)
+
+. destring codesc, replace force
+codesc already numeric; no replace
+
+. * delta vs semestre anterior (por escola), so consecutivos
+. sort codesc sidx
+
+. by codesc: gen delta_berc = cap_berc - cap_berc[_n-1] if sidx==sidx[_n-1]+1
+(2,921 missing values generated)
+
+. by codesc: gen delta_cre  = cap_creche - cap_creche[_n-1] if sidx==sidx[_n-1]+1
+(2,921 missing values generated)
+
+. * data do evento = snapshot do semestre s1: sem1->30jun(ano), sem2->31dez(ano)
+. gen ano = floor(sidx/2)
+
+. gen sem = mod(sidx,2)+1
+
+. gen event_date = mdy(6,30,ano) if sem==1
+(11,863 missing values generated)
+
+. replace event_date = mdy(12,31,ano) if sem==2
+(11,863 real changes made)
+
+. format event_date %td
+
+. * niveis (para cap_base): data de referencia do semestre
+. gen level_date = event_date
+
+. save "$aud\cap_full.dta", replace
+file <NE_ROOT>\_audit\cap_full.dta saved
+
+. * arquivo de eventos (mudancas >=7 na creche)
+. preserve
+
+.     keep if !missing(delta_cre) & abs(delta_cre)>=7
+(22,643 observations deleted)
+
+.     keep codesc event_date delta_cre delta_berc
+
+.     rename codesc ceicode
+
+.     save "$aud\cap_events.dta", replace
+file <NE_ROOT>\_audit\cap_events.dta saved
+
+.     di "N eventos de capacidade (|delta|>=7) = " _N
+N eventos de capacidade (|delta|>=7) = 3289
+
+. restore
+
+. * niveis por escola-semestre (para cap_base)
+. keep codesc sidx cap_creche cap_berc level_date
+
+. rename codesc ceicode
+
+. save "$aud\cap_levels.dta", replace
+file <NE_ROOT>\_audit\cap_levels.dta saved
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## Universo: 1a solicitacao Bercario (idade<23m), coortes 2013-2018 ##########"
+########## Universo: 1a solicitacao Bercario (idade<23m), coortes 2013-2018 ##########
+
+. use cd_aluno_sme dt_solicitacao dt_encaminhamento dt_matricula cep_aluno ano_nasc mes_nasc ///
+>     cd_sexo_aluno tp_raca_cor cd_serie_ensino_solicitacao tipo_prioridade_encaminhamento ///
+>     using "$fila", clear
+
+. gen double dt_sol = date(dt_solicitacao,"DMY hms")
+
+. keep if !missing(dt_sol) & !missing(cep_aluno)
+(6 observations deleted)
+
+. gsort cd_aluno_sme dt_sol
+
+. by cd_aluno_sme: keep if _n==1
+(1,773,411 observations deleted)
+
+. gen double dt_enc = date(dt_encaminhamento,"DMY hms")
+(208,030 missing values generated)
+
+. gen double dt_mat = date(dt_matricula,"DMY hms")
+(503,421 missing values generated)
+
+. gen idade_sol = (year(dt_sol)-ano_nasc)*12 + (month(dt_sol)-mes_nasc)
+
+. keep if inrange(idade_sol,0,22)          /* Bercario I/II */
+(616,393 observations deleted)
+
+. gen anosol = year(dt_sol)
+
+. keep if inrange(anosol,2013,2018)
+(217,844 observations deleted)
+
+. keep if missing(tipo_prioridade_encaminhamento)
+(96,497 observations deleted)
+
+. gen byte feminino = cd_sexo_aluno=="F"
+
+. gen byte branco = tp_raca_cor==1
+
+. * semestre da solicitacao
+. gen sol_sidx = year(dt_sol)*2 + (month(dt_sol)>6)
+
+. di "N criancas Bercario (1a sol, sem prioridade, 2013-2018) = " _N
+N criancas Bercario (1a sol, sem prioridade, 2013-2018) = 593913
+
+. * desfechos
+. gen espera = dt_enc - dt_sol if !missing(dt_enc)
+(73,726 missing values generated)
+
+. gen byte enc180 = (!missing(dt_enc) & dt_enc<=dt_sol+180)
+
+. gen idade_entrada = (year(dt_mat)-ano_nasc)*12 + (month(dt_mat)-mes_nasc) if !missing(dt_mat)
+(197,107 missing values generated)
+
+. replace idade_entrada=. if !inrange(idade_entrada,0,48)
+(677 real changes made, 677 to missing)
+
+. gen byte mat365 = (!missing(dt_mat) & dt_mat<=dt_sol+365)
+
+. rename cep_aluno cep
+
+. compress
+  variable idade_sol was float now byte
+  variable anosol was float now int
+  variable sol_sidx was float now int
+  variable espera was float now int
+  variable idade_entrada was float now byte
+  variable dt_sol was double now int
+  variable dt_enc was double now int
+  variable dt_mat was double now int
+  (17,817,390 bytes saved)
+
+. save "$aud\berc_child.dta", replace
+file <NE_ROOT>\_audit\berc_child.dta saved
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## C1 — conjunto elegivel (CEIs <=2km) ##########"
+########## C1 — conjunto elegivel (CEIs <=2km) ##########
+
+. joinby cep using "$aud\cep_cei_pairs_novo.dta", unmatched(master)
+
+. gen byte tem_par = !missing(dist_km)
+
+. * tamanho do conjunto elegivel por crianca
+. preserve
+
+.     keep if tem_par
+(6,905 observations deleted)
+
+.     bysort cd_aluno_sme: gen nelig = _N
+
+.     by cd_aluno_sme: keep if _n==1
+(21,167,459 observations deleted)
+
+.     di "--- tamanho do conjunto elegivel (CEIs <=2km) ---"
+--- tamanho do conjunto elegivel (CEIs <=2km) ---
+
+.     sum nelig, detail
+
+                            nelig
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            4              1
+ 5%            9              1
+10%           14              1       Obs             587,008
+25%           21              1       Sum of wgt.     587,008
+
+50%           33                      Mean           37.05992
+                        Largest       Std. dev.      20.98945
+75%           49            108
+90%           68            108       Variance       440.5569
+95%           79            108       Skewness       .8016363
+99%           94            108       Kurtosis       3.170435
+
+. restore
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## C2 — choques e cap_base no conjunto elegivel ##########"
+########## C2 — choques e cap_base no conjunto elegivel ##########
+
+. * cap_base: nivel de capacidade Bercario dos CEIs elegiveis no semestre da solicitacao
+. rename ceicode ceicode_pair
+
+. gen ceicode = ceicode_pair
+(6,905 missing values generated)
+
+. cap confirm variable sol_sidx
+
+. if _rc gen sol_sidx = year(dt_sol)*2 + (month(dt_sol)>6)
+
+. rename sol_sidx sidx
+
+. merge m:1 ceicode sidx using "$aud\cap_levels.dta", ///
+>     keep(master match) keepusing(cap_berc) nogen
+(variable ceicode was float, now double to accommodate using data's values)
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                     5,175,080
+        from master                 5,175,080  
+        from using                          0  
+
+    Matched                        16,586,292  
+    -----------------------------------------
+
+. gen capb = cap_berc
+(5,175,080 missing values generated)
+
+. * eventos nos CEIs elegiveis: janelas
+. * juntar todos os eventos daquele CEI (m:m por ceicode)
+. * -> mais eficiente: para cada par crianca-CEI, somar deltas por janela via merge com eventos
+. * Faremos por reshape/collapse: primeiro guardar pares
+. keep cd_aluno_sme ceicode dt_sol capb
+
+. save "$aud\child_cei.dta", replace
+(file <NE_ROOT>\_audit\child_cei.dta not found)
+file <NE_ROOT>\_audit\child_cei.dta saved
+
+. * juntar eventos (um CEI pode ter varios eventos)
+. joinby ceicode using "$aud\cap_events.dta", unmatched(master)
+
+. gen rel = event_date - dt_sol
+(7,294,486 missing values generated)
+
+. * janelas
+. gen neg180 = -delta_cre if !missing(delta_cre) & delta_cre<0 & inrange(rel,0,180)
+(34,942,624 missing values generated)
+
+. gen pos180 =  delta_cre if !missing(delta_cre) & delta_cre>0 & inrange(rel,0,180)
+(34,440,418 missing values generated)
+
+. gen neg_pre = -delta_cre if !missing(delta_cre) & delta_cre<0 & inrange(rel,-180,-1)   /* placebo pre */
+(35,070,754 missing values generated)
+
+. gen neg_fut = -delta_cre if !missing(delta_cre) & delta_cre<0 & inrange(rel,366,545)   /* placebo futuro */
+(34,637,723 missing values generated)
+
+. collapse (sum) choque_neg=neg180 choque_pos=pos180 choque_pre=neg_pre choque_fut=neg_fut (max) capb2=capb, by(cd_aluno_sme)
+
+. save "$aud\child_shock_cei.dta", replace
+(file <NE_ROOT>\_audit\child_shock_cei.dta not found)
+file <NE_ROOT>\_audit\child_shock_cei.dta saved
+
+. * cap_base por crianca = soma de capb dos CEIs elegiveis
+. use "$aud\child_cei.dta", clear
+
+. collapse (sum) cap_base=capb, by(cd_aluno_sme)
+
+. merge 1:1 cd_aluno_sme using "$aud\child_shock_cei.dta", nogen
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                           593,913  
+    -----------------------------------------
+
+. foreach v in choque_neg choque_pos choque_pre choque_fut { replace `v'=0 if missing(`v') }
+program error:  code follows on the same line as open brace
+r(198);
+
+end of do-file
+r(198);

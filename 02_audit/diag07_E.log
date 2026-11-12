@@ -1,0 +1,111 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag07_E.log
+  log type:  text
+ opened on:  22 Jul 2026, 14:01:41
+
+. 
+. di "########## E1 — ano de elegibilidade ao Bercario I vs quebra de 2013 ##########"
+########## E1 — ano de elegibilidade ao Bercario I vs quebra de 2013 ##########
+
+. di "  elegibilidade = ano_nasc (marco/mes<=3) ou ano_nasc+1 (abril/mes>=4)"
+  elegibilidade = ano_nasc (marco/mes<=3) ou ano_nasc+1 (abril/mes>=4)
+
+. di "  coorte | elig marco | elig abril | (>=2013 = pos-quebra)"
+  coorte | elig marco | elig abril | (>=2013 = pos-quebra)
+
+. forvalues c=2009/2015 {
+  2.     di "  `c'     |   `c'     |   " `c'+1 "     "
+  3. }
+  2009     |   2009     |   2010     
+  2010     |   2010     |   2011     
+  2011     |   2011     |   2012     
+  2012     |   2012     |   2013     
+  2013     |   2013     |   2014     
+  2014     |   2014     |   2015     
+  2015     |   2015     |   2016     
+
+. 
+. di ""
+
+
+. di "########## E2 — razao marco/abril de N por coorte (B_novo) ##########"
+########## E2 — razao marco/abril de N por coorte (B_novo) ##########
+
+. use "$aud\B_novo.dta", clear
+
+. forvalues c=2009/2015 {
+  2.     qui count if ano_nasc==`c' & mes_nasc==3
+  3.     local n3=r(N)
+  4.     qui count if ano_nasc==`c' & mes_nasc==4
+  5.     local n4=r(N)
+  6.     di "  coorte `c': N marco=`n3'  N abril=`n4'  razao mar/abr=" %5.3f `n3'/`n4'
+  7. }
+  coorte 2009: N marco=10071  N abril=9903  razao mar/abr=1.017
+  coorte 2010: N marco=11109  N abril=10692  razao mar/abr=1.039
+  coorte 2011: N marco=12948  N abril=12544  razao mar/abr=1.032
+  coorte 2012: N marco=14562  N abril=13178  razao mar/abr=1.105
+  coorte 2013: N marco=13688  N abril=13741  razao mar/abr=0.996
+  coorte 2014: N marco=13656  N abril=13279  razao mar/abr=1.028
+  coorte 2015: N marco=13991  N abril=13079  razao mar/abr=1.070
+
+. 
+. di ""
+
+
+. di "########## E3 — balanco marco vs abril nas vars do responsavel (RAIS) ##########"
+########## E3 — balanco marco vs abril nas vars do responsavel (RAIS) ##########
+
+. di "  NOTA: remuneracao no ano ANTES do nascimento NAO existe (RAIS sem pre-parto); uso o ano observado."
+  NOTA: remuneracao no ano ANTES do nascimento NAO existe (RAIS sem pre-parto); uso o ano observado.
+
+. use "$aud\rais_panel.dta", clear
+
+. gen idade_no_nasc = idade - (ano - ano_nasc)
+
+. gen byte fem = sexo==2
+
+. merge m:1 cd_aluno_sme using "$aud\B_novo.dta", keep(match) keepusing(mes_nasc) nogen
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                           757,102  
+    -----------------------------------------
+
+. keep if inrange(ano_nasc,2009,2015) & inlist(mes_nasc,3,4)
+(667,006 observations deleted)
+
+. gen byte abril = mes_nasc==4
+
+. di "  N marco / abril (com RAIS):"
+  N marco / abril (com RAIS):
+
+. tab mes_nasc
+
+  (firstnm) |
+   mes_nasc |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          3 |     46,075       51.14       51.14
+          4 |     44,021       48.86      100.00
+------------+-----------------------------------
+      Total |     90,096      100.00
+
+. foreach v in fem idade_no_nasc escol remun {
+  2.     qui ttest `v', by(abril)
+  3.     di "  `v': marco=" %8.3f r(mu_1) "  abril=" %8.3f r(mu_2) "  dif=" %8.4f r(mu_1)-r(mu_2) "  se=" %8.4f r(se) "  p=" %6.4f r(p)
+  4. }
+  fem: marco=   0.866  abril=   0.866  dif= -0.0002  se=  0.0023  p=0.9189
+  idade_no_nasc: marco=  26.829  abril=  26.615  dif=  0.2141  se=  0.0463  p=0.0000
+  escol: marco=   6.598  abril=   6.598  dif= -0.0003  se=  0.0091  p=0.9777
+  remun: marco=   2.269  abril=   2.253  dif=  0.0160  se=  0.0158  p=0.3113
+
+. di "=== FIM E ==="
+=== FIM E ===
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag07_E.log
+  log type:  text
+ closed on:  22 Jul 2026, 14:01:43
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

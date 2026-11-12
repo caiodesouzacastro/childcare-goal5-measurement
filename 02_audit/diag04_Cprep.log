@@ -1,0 +1,179 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag04_Cprep.log
+  log type:  text
+ opened on:  22 Jul 2026, 11:20:23
+
+. 
+. *==============================================================
+. di "########## CEI openings (dt_criacao como data de abertura) ##########"
+########## CEI openings (dt_criacao como data de abertura) ##########
+
+. use "$aud\escolas_parsed.dta", clear
+
+. cap drop cei
+
+. gen byte cei = (strpos(tipoesc,"CEI")>0 | strpos(tipoesc,"CR.P")>0 | strpos(tipoesc,"CEMEI")>0 | strpos(tipoesc,"CCI")>0)
+
+. keep if cei==1 & !missing(lat,lon) & !missing(dt_criacao_d)
+(2,837 observations deleted)
+
+. di "N CEI com coord e data de criacao = " _N
+N CEI com coord e data de criacao = 1916
+
+. rename escola ceicode
+
+. rename lat ceilat
+
+. rename lon ceilon
+
+. gen double ceiopen = dt_criacao_d
+
+. format ceiopen %td
+
+. keep ceicode ceilat ceilon ceiopen
+
+. save "$aud\cei_openings.dta", replace
+(file <NE_ROOT>\_audit\cei_openings.dta not found)
+file <NE_ROOT>\_audit\cei_openings.dta saved
+
+. di "  distribuicao por ano de abertura (todas):"
+  distribuicao por ano de abertura (todas):
+
+. gen yr=year(ceiopen)
+
+. tab yr if inrange(yr,2005,2018)
+
+         yr |      Freq.     Percent        Cum.
+------------+-----------------------------------
+       2005 |          1        0.07        0.07
+       2006 |         10        0.66        0.73
+       2007 |         60        3.98        4.71
+       2008 |        128        8.50       13.21
+       2009 |         84        5.58       18.79
+       2010 |         89        5.91       24.70
+       2011 |         56        3.72       28.42
+       2012 |        135        8.96       37.38
+       2013 |         35        2.32       39.71
+       2014 |        134        8.90       48.61
+       2015 |        249       16.53       65.14
+       2016 |        128        8.50       73.64
+       2017 |        155       10.29       83.93
+       2018 |        242       16.07      100.00
+------------+-----------------------------------
+      Total |      1,506      100.00
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## Grade: expandir CEI para 3x3 celulas (0.02 deg ~2km) ##########"
+########## Grade: expandir CEI para 3x3 celulas (0.02 deg ~2km) ##########
+
+. use "$aud\cei_openings.dta", clear
+
+. gen clat0 = round(ceilat/0.02)
+
+. gen clon0 = round(ceilon/0.02)
+
+. expand 9
+(15,328 observations created)
+
+. bysort ceicode: gen j=_n-1
+
+. gen clat = clat0 + (mod(j,3)-1)
+
+. gen clon = clon0 + (floor(j/3)-1)
+
+. keep ceicode ceilat ceilon ceiopen clat clon
+
+. save "$aud\cei_grid.dta", replace
+(file <NE_ROOT>\_audit\cei_grid.dta not found)
+file <NE_ROOT>\_audit\cei_grid.dta saved
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## CEP centroides + join por celula ##########"
+########## CEP centroides + join por celula ##########
+
+. use "$dsme\cepcentroide.dta", clear
+
+. rename latitude ceplat
+
+. rename longitude ceplon
+
+. gen clat = round(ceplat/0.02)
+
+. gen clon = round(ceplon/0.02)
+
+. di "N CEP = " _N
+N CEP = 46258
+
+. joinby clat clon using "$aud\cei_grid.dta"
+
+. di "N pares (mesma celula/vizinhas) = " _N
+N pares (mesma celula/vizinhas) = 3070352
+
+. * haversine km
+. gen double a = sin((ceilat-ceplat)*_pi/360)^2 + cos(ceplat*_pi/180)*cos(ceilat*_pi/180)*sin((ceilon-ceplon)*_pi/360)^2
+
+. gen double dist_km = 2*6371*asin(sqrt(a))
+
+. keep if dist_km <= 2
+(1,966,555 observations deleted)
+
+. di "N pares com dist<=2km = " _N
+N pares com dist<=2km = 1103797
+
+. keep cep ceicode ceiopen dist_km
+
+. save "$aud\cep_cei_pairs.dta", replace
+(file <NE_ROOT>\_audit\cep_cei_pairs.dta not found)
+file <NE_ROOT>\_audit\cep_cei_pairs.dta saved
+
+. 
+. di ""
+
+
+. di "########## distribuicao de CEIs (<=2km) por CEP ##########"
+########## distribuicao de CEIs (<=2km) por CEP ##########
+
+. bysort cep: gen n=_N
+
+. by cep: keep if _n==1
+(1,059,239 observations deleted)
+
+. sum n, detail
+
+                              n
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            1              1
+ 5%            3              1
+10%            5              1       Obs              44,558
+25%           11              1       Sum of wgt.      44,558
+
+50%           22                      Mean           24.77214
+                        Largest       Std. dev.      17.67312
+75%           35             98
+90%           49             98       Variance       312.3393
+95%           60             98       Skewness       1.000289
+99%           78             98       Kurtosis       3.876826
+
+. di "N CEP com >=1 CEI <=2km = " _N
+N CEP com >=1 CEI <=2km = 44558
+
+. 
+. di "=== FIM Cprep ==="
+=== FIM Cprep ===
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag04_Cprep.log
+  log type:  text
+ closed on:  22 Jul 2026, 11:20:34
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

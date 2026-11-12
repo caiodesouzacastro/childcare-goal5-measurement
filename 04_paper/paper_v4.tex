@@ -1,0 +1,121 @@
+%=======================================================================
+% paper_v4.tex -- CONTAINER (27 Oct 2026, change of regime). The author writes the text from scratch, to comply with
+% the AI policy of JPART. The previous text (paper_v3.tex, secV*.tex, appendix prose, title page), drafted with AI
+% assistance, is in _arquivo_texto_IA_2026-10-27/ (README there) and is NOT a source for this text.
+% Kept from paper_v3: preamble, title (provisional; see CHECKLIST_VERIFICACAO.md), section files with titles and labels,
+% exhibit files (assets/tables), bibliography (references.bib, references_C.bib).
+% Working material for the author: referee_EE_2026-10/ESQUELETO.md (facts, numbers, sources; no prose).
+% Word limit (JPART): 12,000 words including abstract, tables and references; online appendices excluded. Budget by
+% section in ESQUELETO.md, section 0, and in the first lines of each section file (8,350 words of running text).
+% Exhibits: tables_V3.tex (body) and tables_V3_appendix.tex (Appendix A) are written by 02_audit/build12_order.py from
+% assets/tables/v3w/float_index_v3.csv, in order of first citation; until the text cites them, in the order of the
+% index (provisional numbering, renumeracao.md). Tables 3, 6, 7 and Figure 3 of paper_v3 moved to Appendix A.
+% Numbers: only those registered in referee_EE_2026-10/NUMEROS_V5.md (with NUMEROS_V3.md and NUMEROS_V4.md).
+% Checks after writing: referee_EE_2026-10/CHECKLIST_VERIFICACAO.md.
+%=======================================================================
+
+\documentclass[12pt,a4paper]{article}
+\input{glyphtounicode}\pdfgentounicode=1
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[english]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+\usepackage[round]{natbib}
+\usepackage{xcolor}
+\usepackage[skip=6pt,position=top]{caption}
+
+\graphicspath{{assets/figures/}}
+
+\newcommand{\pending}[1]{\textcolor{red}{[PENDING: #1]}}
+\newcommand{\fitbox}[1]{\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{#1}}
+\newcommand{\tabnote}[1]{\par\smallskip\noindent\begin{minipage}{\linewidth}\footnotesize\raggedright\textit{Notes:} #1\end{minipage}}
+
+\onehalfspacing
+
+\let\articletitle\title % jrssa-sec1b (06/11/2026), escolha do autor: \title[curto]{} e \keywords{} sao da classe OUP; estas 3 linhas os fazem aceitos pela article e saem na migracao
+\renewcommand{\title}[2][]{\articletitle{#2}}
+\newcommand{\keywords}[1]{\begin{quotation}\small\noindent\textbf{Keywords:} #1\end{quotation}}
+\makeatletter % fecha-jrssa (11/11/2026), pedido do autor: \author[]{}, \address[]{}, \corresp[]{}, \ORCID{}, \orgname{}, \orgaddress{} e \country{} sao da classe OUP; estas linhas os fazem aceitos pela article e saem na migracao
+\renewcommand{\author}[2][]{\gdef\@author{#2}}
+\newcommand{\address}[2][]{\g@addto@macro\@author{\\[0.5ex]\normalsize #2}}
+\newcommand{\corresp}[2][]{\g@addto@macro\@author{\\[0.5ex]\normalsize #2}}
+\newcommand{\ORCID}[1]{\\[0.5ex]\normalsize ORCID: \url{https://orcid.org/#1}}
+\newcommand{\orgname}[1]{#1}\newcommand{\orgaddress}[1]{#1}\newcommand{\country}[1]{#1}
+\makeatother
+\title[Measuring compliance with statutory targets]{Measuring Compliance with Statutory Targets: Childcare Access in S\~ao Paulo}
+
+% Identified manuscript: JRSS A reviews single-blind and asks for no separate title page (fecha-jrssa, 11/11/2026).
+% Author, affiliation, correspondence and ORCID below, from titlepage_JPART.tex, which is obsolete and kept unchanged.
+% Own work is cited in the third person.
+\author[1,$\ast$]{Caio Castro\ORCID{0000-0002-6870-0578}}
+\address[1]{\orgname{S\~ao Paulo School of Economics -- FGV (FGV--EESP)}, \orgaddress{S\~ao Paulo, \country{Brazil}}}
+\corresp[$\ast$]{Corresponding author. \href{mailto:caio.castro@fgv.br}{caio.castro@fgv.br}}
+\date{}
+\hypersetup{pdfauthor={Caio Castro},pdftitle={Measuring Compliance with Statutory Targets: Childcare Access in S\~ao Paulo},pdfsubject={},pdfkeywords={},pdfcreator={},pdfproducer={}}
+
+\begin{document}
+
+\maketitle
+
+%=======================================================================
+\begin{abstract}
+A numerical target written into law looks verifiable, but whether it is met depends on conventions the law does not fix. One is the date on which a waiting list is counted, and it moves the result. We study Goal~5 of S\~ao Paulo's 2015 Municipal Education Plan, which sets two childcare requirements and applies whichever is greater. Combining the published waiting-list series, enrolment records and alternative population estimates, we compute the verdict under alternative conventions. Across our measurement grid, Goal~5 compliance is specification-dependent in 2019--2022, whereas no specification in that grid indicates compliance in any evaluable year in 2010--2018; before September 2019, only the published waiting-list series is available. Between 2014 and 2017, the published list fell by 53.2\% when counted in December and by 17.5\% to 20.5\% in other quarters. The municipality's 2023 review declared the goal achieved, stated that it had been met since 2015, and published no formula; no specification reproduces that verdict. A verifiable indicator must define eligible requests and service, and fix the time allowed, observation date, enrolment universe, population source and vintage, and the rule combining both requirements.
+\end{abstract}
+\keywords{administrative data; childcare; official statistics; performance measurement; policy targets; waiting lists}
+
+\clearpage
+
+\input{secV1_intro}
+\input{secV2_setting}
+\input{secV3_data}
+\input{secV7_goal}
+\input{secV6_series}
+\input{secV4_coverage}
+\input{secV5_change}
+\input{secV9_scope}
+\input{secV8_indicators}
+\input{secV10_conclusion}
+\section*{Data availability}
+
+Public data sources include SME's published demand and enrolment series, municipal class profiles, Inep's School Census microdata, IBGE's 2010 and 2022 Demographic Censuses (SIDRA tables 1378 and 9514), SEADE population projections, and SINASC live births. Individual application records from SME's request record and individual enrolment records from the Escola On-Line system were provided separately by SME. Neither is publicly available. The individual-level application and enrolment records contain identifiable information about children and are controlled by the SME; their redistribution requires authorization from the SME. Researchers seeking access to these records must submit a request to the SME. The code and the aggregate data used in this article are available at \url{https://github.com/caiodesouzacastro/childcare-goal5-measurement}.
+
+\section*{Acknowledgements}
+
+I wrote the scientific text of this manuscript, its abstract, its ten sections and the titles and notes of its exhibits, except as noted below. Claude (Anthropic), through Claude Code, analysed and verified the data, checked each number against frozen tables and execution logs, reconstructed series, ran robustness tests, located and archived primary sources, prepared research notes, and compiled the LaTeX and references. ChatGPT (GPT-6) drafted the title. I set the design and the measurement conventions, checked outputs against the sources, revised all assisted text, and am responsible for the analysis, its interpretation, and the final manuscript.
+
+\clearpage
+\section*{Tables and figures}
+\addcontentsline{toc}{section}{Tables and figures}
+\input{tables_V3}
+
+\clearpage
+\appendix
+\renewcommand{\thesection}{\Alph{section}}
+\section{Supplementary tables and figures}
+\label{sec:appendix-tables}
+% Opening note of Appendix A: to be written by the author, if needed (the archived one stated the period convention of
+% the tables from the request record; facts in ESQUELETO.md, section 6).
+\setcounter{table}{0}\renewcommand{\thetable}{A\arabic{table}}
+\setcounter{figure}{0}\renewcommand{\thefigure}{A\arabic{figure}}
+\renewcommand{\theHtable}{A\arabic{table}}\renewcommand{\theHfigure}{A\arabic{figure}}
+\input{tables_V3_appendix}
+
+%=======================================================================
+\clearpage
+\setcounter{table}{0}\renewcommand{\thetable}{B\arabic{table}}\renewcommand{\theHtable}{B\arabic{table}}
+\input{appendix_V3_designs}
+\clearpage
+
+\bibliographystyle{chicago}
+\bibliography{references,references_C}
+
+\end{document}

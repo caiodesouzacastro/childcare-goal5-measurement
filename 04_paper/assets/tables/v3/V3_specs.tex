@@ -1,0 +1,29 @@
+% Gerado por 02_audit/build18_tables.py (26/10/2026). Nao editar a mao.
+\begin{table}[htbp]\centering
+\caption{Gain in one-year referral between the 2012 and 2016 cohorts under alternative specifications, including two that move the start of the window of complete coverage}
+\label{tab:specs}
+\footnotesize
+\fitbox{%
+\begin{tabular}{lrrrl}
+\toprule
+Specification & 2012 & 2016 & $\Delta$ & Interval or range \\
+\midrule
+Base: referral, ageing out competing & 0.631 & 0.876 & +0.245 & -- \\
+Recorded withdrawal as a further competing event & 0.628 & 0.872 & +0.244 & -- \\
+Children who applied after 47 months counted as ageing out & 0.571 & 0.876 & +0.305 & -- \\
+Applications in the first calendar semester only & 0.694 & 0.911 & +0.217 & -- \\
+Applications dated July 2012--December 2013 excluded & 0.730 & 0.876 & +0.146 & -- \\
+2012 cohort restricted to applications from July 2012 & 0.607 & 0.876 & +0.269 & -- \\
+Enrolment as the terminal event & 0.523 & 0.747 & +0.224 & -- \\
+Composition held at 2012 (main cells) & 0.631 & 0.891 & +0.259 & [+0.256, +0.262] \\
+Composition held at 2012, coarse / fine cells & -- & -- & +0.257 / +0.250 & -- \\
+Composition and service environment held fixed & 0.631 & 0.869 & +0.238 & coarse +0.249, fine +0.238 \\
+Unweighted, bootstrap interval & 0.631 & 0.876 & +0.245 & [+0.242, +0.249] \\
+\addlinespace
+\multicolumn{5}{l}{\emph{Specifications that move the start of the window}} \\
+Window starting with the 2013 cohort & 0.753 & 0.876 & +0.123 & -- \\
+Window starting with the 2014 cohort & 0.761 & 0.876 & +0.115 & -- \\
+\bottomrule
+\end{tabular}}
+\tabnote{\emph{Source:} SME childcare request record (applications dated 2010--2018, with referral and enrolment dates through November 2019). \emph{Sample:} applicants with eligible time in the 2012--2016 birth cohorts, except where a row states otherwise; the last two rows move the start of the window and report the change from the 2013 or the 2014 cohort. The outcome is the cumulative incidence of referral (or enrolment) within 365 days of the first application, estimated with the Aalen--Johansen estimator; $\Delta$ is computed from unrounded incidences. Reweighted specifications match the 2012 cohort's joint distribution of applicant attributes. The main cells combine age at application, priority, postcode-income quartile, district and semester; the coarse cells use age, priority and income; the fine cells use eight age bins, priority, income, district and month. Weights are trimmed at the 1st and 99th percentiles. The service-environment specification adds the number of centres open within 2\,km at the application date. Intervals are percentile intervals from 1,000 bootstrap replications that resample children within the 2012 and 2016 cohorts and recompute the weights in each replication (seed 20260726); they reflect sampling variability only. In the exact decomposition of the raw change, composition contributes $-$0.014 and the service environment +0.022, leaving +0.238. All estimates are descriptive.}
+\end{table}

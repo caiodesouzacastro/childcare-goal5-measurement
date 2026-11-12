@@ -1,0 +1,51 @@
+% Gerado por 02_audit/build15_tables.py (25/10/2026). Nao editar a mao.
+\begin{table}[htbp]\centering
+\caption{One-year referral and enrollment in the window of complete coverage}
+\label{tab:service}
+\footnotesize
+\par\medskip\textbf{Panel A. By birth cohort}\par\smallskip
+\fitbox{%
+\begin{tabular}{lrrrrrrrrr}
+\toprule
+Birth cohort & N & ref$_{180}$ & ref$_{365}$ & ref$_{730}$ & age$_{365}$ & RMST$_{365}$ & Median & enr$_{365}$ & RMST enr. \\
+\midrule
+2013 & 140,811 & 0.417 & 0.753 & 0.945 & 0.023 & 203 & 223 & 0.644 & 230 \\
+2014 & 146,665 & 0.392 & 0.761 & 0.971 & 0.009 & 215 & 233 & 0.639 & 244 \\
+2015 & 146,232 & 0.472 & 0.814 & 0.982 & 0.002 & 195 & 194 & 0.686 & 230 \\
+2016 & 128,143 & 0.522 & 0.876 & 0.993 & 0.000 & 181 & 171 & 0.747 & 220 \\
+\bottomrule
+\end{tabular}}
+\par\medskip\textbf{Panel B. By year of application}\par\smallskip
+\fitbox{%
+\begin{tabular}{lrrrr}
+\toprule
+Year of application & N & ref$_{365}$ & enr$_{365}$ & Median \\
+\midrule
+2013 & 154,924 & 0.646 & 0.551 & 278 \\
+2014 & 149,412 & 0.684 & 0.583 & 262 \\
+2015 & 157,525 & 0.786 & 0.666 & 203 \\
+2016 & 154,623 & 0.767 & 0.654 & 196 \\
+2017 & 148,267 & 0.903 & 0.764 & 187 \\
+\bottomrule
+\end{tabular}}
+\par\medskip\textbf{Panel C. By semester of application, before and after the July 2016 allocation ordinance}\par\smallskip
+\fitbox{%
+\begin{tabular}{lrrr}
+\toprule
+Semester of application & N & ref$_{365}$ & enr$_{365}$ \\
+\midrule
+2013S1 & 87,365 & 0.707 & 0.611 \\
+2013S2 & 67,559 & 0.568 & 0.474 \\
+2014S1 & 80,344 & 0.739 & 0.638 \\
+2014S2 & 69,068 & 0.620 & 0.519 \\
+2015S1 & 82,977 & 0.810 & 0.691 \\
+2015S2 & 74,548 & 0.760 & 0.639 \\
+2016S1 & 87,782 & 0.800 & 0.682 \\
+2016S2 & 66,841 & 0.724 & 0.616 \\
+2017S1 & 83,849 & 0.916 & 0.765 \\
+2017S2 & 64,418 & 0.887 & 0.762 \\
+2018S1 & 85,583 & 0.974 & 0.821 \\
+\bottomrule
+\end{tabular}}
+\tabnote{\emph{Source:} SME childcare request record (2010--2018 applications, referral and enrollment dates through November 2019). \emph{Sample:} applicants with eligible time (first application at or before 47 months); Panel A, birth cohorts 2013--2016; Panels B and C, first applications 2013--2017 and 2013S1--2018S1 (later applications lack 365 days of follow-up). \emph{Variables:} time from first application in days; ref$_{t}$, cumulative incidence of referral by day $t$; age$_{365}$, cumulative incidence of aging out (reaching 47 months unreferred) by day 365; RMST, restricted mean days without the event within 365; Median, day on which referral incidence reaches 0.5; enr, the same with enrollment as the terminal event. Panel C: the ordinance of 14 July 2016 formalized automated matching (Section~\ref{sec:institutions}); semesters from 2016S2 are after it. \emph{Exercise:} Aalen--Johansen estimator with aging out as the competing event; descriptive.}
+\end{table}

@@ -1,0 +1,184 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag08_A2A3.log
+  log type:  text
+ opened on:  22 Jul 2026, 14:25:28
+
+. 
+. *==============================================================
+. di "########## A4 — variavel que identifique ANO da RAIS (alem de 'ano') ##########"
+########## A4 — variavel que identifique ANO da RAIS (alem de 'ano') ##########
+
+. use "$dsme/cpf_fila_14.dta" in 1, clear
+
+. di "  vars candidatas em cpf_fila_14:"
+  vars candidatas em cpf_fila_14:
+
+. cap ds *ano* *base* *compet* *rais* *ref*
+
+. di "  --- em cpf_fila_11 ---"
+  --- em cpf_fila_11 ---
+
+. use "$dsme/cpf_fila_11.dta" in 1, clear
+
+. cap ds *ano* *base* *compet* *rais* *ref*
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## A2/A3 — cpf_fila_11 vs cpf_fila_14: mesma crianca, valores iguais? ##########"
+########## A2/A3 — cpf_fila_11 vs cpf_fila_14: mesma crianca, valores iguais? ##########
+
+. * carregar 11 (cpf so p/ indice; nomes acentuados)
+. use cd_aluno_sme cpf vlremunmédianom tempoemprego vínculoativo3112 ///
+>     using "$dsme/cpf_fila_11.dta", clear
+
+. gen byte src=11
+
+. tempfile t11
+
+. save `t11'
+file <HOME>\AppData\Local\Temp\ST_6590_000001.tmp saved as .dta format
+
+. use cd_aluno_sme cpf vlremunmédianom tempoemprego vínculoativo3112 ///
+>     using "$dsme/cpf_fila_14.dta", clear
+
+. gen byte src=14
+
+. append using `t11'
+
+. * indice local do responsavel
+. egen long respid = group(cpf)
+
+. drop cpf
+
+. destring vlremunmédianom, gen(remun) force dpcomma
+vlremunmédianom: all characters numeric; remun generated as double
+
+. destring tempoemprego, gen(tempo) force dpcomma
+tempoemprego: all characters numeric; tempo generated as double
+
+. rename vínculoativo3112 vinc
+
+. * 1 registro por (crianca, resp, arquivo): pegar vinculo principal (maior remun)
+. gsort cd_aluno_sme respid src -remun
+
+. by cd_aluno_sme respid src: keep if _n==1
+(325,322 observations deleted)
+
+. keep cd_aluno_sme respid src remun tempo vinc
+
+. reshape wide remun tempo vinc, i(cd_aluno_sme respid) j(src)
+(j = 11 14)
+
+Data                               Long   ->   Wide
+-----------------------------------------------------------------------------
+Number of observations        1,097,204   ->   705,884     
+Number of variables                   6   ->   8           
+j variable (2 values)               src   ->   (dropped)
+xij variables:
+                                  remun   ->   remun11 remun14
+                                  tempo   ->   tempo11 tempo14
+                                   vinc   ->   vinc11 vinc14
+-----------------------------------------------------------------------------
+
+. di "--- A2: interseccao e uniao (crianca-responsavel) ---"
+--- A2: interseccao e uniao (crianca-responsavel) ---
+
+. count
+  705,884
+
+. di "  N pares (crianca,resp) totais (uniao) = " r(N)
+  N pares (crianca,resp) totais (uniao) = 705884
+
+. count if !missing(remun11) & !missing(remun14)
+  391,320
+
+. di "  N em AMBOS (interseccao 11 e 14) = " r(N)
+  N em AMBOS (interseccao 11 e 14) = 391320
+
+. * interseccao a nivel de CRIANCA
+. preserve
+
+.     gen byte in11 = !missing(remun11)
+
+.     gen byte in14 = !missing(remun14)
+
+.     collapse (max) in11 in14, by(cd_aluno_sme)
+
+.     count
+  705,884
+
+.     di "  criancas distintas (uniao) = " r(N)
+  criancas distintas (uniao) = 705884
+
+.     count if in11==1 & in14==1
+  391,320
+
+.     di "  criancas em ambos = " r(N)
+  criancas em ambos = 391320
+
+.     count if in11==1
+  517,522
+
+.     di "  criancas em cpf_fila_11 = " r(N)
+  criancas em cpf_fila_11 = 517522
+
+.     count if in14==1
+  579,682
+
+.     di "  criancas em cpf_fila_14 = " r(N)
+  criancas em cpf_fila_14 = 579682
+
+. restore
+
+. 
+. di ""
+
+
+. di "--- A3: fracao com valores DIFERENTES entre 11 e 14 (pares em ambos) ---"
+--- A3: fracao com valores DIFERENTES entre 11 e 14 (pares em ambos) ---
+
+. keep if !missing(remun11) & !missing(remun14)
+(314,564 observations deleted)
+
+. di "  N pares comparaveis = " _N
+  N pares comparaveis = 391320
+
+. gen byte dif_remun = abs(remun11-remun14) > 0.001 if !missing(remun11,remun14)
+
+. gen byte dif_tempo = abs(tempo11-tempo14) > 0.001 if !missing(tempo11,tempo14)
+
+. gen byte dif_vinc  = vinc11 != vinc14 if !missing(vinc11,vinc14)
+
+. sum dif_remun dif_tempo dif_vinc
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+   dif_remun |    391,320    .9980374    .0442577          0          1
+   dif_tempo |    391,320     .994286    .0753748          0          1
+    dif_vinc |    391,320    .3712844    .4831489          0          1
+
+. di "  --- % diferentes ---"
+  --- % diferentes ---
+
+. foreach v in dif_remun dif_tempo dif_vinc {
+  2.     qui sum `v'
+  3.     di "    `v': " %6.4f r(mean) "  (N=" r(N) ")"
+  4. }
+    dif_remun: 0.9980  (N=391320)
+    dif_tempo: 0.9943  (N=391320)
+    dif_vinc: 0.3713  (N=391320)
+
+. 
+. di "=== FIM A2A3 ==="
+=== FIM A2A3 ===
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag08_A2A3.log
+  log type:  text
+ closed on:  22 Jul 2026, 14:26:01
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

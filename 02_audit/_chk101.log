@@ -1,0 +1,36 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\_chk101.log
+  log type:  text
+ opened on:  22 Jul 2026, 13:47:32
+
+. foreach f in cpf_fila_101 cpf_fila_11 {
+  2.   di "==== `f' ===="
+  3.   use "<NE_ROOT>\dados_restritos\Dados - SME/Atual (25.06)/`f'.dta" in 1, clear
+  4.   di "N vars=" c(k)
+  5.   ds
+  6. }
+==== cpf_fila_101 ====
+N vars=91
+municipio     tipoadm       portdefic     indsimples    tempempr      numectps      diadesl       mesiniaf1     diafimaf2     mesfimaf3     dt_solicit~o  cd_esc_enc~o  dt_desiste~a  an_letivo~sa  tp_raca_cor   _merge
+empem3112     tiposal       tamestab      dtadmissao    horascontr    cpf           ocup2002      diafimaf1     mesfimaf2     qtdiasafas    cd_esc_sol~o  cd_serie_~to  an_letivo~ia  cd_esc_rec~a  mes_nasc
+tpvinculo     grinstrucao   natjuridica   remdezr       ultrem        ceivinc       sbclas20      mesfimaf1     causafast3    anochegada2   an_letivo~ao  dt_matricula  cd_esc_des~a  cd_serie_~sa  ano_nasc
+causadesli    genero        indceivinc    remdezembro   salcontr      identificad   tpdefic       causafast2    diainiaf3     uf            cd_serie_~ao  an_letivo~la  cd_serie_~ia  cd_tipo_m~sa  cd_pais_mec
+mesdeslig     nacionalidad  tipoestbl     remmedr       pis           radiccnpj     causafast1    diainiaf2     mesiniaf3     ano           dt_encamin~o  cd_esc_mat~a  cd_tipo_m~ia  tipo_prior~o  cep_aluno
+indalvara     raca_cor      indpat        remmedia      dtnasciment   nome          diainiaf1     mesiniaf2     diafimaf3     cd_aluno_sme  an_letivo~to  cd_serie_~la  dt_recusa     cd_sexo_al~o  dup
+==== cpf_fila_11 ====
+N vars=93
+município       tipoadmissão    indportado~c    dataadmiss~a    vlúltimare~o    cnpjraiz        diainiaf1       diafimaf2       qtddiasafa~o    cd_esc_sol~o    dt_matricula    cd_serie_~ia    tipo_prior~o    dup
+cnae95classe    tiposalário     tamanhoest~o    vlremunmé~om    vlsalárioc~l    nometrabal~r    mêsiniaf1       mêsfimaf2       idade           an_letivo~ao    an_letivo~la    cd_tipo_m~ia    cd_sexo_al~o    _merge
+vínculo~3112    cbo94ocupa~o    naturezaju~a    vlremunmé~sm    pis             cboocup~2002    diafimaf1       causaafast~3    anochegada~l    cd_serie_~ao    cd_esc_mat~a    dt_recusa       tp_raca_cor
+tipovínculo     escolar~2005    indceivinc~o    vlremunde~om    númeroctps      cnae20classe    mêsfimaf1       diainiaf3       uf              dt_encamin~o    cd_serie_~la    an_letivo~sa    mes_nasc
+motivodesl~o    sexotrabal~r    tipoestab       vlremunde~sm    cpf             cnae20subc~e    causaafast~2    mêsiniaf3       ano             an_letivo~to    dt_desiste~a    cd_esc_rec~a    ano_nasc
+mêsdesliga~o    nacionalid~e    indestabpa~t    tempoemprego    ceivinculado    tipodefic       diainiaf2       diafimaf3       cd_aluno_sme    cd_esc_enc~o    an_letivo~ia    cd_serie_~sa    cd_pais_mec
+indvínculo~á    raçacor         indsimples      qtdhoracontr    cnpjcei         causaafast~1    mêsiniaf2       mêsfimaf3       dt_solicit~o    cd_serie_~to    cd_esc_des~a    cd_tipo_m~sa    cep_aluno
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\_chk101.log
+  log type:  text
+ closed on:  22 Jul 2026, 13:47:32
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

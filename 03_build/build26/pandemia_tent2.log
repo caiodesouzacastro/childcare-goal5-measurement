@@ -1,0 +1,98 @@
+============================== (a) entradas na fila por ano
+ ano  nascidos  novos_registro  novos_registro_jan_set  dem_dez_ant  mes_pico  dem_pico  entradas_lim_inf  calib_lim_inf_sobre_registro
+2013    172948        191149.0                152022.0        97160         9    156982             59822                      0.312960
+2014    175817        174676.0                138801.0        96696         9    160495             63799                      0.365242
+2015    176281        179869.0                135654.0        94191         9    145864             51673                      0.287281
+2016    167278        172341.0                139235.0        75194         9    133005             57811                      0.335445
+2017    169289        163922.0                130266.0        65040         9    132365             67325                      0.410714
+2018    165353        165331.0                131517.0        44092         9     85407             41315                      0.249893
+2019    158596             NaN                     NaN        19697         9     75267             55570                           NaN
+2020    147148             NaN                     NaN         9670         6     22732             13062                           NaN
+2021    136722             NaN                     NaN          540         9     28592             28052                           NaN
+2022    132106             NaN                     NaN          595         9      9332              8737                           NaN
+2023    128736             NaN                     NaN          681        10     11965             11284                           NaN
+2024    120786             NaN                     NaN          555        10      8803              8248                           NaN
+2025    122805             NaN                     NaN          528        10      6721              6193                           NaN
+calibracao 2013-2018: limite inferior / 1os pedidos do registro: min 0.250 max 0.411 media 0.327
+limite inferior 2020 vs 2019: 13,062 vs 55,570 (-76.5%)
+limite inferior 2021 vs 2019: 28,052 vs 55,570 (-49.5%)
+limite inferior 2022 vs 2019: 8,737 vs 55,570 (-84.3%)
+nascidos 2020 vs 2019: 147,148 vs 158,596 (-7.2%)
+nascidos 2021 vs 2019: 136,722 vs 158,596 (-13.8%)
+nascidos 2022 vs 2019: 132,106 vs 158,596 (-16.7%)
+nascidos 2023 vs 2019: 128,736 vs 158,596 (-18.8%)
+nascidos 2024 vs 2019: 120,786 vs 158,596 (-23.8%)
+============================== (b) matricula e fila
+ ano  mes_set  dem_set  mat_sme_set  soma_set  dem_dez  dem1_dez  mat_sme_dez  soma_dez  n_contagens    soma_media  pool_nv_maio  soma_set_sobre_pool  soma_media_sobre_pool  censo_total  censo_mun_conv  censo_privada_nc
+2013        9   156982       213275    370257    96696       NaN       214460    311156            4 332631.000000 700113.333333             0.528853               0.475110     267307.0        208246.0           57979.0
+2014        9   160495       225806    386301    94191       NaN       228204    322395            4 347102.750000 700213.666667             0.551690               0.495710     282235.0        220533.0           60658.0
+2015        9   145864       250303    396167    75194       NaN       260785    335979            4 360049.750000 701039.083333             0.565114               0.513594     298502.0        237684.0           60421.0
+2016        9   133005       283556    416561    65040       NaN       284179    349219            4 376517.750000 697348.250000             0.597350               0.539928     330872.0        272960.0           57525.0
+2017        9   132365       289962    422327    44092       NaN       296260    340352            4 382567.250000 690799.416667             0.611360               0.553804     343296.0        286748.0           56108.0
+2018        9    85407       323885    409292    19697       NaN       333922    353619            4 377724.000000 684305.000000             0.598113               0.551982     365854.0        309947.0           55682.0
+2019        9    75267       337022    412289     9670    8083.0       345452    355122            4 378635.000000 670832.250000             0.614593               0.564426     387188.0        330888.0           55957.0
+2020        9     6670       357512    364182      540       0.0       374631    375171            4 366236.250000 652128.500000             0.558451               0.561601     380783.0        336711.0           44003.0
+2021        9    28592       371923    400515      595       0.0       385100    385695            4 374710.500000 626816.416667             0.638967               0.597799     377862.0        345974.0           31774.0
+2022        9     9332       358043    367375      681       0.0       361257    361938            4 358867.250000 593966.083333             0.618512               0.604188     389561.0             NaN               NaN
+2023        8     8907       347183    356090      555       0.0       354093    354648            6 347252.833333 562130.333333             0.633465               0.617744     376676.0             NaN               NaN
+2024        8     6190       339480    345670      528       0.0       345019    345547            6 338277.166667 533727.833333             0.647652               0.633801     370706.0             NaN               NaN
+2025        8     4776       324375    329151      500       0.0       330106    330606            6 322602.833333 512551.250000             0.642182               0.629406          NaN             NaN               NaN
+============================== (c) identidade: d(fila) = d(matricula + fila) - d(matricula)
+dem_set 2019->2020: fila 75,267 -> 6,670 (d -68,597); matricula 337,022 -> 357,512 (d +20,490); soma d -48,107 (-11.7%)
+dem_set 2019->2021: fila 75,267 -> 28,592 (d -46,675); matricula 337,022 -> 371,923 (d +34,901); soma d -11,774 (-2.9%)
+dem_set 2019->2022: fila 75,267 -> 9,332 (d -65,935); matricula 337,022 -> 358,043 (d +21,021); soma d -44,914 (-10.9%)
+dem_dez 2019->2020: fila 9,670 -> 540 (d -9,130); matricula 345,452 -> 374,631 (d +29,179); soma d +20,049 (+5.6%)
+dem_dez 2019->2021: fila 9,670 -> 595 (d -9,075); matricula 345,452 -> 385,100 (d +39,648); soma d +30,573 (+8.6%)
+dem_dez 2019->2022: fila 9,670 -> 681 (d -8,989); matricula 345,452 -> 361,257 (d +15,805); soma d +6,816 (+1.9%)
+dem_dez 2019->2023: fila 9,670 -> 555 (d -9,115); matricula 345,452 -> 354,093 (d +8,641); soma d -474 (-0.1%)
+dem_dez 2019->2024: fila 9,670 -> 528 (d -9,142); matricula 345,452 -> 345,019 (d -433); soma d -9,575 (-2.7%)
+dem_dez 2019->2025: fila 9,670 -> 500 (d -9,170); matricula 345,452 -> 330,106 (d -15,346); soma d -24,516 (-6.9%)
+dem_dez 2020->2021: fila 540 -> 595 (d +55); matricula 374,631 -> 385,100 (d +10,469); soma d +10,524 (+2.8%)
+dem_dez 2021->2022: fila 595 -> 681 (d +86); matricula 385,100 -> 361,257 (d -23,843); soma d -23,757 (-6.2%)
+dem_dez 2022->2023: fila 681 -> 555 (d -126); matricula 361,257 -> 354,093 (d -7,164); soma d -7,290 (-2.0%)
+dem_dez 2023->2024: fila 555 -> 528 (d -27); matricula 354,093 -> 345,019 (d -9,074); soma d -9,101 (-2.6%)
+dem_dez 2024->2025: fila 528 -> 500 (d -28); matricula 345,019 -> 330,106 (d -14,913); soma d -14,941 (-4.3%)
+pool de nascidos (maio) 2019->2020: 670,832 -> 652,128 (-2.8%); soma set -11.7%; soma media -3.3%
+pool de nascidos (maio) 2019->2021: 670,832 -> 626,816 (-6.6%); soma set -2.9%; soma media -1.0%
+pool de nascidos (maio) 2019->2022: 670,832 -> 593,966 (-11.5%); soma set -10.9%; soma media -5.2%
+Censo 2019->2021: total 387,188 -> 377,862 (-9,326); municipal+conveniada 330,888 -> 345,974 (+15,086); privada nao conveniada 55,957 -> 31,774 (-24,183)
+============================== (d) combinacoes de build25 que cumprem a meta: em que anos e por qual braco
+               fila  data       pop fonte_B    rede_A    clausula                      ano
+sem_unid_especifica    12    linear   Censo     todas fila_sempre             (2020, 2021)
+sem_unid_especifica    12    linear   Censo     todas    so_maior       (2019, 2020, 2021)
+sem_unid_especifica    12    linear     SME municipal fila_sempre             (2020, 2021)
+sem_unid_especifica    12    linear     SME municipal    so_maior             (2020, 2021)
+sem_unid_especifica    12    linear     SME     todas fila_sempre       (2020, 2021, 2022)
+sem_unid_especifica    12    linear     SME     todas    so_maior (2019, 2020, 2021, 2022)
+sem_unid_especifica    12 principal   Censo     todas fila_sempre                  (2021,)
+sem_unid_especifica    12 principal   Censo     todas    so_maior                  (2021,)
+sem_unid_especifica    12 principal     SME municipal fila_sempre                  (2021,)
+sem_unid_especifica    12 principal     SME municipal    so_maior                  (2021,)
+sem_unid_especifica    12 principal     SME     todas fila_sempre             (2021, 2022)
+sem_unid_especifica    12 principal     SME     todas    so_maior             (2021, 2022)
+sem_unid_especifica     9    linear   Censo     todas    so_maior                  (2020,)
+sem_unid_especifica media    linear   Censo     todas    so_maior             (2020, 2021)
+sem_unid_especifica media principal   Censo     todas    so_maior                  (2021,)
+              total    12    linear   Censo     todas    so_maior       (2019, 2020, 2021)
+              total    12    linear     SME     todas    so_maior                  (2019,)
+              total    12 principal   Censo     todas    so_maior                  (2021,)
+              total     9    linear   Censo     todas    so_maior                  (2020,)
+              total media    linear   Censo     todas    so_maior                  (2020,)
+              total media principal   Censo     todas    so_maior                  (2021,)
+combinacoes com algum ano cumprido: 21
+cumpridas apenas em anos de 2020-2021: 14; com 2019: 4; com 2022: 4
+cumprimentos (combinacao-ano) por ano, data e braco que obriga:
+obriga      A  B
+ano  data       
+2019 12     4  0
+2020 12     3  4
+     9      2  0
+     media  2  0
+2021 12     6  8
+     media  3  0
+2022 12     0  4
+setembro, populacao linear, matricula do Censo:
+Empty DataFrame
+Columns: [fila, data, pop, fonte_B, rede_A, clausula, ano, A, AB, obriga, dem, cumpre]
+Index: []
+[gravado e relido] <NE_ROOT>\03_build\build26\pandemia_anual.csv 13 linhas

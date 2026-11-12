@@ -1,0 +1,37 @@
+carregando spine...
+  N=283,435 nas coortes [2012, 2016]. distrito ok=0.99
+  celulas distintas (3 coortes) = 5,964
+  linhas com tempo valido (entram na CIF): 267,583 de 283,435
+  (as demais permanecem no calculo das FREQUENCIAS de celula, como em build_p3.py,
+   onde os pesos sao construidos sobre a coorte inteira e a CIF descarta o invalido)
+  coorte 2012: n=155,292  validos=139,440  tempos distintos=1,391  referral=130,889  aging-out=8,551
+  coorte 2016: n=128,143  validos=128,143  tempos distintos=1,057  referral=126,934  aging-out=0
+
+## estimativa pontual (contagens = 1; deve reproduzir build_p3.py)
+  Raw           : 2012=0.631 2016=0.876  Delta=+0.2452  (esperado 0.245, p3_2012_2016.log)
+  Applicant std : 2012=0.631 2016=0.891  Delta=+0.2594  (esperado 0.259, p3_2012_2016.log)
+  rep 50/1000  (3s, 0.07s/rep)  media std=+0.2584
+  rep 100/1000  (6s, 0.06s/rep)  media std=+0.2584
+  rep 150/1000  (9s, 0.06s/rep)  media std=+0.2584
+  rep 200/1000  (12s, 0.06s/rep)  media std=+0.2584
+  rep 250/1000  (15s, 0.06s/rep)  media std=+0.2585
+  rep 300/1000  (18s, 0.06s/rep)  media std=+0.2584
+  rep 350/1000  (20s, 0.06s/rep)  media std=+0.2585
+  rep 400/1000  (22s, 0.06s/rep)  media std=+0.2585
+  rep 450/1000  (25s, 0.05s/rep)  media std=+0.2584
+  rep 500/1000  (27s, 0.05s/rep)  media std=+0.2585
+  rep 550/1000  (29s, 0.05s/rep)  media std=+0.2585
+  rep 600/1000  (32s, 0.05s/rep)  media std=+0.2585
+  rep 650/1000  (34s, 0.05s/rep)  media std=+0.2585
+  rep 700/1000  (36s, 0.05s/rep)  media std=+0.2585
+  rep 750/1000  (39s, 0.05s/rep)  media std=+0.2585
+  rep 800/1000  (41s, 0.05s/rep)  media std=+0.2585
+  rep 850/1000  (43s, 0.05s/rep)  media std=+0.2585
+  rep 900/1000  (46s, 0.05s/rep)  media std=+0.2585
+  rep 950/1000  (48s, 0.05s/rep)  media std=+0.2585
+  rep 1000/1000  (50s, 0.05s/rep)  media std=+0.2585
+
+## BOOTSTRAP  seed=20260726  reps=1000
+  Raw           Delta=+0.2452  se=0.0016  IC95=[+0.2422, +0.2486]
+  Applicant std Delta=+0.2594  se=0.0015  IC95=[+0.2558, +0.2617]
+tex: P3_boot

@@ -1,0 +1,22 @@
+serie,inicio,fim,passos,N,valor_inicio,valor_fim,ganho,completude_inicio
+"encaminhamento 1 ano, por ano de solicitacao",2010,2017,7.0,1089173.0,0.51,0.903,0.393,21.1
+"encaminhamento 1 ano, por ano de solicitacao",2011,2017,6.0,1037305.0,0.351,0.903,0.552,51.5
+"encaminhamento 1 ano, por ano de solicitacao",2012,2017,5.0,938046.0,0.64,0.903,0.263,95.4
+"encaminhamento 1 ano, por ano de solicitacao",2012S2,2017,4.5,838381.0,0.562,0.903,0.342,98.0
+"encaminhamento 1 ano, por ano de solicitacao",2013,2017,4.0,764751.0,0.646,0.903,0.257,98.3
+"encaminhamento 1 ano, por ano de solicitacao",2014,2017,3.0,609827.0,0.684,0.903,0.22,97.9
+"encaminhamento 1 ano, por coorte",2010,2016,6.0,934357.0,0.563,0.876,0.313,82.8
+"encaminhamento 1 ano, por coorte",2011,2016,5.0,828057.0,0.53,0.876,0.346,92.0
+"encaminhamento 1 ano, por coorte",2012,2016,4.0,701291.0,0.631,0.876,0.245,97.9
+"encaminhamento 1 ano, por coorte",2013,2016,3.0,561851.0,0.753,0.876,0.123,98.4
+"encaminhamento 1 ano, por coorte",2014,2016,2.0,421040.0,0.761,0.876,0.115,98.6
+"matricula 1 ano, por coorte",2010,2016,6.0,934357.0,0.468,0.747,0.279,82.8
+"matricula 1 ano, por coorte",2011,2016,5.0,828057.0,0.427,0.747,0.32,92.0
+"matricula 1 ano, por coorte",2012,2016,4.0,701291.0,0.523,0.747,0.224,97.9
+"matricula 1 ano, por coorte",2013,2016,3.0,561851.0,0.644,0.747,0.103,98.4
+"matricula 1 ano, por coorte",2014,2016,2.0,421040.0,0.639,0.747,0.109,98.6
+"registro antes de 12 meses (% nascidos), por coorte",2010,2016,6.0,,11.0,50.1,39.2,82.8
+"registro antes de 12 meses (% nascidos), por coorte",2011,2016,5.0,,27.4,50.1,22.8,92.0
+"registro antes de 12 meses (% nascidos), por coorte",2012,2016,4.0,,38.3,50.1,11.9,97.9
+"registro antes de 12 meses (% nascidos), por coorte",2013,2016,3.0,,41.5,50.1,8.7,98.4
+"registro antes de 12 meses (% nascidos), por coorte",2014,2016,2.0,,44.1,50.1,6.1,98.6

@@ -1,0 +1,20 @@
+% requer \usepackage{booktabs}. Tabela descritiva; sem interpretacao causal.
+\begin{table}[htbp]\centering
+\caption{Apendice metodologico: desenhos de identificacao testados e por que nao geram variacao exogena}
+\label{tab:T10_desenhos}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{p{2.4cm}p{2.6cm}p{3.2cm}p{2.8cm}p{2.4cm}}
+\toprule
+Desenho & Fonte de variacao & Teste que falhou & Estatistica-chave & Diagnostico de origem \\
+\midrule
+Corte da fila (RDD por escola) & Descontinuidade artificial (rvar/dt\_corte por escola) & Corte nao e regra de elegibilidade; densidade e desfechos saltam por construcao & Manipulacao/nao-aleatoriedade do corte (McCrary) & DIAG01: corte definido ex-post pela propria alocacao \\
+Leave-one-out do corte & Variacao no corte deixando uma escola de fora & Sem primeiro estagio exogeno; corte co-determinado com a demanda & Placebos nao nulos & DIAG02: corte segue a fila, nao a oferta \\
+Abertura de CEI perto de casa (IV) & Novos CEIs <=1km apos a solicitacao & Abertura correlacionada com demanda local reprimida & Exposicao pre-solicitacao ja preve desfechos & DIAG04: oferta responde ao territorio \\
+Regra de corte etario 31/03 & Idade em 31/03 do ano da vaga & Descontinuidade fraca/endogena a serie solicitada & Primeiro estagio fraco; composicao muda no limiar & DIAG06: regra nao vincula alocacao \\
+Alocacao (quase-aleatoria) entre escolas & Qual CEI dentro do conjunto elegivel & Alocacao nao e aleatoria; segue distancia e vaga & Balanco falha; distancia preve escola & DIAG08: fila ordena por distancia/prioridade \\
+Choque de capacidade (VAGOFER/parceria) & Reducoes/fechamentos de vagas no conjunto elegivel & Primeiro estagio pequeno, some sob setor$\times$semestre; fechamentos selecionados por repasse & Placebo pre-solicitacao $\geq$ coeficiente da janela real; b(pre) espera +4,87 vs +3,29 & DIAG11: choque segue tendencia de setor \\
+\bottomrule
+\end{tabular}
+\\[3pt]{\footnotesize \textit{Note:} Sintese dos diagnosticos DIAG01--DIAG11. ``Primeiro estagio obtido'' e ``teste que falhou'' resumem cada exercicio; a estatistica-chave cita o resultado mais informativo. O sistema de fila centralizada alinha oferta, distancia e prioridade a demanda, de modo que nenhuma fonte de variacao testada e exogena aos desfechos. Fonte: DIAG01--DIAG11 (C:\textbackslash Users\textbackslash <usuario>\textbackslash Downloads).}
+\end{table}

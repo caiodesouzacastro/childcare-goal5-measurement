@@ -1,0 +1,5 @@
+CORPO: ['1=tab:indet', '2=tab:series', '3=tab:armArob', '4=tab:arms', 'Fig.1=fig:goal', '5=tab:coverage', 'Fig.2=fig:coverage', '6=tab:completeness', 'Fig.3=fig:level', '7=tab:service', '8=tab:stab']
+APENDICE: ['A1=tab:T6a_modulo', 'A2=tab:C2', 'A3=tab:calendar', 'A4=tab:T5a_rank', 'A5=tab:R_capcheck', 'A6=tab:T2a_capacidade', 'A7=tab:T6b_ratio', 'A8=tab:T7a_ceis', 'A9=tab:T5c_modal', 'A10=tab:S6c_cobertura', 'AFig.1=fig:F7', 'A11=tab:N1', 'A12=tab:T1_fila', 'A13=tab:dates', 'A14=tab:recon', 'A15=tab:decomp', 'A16=tab:covtype', 'A17=tab:prospect', 'A18=tab:enrolledbyage', 'A19=tab:level', 'A20=tab:timing', 'A21=tab:C4', 'AFig.2=fig:F8', 'A22=tab:cohortcov', 'A23=tab:T4d_never', 'A24=tab:specs']
+CORPO NAO CITADOS: []
+APENDICE NAO CITADOS: []
+REFS SEM ROTULO: []

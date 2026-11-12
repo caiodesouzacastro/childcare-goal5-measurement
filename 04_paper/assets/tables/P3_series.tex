@@ -1,0 +1,17 @@
+% BLOCO P3. Descritivo.
+\begin{table}[htbp]\centering
+\caption{One-year referral incidence by birth cohort under three standardizations}
+\label{tab:P3series}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrrrrrr}
+\toprule
+Standardization & 2010 & 2011 & 2012 & 2013 & 2014 & 2015 & 2016 & $\Delta$ \\
+\midrule
+Raw (unweighted) & 0.563 & 0.530 & 0.631 & 0.753 & 0.761 & 0.814 & 0.876 & +0.313 \\
+Applicant composition & 0.498 & 0.512 & 0.622 & 0.753 & 0.767 & 0.828 & 0.885 & +0.387 \\
+Applicant + service environment & 0.503 & 0.519 & 0.622 & 0.753 & 0.765 & 0.818 & 0.870 & +0.367 \\
+\bottomrule
+\end{tabular}
+\\[3pt]{\footnotesize \textit{Note:} Cumulative incidence of referral within 365 days (Aalen--Johansen, aging out treated as a competing event). Row 1 is unweighted. Row 2 reweights each cohort to the 2013 cohort's joint distribution of applicant attributes only---age at application, priority, postcode income quartile, district, and semester of application (\emph{no} supply variable). Row 3 adds the service environment (number of eligible centres open within 2\,km at the application date). Requested band is excluded from all rows: it is nearly mechanical given age and the 31 March cut-off, so it would be collinear with age at application. $\Delta$ is 2016 minus 2010.}
+\end{table}

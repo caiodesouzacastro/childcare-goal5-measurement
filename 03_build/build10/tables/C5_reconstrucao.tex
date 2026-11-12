@@ -1,0 +1,23 @@
+% requer booktabs. Descritivo (BUILD10).
+\begin{table}[htbp]\centering
+\caption{Annual queue reconstruction with official initialization and closing identity}
+\label{tab:C5}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrrrrrrr}
+\toprule
+Year & Start & New & Ref. & Aged & Des. & Residual & Official & Recon & Ratio \\
+\midrule
+2010 & 26,004 & 81,004 & 32,616 & 36,975 & 6,093 & -72 & 100,401 & 31,396 & 0.31 \\
+2011 & 31,396 & 124,240 & 33,314 & 30,245 & 5,527 & 61 & 101,165 & 86,489 & 0.85 \\
+2012 & 86,489 & 220,922 & 154,171 & 66,695 & 6,225 & 14 & 97,160 & 80,306 & 0.83 \\
+2013 & 80,306 & 191,149 & 135,383 & 46,421 & 1,605 & -297 & 96,696 & 88,343 & 0.91 \\
+2014 & 88,343 & 174,676 & 143,089 & 36,237 & 1,207 & 9 & 94,191 & 82,477 & 0.88 \\
+2015 & 82,477 & 179,869 & 157,859 & 36,998 & 1,076 & 26 & 75,194 & 66,387 & 0.88 \\
+2016 & 66,387 & 172,341 & 151,989 & 25,344 & 1,223 & 69 & 65,040 & 60,103 & 0.92 \\
+2017 & 60,103 & 163,922 & 160,351 & 20,778 & 1,460 & 181 & 44,092 & 41,255 & 0.94 \\
+2018 & 41,255 & 165,331 & 170,470 & 16,346 & 1,138 & -4 & n/d & 18,636 & n/d \\
+\bottomrule
+\end{tabular}
+\\[3pt]{\footnotesize \textit{Note:} start: stock at 1 January, chained on the official December series (2010 initialized with official December-2009 registered demand, 74{,}707). new: first applications dated in the year. ref: first referrals. aged: children reaching 47 months unreferred. des: withdrawals (desist\^encia) before referral or aging. residual = start + new $-$ ref $-$ aged $-$ des $-$ official: unobserved administrative removals plus universe mismatch needed to close against the official December stock. recon: the paper's constructed stock (first applications still waiting, age-censored, no backlog). ratio = recon$/$official.}
+\end{table}

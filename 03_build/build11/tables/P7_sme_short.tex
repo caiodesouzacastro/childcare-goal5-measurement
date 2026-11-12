@@ -1,0 +1,32 @@
+% P7 (abreviada, revisao r1). Versao de corpo da tab:SMEpub. Requer amssymb (\checkmark), natbib.
+\begin{table}[htbp]\centering
+\caption{What the recurring public indicators report about childcare demand (abbreviated)}
+\label{tab:SMEshort}
+\footnotesize
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{p{4.6cm}cp{2.4cm}cc}
+\toprule
+Indicator & \shortstack{Reports\\stock?} & Duration? & \shortstack{Age at\\application?} & Flows? \\
+\midrule
+Registered demand, by district & \checkmark & --- & --- & --- \\
+The same stock split by length of wait & \checkmark & binary ($\le$/$>$30d) & --- & --- \\
+Enrolments by stage, by district & \checkmark & --- & --- & --- \\
+``Vaga na Creche'' public tool & \checkmark\,(local) & --- & --- & --- \\
+\bottomrule
+\end{tabular}
+\\[3pt]{\footnotesize \textit{Note:} Full detail in Table~\ref{tab:SMEpub}, which
+adds the frequency and source of each indicator and the remaining columns.
+\checkmark\ denotes reported, --- not reported.
+The recurring releases report stocks and, for childcare, a binary split of the wait
+(up to versus over 30 days); they do not report the distribution of age at
+application, an exact or mean waiting duration, or the entry, referral and exit
+flows that generate the stock. Periodicity differs between the historical series
+and the current releases: the quarterly snapshots plotted in
+Figure~\ref{fig:F10} are the historical series, whereas the recurring release
+current at the time of writing is bimonthly. Sources: the secretariat's Demanda
+Escolar reporting \citep{sme_demanda_escolar}, the S\~ao Paulo Open Data Portal
+series on registered demand and enrolments (EOL) \citep{sme_dados_abertos}, a
+representative bimonthly district release \citep{sme_demanda_junho2026}, and the
+``Vaga na Creche'' platform \citep{sme_vaga_creche}; all accessed 24 July 2026.}
+\end{table}

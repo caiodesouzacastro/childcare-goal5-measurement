@@ -1,0 +1,40 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\_chkvars.log
+  log type:  text
+ opened on:  22 Jul 2026, 14:45:44
+
+. global rc "<NE_ROOT>\dados_restritos\Ciro\01_dados\brutos\rais_cpf"
+
+. foreach f in cpf_fila_07 cpf_fila_101 {
+  2.   di "==================== `f' ===================="
+  3.   use "$rc/`f'.dta" in 1, clear
+  4.   foreach p in sex gener empem vincul remun rem hora hor grins escol idade nasc tamest tamanho natjur natu estab {
+  5.     cap ds *`p'*
+  6.   }
+  7.   di "  -- lista completa --"
+  8.   ds
+  9. }
+==================== cpf_fila_07 ====================
+  -- lista completa --
+municipio     indalvara     nacionalidad  tipoestbl     remdezembro   pis           radiccnpj     sbclas20      mesfimaf1     causafast3    uf            cd_serie_~ao  an_letivo~la  cd_serie_~ia  cd_tipo_m~sa  cd_pais_mec
+clascnae95    tipoadm       raca_cor      indpat        remdezr       dtnasciment   tipoestbid    tpdefic       causafast2    diainiaf3     ano           dt_encamin~o  cd_esc_mat~a  cd_tipo_m~ia  tipo_prior~o  cep_aluno
+empem3112     tiposal       portdefic     indsimples    tempempr      numectps      nome          causafast1    diainiaf2     mesiniaf3     cd_aluno_sme  an_letivo~to  cd_serie_~la  dt_recusa     cd_sexo_al~o  dup
+tpvinculo     ocupacao94    tamestab      dtadmissao    horascontr    cpf           diadesl       diainiaf1     mesiniaf2     diafimaf3     dt_solicit~o  cd_esc_enc~o  dt_desiste~a  an_letivo~sa  tp_raca_cor   _merge
+causadesli    grinstrucao   naturjur      remmedia      ultrem        ceivinc       ocup2002      mesiniaf1     diafimaf2     mesfimaf3     cd_esc_sol~o  cd_serie_~to  an_letivo~ia  cd_esc_rec~a  mes_nasc
+mesdeslig     genero        indceivinc    remmedr       salcontr      identificad   clascnae20    diafimaf1     mesfimaf2     qtdiasafas    an_letivo~ao  dt_matricula  cd_esc_des~a  cd_serie_~sa  ano_nasc
+==================== cpf_fila_101 ====================
+  -- lista completa --
+municipio     tipoadm       portdefic     indsimples    tempempr      numectps      diadesl       mesiniaf1     diafimaf2     mesfimaf3     dt_solicit~o  cd_esc_enc~o  dt_desiste~a  an_letivo~sa  tp_raca_cor
+empem3112     tiposal       tamestab      dtadmissao    horascontr    cpf           ocup2002      diafimaf1     mesfimaf2     qtdiasafas    cd_esc_sol~o  cd_serie_~to  an_letivo~ia  cd_esc_rec~a  mes_nasc
+tpvinculo     grinstrucao   natjuridica   remdezr       ultrem        ceivinc       sbclas20      mesfimaf1     causafast3    anochegada2   an_letivo~ao  dt_matricula  cd_esc_des~a  cd_serie_~sa  ano_nasc
+causadesli    genero        indceivinc    remdezembro   salcontr      identificad   tpdefic       causafast2    diainiaf3     uf            cd_serie_~ao  an_letivo~la  cd_serie_~ia  cd_tipo_m~sa  cd_pais_mec
+mesdeslig     nacionalidad  tipoestbl     remmedr       pis           radiccnpj     causafast1    diainiaf2     mesiniaf3     ano           dt_encamin~o  cd_esc_mat~a  cd_tipo_m~ia  tipo_prior~o  cep_aluno
+indalvara     raca_cor      indpat        remmedia      dtnasciment   nome          diainiaf1     mesiniaf2     diafimaf3     cd_aluno_sme  an_letivo~to  cd_serie_~la  dt_recusa     cd_sexo_al~o  dup
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\_chkvars.log
+  log type:  text
+ closed on:  22 Jul 2026, 14:45:44
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

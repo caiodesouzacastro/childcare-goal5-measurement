@@ -1,0 +1,222 @@
+Dicionário de Variáveis ;;;;;;
+Secretaria Municipal de Educação de São Paulo;;;;;;
+Microdados de Matrículas ;;;;;;
+N;Nome da Variável na Base;Descrição ;Tipo;Tamanho;Categoria;Observações
+1;AN_LETIVO;Ano Letivo;Num;4;;
+DADOS DA ESCOLA;;;;;;
+2;CD_UNIDADE_EDUCACAO;Código da escola;Num;6;;
+3;NOME_DISTRITO;Nome do distrito a qual a escola pertence;Char;18;;
+4;CD_SETOR;Código do Setor a qual a escola pertence;Num;4;;
+5;TIPO_ESCOLA;Tipo da escola;Char;12;CCA: Centro para Crianças e a Adolescentes;Pertencentes a outras Secretarias Municipais
+;;;;;CCI/CIPS: Centros de Convivência Infantil/Centros Infantis de Proteção à Saúde;Pertencentes a outras Secretarias Municipais
+;;;;;CECI: Centro de Educação e Cultura Indígena;
+;;;;;CEI DIRET: Centro de Educação Infantil Direto ;
+;;;;;CEI INDIRET:  Centro de Educação Indireto Conveniado;
+;;;;;CEMEI: Centro Municipal de Educação Infantil;
+;;;;;CEU AT COMPL: Centro Educacional Unificado - Atividades complementares;
+;;;;;CEU CEI: Centro Educacional Unificado - CEI;
+;;;;;CEU EMEF: Centro Educacional Unificado - EMEF;
+;;;;;CEU EMEI: Centro Educacional - EMEI;
+;;;;;CIEJA: Centro Integrado de Educação de Jovens e Adultos;
+;;;;;CMCT: Centro Municipal de Capacitação e Treinamento ;
+;;;;;CR.P CONV: Creche Privada Conveniada;
+;;;;;E TECNICA: Escola Técnica;Pertencentes a outras Secretarias Municipais
+;;;;;EMEBS: Escola Municipal de Educação Bilíngue para Surdos;
+;;;;;EMEF: Escola Municipal de Ensino Fundamental;
+;;;;;EMEFM: Escola Municipal de Ensino Fundamental e Médio;
+;;;;;EMEI: Escola Municipal de Educação Infantil;
+;;;;;ESP CONV: Convênios de Educação Especial;
+;;;;;MOVA: Unidade do Movimento de Alfabetização de Jovens e Adultos;Unidades conveniadas com turmas do Movimento de Alfabetização de Jovens e Adultos
+6;NOME_ESCOLA;Nome da escola;Char;60;;
+7;DRE;Nome da Diretoria Regional de Ensino (DRE) a qual a escola pertence;Char;52;;
+8;CD_INEP_ESCOLA;Código INEP da escola;Num;8;;
+9;SITUACAO_ESCOLA;Situação de funcionamento da escola;Char;17;Escola Ativa;"O status ""Escola Paralisada"" refere-se a escola não extinta, porém sem atividades escolares (como, por exemplo, escolas em reforma) "
+;;;;;Escola Extinta;
+;;;;;Escola Paralisada;
+DADOS DA TURMA;;;;;;
+10;CD_TURMA;Código da Turma;Num;7;;
+11;CD_TURNO;Código do Turno ;Num;1;;
+12;DESC_TURNO;Descritivo do Turno;Char;15;Manhã;
+;;;;;Tarde;
+;;;;;Vespertino;
+;;;;;Noite;
+;;;;;Intermediário;
+;;;;;Integral;
+13;CD_SERIE;Código da Série;Num;5;;
+14;DESC_SERIE;Descritivo da Série;Char;40;;
+15;MODALIDADE;Modalidade/Etapa de ensino da turma;Char;8;ATCOMP - Turmas de Atvidades Complementares;
+;;;;;CONVEE - Turmas em Convênio de Educação Especial;
+;;;;;CRECHE - Turmas de Educação Infantil - Segmento Creche;
+;;;;;EDPROF - Turmas de Educação Profissional (Nível Técnico);
+;;;;;EJA - Turmas de Educação de Jovens e Adultos;
+;;;;;ESPEC - Turmas de Educação Especial (surdos);
+;;;;;FUND - Turmas de Ensino Fundamental;
+;;;;;MEDIO - Turmas de Ensino Médio;
+;;;;;MOVA - Turmas em Convênio de Movimento de Educação de Jovens e Adultos;
+;;;;;OIE - Turmas suplementares de Informática Educativa;
+;;;;;OSL - Turmas suplementares de Leitura;
+;;;;;PRE - Turmas de Educação Infantil - Segmento Pré-Escola;
+;;;;;PROJ - Turmas de PROJOVEM;
+;;;;;REC - Turmas de Atividades Complementares - Recuperação Paralela;
+;;;;;SAAI - Turmas de Atendimento Educacional Especial;
+16;MODALIDADE_SEGMENTO;Modalidade/Etapa/Ciclo/Segmento de ensino da turma;Char;8;ATCOMP - Turmas de Atvidades Complementares;
+;;;;;CONVEE - Turmas em Convênio de Educação Especial;
+;;;;;CRECHE - Turmas de Educação Infantil - Segmento Creche;
+;;;;;EDPROF - Turmas de Educação Profissional (Nível Técnico);
+;;;;;EJA1A4 - Turmas de Educação de Jovens e Adultos (Anos Iniciais);
+;;;;;EJA5A8 - Turmas de Educação de Jovens e Adultos (Anos Finais);
+;;;;;ESPEC - Turmas de Educação Especial (surdos);
+;;;;;Fund1 - Turmas de Ensino Fundamental (Anos Iniciais);
+;;;;;Fund2 - Turmas de Ensino Fundamental (Anos Finais);
+;;;;;MEDIO - Turmas de Ensino Médio;
+;;;;;MOVA - Turmas em Convênio de Movimento de Educação de Jovens e Adultos;
+;;;;;OIE - Turmas suplementares de Informática Educativa;
+;;;;;OSL - Turmas suplementares de Leitura;
+;;;;;PRE - Turmas de Educação Infantil - Segmento Pré-Escola;
+;;;;;PROJ - Turmas de PROJOVEM;
+;;;;;REC - Turmas de Atividades Complementares - Recuperação Paralela;
+;;;;;SAAI - Turmas de Atendimento Educacional Especial;
+17;TURMA_ESCOL;Turma de Escolarização;Char;1;S: sim;"Chama-se de ""turmas de escolarização""as turmas pertencentes às etapas de ensino da Educação Básica. Não são incluídas nessa categoria as turmas de atividades complementares ou atendimento educacional especializado (AEE)."
+;;;;;N: não;
+18;NOME_TURMA;Nome da turma;Char;2;;
+19;HORA_IN_TURMA;Horário início da turma;Num;4;Horário de início das aulas na turma;
+20;HORA_FIM_TURMA;Horário fim da turma;Num;4;Horário de término das aulas na turma;
+21;DESC_PERIODICIDADE_TURMA;Descritivo da periodicidade da turma;Char;40;ANO: anual;Periodicidade da turma no ano letivo
+;;;;;MOD: modular;
+;;;;;SEM: semestral;
+22;CD_ETAPA_ENSINO;Código da etapa de ensino;Num;2;;
+23;DESC_ETAPA_ENSINO;Descritivo da etapa de ensino;Char;60;EDUCACAO INFANTIL;
+;;;;;EJA CIEJA;
+;;;;;EJA ESCOLAS EDUCACAO ESPECIAL;
+;;;;;EJA ESCOLAS ENSINO FUNDAMENTAL;
+;;;;;ENSINO FUNDAMENTAL DE 9 ANOS;
+;;;;;ENSINO MEDIO;
+;;;;;ENSINO MEDIO NORMAL/MAGISTERIO;
+;;;;;PROJOVEM;
+;;;;;TECNICO MEDIO;
+24;CD_CICLO_ENSINO;Código ciclo de ensino;Num;2;;
+25;DESC_CICLO_ENSINO;Descritivo do ciclo de ensino;Char;20;CICLO I - Ensino Fundamental;
+;;;;;CICLO II - Ensino Fundamental;
+;;;;;CICLO III - Ensino Fundamental;
+;;;;;CRECHE;
+;;;;;MODULAR ;
+;;;;;PRE ;
+;;;;;SEM CICLO;
+26;CD_TIPO_TURMA;Código do tipo da turma;Num;1;1: Regular;"As turmas da Rede Municipal podem ser classificadas em: Regular, referente as turmas da Educação Básica; Programa, que são as turmas de atividades complementares; e Educação Física, que são as turmas especificamente de atividades físicas."
+;;;;;2: Educação Física;
+;;;;;3: Programa ;
+27;DESC_TIPO_TURMA;Descritivo do tipo da turma;Char;20;;
+28;CD_TIPO_PROGRAMA;Código do tipo de Programa/ Atividade Complementar a qual o aluno está matriculado;Num;3;;
+29;DESC_TIPO_PROGRAMA;Descritivo do tipo de Programa/ Atividade Complementar a qual o aluno está matriculado;Char;40;;
+30;DUR_DIA_TURMA;Quantidade de horas de aula por dia e por turma;Num;10;;
+31;DUR_DIA_HORA;Quantidade de horas de aula por dia e por turma;Num;10;;
+32;DUR_DIA_MIN;Quantidade de minutos de aula por dia e por turma;;;;
+33;DUR_SEMAN_TURMA;Quantidade de horas de aula por semana e por turma;Num;10;;
+34;DUR_SEM_HORA;Quantidade de horas de aula por semana e por turma;;;;
+35;DUR_SEM_MIN;Quantidade de minutos de aula por semana e por turma;;;;
+36;QTD_DIAS_SEMAN_TURMA;Quantidade de dias de aula por semana e por turma;Num;1;;
+37;X_SEMANA;Quantidade de dias de aula por semana e por turma;;;;
+38;SEG;Ocorrência de aula às segundas-feiras;Num;1;1: sim;
+;;;;;0: não;
+39;TER;Ocorrência de aula às terças-feiras;Num;1;1: sim;
+;;;;;0: não;
+40;QUA;Ocorrência de aula às quartas-feiras;Num;1;1: sim;
+;;;;;0: não;
+41;QUIN;Ocorrência de aula às quintas-feiras;Num;1;1: sim;
+;;;;;0: não;
+42;SEX;Ocorrência de aula às sextas-feiras;Num;1;1: sim;
+;;;;;0: não;
+43;SAB;Ocorrência de aula aos sábados;Num;1;1: sim;
+;;;;;0: não;
+44;DOM;Ocorrência de aula aos domingos;Num;1;1: sim;
+;;;;;0: não;
+DADOS DO ALUNO;;;;;;
+45;CD_ALUNO_SME;Código SME do aluno;Num;12;;
+46;CD_INEP_ALUNO;Código INEP do aluno;Num;20;;
+47;ANO_NASC_ALUNO;Ano de nascimento do aluno;Num;4;;
+48;MÊS_NASC_ALUNO;Mês de nascimento do aluno;Num;2;;
+49;IDADE_ALUNO_ANO_CIVIL;Idade do aluno no ano civil ;Num;3;;Subtrai-se o ano letivo do ano de nascimento do aluno
+50;IDADE_ALUNO_31_03;Idade do aluno em 31 de março do ano letivo;Num;3;;A data 31 de março é data de referência utilizada na SME para alocação do aluno na série. Aqueles nascidos antes de 31 de março são alocados numa série acima daqueles nascidos após 31 de março do mesmo ano.
+51;CD_SEXO;Código do sexo do aluno;Char;1;F: Feminino;
+;;;;;M: Masculino;
+52;CD_RACA_COR;Código da raça/cor do aluno;Num;1;1: Branca;
+;;;;;2: Preta;
+;;;;;3: Parda;
+;;;;;4: Amarela;
+;;;;;5: Indígena;
+;;;;;6: Amarela;
+53;DESC_RACA_COR;Descritivo da raça/cor do aluno;Char;15;;
+54;CD_PAIS_NASC;Código do país de nascimento do aluno;Num;3;;
+55;DESC_PAIS_NASC;Descritivo do país de nascimento do aluno;Char;40;;
+56;CD_MUN_NASC;Código de município de nascimento do aluno;Num;8;;
+57;DESC_MUN_NASC;Descritivo do município de nascimento do aluno;Char;60;;
+58;DESC_UF_NASC;Descritivo da Unidade Federativa de nascimento do aluno;Char;2;;
+59;NEE_ALT_HAB;Aluno com altas habilidades/ superdotação;Num;1;1: Sim;
+;;;;;0: Não;
+60;DEF_AUTISMO;Aluno com tipo de deficiência ou transtorno global do desenvolvimento: Autismo;Num;1;1: Sim;
+;;;;;0: Não;
+61;DEF_SURDEZ_LEVE;Aluno com tipo de deficiência ou transtorno global do desenvolvimento: Surdez leve;Num;1;1: Sim;
+;;;;;0: Não;
+62;DEF_SURDEZ_SEV;Aluno com tipo de deficiência ou transtorno global do desenvolvimento: Surdez severa;Num;1;1: Sim;
+;;;;;0: Não;
+63;DEF_INTELECT;Aluno com tipo de deficiência ou transtorno global do desenvolvimento: Intelectual;Num;1;1: Sim;
+;;;;;0: Não;
+64;DEF_MULTIPLA;Aluno com tipo de deficiência ou transtorno global do desenvolvimento: Múltipla;Num;1;1: Sim;
+;;;;;0: Não;
+65;DEF_CEGUEIRA;Aluno com tipo de deficiência ou transtorno global do desenvolvimento: Cegueira;Num;1;1: Sim;
+;;;;;0: Não;
+66;DEF_BAIXA_VISAO;Aluno com tipo de deficiência ou transtorno global do desenvolvimento: Baixa Visão;Num;1;1: Sim;
+;;;;;0: Não;
+67;DEF_SURDO_CEG;Aluno com tipo de deficiência ou transtorno global do desenvolvimento: Surdo Cegueira;Num;1;1: Sim;
+;;;;;0: Não;
+68;DEF_TRANST_DES_INF;Aluno com tipo de deficiência ou transtorno global do desenvolvimento: Transtorno Desintegrativo da Infância;Num;1;1: Sim;
+;;;;;0: Não;
+69;DEF_SINDR_ASPER;Aluno com tipo de deficiência ou transtorno global do desenvolvimento: Síndrome de Asperger;Num;1;1: Sim;
+;;;;;0: Não;
+70;DEF_SINDR_RETT;Aluno com tipo de deficiência ou transtorno global do desenvolvimento: Síndrome de Rett;Num;1;1: Sim;
+;;;;;0: Não;
+71;DEF_FIS_N_CADEIR;Aluno com tipo de deficiência ou transtorno global do desenvolvimento: Deficiência física não cadeirante;Num;1;1: Sim;
+;;;;;0: Não;
+72;DEF_FIS_CADEIR;Aluno com tipo de deficiência ou transtorno global do desenvolvimento: Deficiência física cadeirante;Num;1;1: Sim;
+;;;;;0: Não;
+73;DEF_N_POSSUI;Não possui deficiência ou transtorno global do desenvolvimento;Num;1;1: Sim;
+;;;;;0: Não;
+DADOS DA MATRÍCULA;;;;;;
+74;CD_MAT;Código da matrícula;Num;8;;
+75;DT_IN_MAT;Data início da matrícula;Date;10;;
+76;DT_FIM_MAT;Data fim da matrícula;Date;10;;
+77;QTD_DIAS_MAT;Quantidade de dias da matrícula;Num;7;;
+78;ANO_IN_MAT;Ano de início da matrícula;Num;4;;Ano de criação da matrícula.
+79;MÊS_IN_MAT;Mês de início da matrícula;Num;2;;Mês de criação da matrícula.
+80;SITUACAO_MAT;Situação da matrícula;Char;20;;Parecer final sobre a matrícula .
+81;ANO_SIT_MAT;Ano de situação de matrícula;Num;4;;Ano do parecer final sobre a matrícula.
+82;MÊS_SIT_MAT;Mês de situação da matrícula;Num;2;;Mês do parecer final sobre a matrícula.
+83;SIT_AL_APROV;Situação do aluno: Aprovado;Num;1;1: Sim;"Caracteriza-se como ""Aprovado""  o aluno que concluiu os estudos na turma em condições para o prosseguimento em ano/série subsequente."
+;;;;;0: Não;
+84;SIT_AL_REPROV;Situação do aluno: Reprovado;Num;1;1: Sim;"Caracteriza-se como ""Reprovado"" o aluno  que não concluiu os estudos na turma em condições para o prosseguimento em ano/série subsequente."
+;;;;;0: Não;
+85;SIT_AL_ABAND;Situação do aluno: Abandono;Num;1;1: Sim;"Caracteriza-se como ""Abandono"" o aluno que teve a sua matrícula finalizada por desistência/abandono devido a extrapolação dos registros de não comparecimento."
+;;;;;0: Não;
+86;SIT_AL_CONCL;Situação do aluno: Concluído;Num;1;1: Sim;"Caracteriza-se como ""Concluído"" o aluno que conclui os estudos na turma sem registro de Parecer Conclusivo (Aprovado ou Reprovado). Utilizado na Educação Infantil e em Programas/Atividades Complementares."
+;;;;;0: Não;
+87;SIT_AL_TRANSF;Situação do aluno: Transferido;Num;1;1: Sim;"Caracteriza-se como ""Transferido"" o aluno que foi matriculado em uma outra escola da Rede Municipal de Ensino de São Paulo."
+;;;;;0: Não;
+88;SIT_AL_FALEC;Situação do aluno: Falecido;Num;1;1: Sim;"Caracteriza-se como ""Falecido"" o aluno que teve a sua matrícula finalizada devido o seu falecimento."
+;;;;;0: Não;
+89;SIT_AL_NCOM;Situação do aluno: Não comparecido;Num;1;1: Sim;"Caracteriza-se como ""Não  comparecido"" o aluno que não compareceu na turma  em 30 dias a contar do início do ano/semestre letivo ou 15 dias após a data de matrícula."
+;;;;;0: Não;
+90;SIT_AL_EXCL;Situação do aluno: Excluído;Num;1;1: Sim;"Caracteriza-se como ""Excluído"" o aluno  que teve a sua matrícula efetuada indevidamente na turma, com parâmetro de possibilidade de registro até 15 dias a contar da data de matrícula."
+;;;;;0: Não;
+91;SIT_AL_CES;Situação do aluno: Cessado;Num;1;1: Sim;"Caracteriza-se como  ""Cessado"" o aluno com a  matrícula de atividades complementares concluída."
+;;;;;0: Não;
+92;SIT_AL_REMAN;Situação do aluno: Remanejado;Num;1;1: Sim;"Caracteriza-se como ""Remanejado"" o aluno que foi matriculado em outra turma, na mesma série e escola. "
+;;;;;0: Não;
+93;SIT_AL_RECLAS;Situação do aluno: Reclassificado;Num;1;1: Sim;"Caracteriza-se como ""Reclassificado"" o aluno que foi matriculado em uma turma de série superior na mesma escola."
+;;;;;0: Não;
+94;SIT_AL_ATIVO;Situação do aluno: Ativo;Num;1;1: Sim;"Caracteriza-se como ""Ativo"" o aluno que possui a matrícula não encerrada."
+;;;;;0: Não;
+95;CD_PARECER_CONCL_FIN;Código do parecer conclusivo final;Num;1;1: Aprovado;Situação final do aluno que concluiu o período letivo na turma. 
+;;;;;2: Reprovado por nota;
+;;;;;3: Reprovado  por faltas;
+;;;;;4: Aprovado pelo Conselho;
+96;DESC_PARECER_CONCL_FIN;Descritivo do parecer conclusivo final;Char;20;;

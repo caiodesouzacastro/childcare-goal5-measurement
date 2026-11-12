@@ -1,0 +1,36 @@
+% Float do corpo (revisao pos-EE). Tabulars copiados verbatim por 02_audit/build12_bodyfloats.py.
+\begin{table}[htbp]\centering
+\caption{One-year referral and enrollment by birth cohort, with aging out as a competing risk}
+\label{tab:E1cohort}
+\label{tab:P2end}
+\footnotesize
+\par\medskip\textbf{Panel A. Referral as the terminal event}\par\smallskip
+\begin{tabular}{lrrrrrrr}
+\toprule
+Birth cohort & N & ref$_{180}$ & ref$_{365}$ & ref$_{730}$ & age$_{365}$ & RMST$_{365}$ & Median \\
+\midrule
+2010 & 106,300 & 0.362 & 0.563 & 0.842 & 0.068 & 218 & 304 \\
+2011 & 126,766 & 0.267 & 0.530 & 0.834 & 0.063 & 249 & 346 \\
+2012 & 139,440 & 0.314 & 0.631 & 0.902 & 0.036 & 237 & 287 \\
+2013 & 140,811 & 0.417 & 0.753 & 0.945 & 0.023 & 203 & 223 \\
+2014 & 146,665 & 0.392 & 0.761 & 0.971 & 0.009 & 215 & 233 \\
+2015 & 146,232 & 0.472 & 0.814 & 0.982 & 0.002 & 195 & 194 \\
+2016 & 128,143 & 0.522 & 0.876 & 0.993 & 0.000 & 181 & 171 \\
+\bottomrule
+\end{tabular}
+\par\medskip\textbf{Panel B. Referral versus enrollment as the terminal event}\par\smallskip
+\begin{tabular}{lrrrr}
+\toprule
+Cohort & CIF ref & RMST ref & CIF enr & RMST enr \\
+\midrule
+2010 & 0.563 & 218 & 0.468 & 238 \\
+2011 & 0.530 & 249 & 0.427 & 269 \\
+2012 & 0.631 & 237 & 0.523 & 260 \\
+2013 & 0.753 & 203 & 0.644 & 230 \\
+2014 & 0.761 & 215 & 0.639 & 244 \\
+2015 & 0.814 & 195 & 0.686 & 230 \\
+2016 & 0.876 & 181 & 0.747 & 220 \\
+\bottomrule
+\end{tabular}
+\tabnote{\emph{Source:} SME childcare request record, 2010--2018 applications, with referral and enrollment dates through November 2019. \emph{Sample:} applicants of birth cohorts 2010--2016 with eligible time, that is, first application at or before 47 months of age (the duration sample; Table~\ref{tab:P2rec} reconciles it with all applicants). \emph{Variables:} time is measured in days from first application. ref$_{t}$ and CIF ref: cumulative incidence of referral by day $t$; age$_{365}$: cumulative incidence of aging out (reaching 47 months unreferred) by day 365; CIF enr, RMST enr: the same with enrollment as the terminal event; RMST: restricted mean days in the eligible queue within 365 days; Median: day on which referral incidence reaches 0.5. \emph{Exercise:} Aalen--Johansen estimator with aging out as the competing event; descriptive. Panel B repeats the referral columns of Panel A for comparison.}
+\end{table}

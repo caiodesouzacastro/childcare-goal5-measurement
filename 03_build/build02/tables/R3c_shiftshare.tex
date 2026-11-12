@@ -1,0 +1,17 @@
+% requer \usepackage{booktabs}. Tabela descritiva.
+\begin{table}[htbp]\centering
+\caption{Decomposicao encadeada (ano a ano) da variacao da idade media na solicitacao, 2010--2018}
+\label{tab:R3c_shiftshare}
+\small
+\begin{tabular}{lrr}
+\toprule
+Componente & Meses & \% da variacao total \\
+\midrule
+Variacao total & -18.86 & 100 \\
+\midrule
+Composicao por coorte & -88.79 & 471 \\
+Dentro de coorte & 69.93 & -371 \\
+\bottomrule
+\end{tabular}
+\\[3pt]{\footnotesize \textit{Note:} Identidade exata ano a ano: $\Delta$media $= \sum_c (s_1-s_0)\frac{\mu_0+\mu_1}{2}$ (componente de composicao por coorte) $+ \sum_c \frac{s_0+s_1}{2}(\mu_1-\mu_0)$ (componente dentro de coorte), somada sobre pares de anos consecutivos. Os dois componentes sao grandes e de sinais opostos: a entrada anual de coortes de nascimento mais jovens puxa a media para baixo (composicao) enquanto o envelhecimento do estoque nao inscrito de cada coorte a puxa para cima (dentro de coorte); a variacao liquida e o pequeno residuo. Meses.}
+\end{table}

@@ -1,0 +1,8 @@
+spec,dep,coef_ordem,ep,N
+Linear birth-year trend (S2d),idade_sol,-7.091435679655307,0.11329137426351167,159786
+Birth-year dummies (S5a),idade_sol,-7.200519109823892,0.11239425064464584,159786
+Birth year-month dummies (S5b),idade_sol,-6.75688715565525,0.11599925650193746,159786
+Year dummies + district$\times$year (S5c),idade_sol,-7.146955936671688,0.11240168654155716,159786
+"Year dummies, spacing 24--48m (S5e)",idade_sol,-10.599444391438409,0.321813492559047,79728
+Placebo: female $\sim$ order (S5f),fem,0.010378556749479177,0.005580288918692036,159786
+Placebo: Black $\sim$ order (S5f),negra,-0.004875495559214409,0.004410891793016671,159786

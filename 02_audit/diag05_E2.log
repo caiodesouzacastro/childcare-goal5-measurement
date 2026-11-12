@@ -1,0 +1,167 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag05_E2.log
+  log type:  text
+ opened on:  22 Jul 2026, 12:26:13
+
+. 
+. * dedup ids PSP 2o ano
+. use cd_aluno_sme using "$aud\psp2018_2ano.dta", clear
+
+. duplicates drop
+
+Duplicates in terms of all variables
+
+(1 observation deleted)
+
+. gen byte p18=1
+
+. save "$aud\p18_2ano_ids.dta", replace
+(file <NE_ROOT>\_audit\p18_2ano_ids.dta not found)
+file <NE_ROOT>\_audit\p18_2ano_ids.dta saved
+
+. di "PSP2018-2ano cd_aluno distintos = " _N
+PSP2018-2ano cd_aluno distintos = 46713
+
+. use cd_aluno_sme using "$aud\psp2019_2ano.dta", clear
+
+. duplicates drop
+
+Duplicates in terms of all variables
+
+(0 observations are duplicates)
+
+. gen byte p19=1
+
+. save "$aud\p19_2ano_ids.dta", replace
+(file <NE_ROOT>\_audit\p19_2ano_ids.dta not found)
+file <NE_ROOT>\_audit\p19_2ano_ids.dta saved
+
+. di "PSP2019-2ano cd_aluno distintos = " _N
+PSP2019-2ano cd_aluno distintos = 39387
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## E2 — coorte x B_novo x casamento PSP-2ano ##########"
+########## E2 — coorte x B_novo x casamento PSP-2ano ##########
+
+. use "$aud\child_expo.dta", clear
+
+. merge 1:1 cd_aluno_sme using "$aud\p18_2ano_ids.dta", keep(master match) nogen
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                     1,487,030
+        from master                 1,487,030  
+        from using                          0  
+
+    Matched                            37,530  
+    -----------------------------------------
+
+. merge 1:1 cd_aluno_sme using "$aud\p19_2ano_ids.dta", keep(master match) nogen
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                     1,488,122
+        from master                 1,488,122  
+        from using                          0  
+
+    Matched                            36,438  
+    -----------------------------------------
+
+. replace p18=0 if missing(p18)
+(1,487,030 real changes made)
+
+. replace p19=0 if missing(p19)
+(1,488,122 real changes made)
+
+. foreach c in 2010 2011 2012 {
+  2.     di "===== coorte `c' ====="
+  3.     qui count if ano_nasc==`c'
+  4.     di "  B_novo nascidos `c': " r(N)
+  5.     qui count if ano_nasc==`c' & p18==1
+  6.     di "    casam PSP2018-2ano: " r(N)
+  7.     qui count if ano_nasc==`c' & p19==1
+  8.     di "    casam PSP2019-2ano: " r(N)
+  9. }
+===== coorte 2010 =====
+  B_novo nascidos 2010: 128352
+    casam PSP2018-2ano: 26894
+    casam PSP2019-2ano: 531
+===== coorte 2011 =====
+  B_novo nascidos 2011: 146693
+    casam PSP2018-2ano: 10087
+    casam PSP2019-2ano: 25882
+===== coorte 2012 =====
+  B_novo nascidos 2012: 155292
+    casam PSP2018-2ano: 0
+    casam PSP2019-2ano: 9918
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## E3 — maior coorte: expo12 e taxa de matricula ##########"
+########## E3 — maior coorte: expo12 e taxa de matricula ##########
+
+. foreach c in 2010 2011 {
+  2.     di "===== coorte `c' (N total B_novo) ====="
+  3.     qui count if ano_nasc==`c'
+  4.     di "  N = " r(N)
+  5.     gen ec = expo12_1km if ano_nasc==`c'
+  6.     replace ec=3 if expo12_1km>=3 & ano_nasc==`c'
+  7.     di "  --- distribuicao expo12_1km ---"
+  8.     tab ec if ano_nasc==`c'
+  9.     qui sum expo12_1km if ano_nasc==`c'
+ 10.     di "  media expo12_1km = " r(mean)
+ 11.     qui sum ever_mat if ano_nasc==`c'
+ 12.     di "  taxa de matricula (ever_mat) = " r(mean)
+ 13.     drop ec
+ 14. }
+===== coorte 2010 (N total B_novo) =====
+  N = 128352
+(1,396,208 missing values generated)
+(4,989 real changes made)
+  --- distribuicao expo12_1km ---
+
+         ec |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |     74,037       57.68       57.68
+          1 |     30,862       24.04       81.73
+          2 |     12,802        9.97       91.70
+          3 |     10,651        8.30      100.00
+------------+-----------------------------------
+      Total |    128,352      100.00
+  media expo12_1km = .75928696
+  taxa de matricula (ever_mat) = .87480522
+===== coorte 2011 (N total B_novo) =====
+  N = 146693
+(1,377,867 missing values generated)
+(6,174 real changes made)
+  --- distribuicao expo12_1km ---
+
+         ec |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |     81,910       55.84       55.84
+          1 |     36,409       24.82       80.66
+          2 |     15,151       10.33       90.99
+          3 |     13,223        9.01      100.00
+------------+-----------------------------------
+      Total |    146,693      100.00
+  media expo12_1km = .80247865
+  taxa de matricula (ever_mat) = .8985364
+
+. 
+. di "=== FIM E2 ==="
+=== FIM E2 ===
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag05_E2.log
+  log type:  text
+ closed on:  22 Jul 2026, 12:26:19
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,245 @@
+<NE_ROOT>\02_audit\build25_indeterminacia.py:72: FutureWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  P = R.groupby(K).apply(pattern).reset_index()
+[M3] build25_indeterminacia.py (analise): execucao 1 de 3 na rodada retomada-2026-10-27
+[gravado e relido] combinacoes.csv 1872 linhas; 144 combinacoes
+=== todas as combinacoes (anos cumpridos | anos avaliaveis)
+('sem_unid_especifica', '12', 'SEADE', 'Censo', 'municipal', 'fila_sempre') | nunca | 2019 - 2021 | monotona: True
+('sem_unid_especifica', '12', 'SEADE', 'Censo', 'municipal', 'so_maior') | nunca | 2019 - 2021 | monotona: True
+('sem_unid_especifica', '12', 'SEADE', 'Censo', 'todas', 'fila_sempre') | nunca | 2019 - 2021 | monotona: True
+('sem_unid_especifica', '12', 'SEADE', 'Censo', 'todas', 'so_maior') | nunca | 2019 - 2021 | monotona: True
+('sem_unid_especifica', '12', 'SEADE', 'SME', 'municipal', 'fila_sempre') | nunca | 2019 - 2021 | monotona: True
+('sem_unid_especifica', '12', 'SEADE', 'SME', 'municipal', 'so_maior') | nunca | 2019 - 2021 | monotona: True
+('sem_unid_especifica', '12', 'SEADE', 'SME', 'todas', 'fila_sempre') | nunca | 2019 - 2022 | monotona: True
+('sem_unid_especifica', '12', 'SEADE', 'SME', 'todas', 'so_maior') | nunca | 2019 - 2022 | monotona: True
+('sem_unid_especifica', '12', 'linear', 'Censo', 'municipal', 'fila_sempre') | nunca | 2019 - 2021 | monotona: True
+('sem_unid_especifica', '12', 'linear', 'Censo', 'municipal', 'so_maior') | nunca | 2019 - 2021 | monotona: True
+('sem_unid_especifica', '12', 'linear', 'Censo', 'todas', 'fila_sempre') | 2020,2021 | 2019 - 2021 | monotona: True
+('sem_unid_especifica', '12', 'linear', 'Censo', 'todas', 'so_maior') | 2019,2020,2021 | 2019 - 2021 | monotona: True
+('sem_unid_especifica', '12', 'linear', 'SME', 'municipal', 'fila_sempre') | 2020,2021 | 2019 - 2021 | monotona: True
+('sem_unid_especifica', '12', 'linear', 'SME', 'municipal', 'so_maior') | 2020,2021 | 2019 - 2021 | monotona: True
+('sem_unid_especifica', '12', 'linear', 'SME', 'todas', 'fila_sempre') | 2020,2021,2022 | 2019 - 2022 | monotona: True
+('sem_unid_especifica', '12', 'linear', 'SME', 'todas', 'so_maior') | 2019,2020,2021,2022 | 2019 - 2022 | monotona: True
+('sem_unid_especifica', '12', 'principal', 'Censo', 'municipal', 'fila_sempre') | nunca | 2019 - 2021 | monotona: True
+('sem_unid_especifica', '12', 'principal', 'Censo', 'municipal', 'so_maior') | nunca | 2019 - 2021 | monotona: True
+('sem_unid_especifica', '12', 'principal', 'Censo', 'todas', 'fila_sempre') | 2021 | 2019 - 2021 | monotona: True
+('sem_unid_especifica', '12', 'principal', 'Censo', 'todas', 'so_maior') | 2021 | 2019 - 2021 | monotona: True
+('sem_unid_especifica', '12', 'principal', 'SME', 'municipal', 'fila_sempre') | 2021 | 2019 - 2021 | monotona: True
+('sem_unid_especifica', '12', 'principal', 'SME', 'municipal', 'so_maior') | 2021 | 2019 - 2021 | monotona: True
+('sem_unid_especifica', '12', 'principal', 'SME', 'todas', 'fila_sempre') | 2021,2022 | 2019 - 2022 | monotona: True
+('sem_unid_especifica', '12', 'principal', 'SME', 'todas', 'so_maior') | 2021,2022 | 2019 - 2022 | monotona: True
+('sem_unid_especifica', '9', 'SEADE', 'Censo', 'municipal', 'fila_sempre') | nunca | 2019 - 2021 | monotona: True
+('sem_unid_especifica', '9', 'SEADE', 'Censo', 'municipal', 'so_maior') | nunca | 2019 - 2021 | monotona: True
+('sem_unid_especifica', '9', 'SEADE', 'Censo', 'todas', 'fila_sempre') | nunca | 2019 - 2021 | monotona: True
+('sem_unid_especifica', '9', 'SEADE', 'Censo', 'todas', 'so_maior') | nunca | 2019 - 2021 | monotona: True
+('sem_unid_especifica', '9', 'SEADE', 'SME', 'municipal', 'fila_sempre') | nunca | 2019 - 2021 | monotona: True
+('sem_unid_especifica', '9', 'SEADE', 'SME', 'municipal', 'so_maior') | nunca | 2019 - 2021 | monotona: True
+('sem_unid_especifica', '9', 'SEADE', 'SME', 'todas', 'fila_sempre') | nunca | 2019 - 2022 | monotona: True
+('sem_unid_especifica', '9', 'SEADE', 'SME', 'todas', 'so_maior') | nunca | 2019 - 2022 | monotona: True
+('sem_unid_especifica', '9', 'linear', 'Censo', 'municipal', 'fila_sempre') | nunca | 2019 - 2021 | monotona: True
+('sem_unid_especifica', '9', 'linear', 'Censo', 'municipal', 'so_maior') | nunca | 2019 - 2021 | monotona: True
+('sem_unid_especifica', '9', 'linear', 'Censo', 'todas', 'fila_sempre') | nunca | 2019 - 2021 | monotona: True
+('sem_unid_especifica', '9', 'linear', 'Censo', 'todas', 'so_maior') | 2020 | 2019 - 2021 | monotona: False
+('sem_unid_especifica', '9', 'linear', 'SME', 'municipal', 'fila_sempre') | nunca | 2019 - 2021 | monotona: True
+('sem_unid_especifica', '9', 'linear', 'SME', 'municipal', 'so_maior') | nunca | 2019 - 2021 | monotona: True
+('sem_unid_especifica', '9', 'linear', 'SME', 'todas', 'fila_sempre') | nunca | 2019 - 2022 | monotona: True
+('sem_unid_especifica', '9', 'linear', 'SME', 'todas', 'so_maior') | nunca | 2019 - 2022 | monotona: True
+('sem_unid_especifica', '9', 'principal', 'Censo', 'municipal', 'fila_sempre') | nunca | 2019 - 2021 | monotona: True
+('sem_unid_especifica', '9', 'principal', 'Censo', 'municipal', 'so_maior') | nunca | 2019 - 2021 | monotona: True
+('sem_unid_especifica', '9', 'principal', 'Censo', 'todas', 'fila_sempre') | nunca | 2019 - 2021 | monotona: True
+('sem_unid_especifica', '9', 'principal', 'Censo', 'todas', 'so_maior') | nunca | 2019 - 2021 | monotona: True
+('sem_unid_especifica', '9', 'principal', 'SME', 'municipal', 'fila_sempre') | nunca | 2019 - 2021 | monotona: True
+('sem_unid_especifica', '9', 'principal', 'SME', 'municipal', 'so_maior') | nunca | 2019 - 2021 | monotona: True
+('sem_unid_especifica', '9', 'principal', 'SME', 'todas', 'fila_sempre') | nunca | 2019 - 2022 | monotona: True
+('sem_unid_especifica', '9', 'principal', 'SME', 'todas', 'so_maior') | nunca | 2019 - 2022 | monotona: True
+('sem_unid_especifica', 'media', 'SEADE', 'Censo', 'municipal', 'fila_sempre') | nunca | 2020 - 2021 | monotona: True
+('sem_unid_especifica', 'media', 'SEADE', 'Censo', 'municipal', 'so_maior') | nunca | 2020 - 2021 | monotona: True
+('sem_unid_especifica', 'media', 'SEADE', 'Censo', 'todas', 'fila_sempre') | nunca | 2020 - 2021 | monotona: True
+('sem_unid_especifica', 'media', 'SEADE', 'Censo', 'todas', 'so_maior') | nunca | 2020 - 2021 | monotona: True
+('sem_unid_especifica', 'media', 'SEADE', 'SME', 'municipal', 'fila_sempre') | nunca | 2020 - 2021 | monotona: True
+('sem_unid_especifica', 'media', 'SEADE', 'SME', 'municipal', 'so_maior') | nunca | 2020 - 2021 | monotona: True
+('sem_unid_especifica', 'media', 'SEADE', 'SME', 'todas', 'fila_sempre') | nunca | 2020 - 2022 | monotona: True
+('sem_unid_especifica', 'media', 'SEADE', 'SME', 'todas', 'so_maior') | nunca | 2020 - 2022 | monotona: True
+('sem_unid_especifica', 'media', 'linear', 'Censo', 'municipal', 'fila_sempre') | nunca | 2020 - 2021 | monotona: True
+('sem_unid_especifica', 'media', 'linear', 'Censo', 'municipal', 'so_maior') | nunca | 2020 - 2021 | monotona: True
+('sem_unid_especifica', 'media', 'linear', 'Censo', 'todas', 'fila_sempre') | nunca | 2020 - 2021 | monotona: True
+('sem_unid_especifica', 'media', 'linear', 'Censo', 'todas', 'so_maior') | 2020,2021 | 2020 - 2021 | monotona: True
+('sem_unid_especifica', 'media', 'linear', 'SME', 'municipal', 'fila_sempre') | nunca | 2020 - 2021 | monotona: True
+('sem_unid_especifica', 'media', 'linear', 'SME', 'municipal', 'so_maior') | nunca | 2020 - 2021 | monotona: True
+('sem_unid_especifica', 'media', 'linear', 'SME', 'todas', 'fila_sempre') | nunca | 2020 - 2022 | monotona: True
+('sem_unid_especifica', 'media', 'linear', 'SME', 'todas', 'so_maior') | nunca | 2020 - 2022 | monotona: True
+('sem_unid_especifica', 'media', 'principal', 'Censo', 'municipal', 'fila_sempre') | nunca | 2020 - 2021 | monotona: True
+('sem_unid_especifica', 'media', 'principal', 'Censo', 'municipal', 'so_maior') | nunca | 2020 - 2021 | monotona: True
+('sem_unid_especifica', 'media', 'principal', 'Censo', 'todas', 'fila_sempre') | nunca | 2020 - 2021 | monotona: True
+('sem_unid_especifica', 'media', 'principal', 'Censo', 'todas', 'so_maior') | 2021 | 2020 - 2021 | monotona: True
+('sem_unid_especifica', 'media', 'principal', 'SME', 'municipal', 'fila_sempre') | nunca | 2020 - 2021 | monotona: True
+('sem_unid_especifica', 'media', 'principal', 'SME', 'municipal', 'so_maior') | nunca | 2020 - 2021 | monotona: True
+('sem_unid_especifica', 'media', 'principal', 'SME', 'todas', 'fila_sempre') | nunca | 2020 - 2022 | monotona: True
+('sem_unid_especifica', 'media', 'principal', 'SME', 'todas', 'so_maior') | nunca | 2020 - 2022 | monotona: True
+('total', '12', 'SEADE', 'Censo', 'municipal', 'fila_sempre') | nunca | 2010 - 2021 | monotona: True
+('total', '12', 'SEADE', 'Censo', 'municipal', 'so_maior') | nunca | 2010 - 2021 | monotona: True
+('total', '12', 'SEADE', 'Censo', 'todas', 'fila_sempre') | nunca | 2010 - 2021 | monotona: True
+('total', '12', 'SEADE', 'Censo', 'todas', 'so_maior') | nunca | 2010 - 2021 | monotona: True
+('total', '12', 'SEADE', 'SME', 'municipal', 'fila_sempre') | nunca | 2010 - 2021 | monotona: True
+('total', '12', 'SEADE', 'SME', 'municipal', 'so_maior') | nunca | 2010 - 2021 | monotona: True
+('total', '12', 'SEADE', 'SME', 'todas', 'fila_sempre') | nunca | 2010 - 2022 | monotona: True
+('total', '12', 'SEADE', 'SME', 'todas', 'so_maior') | nunca | 2010 - 2022 | monotona: True
+('total', '12', 'linear', 'Censo', 'municipal', 'fila_sempre') | nunca | 2010 - 2021 | monotona: True
+('total', '12', 'linear', 'Censo', 'municipal', 'so_maior') | nunca | 2010 - 2021 | monotona: True
+('total', '12', 'linear', 'Censo', 'todas', 'fila_sempre') | nunca | 2010 - 2021 | monotona: True
+('total', '12', 'linear', 'Censo', 'todas', 'so_maior') | 2019,2020,2021 | 2010 - 2021 | monotona: True
+('total', '12', 'linear', 'SME', 'municipal', 'fila_sempre') | nunca | 2010 - 2021 | monotona: True
+('total', '12', 'linear', 'SME', 'municipal', 'so_maior') | nunca | 2010 - 2021 | monotona: True
+('total', '12', 'linear', 'SME', 'todas', 'fila_sempre') | nunca | 2010 - 2022 | monotona: True
+('total', '12', 'linear', 'SME', 'todas', 'so_maior') | 2019 | 2010 - 2022 | monotona: False
+('total', '12', 'principal', 'Censo', 'municipal', 'fila_sempre') | nunca | 2010 - 2021 | monotona: True
+('total', '12', 'principal', 'Censo', 'municipal', 'so_maior') | nunca | 2010 - 2021 | monotona: True
+('total', '12', 'principal', 'Censo', 'todas', 'fila_sempre') | nunca | 2010 - 2021 | monotona: True
+('total', '12', 'principal', 'Censo', 'todas', 'so_maior') | 2021 | 2010 - 2021 | monotona: True
+('total', '12', 'principal', 'SME', 'municipal', 'fila_sempre') | nunca | 2010 - 2021 | monotona: True
+('total', '12', 'principal', 'SME', 'municipal', 'so_maior') | nunca | 2010 - 2021 | monotona: True
+('total', '12', 'principal', 'SME', 'todas', 'fila_sempre') | nunca | 2010 - 2022 | monotona: True
+('total', '12', 'principal', 'SME', 'todas', 'so_maior') | nunca | 2010 - 2022 | monotona: True
+('total', '9', 'SEADE', 'Censo', 'municipal', 'fila_sempre') | nunca | 2010 - 2021 | monotona: True
+('total', '9', 'SEADE', 'Censo', 'municipal', 'so_maior') | nunca | 2010 - 2021 | monotona: True
+('total', '9', 'SEADE', 'Censo', 'todas', 'fila_sempre') | nunca | 2010 - 2021 | monotona: True
+('total', '9', 'SEADE', 'Censo', 'todas', 'so_maior') | nunca | 2010 - 2021 | monotona: True
+('total', '9', 'SEADE', 'SME', 'municipal', 'fila_sempre') | nunca | 2010 - 2021 | monotona: True
+('total', '9', 'SEADE', 'SME', 'municipal', 'so_maior') | nunca | 2010 - 2021 | monotona: True
+('total', '9', 'SEADE', 'SME', 'todas', 'fila_sempre') | nunca | 2010 - 2022 | monotona: True
+('total', '9', 'SEADE', 'SME', 'todas', 'so_maior') | nunca | 2010 - 2022 | monotona: True
+('total', '9', 'linear', 'Censo', 'municipal', 'fila_sempre') | nunca | 2010 - 2021 | monotona: True
+('total', '9', 'linear', 'Censo', 'municipal', 'so_maior') | nunca | 2010 - 2021 | monotona: True
+('total', '9', 'linear', 'Censo', 'todas', 'fila_sempre') | nunca | 2010 - 2021 | monotona: True
+('total', '9', 'linear', 'Censo', 'todas', 'so_maior') | 2020 | 2010 - 2021 | monotona: False
+('total', '9', 'linear', 'SME', 'municipal', 'fila_sempre') | nunca | 2010 - 2021 | monotona: True
+('total', '9', 'linear', 'SME', 'municipal', 'so_maior') | nunca | 2010 - 2021 | monotona: True
+('total', '9', 'linear', 'SME', 'todas', 'fila_sempre') | nunca | 2010 - 2022 | monotona: True
+('total', '9', 'linear', 'SME', 'todas', 'so_maior') | nunca | 2010 - 2022 | monotona: True
+('total', '9', 'principal', 'Censo', 'municipal', 'fila_sempre') | nunca | 2010 - 2021 | monotona: True
+('total', '9', 'principal', 'Censo', 'municipal', 'so_maior') | nunca | 2010 - 2021 | monotona: True
+('total', '9', 'principal', 'Censo', 'todas', 'fila_sempre') | nunca | 2010 - 2021 | monotona: True
+('total', '9', 'principal', 'Censo', 'todas', 'so_maior') | nunca | 2010 - 2021 | monotona: True
+('total', '9', 'principal', 'SME', 'municipal', 'fila_sempre') | nunca | 2010 - 2021 | monotona: True
+('total', '9', 'principal', 'SME', 'municipal', 'so_maior') | nunca | 2010 - 2021 | monotona: True
+('total', '9', 'principal', 'SME', 'todas', 'fila_sempre') | nunca | 2010 - 2022 | monotona: True
+('total', '9', 'principal', 'SME', 'todas', 'so_maior') | nunca | 2010 - 2022 | monotona: True
+('total', 'media', 'SEADE', 'Censo', 'municipal', 'fila_sempre') | nunca | 2010 - 2021 | monotona: True
+('total', 'media', 'SEADE', 'Censo', 'municipal', 'so_maior') | nunca | 2010 - 2021 | monotona: True
+('total', 'media', 'SEADE', 'Censo', 'todas', 'fila_sempre') | nunca | 2010 - 2021 | monotona: True
+('total', 'media', 'SEADE', 'Censo', 'todas', 'so_maior') | nunca | 2010 - 2021 | monotona: True
+('total', 'media', 'SEADE', 'SME', 'municipal', 'fila_sempre') | nunca | 2010 - 2021 | monotona: True
+('total', 'media', 'SEADE', 'SME', 'municipal', 'so_maior') | nunca | 2010 - 2021 | monotona: True
+('total', 'media', 'SEADE', 'SME', 'todas', 'fila_sempre') | nunca | 2010 - 2022 | monotona: True
+('total', 'media', 'SEADE', 'SME', 'todas', 'so_maior') | nunca | 2010 - 2022 | monotona: True
+('total', 'media', 'linear', 'Censo', 'municipal', 'fila_sempre') | nunca | 2010 - 2021 | monotona: True
+('total', 'media', 'linear', 'Censo', 'municipal', 'so_maior') | nunca | 2010 - 2021 | monotona: True
+('total', 'media', 'linear', 'Censo', 'todas', 'fila_sempre') | nunca | 2010 - 2021 | monotona: True
+('total', 'media', 'linear', 'Censo', 'todas', 'so_maior') | 2020 | 2010 - 2021 | monotona: False
+('total', 'media', 'linear', 'SME', 'municipal', 'fila_sempre') | nunca | 2010 - 2021 | monotona: True
+('total', 'media', 'linear', 'SME', 'municipal', 'so_maior') | nunca | 2010 - 2021 | monotona: True
+('total', 'media', 'linear', 'SME', 'todas', 'fila_sempre') | nunca | 2010 - 2022 | monotona: True
+('total', 'media', 'linear', 'SME', 'todas', 'so_maior') | nunca | 2010 - 2022 | monotona: True
+('total', 'media', 'principal', 'Censo', 'municipal', 'fila_sempre') | nunca | 2010 - 2021 | monotona: True
+('total', 'media', 'principal', 'Censo', 'municipal', 'so_maior') | nunca | 2010 - 2021 | monotona: True
+('total', 'media', 'principal', 'Censo', 'todas', 'fila_sempre') | nunca | 2010 - 2021 | monotona: True
+('total', 'media', 'principal', 'Censo', 'todas', 'so_maior') | 2021 | 2010 - 2021 | monotona: True
+('total', 'media', 'principal', 'SME', 'municipal', 'fila_sempre') | nunca | 2010 - 2021 | monotona: True
+('total', 'media', 'principal', 'SME', 'municipal', 'so_maior') | nunca | 2010 - 2021 | monotona: True
+('total', 'media', 'principal', 'SME', 'todas', 'fila_sempre') | nunca | 2010 - 2022 | monotona: True
+('total', 'media', 'principal', 'SME', 'todas', 'so_maior') | nunca | 2010 - 2022 | monotona: True
+=== distribuicao dos padroes: 144 combinacoes
+anos_s
+nunca                  123
+2021                     7
+2020,2021                4
+2020                     3
+2019,2020,2021           2
+2021,2022                2
+2020,2021,2022           1
+2019,2020,2021,2022      1
+2019                     1
+combinacoes com algum ano cumprido: 21 | nunca: 123
+combinacoes nao monotonas (cumpre e depois deixa de cumprir dentro dos anos avaliaveis): 4
+               fila  data    pop fonte_B rede_A clausula anos_s  ultimo_avaliavel
+sem_unid_especifica     9 linear   Censo  todas so_maior   2020              2021
+              total    12 linear     SME  todas so_maior   2019              2022
+              total     9 linear   Censo  todas so_maior   2020              2021
+              total media linear   Censo  todas so_maior   2020              2021<NE_ROOT>\02_audit\build25_indeterminacia.py:83: FutureWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  print(f"  por {k}:", P.groupby(k).apply(lambda g: f"{int((g.anos_s != 'nunca').sum())} de {len(g)} com algum ano").to_dict())
+<NE_ROOT>\02_audit\build25_indeterminacia.py:83: FutureWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  print(f"  por {k}:", P.groupby(k).apply(lambda g: f"{int((g.anos_s != 'nunca').sum())} de {len(g)} com algum ano").to_dict())
+<NE_ROOT>\02_audit\build25_indeterminacia.py:83: FutureWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  print(f"  por {k}:", P.groupby(k).apply(lambda g: f"{int((g.anos_s != 'nunca').sum())} de {len(g)} com algum ano").to_dict())
+<NE_ROOT>\02_audit\build25_indeterminacia.py:83: FutureWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  print(f"  por {k}:", P.groupby(k).apply(lambda g: f"{int((g.anos_s != 'nunca').sum())} de {len(g)} com algum ano").to_dict())
+<NE_ROOT>\02_audit\build25_indeterminacia.py:83: FutureWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  print(f"  por {k}:", P.groupby(k).apply(lambda g: f"{int((g.anos_s != 'nunca').sum())} de {len(g)} com algum ano").to_dict())
+<NE_ROOT>\02_audit\build25_indeterminacia.py:83: FutureWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  print(f"  por {k}:", P.groupby(k).apply(lambda g: f"{int((g.anos_s != 'nunca').sum())} de {len(g)} com algum ano").to_dict())
+
+primeiro ano cumprido, por combinacao com algum ano: {2019: 4, 2020: 8, 2021: 9}
+  por fila: {'sem_unid_especifica': '15 de 72 com algum ano', 'total': '6 de 72 com algum ano'}
+  por data: {'12': '15 de 48 com algum ano', '9': '2 de 48 com algum ano', 'media': '4 de 48 com algum ano'}
+  por pop: {'SEADE': '0 de 48 com algum ano', 'linear': '12 de 48 com algum ano', 'principal': '9 de 48 com algum ano'}
+  por fonte_B: {'Censo': '12 de 72 com algum ano', 'SME': '9 de 72 com algum ano'}
+  por rede_A: {'municipal': '4 de 72 com algum ano', 'todas': '17 de 72 com algum ano'}
+  por clausula: {'fila_sempre': '6 de 72 com algum ano', 'so_maior': '15 de 72 com algum ano'}
+=== diferenca contra o build24 (fila sem unidade especifica, 2019):
+data       pop fonte_B    A    AB obriga     dem cumpre
+  12 principal     SME 73.0 1.125      A  8083.0  False
+  12 principal   Censo 73.0 1.173      A  8083.0  False
+  12     SEADE     SME 70.0 1.173      A  8083.0  False
+  12     SEADE   Censo 70.0 1.223      A  8083.0  False
+  12    linear     SME 79.1 1.039      A  8083.0   True
+  12    linear   Censo 79.1 1.083      A  8083.0   True
+   9 principal     SME 73.0 0.974      B 71078.0  False
+   9 principal   Censo 73.0 0.989      B 71078.0  False
+   9     SEADE     SME 70.0 1.016      A 71078.0  False
+   9     SEADE   Censo 70.0 1.032      A 71078.0  False
+   9    linear     SME 79.1 0.900      B 71078.0  False
+   9    linear   Censo 79.1 0.914      B 71078.0  False
+=== media anual (fila total, SME, principal):
+ ano    A    AB obriga      dem cumpre
+2010 30.3 1.858      A  99774.0  False
+2011 43.6 1.277      A 137502.8  False
+2012 46.4 1.228      A 136555.0  False
+2013 47.4 1.273      A 121087.0  False
+2014 50.2 1.216      A 123461.0  False
+2015 53.2 1.170      A 112941.5  False
+2016 59.4 1.109      A  97474.2  False
+2017 62.5 1.077      A  92157.8  False
+2018 67.4 1.077      A  57409.2  False
+2019 73.0 1.050      A  42041.0  False
+2020 74.1 1.052      A  12840.2  False
+2021 76.8 0.985      B  10154.5  False
+2022 83.8 0.971      B   4680.8  False
+=== indicador da revisao (parcela atendida >= 75%), anos: {'12': [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022], '9': [2018, 2019, 2020, 2021, 2022], 'media': [2017, 2018, 2019, 2020, 2021, 2022]}
+[gravado] C_indet_body.tex 29 linhas
+[gravado] C_indet_full_body.tex 55 linhas
+nucleo do corpo: {'n': 24, 'nunca': 11, 'algum': 13, 'primeiro': {2019: 4, 2020: 4, 2021: 5}, 'nao_monotona': 4, 'antes_2019': 0, 'padroes': 8}
+todas as 144: {'n': 144, 'nunca': 123, 'algum': 21, 'primeiro': {2019: 4, 2020: 8, 2021: 9}, 'nao_monotona': 4, 'antes_2019': 0, 'padroes': 9}
+anos avaliaveis por (fila, data, fonte):
+               fila  data fonte_B  primeiro_avaliavel  ultimo_avaliavel    anos_s
+sem_unid_especifica    12   Censo                2019              2021      2021
+sem_unid_especifica    12     SME                2019              2022 2021,2022
+sem_unid_especifica     9   Censo                2019              2021     nunca
+sem_unid_especifica     9     SME                2019              2022     nunca
+sem_unid_especifica media   Censo                2020              2021      2021
+sem_unid_especifica media     SME                2020              2022     nunca
+              total    12   Censo                2010              2021      2021
+              total    12     SME                2010              2022     nunca
+              total     9   Censo                2010              2021     nunca
+              total     9     SME                2010              2022     nunca
+              total media   Censo                2010              2021      2021
+              total media     SME                2010              2022     nunca
+=== objecao 6: estoque de um dia contra media movel das quatro contagens dos 12 meses que terminam no mes (publicado)
+  mes  3: contagem do dia -20.5% | media das 4 contagens ate o mes -20.8%
+  mes  6: contagem do dia -18.9% | media das 4 contagens ate o mes -20.8%
+  mes  9: contagem do dia -17.5% | media das 4 contagens ate o mes -21.5%
+  mes 12: contagem do dia -53.2% | media das 4 contagens ate o mes -25.4%
+  razao dez./set.: contagem do dia 3.03 | media movel 1.18
+=== objecao 3: quanto a populacao principal precisaria mudar para o braco A cruzar 75% (A / 75 - 1)
+  2019: A 73.0% | populacao no limiar 516,251 (-2.6% da serie principal) | A/B dez. no limiar 1.090 (A obriga)
+  2020: A 74.1% | populacao no limiar 507,711 (-1.2% da serie principal) | A/B dez. no limiar 1.015 (A obriga)
+  2021: A 76.8% | populacao no limiar 503,816 (+2.4% da serie principal) | A/B dez. no limiar 0.980 (B obriga)
+  2022: A 83.8% | populacao no limiar 519,415 (+11.7% da serie principal) | A/B dez. no limiar 1.076 (A obriga)

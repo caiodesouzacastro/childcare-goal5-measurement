@@ -1,0 +1,23 @@
+% requer booktabs. Descritivo (BUILD10).
+\begin{table}[htbp]\centering
+\caption{Kaplan--Meier survival to referral, before and after age-of-eligibility censoring, by year of application}
+\label{tab:C1b}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrrrrrr}
+\toprule
+Year & N & $S_{180}$ a & $S_{180}$ d & $S_{365}$ a & $S_{365}$ d & Med.\ a & Med.\ d & $\Delta$med \\
+\midrule
+2010 & 81,004 & 0.528 & 0.590 & 0.420 & 0.457 & 220 & 301 & +81 \\
+2011 & 124,240 & 0.677 & 0.778 & 0.549 & 0.634 & 387 & 418 & +31 \\
+2012 & 220,922 & 0.522 & 0.622 & 0.279 & 0.329 & 198 & 260 & +62 \\
+2013 & 191,149 & 0.562 & 0.650 & 0.295 & 0.333 & 227 & 272 & +45 \\
+2014 & 174,676 & 0.578 & 0.646 & 0.269 & 0.291 & 226 & 257 & +31 \\
+2015 & 179,869 & 0.491 & 0.543 & 0.172 & 0.190 & 176 & 201 & +25 \\
+2016 & 172,341 & 0.473 & 0.524 & 0.194 & 0.217 & 167 & 194 & +27 \\
+2017 & 163,922 & 0.467 & 0.517 & 0.077 & 0.084 & 163 & 185 & +22 \\
+2018 & 165,331 & 0.282 & 0.307 & 0.039 & 0.040 & 96 & 111 & +15 \\
+\bottomrule
+\end{tabular}
+\\[3pt]{\footnotesize \textit{Note:} Survival = not yet referred. ANTES censors only at the referral panel end (2019-11-28), reproducing the current analysis; DEPOIS censors at the earlier of the panel end and the date the child turns 47 months, the age at which eligibility for the Minigrupo~II band ends. $\Delta$median is DEPOIS minus ANTES (days). The 2018 row is right-truncated.}
+\end{table}

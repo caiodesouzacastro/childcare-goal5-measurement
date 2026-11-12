@@ -1,0 +1,250 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag09_A.log
+  log type:  text
+ opened on:  22 Jul 2026, 15:01:39
+
+. 
+. use "$aud\panel_es.dta", clear
+
+. gen rel = rais_year - ano_nasc
+
+. 
+. di "########## A2 — coorte 2011: emp por ANO CALENDARIO vs TEMPO RELATIVO ##########"
+########## A2 — coorte 2011: emp por ANO CALENDARIO vs TEMPO RELATIVO ##########
+
+. di "--- emp por ano calendario (matched, coorte nasc 2011) ---"
+--- emp por ano calendario (matched, coorte nasc 2011) ---
+
+. table rais_year if ano_nasc==2011, stat(mean emp) stat(count emp)
+
+----------------------------------------------------
+          |      Mean   Number of non-missing values
+----------+-----------------------------------------
+rais_year |                                         
+  2007    |  .7472832                         35,336
+  2008    |         1                         30,732
+  2009    |         1                         33,964
+  2010    |  .7131355                         51,669
+  2011    |  .7149157                         45,804
+  2012    |  .6535185                         50,248
+  2013    |  .6907393                         53,657
+  2014    |  .6970241                         56,285
+  Total   |  .7543522                        357,695
+----------------------------------------------------
+
+. di "  (2008/2009 = 1.000 por construcao do arquivo; 2010 e a partir = ~0.7)"
+  (2008/2009 = 1.000 por construcao do arquivo; 2010 e a partir = ~0.7)
+
+. di "--- os mesmos numeros por TEMPO RELATIVO (rel=ano-2011) ---"
+--- os mesmos numeros por TEMPO RELATIVO (rel=ano-2011) ---
+
+. table rel if ano_nasc==2011 & inrange(rel,-5,6), stat(mean emp)
+
+-------------------
+        |      Mean
+--------+----------
+rel     |          
+  -4    |  .7472832
+  -3    |         1
+  -2    |         1
+  -1    |  .7131355
+  0     |  .7149157
+  1     |  .6535185
+  2     |  .6907393
+  3     |  .6970241
+  Total |  .7543522
+-------------------
+
+. 
+. di ""
+
+
+. di "########## A3 — PLACEBO: responsavel FEMININO vs MASCULINO, emp por tempo rel ##########"
+########## A3 — PLACEBO: responsavel FEMININO vs MASCULINO, emp por tempo rel ##########
+
+. di "--- FEMININO (fem==1) ---"
+--- FEMININO (fem==1) ---
+
+. table rel if fem==1 & inrange(rel,-5,6), stat(mean emp) stat(count emp)
+
+--------------------------------------------------
+        |      Mean   Number of non-missing values
+--------+-----------------------------------------
+rel     |                                         
+  -5    |  .7965923                        212,986
+  -4    |  .7796927                        273,518
+  -3    |  .7658457                        316,142
+  -2    |  .7557682                        337,323
+  -1    |  .7443721                        329,072
+  0     |  .7503681                        240,414
+  1     |  .6558803                        220,525
+  2     |  .7034808                        195,070
+  3     |  .7063497                        160,875
+  4     |  .7045494                        121,357
+  5     |  .7056608                         86,825
+  6     |  .7075595                         57,239
+  Total |  .7400404                      2,551,346
+--------------------------------------------------
+
+. di "--- MASCULINO (fem==0) ---"
+--- MASCULINO (fem==0) ---
+
+. table rel if fem==0 & inrange(rel,-5,6), stat(mean emp) stat(count emp)
+
+--------------------------------------------------
+        |      Mean   Number of non-missing values
+--------+-----------------------------------------
+rel     |                                         
+  -5    |  .8247129                         34,395
+  -4    |   .812304                         43,693
+  -3    |  .8052783                         50,698
+  -2    |  .7960023                         54,481
+  -1    |  .7932742                         55,934
+  0     |  .7894852                         50,310
+  1     |  .7765601                         47,722
+  2     |  .7714299                         43,024
+  3     |  .7693793                         35,734
+  4     |  .7650424                         27,622
+  5     |  .7598128                         20,509
+  6     |  .7570801                         14,124
+  Total |  .7889057                        478,246
+--------------------------------------------------
+
+. 
+. di ""
+
+
+. di "########## A4 — emp por tempo relativo, por coorte (2009-2013), so FEMININO ##########"
+########## A4 — emp por tempo relativo, por coorte (2009-2013), so FEMININO ##########
+
+. forvalues c=2009/2013 {
+  2.     di "--- coorte `c' ---"
+  3.     table rel if ano_nasc==`c' & fem==1 & inrange(rel,-3,5), stat(mean emp) nototals
+  4. }
+--- coorte 2009 ---
+
+----------------
+     |      Mean
+-----+----------
+rel  |          
+  -2 |   .731986
+  -1 |         1
+  0  |         1
+  1  |  .6424854
+  2  |  .6805197
+  3  |  .6900144
+  4  |  .6920437
+  5  |  .7013067
+----------------
+--- coorte 2010 ---
+
+----------------
+     |      Mean
+-----+----------
+rel  |          
+  -3 |  .7340923
+  -2 |         1
+  -1 |         1
+  0  |  .7194604
+  1  |  .6236953
+  2  |  .6891999
+  3  |  .6904482
+  4  |   .690148
+----------------
+--- coorte 2011 ---
+
+----------------
+     |      Mean
+-----+----------
+rel  |          
+  -3 |         1
+  -2 |         1
+  -1 |  .7047052
+  0  |  .7071481
+  1  |  .6351003
+  2  |  .6818966
+  3  |  .6886179
+----------------
+--- coorte 2012 ---
+
+----------------
+     |      Mean
+-----+----------
+rel  |          
+  -3 |         1
+  -2 |   .719633
+  -1 |  .6964967
+  0  |  .7114818
+  1  |  .6269869
+  2  |  .6864127
+----------------
+--- coorte 2013 ---
+
+----------------
+     |      Mean
+-----+----------
+rel  |          
+  -3 |  .7236135
+  -2 |  .7097536
+  -1 |  .7014936
+  0  |  .7223396
+  1  |  .6136561
+----------------
+
+. 
+. di ""
+
+
+. di "########## A5 — painel BALANCEADO (responsavel em todos os 8 anos 2007-2014) ##########"
+########## A5 — painel BALANCEADO (responsavel em todos os 8 anos 2007-2014) ##########
+
+. bysort cd_aluno_sme respid: gen nyr = _N
+
+. di "--- N (crianca,resp) com 8 anos observados ---"
+--- N (crianca,resp) com 8 anos observados ---
+
+. count if nyr==8 & rais_year==2007
+  115,449
+
+. preserve
+
+.     keep if nyr==8
+(2,668,621 observations deleted)
+
+.     di "--- emp por tempo relativo (balanceado, feminino) ---"
+--- emp por tempo relativo (balanceado, feminino) ---
+
+.     table rel if fem==1 & inrange(rel,-5,6), stat(mean emp) stat(count emp)
+
+--------------------------------------------------
+        |      Mean   Number of non-missing values
+--------+-----------------------------------------
+rel     |                                         
+  -5    |  .9192711                         56,634
+  -4    |  .9157145                         65,468
+  -3    |  .9091478                         70,268
+  -2    |  .9162031                         70,826
+  -1    |  .9510897                         67,634
+  0     |  .9142824                         60,011
+  1     |  .8381392                         51,569
+  2     |  .8819563                         42,713
+  3     |  .8873954                         33,924
+  4     |  .8845003                         25,065
+  5     |  .8827694                         17,231
+  6     |  .8867997                         10,424
+  Total |  .9052674                        571,767
+--------------------------------------------------
+
+. restore
+
+. 
+. di "=== FIM A ==="
+=== FIM A ===
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag09_A.log
+  log type:  text
+ closed on:  22 Jul 2026, 15:02:32
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

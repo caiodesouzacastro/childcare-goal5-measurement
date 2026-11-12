@@ -1,0 +1,38 @@
+% Apendice A (Fase 2): copia da antiga tabela do corpo, agora leitura do extrato completo. Origem: body/B05_timing.tex
+% Float do corpo (revisao pos-EE). Tabulars copiados verbatim por 02_audit/build12_bodyfloats.py.
+\begin{table}[htbp]\centering
+\caption{Full extract: registration before 12 months among children registered before 24 months, by birth cohort}
+\label{tab:P5timing}
+\label{tab:districtmix}
+\footnotesize
+\par\medskip\textbf{Panel A. All children registered before 24 months}\par\smallskip
+\begin{tabular}{lrr}
+\toprule
+Cohort & Share $<$12m $\mid$ $<$24m & N ($<$24m) \\
+\midrule
+2010 & 0.326 & 58,597 \\
+2011 & 0.544 & 88,716 \\
+2012 & 0.644 & 104,425 \\
+2013 & 0.666 & 107,550 \\
+2014 & 0.664 & 116,259 \\
+2015 & 0.701 & 121,938 \\
+2016 & 0.707 & 118,477 \\
+\bottomrule
+\end{tabular}
+\par\medskip\textbf{Panel B. Holding the district composition fixed}\par\smallskip
+\begin{tabular}{lrrrr}
+\toprule
+Birth cohort & Unweighted & Children with & Reweighted to & Reweighted to \\
+ & (all) & a district & 2010 district mix & 2016 district mix \\
+\midrule
+2010 & 0.326 & 0.325 & 0.325 & 0.321 \\
+2011 & 0.544 & 0.544 & 0.544 & 0.543 \\
+2012 & 0.644 & 0.644 & 0.643 & 0.643 \\
+2013 & 0.666 & 0.666 & 0.666 & 0.666 \\
+2014 & 0.664 & 0.665 & 0.665 & 0.664 \\
+2015 & 0.701 & 0.701 & 0.702 & 0.701 \\
+2016 & 0.707 & 0.707 & 0.708 & 0.707 \\
+\bottomrule
+\end{tabular}
+\tabnote{\emph{Source:} SME childcare request record; district from the residential postcode. \emph{Sample:} children of birth cohorts 2010--2016 first registered before 24 months; every cohort is observed over this whole window. \emph{Variables:} share first registered before 12 months. \emph{Exercise:} Panel A, unweighted shares; Panel B, district-specific shares averaged with the district weights of the 2010 or 2016 cohort, so that a change in where registrants live cannot move the series. The share rises between the 2010 and 2016 cohorts in all 96 districts (median within-district rise 0.407, smallest 0.244). The common window fixes exposure, not the composition of families who register within it. Descriptive.}
+\end{table}

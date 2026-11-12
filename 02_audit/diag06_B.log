@@ -1,0 +1,324 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag06_B.log
+  log type:  text
+ opened on:  22 Jul 2026, 13:13:24
+
+. 
+. *==============================================================
+. di "########## B1 — cpf_fila_*.dta: N obs e N vars ##########"
+########## B1 — cpf_fila_*.dta: N obs e N vars ##########
+
+. foreach f in cpf_fila_101 cpf_fila_102 cpf_fila_11 cpf_fila_12 cpf_fila_13 cpf_fila_14 {
+  2.     cap describe using "$dsme\\`f'.dta", short
+  3.     di "  `f': N=" r(N) "  k=" r(k)
+  4. }
+  cpf_fila_101: N=256765  k=91
+  cpf_fila_102: N=346485  k=91
+  cpf_fila_11: N=677823  k=93
+  cpf_fila_12: N=706676  k=93
+  cpf_fila_13: N=731684  k=93
+  cpf_fila_14: N=744703  k=94
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## B2 — pessoa linkada = adulto? (cpf_fila_14) ##########"
+########## B2 — pessoa linkada = adulto? (cpf_fila_14) ##########
+
+. use cpf idade ano cd_aluno_sme datadenascimento using "$dsme\cpf_fila_14.dta", clear
+
+. di "N linhas = " _N
+N linhas = 744703
+
+. di "--- idade (do linkado): resumo ---"
+--- idade (do linkado): resumo ---
+
+. sum idade, detail
+
+                            Idade
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%           17             14
+ 5%           19             14
+10%           21             14       Obs             744,703
+25%           24             14       Sum of wgt.     744,703
+
+50%           29                      Mean           29.19538
+                        Largest       Std. dev.      6.908295
+75%           34             92
+90%           38             92       Variance       47.72454
+95%           41             95       Skewness       .6610712
+99%           48             99       Kurtosis       3.670861
+
+. di "--- cpf nao-missing ---"
+--- cpf nao-missing ---
+
+. count if !missing(cpf) & cpf>0
+  744,703
+
+. di "--- ano (cobertura) ---"
+--- ano (cobertura) ---
+
+. tab ano
+
+        Ano |      Freq.     Percent        Cum.
+------------+-----------------------------------
+       2010 |     30,746        4.13        4.13
+       2011 |     41,496        5.57        9.70
+       2012 |     82,666       11.10       20.80
+       2013 |     84,233       11.31       32.11
+       2014 |     76,453       10.27       42.38
+       2015 |     75,403       10.13       52.50
+       2016 |    100,604       13.51       66.01
+       2017 |     88,950       11.94       77.96
+       2018 |    164,152       22.04      100.00
+------------+-----------------------------------
+      Total |    744,703      100.00
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## B3 — B_novo casa com cpf_fila? adultos e filhos/adulto ##########"
+########## B3 — B_novo casa com cpf_fila? adultos e filhos/adulto ##########
+
+. * empilhar cd_aluno + cpf de todos cpf_fila
+. clear
+
+. tempfile acc
+
+. gen x=.
+
+. save `acc', emptyok
+(dataset contains 0 observations)
+file <HOME>\AppData\Local\Temp\ST_5994_000001.tmp saved as .dta format
+
+. foreach f in cpf_fila_101 cpf_fila_102 cpf_fila_11 cpf_fila_12 cpf_fila_13 cpf_fila_14 {
+  2.     use cd_aluno_sme cpf using "$dsme\\`f'.dta", clear
+  3.     append using `acc'
+  4.     save `acc', replace
+  5. }
+file <HOME>\AppData\Local\Temp\ST_5994_000001.tmp saved as .dta format
+file <HOME>\AppData\Local\Temp\ST_5994_000001.tmp saved as .dta format
+file <HOME>\AppData\Local\Temp\ST_5994_000001.tmp saved as .dta format
+file <HOME>\AppData\Local\Temp\ST_5994_000001.tmp saved as .dta format
+file <HOME>\AppData\Local\Temp\ST_5994_000001.tmp saved as .dta format
+file <HOME>\AppData\Local\Temp\ST_5994_000001.tmp saved as .dta format
+
+. duplicates drop
+
+Duplicates in terms of all variables
+
+(2,682,711 observations deleted)
+
+. di "N pares (aluno,cpf) distintos = " _N
+N pares (aluno,cpf) distintos = 781425
+
+. * criancas distintas com algum registro RAIS
+. preserve
+
+.     keep cd_aluno_sme
+
+.     duplicates drop
+
+Duplicates in terms of all variables
+
+(0 observations are duplicates)
+
+.     gen byte tem_rais=1
+
+.     tempfile kids
+
+.     save `kids'
+file <HOME>\AppData\Local\Temp\ST_5994_000003.tmp saved as .dta format
+
+.     di "  criancas distintas com RAIS = " _N
+  criancas distintas com RAIS = 781425
+
+. restore
+
+. * casar com B_novo
+. merge m:1 cd_aluno_sme using "$aud\B_novo.dta", keepusing(cd_aluno_sme)
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                       743,179
+        from master                        22  (_merge==1)
+        from using                    743,157  (_merge==2)
+
+    Matched                           781,403  (_merge==3)
+    -----------------------------------------
+
+. di "  (match==3 = em B_novo E com RAIS) ; master-only = RAIS sem B_novo"
+  (match==3 = em B_novo E com RAIS) ; master-only = RAIS sem B_novo
+
+. * filhos por adulto (cpf)
+. use `acc', clear
+
+. keep if !missing(cpf) & cpf>0
+(0 observations deleted)
+
+. bysort cpf: gen nfilhos = _N
+
+. by cpf: keep if _n==1
+(2,682,711 observations deleted)
+
+. di "--- distribuicao de filhos por CPF adulto (RAIS) ---"
+--- distribuicao de filhos por CPF adulto (RAIS) ---
+
+. sum nfilhos, detail
+
+                           nfilhos
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            1              1
+ 5%            1              1
+10%            1              1       Obs             781,425
+25%            2              1       Sum of wgt.     781,425
+
+50%            4                      Mean           4.433101
+                        Largest       Std. dev.      2.601207
+75%            6             72
+90%            7             87       Variance       6.766279
+95%            9            118       Skewness       4.380766
+99%           12            349       Kurtosis       409.9451
+
+. di "  N adultos distintos = " _N
+  N adultos distintos = 781425
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## B5 — IRMAOS via cpf_resp_aluno (Fila) ##########"
+########## B5 — IRMAOS via cpf_resp_aluno (Fila) ##########
+
+. use cd_aluno_sme cpf_resp_aluno using "$fila", clear
+
+. keep if !missing(cpf_resp_aluno) & cpf_resp_aluno>0
+(35,987 observations deleted)
+
+. collapse (firstnm) cpf_resp_aluno, by(cd_aluno_sme)
+
+. * manter so criancas de B_novo
+. merge 1:1 cd_aluno_sme using "$aud\child_expo.dta", keep(match) keepusing(dt_mat_first dt_sol ano_nasc mes_nasc ever_mat) nogen
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                         1,495,127  
+    -----------------------------------------
+
+. gen idade_entrada = (year(dt_mat_first)-ano_nasc)*12 + (month(dt_mat_first)-mes_nasc) if ever_mat==1
+(190,025 missing values generated)
+
+. replace idade_entrada=. if !inrange(idade_entrada,0,72)
+(5,678 real changes made, 5,678 to missing)
+
+. * nº de filhos (em B_novo) por responsavel
+. bysort cpf_resp_aluno: gen nfilhos_bnovo = _N
+
+. di "--- distribuicao nº de filhos (B_novo) por responsavel ---"
+--- distribuicao nº de filhos (B_novo) por responsavel ---
+
+. preserve
+
+.     by cpf_resp_aluno: keep if _n==1
+(319,469 observations deleted)
+
+.     gen fc = nfilhos_bnovo
+
+.     replace fc=5 if nfilhos_bnovo>=5
+(686 real changes made)
+
+.     tab fc
+
+         fc |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |    918,674       78.14       78.14
+          2 |    208,740       17.76       95.90
+          3 |     38,751        3.30       99.19
+          4 |      7,268        0.62       99.81
+          5 |      2,225        0.19      100.00
+------------+-----------------------------------
+      Total |  1,175,658      100.00
+
+.     di "  N responsaveis distintos = " _N
+  N responsaveis distintos = 1175658
+
+. restore
+
+. di "--- criancas de B_novo com >=1 irmao em B_novo ---"
+--- criancas de B_novo com >=1 irmao em B_novo ---
+
+. count if nfilhos_bnovo>=2
+  576,453
+
+. di "--- familias com exatamente 2 filhos: diff de idade de entrada ---"
+--- familias com exatamente 2 filhos: diff de idade de entrada ---
+
+. preserve
+
+.     keep if nfilhos_bnovo==2 & !missing(idade_entrada)
+(1,129,053 observations deleted)
+
+.     bysort cpf_resp_aluno: gen n2 = _N
+
+.     keep if n2==2
+(38,286 observations deleted)
+
+.     bysort cpf_resp_aluno: egen mx = max(idade_entrada)
+
+.     bysort cpf_resp_aluno: egen mn = min(idade_entrada)
+
+.     gen diff = mx-mn
+
+.     by cpf_resp_aluno: keep if _n==1
+(163,894 observations deleted)
+
+.     di "  N familias 2-filhos com ambos idade valida = " _N
+  N familias 2-filhos com ambos idade valida = 163894
+
+.     di "  --- diff de idade de entrada entre irmaos (meses) ---"
+  --- diff de idade de entrada entre irmaos (meses) ---
+
+.     sum diff, detail
+
+                            diff
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            1              0       Obs             163,894
+25%            5              0       Sum of wgt.     163,894
+
+50%           13                      Mean           16.45443
+                        Largest       Std. dev.      13.75743
+75%           24             69
+90%           37             69       Variance        189.267
+95%           44             69       Skewness       .9531924
+99%           56             70       Kurtosis       3.352073
+
+.     count if diff>=6
+  121,671
+
+.     di "  pares de irmaos com diff idade entrada >=6 meses = " r(N)
+  pares de irmaos com diff idade entrada >=6 meses = 121671
+
+. restore
+
+. 
+. di "=== FIM B ==="
+=== FIM B ===
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag06_B.log
+  log type:  text
+ closed on:  22 Jul 2026, 13:15:03
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

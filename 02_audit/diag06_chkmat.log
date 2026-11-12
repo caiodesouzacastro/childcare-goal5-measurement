@@ -1,0 +1,32 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag06_chkmat.log
+  log type:  text
+ opened on:  22 Jul 2026, 12:58:59
+
+. di "===== matriculas_2018.dta (1 obs) ====="
+===== matriculas_2018.dta (1 obs) =====
+
+. use "$ba\matriculas_2018.dta" in 1, clear
+
+. di "N vars = " c(k)
+N vars = 95
+
+. ds
+an_letivo     cd_inep_es~a  modalidade    cd_etapa_e~o  desc_tip~ama  qtd_dias_s~a  sab           cd_sexo       desc_uf_nasc  def__cegue~a  def__fis_c~r  mes_in_mat    sit_al_concl  sit_al_rec~s
+cd_unidade~o  situacao_e~a  modalidade~o  desc_etapa~o  dur_dia_tu~a  x_semana      dom           cd_raca_cor   nee_alt_hab   def__baixa~o  def__n_pos~i  situacao_mat  sit_al_tra~f  sit_al_ativo
+nome_distr~o  cd_turma      turma_escol   cd_ciclo_e~o  dur_dia_hora  seg           cd_aluno_sme  desc_raca_~r  def__autismo  def__surdo~g  cd_mat        ano_sit_mat   sit_al_falec  cd_parecer~n
+cd_setor      cd_turno      nome_turma    desc_ciclo~o  dur_dia_min   ter           ano_nasc_a~o  cd_pais_nasc  def__surde~e  def__trans~f  dt_in_mat     mes_sit_mat   sit_al_ncom   desc_parec~n
+tipo_escol~t  desc_turno    hora_in_tu~a  cd_tipo_tu~a  dur_seman_~a  qua           mes_nasc_a~o  desc_pais_~c  def__surde~v  def__sindr~r  dt_fim_mat    sit_al_aprov  sit_al_excl
+nome_escola   cd_serie      hora_fim_t~a  desc_tip~rma  dur_sem_hora  qui           idade_alun~l  cd_mun_nasc   def__intel~t  def__sindr~t  qtd_dias_m~r  sit_al_rep~v  sit_al_ces
+dre           desc_serie    desc_perio~a  cd_tipo_pr~a  dur_sem_min   sex           idade_a~3103  desc_mun_n~c  def__multi~a  def__fis_n~r  ano_in_mat    sit_al_aband  sit_al_reman
+
+. di "--- describe (procurar serie/ano/aluno) ---"
+--- describe (procurar serie/ano/aluno) ---
+
+. ds *serie* *aluno* *ano* *nasc* *nivel* *etapa* cd_*
+variable *nivel* not found
+r(111);
+
+end of do-file
+r(111);

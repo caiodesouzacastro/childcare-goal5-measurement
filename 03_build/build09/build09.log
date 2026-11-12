@@ -1,0 +1,39 @@
+carregando Fila1018 (colunas p/ N1)...
+  Fila1018: 3,298,064 linhas.
+  B_novo (child_master): 1,524,560 criancas.
+
+## N1b - reproducao do DIAG10-III2 (32,4%)
+  N (encaminhamentos creche, sem prioridade, serie in 1/4/27/28) = 1,906,180
+  fracao com timestamp (segundo) EMPATADO na celula = 32.4%  (DIAG10-III2 = 32.4%)
+
+## N1c - entrada em lote (1a solicitacao, sem condicionar)
+  1as solicitacoes com timestamp valido (em B_novo) = 1,524,560
+  fracao em lote por ano (2+/10+/50+/100+ criancas no mesmo segundo):
+              2010: n=   81,004  2+=  1.7%  10+=  0.1%  50+=  0.0%  100+=  0.0%
+              2011: n=  124,240  2+=  1.8%  10+=  0.0%  50+=  0.0%  100+=  0.0%
+              2012: n=  220,922  2+=  3.0%  10+=  0.0%  50+=  0.0%  100+=  0.0%
+              2013: n=  191,149  2+=  2.4%  10+=  0.0%  50+=  0.0%  100+=  0.0%
+              2014: n=  174,676  2+=  2.7%  10+=  0.0%  50+=  0.0%  100+=  0.0%
+              2015: n=  179,869  2+=  2.9%  10+=  0.6%  50+=  0.6%  100+=  0.6%
+              2016: n=  172,341  2+=  2.5%  10+=  0.0%  50+=  0.0%  100+=  0.0%
+              2017: n=  163,922  2+=  2.7%  10+=  0.0%  50+=  0.0%  100+=  0.0%
+              2018: n=  165,331  2+=  2.7%  10+=  0.0%  50+=  0.0%  100+=  0.0%
+     Total (todos): n=1,524,560  2+=  2.7%  10+=  0.1%  50+=  0.1%  100+=  0.1%
+
+## N2 - percentis do conjunto elegivel (CEIs <=2km), universo do paper
+  (nelig do child_master: contagem ESTATICA de CEIs <=2km do CEP, sem condicionar na data de abertura do CEI; ver build01_child.py)
+  percentis de nelig (p10/p25/mediana/p75/p90/media/N):
+    Total (2006--2018): p10=  13 p25=  21 med=  32 p75=  48 p90=  66 media= 36.0  N=1,524,560
+                  2010: p10=  13 p25=  21 med=  33 p75=  49 p90=  67 media= 36.7  N=81,004
+                  2011: p10=  13 p25=  21 med=  33 p75=  48 p90=  66 media= 36.1  N=124,240
+                  2012: p10=  13 p25=  21 med=  33 p75=  49 p90=  68 media= 36.6  N=220,922
+                  2013: p10=  13 p25=  21 med=  33 p75=  48 p90=  67 media= 36.2  N=191,149
+                  2014: p10=  13 p25=  21 med=  32 p75=  48 p90=  66 media= 35.9  N=174,676
+                  2015: p10=  13 p25=  21 med=  32 p75=  48 p90=  66 media= 35.9  N=179,869
+                  2016: p10=  13 p25=  21 med=  32 p75=  47 p90=  65 media= 35.6  N=172,341
+                  2017: p10=  12 p25=  21 med=  32 p75=  47 p90=  65 media= 35.5  N=163,922
+                  2018: p10=  13 p25=  20 med=  31 p75=  47 p90=  65 media= 35.2  N=165,331
+
+## Celulas centro x faixa x semestre (87.178 vs 86.982)
+  perfil_turma.csv atual: 2,734 centros, 13 semestres, 86,982 celulas (codesc x agrup x sidx nao-vazias).
+  paper diz 87.178; build atual = 86,982; diferenca = 196 celulas (0.23%). 2019s2 e arquivos duplicados (jun2013/2015) foram excluidos do build atual (ver build01_perfil.py), o que explica o excedente do numero antigo.

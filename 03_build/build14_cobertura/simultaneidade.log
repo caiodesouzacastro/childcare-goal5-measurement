@@ -1,0 +1,13 @@
+Cobertura das entradas de FEVEREIRO por tipo de escola (%; tipos com >=200 entradas em fev/2012):
+ano          2011  2012  2013  2014  N_2011  N_2012  N_2013  N_2014
+TIPO_ESCOLA                                                        
+CEI DIRET    45.4  39.2  98.8  99.5   14602   18184   18783   17736
+CEI INDIR    48.9  39.8  98.6  99.2   19984   18856   22666   23110
+CEU CEI      39.4  35.7  98.5  99.4    3023    4804    5100    4611
+CEU EMEI     <NA>  32.0  95.8  98.3    <NA>     610     120     115
+CR.P.CONV    48.7  43.6  98.0  98.8   51182   40148   44711   44884
+EMEI         <NA>  42.6  96.7  97.3    <NA>    4529    1374    1290
+2011: unidades com >=20 entradas em fev: 1328 | cobertura >=90%: 0.8% das unidades | <=10%: 0.6% | p10/p50/p90 = 0.26/0.47/0.71
+2012: unidades com >=20 entradas em fev: 1493 | cobertura >=90%: 1.9% das unidades | <=10%: 0.5% | p10/p50/p90 = 0.24/0.40/0.65
+2013: unidades com >=20 entradas em fev: 1519 | cobertura >=90%: 97.0% das unidades | <=10%: 0.0% | p10/p50/p90 = 0.95/1.00/1.00
+unidades com >=20 em fev/2012 e fev/2013: 1339 | cobertura subiu >=30 pontos de 2012 para 2013: 92.4%

@@ -1,0 +1,40 @@
+carregando spine...
+  N=409,528 nas coortes [2010, 2013, 2016]. distrito ok=0.99
+  celulas distintas (3 coortes) = 6,094
+  linhas com tempo valido (entram na CIF): 375,254 de 409,528
+  (as demais permanecem no calculo das FREQUENCIAS de celula, como em build_p3.py,
+   onde os pesos sao construidos sobre a coorte inteira e a CIF descarta o invalido)
+  coorte 2010: n=128,352  validos=106,300  tempos distintos=1,406  referral=93,165  aging-out=13,135
+  coorte 2013: n=153,033  validos=140,811  tempos distintos=1,373  referral=135,075  aging-out=5,736
+  coorte 2016: n=128,143  validos=128,143  tempos distintos=1,057  referral=126,934  aging-out=0
+
+## estimativa pontual (contagens = 1; deve reproduzir build_p3.py)
+  Raw           : 2010=0.563 2016=0.876  Delta=+0.3132  (esperado +0.313)
+  Applicant std : 2010=0.498 2016=0.885  Delta=+0.3869  (esperado +0.387)
+  rep 50/1000  (3s, 0.05s/rep)  media std=+0.3851
+  rep 100/1000  (5s, 0.05s/rep)  media std=+0.3853
+  rep 150/1000  (8s, 0.05s/rep)  media std=+0.3852
+  rep 200/1000  (10s, 0.05s/rep)  media std=+0.3851
+  rep 250/1000  (13s, 0.05s/rep)  media std=+0.3851
+  rep 300/1000  (15s, 0.05s/rep)  media std=+0.3851
+  rep 350/1000  (18s, 0.05s/rep)  media std=+0.3852
+  rep 400/1000  (20s, 0.05s/rep)  media std=+0.3852
+  rep 450/1000  (23s, 0.05s/rep)  media std=+0.3852
+  rep 500/1000  (25s, 0.05s/rep)  media std=+0.3853
+  rep 550/1000  (28s, 0.05s/rep)  media std=+0.3853
+  rep 600/1000  (30s, 0.05s/rep)  media std=+0.3853
+  rep 650/1000  (33s, 0.05s/rep)  media std=+0.3854
+  rep 700/1000  (35s, 0.05s/rep)  media std=+0.3854
+  rep 750/1000  (38s, 0.05s/rep)  media std=+0.3854
+  rep 800/1000  (40s, 0.05s/rep)  media std=+0.3854
+  rep 850/1000  (42s, 0.05s/rep)  media std=+0.3854
+  rep 900/1000  (45s, 0.05s/rep)  media std=+0.3854
+  rep 950/1000  (47s, 0.05s/rep)  media std=+0.3854
+  rep 1000/1000  (50s, 0.05s/rep)  media std=+0.3854
+
+## BOOTSTRAP  seed=20260726  reps=1000
+  Raw           Delta=+0.3132  se=0.0018  IC95=[+0.3096, +0.3166]
+  Applicant std Delta=+0.3869  se=0.0023  IC95=[+0.3807, +0.3901]
+tex: P3_boot
+
+OK P3 bootstrap

@@ -1,0 +1,6 @@
+variavel;tipo;descricao;fonte
+ano;texto;Ano de referência;Fundação Sistema Estadual de Análise de Dados – Seade
+cod_ibge;texto;Código oficial de 7 dígitos definido pelo IBGE para município;Instituto Brasileiro de Geografia e Estatística – IBGE 
+sexo;texto;Homens e Mulheres;Fundação Sistema Estadual de Análise de Dados – Seade
+idade;texto;Faixas etárias quinquenais e total;Fundação Sistema Estadual de Análise de Dados – Seade
+populacao;numérico;Estimativa da população residente (em 1 de julho);Fundação Sistema Estadual de Análise de Dados – Seade

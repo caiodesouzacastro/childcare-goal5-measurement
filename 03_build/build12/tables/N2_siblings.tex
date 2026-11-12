@@ -1,0 +1,25 @@
+% BUILD12. Descritivo. Gerado por 02_audit/build12_tables.py.
+\begin{table}[htbp]\centering
+\caption{Within-family difference in age at first application: joint registration, residential moves and spacing}
+\label{tab:siblingsN2}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrrr}
+\toprule
+Sample of sibling pairs & Coef. & (SE) & Pairs & Median raw & Younger \\
+ & & & & difference & earlier (\%) \\
+\midrule
+All pairs (baseline) & $-7.20$ & (0.11) & 79,893 & $-10$ & 78.1 \\
+Both children registered on the same day & $-4.98$ & (0.11) & 6,950 & $-21$ & 100.0 \\
+Excluding same-day registration & $-5.03$ & (0.12) & 72,943 & $-8$ & 76.0 \\
+Both registered within 30 days of each other & $-4.44$ & (0.07) & 16,330 & $-21$ & 100.0 \\
+Excluding registrations within 30 days & $-0.88$ & (0.14) & 63,563 & $-6$ & 72.4 \\
+Older applied before the younger's birth & $+3.21$ & (0.13) & 53,561 & $-5$ & 70.1 \\
+Older applied on or after the younger's birth & $-4.00$ & (0.16) & 26,332 & $-20$ & 94.4 \\
+Same postcode for both children & $-8.25$ & (0.14) & 49,658 & $-11$ & 80.1 \\
+Birth spacing of 9 months or more & $-7.65$ & (0.11) & 78,649 & $-10$ & 78.2 \\
+Excl.\ 30-day registration, same postcode, spacing $\geq$ 9 & $-1.20$ & (0.18) & 36,934 & $-6$ & 73.7 \\
+\bottomrule
+\end{tabular}
+\tabnote{\emph{Source:} SME childcare request record; guardian taxpayer identifier. \emph{Sample:} guardians with exactly two children, both born 2010--2016 (79,893 pairs). \emph{Variables:} age at first application, months. Same-day and 30-day: absolute difference between the two children's first application dates. Postcode: residential postcode recorded for each child. \emph{Exercise:} Coef.\ is the younger-minus-older coefficient from a regression of age at application on birth order with family and birth-year fixed effects, standard errors clustered by family (the specification of Table~\ref{tab:S5_robustez}, row 2); because birth-year dummies absorb the cohort trend, it measures the younger--older gap beyond the common cohort profile. Median raw difference and Younger earlier: unadjusted younger-minus-older difference, which includes the cohort trend. Descriptive.}
+\end{table}

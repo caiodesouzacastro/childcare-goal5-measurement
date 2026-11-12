@@ -1,0 +1,54 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\_verify.log
+  log type:  text
+ opened on:  22 Jul 2026, 13:54:25
+
+. use cd_aluno_sme ano an_letivo_matricula an_letivo_encaminhamento using "<NE_ROOT>\dados_restritos\Dados - SME/Atual (25.06)/cpf_fila_14.dta", clear
+
+. di "N linhas = " _N
+N linhas = 744703
+
+. egen tag_cy = tag(cd_aluno_sme ano)
+
+. bysort cd_aluno_sme: egen nano = total(tag_cy)
+
+. gen byte eq_mat = ano==an_letivo_matricula
+
+. gen byte eq_enc = ano==an_letivo_encaminhamento
+
+. di "--- % linhas com ano==an_letivo_matricula / ==encaminhamento ---"
+--- % linhas com ano==an_letivo_matricula / ==encaminhamento ---
+
+. sum eq_mat eq_enc
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+      eq_mat |    744,703     .412825    .4923422          0          1
+      eq_enc |    744,703    .5408881    .4983257          0          1
+
+. egen tagc = tag(cd_aluno_sme)
+
+. di "--- nº de anos RAIS distintos por crianca (bruto) ---"
+--- nº de anos RAIS distintos por crianca (bruto) ---
+
+. tab nano if tagc==1
+
+       nano |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |    579,682      100.00      100.00
+------------+-----------------------------------
+      Total |    579,682      100.00
+
+. di "N criancas distintas = "
+N criancas distintas = 
+
+. count if tagc==1
+  579,682
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\_verify.log
+  log type:  text
+ closed on:  22 Jul 2026, 13:54:28
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

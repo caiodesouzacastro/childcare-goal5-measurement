@@ -1,0 +1,98 @@
+## 1. Universos (13 arquivos, 2013s1-2019s1; filtro MODAL == CRECHE; DESCSERIE em Bercario I/II, Mini Grupo I/II)
+linhas MODAL == CRECHE: 299,401
+regra A (build01_perfil -> build09): linhas 299,117; centros 2,734; celulas 86,982; semestres 13
+regra B (verificacao_final V2): linhas 299,117; centros 2,770; celulas 86,982; semestres 13
+isolando as duas diferencas de regra:
+  A com CODESC cru:         centros 2,770; celulas 86,982
+  B com CODESC normalizado: centros 2,734; celulas 86,982
+  linhas em que o agrupamento difere entre A e B: 0
+  DESCSERIE com MODAL == CRECHE e sem agrupamento nas duas regras: 284 linhas
+    'BII 10H ESC DIF': 156
+    'BI 10H ESC DIF': 128
+  centros (normalizados) que so aparecem nessas linhas: 0
+
+## 2. CODESC nos arquivos
+CODESC nao numericos (inclui vazio): 0 []
+por arquivo (regra B): linhas; CODESC distintos; distintos com zero a esquerda; comprimentos
+  2013s1 perfil_2013s1_turmasjun2013.csv: linhas 18,106; CODESC 1,641; com zero a esquerda 53; comprimentos {6: 1641}
+  2013s2 perfil_2013s2_r30turmasparadre20131231.csv: linhas 18,409; CODESC 1,666; com zero a esquerda 55; comprimentos {6: 1666}
+  2014s1 perfil_2014s1_turmasjun2014.csv: linhas 19,264; CODESC 1,734; com zero a esquerda 80; comprimentos {6: 1734}
+  2014s2 perfil_2014s2_r30turmasparadre20141231.csv: linhas 19,963; CODESC 1,782; com zero a esquerda 80; comprimentos {6: 1782}
+  2015s1 perfil_2015s1_turmasjun2015.csv: linhas 20,467; CODESC 1,830; com zero a esquerda 69; comprimentos {6: 1830}
+  2015s2 perfil_2015s2_r30turmasparadre20151231.csv: linhas 22,424; CODESC 1,983; com zero a esquerda 71; comprimentos {6: 1983}
+  2016s1 perfil_2016s1_turmasjun2016.csv: linhas 23,641; CODESC 2,068; com zero a esquerda 61; comprimentos {6: 2068}
+  2016s2 perfil_2016s2_turmasmatriculas20161231.csv: linhas 24,157; CODESC 2,108; com zero a esquerda 62; comprimentos {6: 2108}
+  2017s1 perfil_2017s1_turmasjun2017.csv: linhas 24,333; CODESC 2,102; com zero a esquerda 41; comprimentos {6: 2102}
+  2017s2 perfil_2017s2_turmasdez2017.csv: linhas 25,002; CODESC 2,130; com zero a esquerda 41; comprimentos {6: 2130}
+  2018s1 perfil_turmas_jun2018.csv: linhas 27,473; CODESC 2,284; com zero a esquerda 48; comprimentos {6: 2284}
+  2018s2 perfil_2018s2_turmasdez2018.csv: linhas 26,604; CODESC 2,191; com zero a esquerda 50; comprimentos {6: 2191}
+  2019s1 perfil_2019s1_turmas062019.csv: linhas 29,274; CODESC 2,406; com zero a esquerda 0; comprimentos {5: 36, 6: 2370}
+por semestre (regra B): centros com CODESC cru x normalizado
+  2013s1: 1,641 x 1,641
+  2013s2: 1,666 x 1,666
+  2014s1: 1,734 x 1,734
+  2014s2: 1,782 x 1,782
+  2015s1: 1,830 x 1,830
+  2015s2: 1,983 x 1,983
+  2016s1: 2,068 x 2,068
+  2016s2: 2,108 x 2,108
+  2017s1: 2,102 x 2,102
+  2017s2: 2,130 x 2,130
+  2018s1: 2,284 x 2,284
+  2018s2: 2,191 x 2,191
+  2019s1: 2,406 x 2,406
+
+## 3. CODESC com mais de uma grafia crua (regra B): 36 centros; grafias a mais: 36
+normalizado | grafia crua: semestres | as duas grafias no mesmo semestre? | semestres | celulas (A) | VAGOFER somado (A) | rede | nome (ultimo semestre)
+  11886 | '011886': 2014s1-2018s2; '11886': 2019s1 | nao | 11 | 11 | 542 | DIR | MARIO BENI, DEP.
+  13498 | '013498': 2014s1-2018s2; '13498': 2019s1 | nao | 11 | 11 | 499 | DIR | JOSE ROBERTO DE CASTRO RIBEIRO, PROF.
+  13501 | '013501': 2014s1-2018s2; '13501': 2019s1 | nao | 11 | 11 | 549 | DIR | DULCE SALLES FERRAZ, PROFA.
+  19207 | '019207': 2013s1-2018s2; '19207': 2019s1 | nao | 13 | 13 | 1,133 | DIR | APARECIDA DE LOURDES CARRILHO JARDIM, PROFA
+  19310 | '019310': 2013s1-2018s2; '19310': 2019s1 | nao | 13 | 52 | 2,076 | DIR | SILVANA APARECIDA TOBIAS, PROFA.
+  19325 | '019325': 2013s1-2016s2,2018s1-2018s2; '19325': 2019s1 | nao | 11 | 11 | 625 | DIR | MANOEL DE ALVARENGA FREIRE JUNIOR PROF
+  19342 | '019342': 2013s1-2018s2; '19342': 2019s1 | nao | 13 | 13 | 1,100 | DIR | LEILA MARIA FONTELES FARIAS, PROFA
+  19432 | '019432': 2013s1-2018s2; '19432': 2019s1 | nao | 13 | 52 | 1,205 | DIR | PARQUE DO LAGO
+  19483 | '019483': 2013s2-2018s2; '19483': 2019s1 | nao | 12 | 45 | 1,894 | DIR | JARDIM SANTA TEREZA
+  19493 | '019493': 2015s1-2018s2; '19493': 2019s1 | nao | 9 | 30 | 1,125 | DIR | CAPAO REDONDO
+  19497 | '019497': 2015s1-2018s2; '19497': 2019s1 | nao | 9 | 36 | 1,628 | DIR | LAZARA VEIGA CATELLANI
+  19508 | '019508': 2014s1-2018s2; '19508': 2019s1 | nao | 11 | 11 | 886 | DIR | PAULA CRISTINA RODRIGUES, PROFA
+  19512 | '019512': 2016s2-2018s2; '19512': 2019s1 | nao | 6 | 24 | 1,124 | DIR | JARDIM ANGELA
+  19520 | '019520': 2015s2-2018s2; '19520': 2019s1 | nao | 8 | 32 | 1,211 | DIR | LEILA GALLACCI METZKER, PROFA
+  19528 | '019528': 2017s1-2018s2; '19528': 2019s1 | nao | 5 | 20 | 1,086 | DIR | VILA DO SOL I
+  19531 | '019531': 2017s1-2018s2; '19531': 2019s1 | nao | 5 | 20 | 756 | DIR | CASA BLANCA I
+  19532 | '019532': 2017s1-2018s2; '19532': 2019s1 | nao | 5 | 19 | 595 | DIR | IRAPARA
+  19623 | '019623': 2015s1-2018s2; '19623': 2019s1 | nao | 9 | 9 | 498 | DIR | RUMI OIKAWA, PROFA
+  19641 | '019641': 2018s1-2018s2; '19641': 2019s1 | nao | 3 | 12 | 506 | DIR | JARDIM KIOTO
+  19643 | '019643': 2018s1-2018s2; '19643': 2019s1 | nao | 3 | 10 | 310 | DIR | ANDAGUACU
+  19644 | '019644': 2018s1-2018s2; '19644': 2019s1 | nao | 3 | 6 | 175 | DIR | MARCIA KUMBREVICIUS DE MOURA
+  19645 | '019645': 2018s1-2018s2; '19645': 2019s1 | nao | 3 | 10 | 292 | DIR | JARDIM DOM JOSE I
+  19648 | '019648': 2018s2; '19648': 2019s1 | nao | 2 | 7 | 205 | DIR | CARMELO CALI
+  19649 | '019649': 2018s2; '19649': 2019s1 | nao | 2 | 8 | 177 | DIR | JARDIM DAS PALMAS
+  90450 | '090450': 2013s1-2018s2; '90450': 2019s1 | nao | 13 | 13 | 638 | DIR | ANTONIO BRANCO LEFEVRE, PROF.
+  90671 | '090671': 2013s1-2016s2,2018s1-2018s2; '90671': 2019s1 | nao | 11 | 11 | 276 | DIR | LEONARDO ARROYO
+  90972 | '090972': 2014s1-2018s2; '90972': 2019s1 | nao | 11 | 11 | 1,110 | DIR | MARGARIDA MARIA ALVES
+  90981 | '090981': 2014s1-2018s2; '90981': 2019s1 | nao | 11 | 11 | 749 | DIR | CARLOTA PEREIRA DE QUEIROZ
+  91014 | '091014': 2014s1-2014s2,2017s1-2018s2; '91014': 2019s1 | nao | 7 | 7 | 350 | DIR | AMACIO MAZZAROPI
+  91031 | '091031': 2014s1-2018s2; '91031': 2019s1 | nao | 11 | 11 | 588 | DIR | SAMUEL WAINER
+  91090 | '091090': 2014s1-2018s2; '91090': 2019s1 | nao | 11 | 11 | 556 | DIR | MIGUEL COSTA, GEN.
+  92525 | '092525': 2014s1-2016s2,2018s1-2018s2; '92525': 2019s1 | nao | 9 | 9 | 372 | DIR | BENJAMIN CONSTANT
+  92665 | '092665': 2016s1-2018s2; '92665': 2019s1 | nao | 7 | 7 | 343 | DIR | CARMEM MIRANDA
+  97080 | '097080': 2014s1-2018s2; '97080': 2019s1 | nao | 11 | 11 | 545 | DIR | ELISA KAUFFMANN ABRAMOVICH
+  97098 | '097098': 2016s1-2018s2; '97098': 2019s1 | nao | 7 | 7 | 344 | DIR | VALDIR AZEVEDO
+  97691 | '097691': 2015s1-2018s2; '97691': 2019s1 | nao | 9 | 9 | 275 | DIR | DILSON FUNARO
+
+## 4. Painel de celulas: centros distintos
+celulas A = 86,982; celulas B com CODESC normalizado = 86,982; mesmo conjunto: True
+centros distintos nas celulas: A 2,734; B 2,770 grafias cruas = 2,734 centros
+perfil_turma.csv atual: linhas 299,117; dtype codesc int64; centros 2,734 (lido como texto: 2,734); semestres 13; celulas 86,982
+  linhas da regra A = linhas do perfil_turma.csv: True; mesmo conjunto de celulas: True
+perfil_turma.csv anterior a normalizacao (CODESC cru, como gravava o build01_perfil.py.bak-verif), lido como no build09.py L199: dtype int64; centros 2,734; celulas 86,982
+
+## 5. Vagas autorizadas (regra A)
+centros com VAGOFER somado = 0 em todo o painel: 0
+celulas com VAGOFER somado = 0: 5 de 86,982
+centros com ao menos uma celula com VAGOFER > 0: 2,734
+os 36 centros do item 3: VAGOFER somado > 0 em todos? True
+
+[script] <HOME>\AppData\Local\Temp\claude\C--Users-<usuario>-Dropbox-Papers-Neighborhood-Effects\db80d58e-95e6-48ef-9841-270f83d178f0\scratchpad\centros_2734.py sha256 04dfbd472cbcb8036e5448e917f9b9d60dba63f9494ba4f8226cfc4931bd4c77
+[M3] rodada centros-2026-10-29, execucao 2

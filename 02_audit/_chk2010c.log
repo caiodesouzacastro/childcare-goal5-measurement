@@ -1,0 +1,22 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\_chk2010c.log
+  log type:  text
+ opened on:  22 Jul 2026, 13:06:25
+
+. use "$ba\matriculas_2010.dta" in 1, clear
+
+. ds
+an_letivo     dre           cd_serie      hora_in_tu~a  desc_ciclo~o  dur_dia_hora  x_semana      sab           idade_alun~l  desc_pais_~c  def_surdez~e  def_surdo_~g  def_n_possui  mes_in_mat    sit_al_aband  sit_al_ces
+cd_unidade~o  cd_inep_es~a  desc_serie    hora_fim_t~a  cd_tipo_tu~a  dur_dia_min   seg           dom           idade_alu~03  cd_mun_nasc   def_surdez~v  def_transt~f  cd_mat        situacao_mat  sit_al_concl  sit_al_reman
+nome_distr~o  situacao_e~a  modalidade    desc_perio~a  desc_tip~rma  dur_seman_~a  ter           cd_aluno_sme  cd_sexo       desc_mun_n~c  def_intelect  def_sindr_~r  dt_in_mat     ano_sit_mat   sit_al_tra~f  sit_al_rec~s
+cd_setor      cd_turma      modalidade~o  cd_etapa_e~o  cd_tipo_pr~a  dur_sem_hora  qua           cd_inep_al~o  cd_raca_cor   desc_uf_nasc  def_multipla  def_sindr_~t  dt_fim_mat    mes_sit_mat   sit_al_falec  sit_al_ativo
+tipo_escol~t  cd_turno      turma_escol   desc_etapa~o  desc_tip~ama  dur_sem_min   qui           ano_nasc_a~o  desc_raca_~r  nee_alt_hab   def_cegueira  def_fis_n_~r  qtd_dias_m~r  sit_al_aprov  sit_al_ncom   cd_parecer~n
+nome_escola   desc_turno    nome_turma    cd_ciclo_e~o  dur_dia_tu~a  qtd_dias_s~a  sex           mes_nasc_a~o  cd_pais_nasc  def_autismo   def_baixa_~o  def_fis_ca~r  ano_in_mat    sit_al_rep~v  sit_al_excl   desc_parec~n
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\_chk2010c.log
+  log type:  text
+ closed on:  22 Jul 2026, 13:06:25
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

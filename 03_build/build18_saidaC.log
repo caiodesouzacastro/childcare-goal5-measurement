@@ -1,0 +1,33 @@
+ ano      mar      jun      set      dez  queda_set_dez_pct  dez_sobre_set_pct  pico_sobre_vale
+2006      NaN  84408.0 111574.0 129594.0              -16.2              116.0             1.54
+2007  96249.0  88218.0 158689.0  79231.0               50.1               50.0             2.00
+2008  93476.0 110091.0 134497.0  57607.0               57.2               43.0             2.33
+2009  67619.0  84807.0  86858.0  74707.0               14.0               86.0             1.28
+2010  78284.0  94974.0 125437.0 100401.0               20.0               80.0             1.60
+2011 127651.0 147027.0 174168.0 101165.0               41.9               58.0             1.72
+2012 126662.0 148185.0 174213.0  97160.0               44.2               56.0             1.79
+2013 103309.0 127361.0 156982.0  96696.0               38.4               62.0             1.62
+2014 110639.0 128519.0 160495.0  94191.0               41.3               59.0             1.70
+2015 105967.0 124741.0 145864.0  75194.0               48.4               52.0             1.94
+2016  88356.0 103496.0 133005.0  65040.0               51.1               49.0             2.04
+2017  87906.0 104268.0 132365.0  44092.0               66.7               33.0             3.00
+[gravado e relido] <NE_ROOT>\03_build\build18\saidaC_publicado.csv
+variacao 2013->2017 (%), por mes de referencia: {'mar': np.float64(-15.0), 'jun': np.float64(-18.0), 'set': np.float64(-16.0), 'dez': np.float64(-54.0)}
+variacao 2007->2017 (%), por mes de referencia: {'mar': np.float64(-9.0), 'jun': np.float64(18.0), 'set': np.float64(-17.0), 'dez': np.float64(-44.0)}
+variacao 2010->2017 (%), por mes de referencia: {'mar': np.float64(12.0), 'jun': np.float64(10.0), 'set': np.float64(6.0), 'dez': np.float64(-56.0)}
+variacao 2013->2016 (%), por mes de referencia: {'mar': np.float64(-14.0), 'jun': np.float64(-19.0), 'set': np.float64(-15.0), 'dez': np.float64(-33.0)}
+variacao 2014->2017 (%), por mes de referencia: {'mar': np.float64(-21.0), 'jun': np.float64(-19.0), 'set': np.float64(-18.0), 'dez': np.float64(-53.0)}
+queda set->dez no mesmo ano, 2013-2017: de 38.4 a 66.7% (media 49.2); serie completa 2007-2017: de 14.0 a 66.7%
+ ano    set   dez  queda_set_dez_pct
+2010  25651 31321              -22.1
+2011  61270 86475              -41.1
+2012 157916 80306               49.1
+2013 145627 88046               39.5
+2014 146161 82189               43.8
+2015 130343 66125               49.3
+2016 118722 59910               49.5
+2017 121478 41243               66.0
+2018  77247 18620               75.9
+[gravado e relido] <NE_ROOT>\03_build\build18\saidaC_reconstruido.csv
+reconstruido 2013->2017: set -17% | dez -53%
+reconstruido 2013->2018: set -47% | dez -79%

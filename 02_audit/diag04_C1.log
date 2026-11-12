@@ -1,0 +1,173 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag04_C1.log
+  log type:  text
+ opened on:  22 Jul 2026, 11:22:37
+
+. 
+. di "########## C1 — n_aberturas por raio (janela sol..mat) ##########"
+########## C1 — n_aberturas por raio (janela sol..mat) ##########
+
+. use "$aud\universo_B4.dta", clear
+
+. di "N universo = " _N
+N universo = 1320845
+
+. * join com pares CEP-CEI (so criancas cujo CEP tem CEI proximo geram linhas)
+. rename cep_aluno cep
+
+. joinby cep using "$aud\cep_cei_pairs.dta", unmatched(master)
+
+. di "N linhas apos joinby = " _N
+N linhas apos joinby = 40776370
+
+. gen byte matched = !missing(dist_km)
+
+. gen byte inwin  = (ceiopen>=dt_sol & ceiopen<=dt_mat) if matched
+(18,151 missing values generated)
+
+. gen byte post12 = (ceiopen>dt_mat & ceiopen<=dt_mat+365) if matched
+(18,151 missing values generated)
+
+. gen byte w2  = inwin & dist_km<=2
+
+. gen byte w1  = inwin & dist_km<=1
+
+. gen byte w05 = inwin & dist_km<=0.5
+
+. gen byte p1  = post12 & dist_km<=1
+
+. collapse (sum) n_ab_2km=w2 n_ab_1km=w1 n_ab_500=w05 n_post_1km=p1, by(cd_aluno_sme)
+
+. save "$aud\child_counts_raw.dta", replace
+(file <NE_ROOT>\_audit\child_counts_raw.dta not found)
+file <NE_ROOT>\_audit\child_counts_raw.dta saved
+
+. 
+. * merge de volta ao universo (crianca sem par -> 0)
+. use "$aud\universo_B4.dta", clear
+
+. merge 1:1 cd_aluno_sme using "$aud\child_counts_raw.dta", keep(master match) nogen
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                         1,320,845  
+    -----------------------------------------
+
+. foreach v in n_ab_2km n_ab_1km n_ab_500 n_post_1km {
+  2.     replace `v' = 0 if missing(`v')
+  3. }
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+
+. compress
+  variable n_ab_2km was double now byte
+  variable n_ab_1km was double now byte
+  variable n_ab_500 was double now byte
+  variable n_post_1km was double now byte
+  (36,983,660 bytes saved)
+
+. save "$aud\child_counts.dta", replace
+(file <NE_ROOT>\_audit\child_counts.dta not found)
+file <NE_ROOT>\_audit\child_counts.dta saved
+
+. 
+. di ""
+
+
+. di "===== distribuicao de n_aberturas_500m ====="
+===== distribuicao de n_aberturas_500m =====
+
+. gen c500 = n_ab_500
+
+. replace c500=3 if n_ab_500>=3
+(657 real changes made)
+
+. tab c500
+
+       c500 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |  1,211,580       91.73       91.73
+          1 |     92,529        7.01       98.73
+          2 |     13,616        1.03       99.76
+          3 |      3,120        0.24      100.00
+------------+-----------------------------------
+      Total |  1,320,845      100.00
+
+. di "===== distribuicao de n_aberturas_1km ====="
+===== distribuicao de n_aberturas_1km =====
+
+. gen c1 = n_ab_1km
+
+. replace c1=3 if n_ab_1km>=3
+(18,038 real changes made)
+
+. tab c1
+
+         c1 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |  1,025,945       77.67       77.67
+          1 |    189,402       14.34       92.01
+          2 |     62,642        4.74       96.76
+          3 |     42,856        3.24      100.00
+------------+-----------------------------------
+      Total |  1,320,845      100.00
+
+. di "===== distribuicao de n_aberturas_2km ====="
+===== distribuicao de n_aberturas_2km =====
+
+. gen c2 = n_ab_2km
+
+. replace c2=3 if n_ab_2km>=3
+(147,738 real changes made)
+
+. tab c2
+
+         c2 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |    766,229       58.01       58.01
+          1 |    208,604       15.79       73.80
+          2 |    122,900        9.30       83.11
+          3 |    223,112       16.89      100.00
+------------+-----------------------------------
+      Total |  1,320,845      100.00
+
+. di ""
+
+
+. di "--- medias ---"
+--- medias ---
+
+. sum n_ab_500 n_ab_1km n_ab_2km n_post_1km
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+    n_ab_500 |  1,320,845      .09839     .357226          0          7
+    n_ab_1km |  1,320,845    .3599188    .8376132          0         15
+    n_ab_2km |  1,320,845    1.209049    2.162598          0         39
+  n_post_1km |  1,320,845    .6233775    1.030774          0         11
+
+. di "--- % com >=1 abertura ---"
+--- % com >=1 abertura ---
+
+. foreach v in n_ab_500 n_ab_1km n_ab_2km {
+  2.     qui count if `v'>=1
+  3.     di "  `v'>=1 : " r(N) "  (" %5.2f 100*r(N)/_N "%)"
+  4. }
+  n_ab_500>=1 : 109265  ( 8.27%)
+  n_ab_1km>=1 : 294900  (22.33%)
+  n_ab_2km>=1 : 554616  (41.99%)
+
+. 
+. di "=== FIM C1 ==="
+=== FIM C1 ===
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag04_C1.log
+  log type:  text
+ closed on:  22 Jul 2026, 11:25:38
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,378 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag07_BC.log
+  log type:  text
+ opened on:  22 Jul 2026, 13:56:01
+
+. 
+. *==============================================================
+. di "########## PARTE B — quem e o adulto (rais_panel, sem CPF/nome) ##########"
+########## PARTE B — quem e o adulto (rais_panel, sem CPF/nome) ##########
+
+. use "$aud\rais_panel.dta", clear
+
+. di "N linhas painel = " _N
+N linhas painel = 757122
+
+. egen tagc = tag(cd_aluno_sme)
+
+. di "N criancas distintas no painel = "
+N criancas distintas no painel = 
+
+. count if tagc==1
+  757,122
+
+. 
+. di ""
+
+
+. di "--- B1: sexo do adulto (1? 2?) ---"
+--- B1: sexo do adulto (1? 2?) ---
+
+. tab sexo, miss
+
+  (firstnm) |
+       sexo |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |    101,913       13.46       13.46
+          2 |    655,209       86.54      100.00
+------------+-----------------------------------
+      Total |    757,122      100.00
+
+. di "  (checar codificacao; reportar % de cada categoria)"
+  (checar codificacao; reportar % de cada categoria)
+
+. 
+. di ""
+
+
+. di "--- B2: idade do adulto no ANO DO NASCIMENTO da crianca ---"
+--- B2: idade do adulto no ANO DO NASCIMENTO da crianca ---
+
+. gen idade_no_nasc = idade - (ano - ano_nasc)
+
+. _pctile idade_no_nasc, p(5 25 50 75 95)
+
+. di "  p5=" r(r1) " p25=" r(r2) " p50=" r(r3) " p75=" r(r4) " p95=" r(r5)
+  p5=17 p25=21 p50=26 p75=31 p95=39
+
+. 
+. di ""
+
+
+. di "--- B3: idade por sexo do adulto ---"
+--- B3: idade por sexo do adulto ---
+
+. table sexo, stat(p50 idade_no_nasc) stat(mean idade_no_nasc) stat(count idade_no_nasc)
+
+---------------------------------------------------------------------------
+               |  50th percentile       Mean   Number of non-missing values
+---------------+-----------------------------------------------------------
+(firstnm) sexo |                                                           
+  1            |               28   28.50604                        101,913
+  2            |               26   26.23249                        655,209
+  Total        |               26   26.53852                        757,122
+---------------------------------------------------------------------------
+
+. 
+. di ""
+
+
+. di "--- B4: nº de responsaveis (respid) distintos por crianca ---"
+--- B4: nº de responsaveis (respid) distintos por crianca ---
+
+. preserve
+
+.     keep cd_aluno_sme respid
+
+.     duplicates drop
+
+Duplicates in terms of all variables
+
+(0 observations are duplicates)
+
+.     bysort cd_aluno_sme: gen nresp=_N
+
+.     by cd_aluno_sme: keep if _n==1
+(0 observations deleted)
+
+.     tab nresp
+
+      nresp |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |    757,122      100.00      100.00
+------------+-----------------------------------
+      Total |    757,122      100.00
+
+. restore
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## B5 — cpf_resp em B_novo e casamento com RAIS ##########"
+########## B5 — cpf_resp em B_novo e casamento com RAIS ##########
+
+. * cpf_resp nao-missing por crianca (Fila) -- indicador apenas, sem valor
+. use cd_aluno_sme cpf_resp_aluno using "$fila", clear
+
+. gen byte tem_resp = !missing(cpf_resp_aluno) & cpf_resp_aluno>0
+
+. collapse (max) tem_resp, by(cd_aluno_sme)
+
+. merge 1:1 cd_aluno_sme using "$aud\B_novo.dta", keep(match) keepusing(cd_aluno_sme) nogen
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                         1,524,560  
+    -----------------------------------------
+
+. di "N B_novo = " _N
+N B_novo = 1524560
+
+. di "--- % com cpf_resp nao-missing ---"
+--- % com cpf_resp nao-missing ---
+
+. sum tem_resp
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+    tem_resp |  1,524,560    .9806941    .1375979          0          1
+
+. * casar com rais_panel (crianca tem responsavel no RAIS)
+. preserve
+
+.     use cd_aluno_sme using "$aud\rais_panel.dta", clear
+
+.     duplicates drop
+
+Duplicates in terms of all variables
+
+(0 observations are duplicates)
+
+.     gen byte tem_rais=1
+
+.     tempfile r
+
+.     save `r'
+file <HOME>\AppData\Local\Temp\ST_54a0_000003.tmp saved as .dta format
+
+. restore
+
+. merge 1:1 cd_aluno_sme using `r', keep(master match) nogen
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                       767,458
+        from master                   767,458  
+        from using                          0  
+
+    Matched                           757,102  
+    -----------------------------------------
+
+. replace tem_rais=0 if missing(tem_rais)
+(767,458 real changes made)
+
+. di "--- % de B_novo com responsavel no RAIS ---"
+--- % de B_novo com responsavel no RAIS ---
+
+. sum tem_rais
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+    tem_rais |  1,524,560    .4966036    .4999886          0          1
+
+. di "--- entre os com cpf_resp: % que casa com RAIS ---"
+--- entre os com cpf_resp: % que casa com RAIS ---
+
+. sum tem_rais if tem_resp==1
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+    tem_rais |  1,495,127    .5063797    .4999595          0          1
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## PARTE C — primeiro estagio 31/03 (coortes 2009-2015) ##########"
+########## PARTE C — primeiro estagio 31/03 (coortes 2009-2015) ##########
+
+. use "$aud\B_novo.dta", clear
+
+. keep if inrange(ano_nasc,2009,2015)
+(528,417 observations deleted)
+
+. gen idade_ei = (year(dt_mat_first)-ano_nasc)*12 + (month(dt_mat_first)-mes_nasc) if ever_mat==1
+(98,257 missing values generated)
+
+. gen byte ei12 = (ever_mat==1 & idade_ei<12)
+
+. gen byte ei18 = (ever_mat==1 & idade_ei<18)
+
+. gen byte ei24 = (ever_mat==1 & idade_ei<24)
+
+. gen byte ei36 = (ever_mat==1 & idade_ei<36)
+
+. keep if inlist(mes_nasc,3,4)
+(819,702 observations deleted)
+
+. gen byte abril = mes_nasc==4
+
+. 
+. di "--- C1: P(EI antes dos 12m) marco vs abril, por coorte ---"
+--- C1: P(EI antes dos 12m) marco vs abril, por coorte ---
+
+. forvalues c=2009/2015 {
+  2.     qui sum ei12 if ano_nasc==`c' & abril==0
+  3.     local m3=r(mean)
+  4.     qui sum ei12 if ano_nasc==`c' & abril==1
+  5.     local m4=r(mean)
+  6.     qui ttest ei12 if ano_nasc==`c', by(abril)
+  7.     di "  coorte `c': marco=" %5.3f `m3' "  abril=" %5.3f `m4' "  dif=" %6.3f r(mu_1)-r(mu_2) "  se=" %6.4f r(se) "  p=" %6.4f r(p)
+  8. }
+  coorte 2009: marco=0.033  abril=0.043  dif=-0.010  se=0.0027  p=0.0004
+  coorte 2010: marco=0.028  abril=0.026  dif= 0.002  se=0.0022  p=0.4114
+  coorte 2011: marco=0.020  abril=0.026  dif=-0.006  se=0.0019  p=0.0034
+  coorte 2012: marco=0.211  abril=0.186  dif= 0.026  se=0.0048  p=0.0000
+  coorte 2013: marco=0.233  abril=0.210  dif= 0.023  se=0.0050  p=0.0000
+  coorte 2014: marco=0.255  abril=0.229  dif= 0.026  se=0.0052  p=0.0000
+  coorte 2015: marco=0.230  abril=0.384  dif=-0.153  se=0.0055  p=0.0000
+
+. di ""
+
+
+. di "--- C2: antes 18/24/36 meses (por coorte) ---"
+--- C2: antes 18/24/36 meses (por coorte) ---
+
+. foreach x in ei18 ei24 ei36 {
+  2.     di "  ==== `x' ===="
+  3.     forvalues c=2009/2015 {
+  4.         qui sum `x' if ano_nasc==`c' & abril==0
+  5.         local m3=r(mean)
+  6.         qui sum `x' if ano_nasc==`c' & abril==1
+  7.         local m4=r(mean)
+  8.         qui ttest `x' if ano_nasc==`c', by(abril)
+  9.         di "    coorte `c': marco=" %5.3f `m3' " abril=" %5.3f `m4' " dif=" %6.3f r(mu_1)-r(mu_2) " p=" %6.4f r(p)
+ 10.     }
+ 11. }
+  ==== ei18 ====
+    coorte 2009: marco=0.072 abril=0.074 dif=-0.001 p=0.7592
+    coorte 2010: marco=0.058 abril=0.050 dif= 0.008 p=0.0116
+    coorte 2011: marco=0.057 abril=0.052 dif= 0.004 p=0.1442
+    coorte 2012: marco=0.242 abril=0.207 dif= 0.035 p=0.0000
+    coorte 2013: marco=0.263 abril=0.238 dif= 0.026 p=0.0000
+    coorte 2014: marco=0.296 abril=0.269 dif= 0.027 p=0.0000
+    coorte 2015: marco=0.335 abril=0.418 dif=-0.083 p=0.0000
+  ==== ei24 ====
+    coorte 2009: marco=0.104 abril=0.112 dif=-0.008 p=0.0827
+    coorte 2010: marco=0.089 abril=0.091 dif=-0.002 p=0.6454
+    coorte 2011: marco=0.281 abril=0.285 dif=-0.004 p=0.4585
+    coorte 2012: marco=0.435 abril=0.415 dif= 0.021 p=0.0005
+    coorte 2013: marco=0.438 abril=0.539 dif=-0.101 p=0.0000
+    coorte 2014: marco=0.523 abril=0.550 dif=-0.027 p=0.0000
+    coorte 2015: marco=0.577 abril=0.614 dif=-0.037 p=0.0000
+  ==== ei36 ====
+    coorte 2009: marco=0.210 abril=0.221 dif=-0.011 p=0.0676
+    coorte 2010: marco=0.378 abril=0.381 dif=-0.003 p=0.7034
+    coorte 2011: marco=0.509 abril=0.513 dif=-0.004 p=0.5119
+    coorte 2012: marco=0.611 abril=0.605 dif= 0.005 p=0.3607
+    coorte 2013: marco=0.667 abril=0.696 dif=-0.029 p=0.0000
+    coorte 2014: marco=0.752 abril=0.722 dif= 0.030 p=0.0000
+    coorte 2015: marco=0.819 abril=0.817 dif= 0.002 p=0.6981
+
+. di ""
+
+
+. di "--- C3: idade mediana 1a matricula EI, marco vs abril, por coorte ---"
+--- C3: idade mediana 1a matricula EI, marco vs abril, por coorte ---
+
+. forvalues c=2009/2015 {
+  2.     qui _pctile idade_ei if ano_nasc==`c' & abril==0, p(50)
+  3.     local md3=r(r1)
+  4.     qui _pctile idade_ei if ano_nasc==`c' & abril==1, p(50)
+  5.     local md4=r(r1)
+  6.     di "  coorte `c': mediana marco=`md3'  abril=`md4'"
+  7. }
+  coorte 2009: mediana marco=45  abril=44
+  coorte 2010: mediana marco=38  abril=40
+  coorte 2011: mediana marco=34  abril=33
+  coorte 2012: mediana marco=26  abril=31
+  coorte 2013: mediana marco=25  abril=21
+  coorte 2014: mediana marco=22  abril=21
+  coorte 2015: mediana marco=21  abril=20
+
+. di ""
+
+
+. di "--- C4: P(alguma vez matriculado em EI) marco vs abril ---"
+--- C4: P(alguma vez matriculado em EI) marco vs abril ---
+
+. forvalues c=2009/2015 {
+  2.     qui sum ever_mat if ano_nasc==`c' & abril==0
+  3.     local m3=r(mean)
+  4.     qui sum ever_mat if ano_nasc==`c' & abril==1
+  5.     local m4=r(mean)
+  6.     qui ttest ever_mat if ano_nasc==`c', by(abril)
+  7.     di "  coorte `c': marco=" %5.3f `m3' " abril=" %5.3f `m4' " dif=" %6.3f r(mu_1)-r(mu_2) " p=" %6.4f r(p)
+  8. }
+  coorte 2009: marco=0.801 abril=0.847 dif=-0.046 p=0.0000
+  coorte 2010: marco=0.849 abril=0.873 dif=-0.025 p=0.0000
+  coorte 2011: marco=0.879 abril=0.898 dif=-0.019 p=0.0000
+  coorte 2012: marco=0.917 abril=0.917 dif=-0.000 p=0.9983
+  coorte 2013: marco=0.929 abril=0.929 dif= 0.001 p=0.8651
+  coorte 2014: marco=0.936 abril=0.910 dif= 0.025 p=0.0000
+  coorte 2015: marco=0.909 abril=0.905 dif= 0.004 p=0.2891
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "--- C5: P(EI antes 12m) por TODOS os meses (coortes 2009-2015 pooled) ---"
+--- C5: P(EI antes 12m) por TODOS os meses (coortes 2009-2015 pooled) ---
+
+. use "$aud\B_novo.dta", clear
+
+. keep if inrange(ano_nasc,2009,2015)
+(528,417 observations deleted)
+
+. gen idade_ei = (year(dt_mat_first)-ano_nasc)*12 + (month(dt_mat_first)-mes_nasc) if ever_mat==1
+(98,257 missing values generated)
+
+. gen byte ei12 = (ever_mat==1 & idade_ei<12)
+
+. table mes_nasc, stat(mean ei12) stat(count ei12)
+
+---------------------------------------------------
+         |      Mean   Number of non-missing values
+---------+-----------------------------------------
+mes_nasc |                                         
+  1      |  .1551031                         82,616
+  2      |  .1607973                         79,765
+  3      |  .1543127                         90,025
+  4      |   .166983                         86,416
+  5      |   .153455                         88,293
+  6      |  .1377705                         83,102
+  7      |  .1200099                         84,568
+  8      |  .1006541                         82,252
+  9      |  .0825809                         82,174
+  10     |  .0671932                         79,011
+  11     |    .05462                         75,888
+  12     |  .0445065                         82,033
+  Total  |  .1177331                        996,143
+---------------------------------------------------
+
+. 
+. di "=== FIM BC ==="
+=== FIM BC ===
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag07_BC.log
+  log type:  text
+ closed on:  22 Jul 2026, 13:56:20
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

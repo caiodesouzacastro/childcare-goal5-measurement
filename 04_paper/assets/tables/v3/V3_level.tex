@@ -1,0 +1,46 @@
+% Gerado por 02_audit/build18_tables.py (26/10/2026). Nao editar a mao.
+\begin{table}[htbp]\centering
+\caption{Observed and corrected levels for birth cohorts with incomplete coverage}
+\label{tab:level}
+\footnotesize
+\par\medskip\textbf{Panel A. Level of each statistic, by birth cohort}\par\smallskip
+\fitbox{%
+\begin{tabular}{llrrrrr}
+\toprule
+Statistic & & 2010 & 2011 & 2012 & 2013 & 2016 \\
+\midrule
+Missing entrants & N (\% of applicants) & 39,022 (36.7) & 15,825 (12.5) & 1,761 (1.3) & 2,240 (1.6) & 1,227 (1.0) \\
+\addlinespace[0.6em]
+One-year referral & Observed & 0.563 & 0.530 & 0.631 & 0.753 & 0.876 \\
+ & Bounds & [0.369, 0.658] & [0.455, 0.570] & [0.622, 0.635] & [0.740, 0.756] & [0.868, 0.878] \\
+ & Corrected & 0.605--0.622 & 0.566--0.567 & 0.631 & 0.752--0.753 & 0.878 \\
+\addlinespace[0.6em]
+One-year enrolment & Observed & 0.468 & 0.427 & 0.523 & 0.644 & 0.747 \\
+ & Bounds & [0.299, 0.589] & [0.363, 0.478] & [0.516, 0.528] & [0.633, 0.649] & [0.740, 0.750] \\
+ & Corrected & 0.521--0.545 & 0.469--0.473 & 0.524 & 0.644--0.645 & 0.749 \\
+\addlinespace[0.6em]
+Registered $<$12m (\% births) & Observed & 11.0 & 27.4 & 38.3 & 41.5 & 50.1 \\
+ & Maximum & 32.6 & 35.9 & 39.2 & 42.7 & 50.8 \\
+ & Corrected & 23.2--28.4 & 34.6--35.6 & 38.8 & 42.3 & 50.8 \\
+\addlinespace[0.6em]
+Enrolled $<$24m (\% births) & Request record & 7.4 & 22.8 & 33.2 & 43.4 & 53.8 \\
+ & Enrolment records & 25.1 & 28.3 & 31.9 & 42.9 & 53.2 \\
+\end{tabular}}
+\par\medskip\textbf{Panel B. Change over the cohorts and the part due to coverage}\par\smallskip
+\fitbox{%
+\begin{tabular}{llrrrrr}
+Measure & Cohorts & Observed & Corrected & Bounds on the & \multicolumn{2}{c}{Coverage share (\%)} \\
+ & & change & change & corrected change & estimate & bounds \\
+\midrule
+One-year referral & 2010--2016 & 0.313 & 0.256--0.273 & [0.218, 0.507] & 13--18 & $-$62 to 30 \\
+One-year enrolment & 2010--2016 & 0.279 & 0.204--0.228 & [0.158, 0.448] & 18--27 & $-$61 to 43 \\
+Registered $<$12m (\% births) & 2010--2016 & 39.1 & 22.4--27.6 & [17.5, 39.1] & 29--43 & 0 to 55 \\
+Enrolled $<$24m (\% births) & 2010--2016 & 46.4 & 28.1 & -- & 39 & -- \\
+\addlinespace[0.6em]
+One-year referral & 2012--2016 & 0.245 & 0.247 & [0.241, 0.254] & $-$1 & -- \\
+Registered $<$12m (\% births) & 2012--2016 & 11.8 & 12.0 & [10.9, 11.8] & $-$2 & -- \\
+Enrolled $<$24m (\% births) & 2012--2016 & 20.6 & 21.3 & -- & $-$3 & -- \\
+\bottomrule
+\end{tabular}}
+\tabnote{\emph{Sources:} SME childcare request record (applications dated 2010--2018, with referral and enrolment dates through November 2019); SME enrolment records (EOL), first childcare enrolment per child, entries through December 2018; SINASC live births. \emph{Sample:} applicants with eligible time in each birth cohort (N), plus missing entrants, that is, children of the cohort who entered childcare at 0--47 months with no request recorded before entry. Missing entrants with a later request are removed from N and counted once, as missing. Outcomes are referral and enrolment within 365 days of the first application, and registration before 12 months and enrolment before 24 months as percentages of live births. The lower and upper bounds assume that no missing entrant or every missing entrant, respectively, had the outcome; ``Maximum'' assumes that every missing entrant registered before 12 months. For the corrected levels, each missing entrant receives the mean outcome of entrants with a request in the same cell of age at entry (in months) and entry month (February or other), computed either from 2014--2017 entrants or from entrants of the same year; the reported range spans the two. In an out-of-sample check on 2013 entrants, the 2014--2017 reference gives 48.1\% against 46.5\% registered before 12 months, 69.3\% against 67.0\% referred within a year, and 62.7\% against 61.8\% enrolled within a year. In Panel B, the bounds on the corrected change hold the 2016 cohort at its observed level, and the coverage share is (observed $-$ corrected)/observed; for enrolment before 24 months, the corrected change is the change in the enrolment records. The exercise is descriptive, and the corrected levels assume that missing entrants resemble entrants with a request in the same cell.}
+\end{table}

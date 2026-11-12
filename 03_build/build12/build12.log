@@ -1,0 +1,43 @@
+spine: 1,524,560 criancas
+
+## N1: aging out (P55 base) decomposto, coortes 2010-2014
+  2010: N=128,352 aged(all)=25.8% = late&aged 17.2 + elig&aged 8.6 | late=17.2% | eligible N=106,300: aged=10.4% ref=86.5% des=3.0%
+  2011: N=146,693 aged(all)=24.0% = late&aged 13.6 + elig&aged 10.4 | late=13.6% | eligible N=126,766: aged=12.0% ref=86.3% des=1.7%
+  2012: N=155,292 aged(all)=15.4% = late&aged 10.2 + elig&aged 5.2 | late=10.2% | eligible N=139,440: aged=5.8% ref=93.2% des=0.9%
+  2013: N=153,033 aged(all)=11.5% = late&aged 8.0 + elig&aged 3.5 | late=8.0% | eligible N=140,811: aged=3.8% ref=95.4% des=0.7%
+  2014: N=151,772 aged(all)=5.0% = late&aged 3.4 + elig&aged 1.6 | late=3.4% | eligible N=146,665: aged=1.7% ref=97.5% des=0.8%
+
+## N2: irmaos (replica P4 base, depois variantes)
+  All pairs (baseline, = tab:P4stage row 1): coef=-7.20 (SE 0.11) pares=79,893 (100.0%) | diff bruta mediana=-10 m; mais novo antes em 78.1%
+  Same-day joint registration: coef=-4.98 (SE 0.11) pares=6,950 (8.7%) | diff bruta mediana=-21 m; mais novo antes em 100.0%
+  Excluding same-day joint registration: coef=-5.03 (SE 0.12) pares=72,943 (91.3%) | diff bruta mediana=-8 m; mais novo antes em 76.0%
+  Registrations within 30 days of each other: coef=-4.44 (SE 0.07) pares=16,330 (20.4%) | diff bruta mediana=-21 m; mais novo antes em 100.0%
+  Excluding registrations within 30 days: coef=-0.88 (SE 0.14) pares=63,563 (79.6%) | diff bruta mediana=-6 m; mais novo antes em 72.4%
+  Older applied before younger's birth (= tab:P4stage last row): coef=3.21 (SE 0.13) pares=53,561 (67.0%) | diff bruta mediana=-5 m; mais novo antes em 70.1%
+  Older applied on/after younger's birth: coef=-4.00 (SE 0.16) pares=26,332 (33.0%) | diff bruta mediana=-20 m; mais novo antes em 94.4%
+  Same postcode for both children: coef=-8.25 (SE 0.14) pares=49,658 (62.2%) | diff bruta mediana=-11 m; mais novo antes em 80.1%
+  Spacing >= 9 months (log p4: -7.65): coef=-7.65 (SE 0.11) pares=78,649 (98.4%) | diff bruta mediana=-10 m; mais novo antes em 78.2%
+  Excl. within-30-day, same postcode, spacing >= 9: coef=-1.20 (SE 0.18) pares=36,934 (46.2%) | diff bruta mediana=-6 m; mais novo antes em 73.7%
+  conjunta no mesmo dia: 8.7% dos pares; ate 30 dias: 20.4%
+  entre os pares 'older on/after younger's birth': 26.4% mesmo dia, 62.0% ate 30 dias
+
+## N3: share <12m | <24m reponderado a pesos distritais fixos
+  registrados <24m, coortes 2010-16: 715,962; com distrito: 98.6%
+  2010: bruto=0.326 (com distrito 0.325) | pesos 2010=0.325 | pesos 2016=0.321
+  2011: bruto=0.544 (com distrito 0.544) | pesos 2010=0.544 | pesos 2016=0.543
+  2012: bruto=0.644 (com distrito 0.644) | pesos 2010=0.643 | pesos 2016=0.643
+  2013: bruto=0.666 (com distrito 0.666) | pesos 2010=0.666 | pesos 2016=0.666
+  2014: bruto=0.664 (com distrito 0.665) | pesos 2010=0.665 | pesos 2016=0.664
+  2015: bruto=0.701 (com distrito 0.701) | pesos 2010=0.702 | pesos 2016=0.701
+  2016: bruto=0.707 (com distrito 0.707) | pesos 2010=0.708 | pesos 2016=0.707
+  distritos com aumento 2010->2016: 96 de 96; mediana do aumento intradistrital = 0.407; min=0.244
+
+## N4: fracao da coorte MATRICULADA ate 12/24/36 meses (denominador SINASC)
+  2010: nascidos=174,116 | matriculados <12m=1.9% <24m=7.4% <36m=30.7% | inscritos <12m=11.0% <24m=33.7%
+  2011: nascidos=176,268 | matriculados <12m=2.1% <24m=22.8% <36m=44.0% | inscritos <12m=27.4% <24m=50.3%
+  2012: nascidos=175,679 | matriculados <12m=11.6% <24m=33.2% <36m=52.5% | inscritos <12m=38.3% <24m=59.4%
+  2013: nascidos=172,718 | matriculados <12m=13.2% <24m=43.4% <36m=60.7% | inscritos <12m=41.5% <24m=62.3%
+  2014: nascidos=175,293 | matriculados <12m=15.0% <24m=44.1% <36m=62.7% | inscritos <12m=44.1% <24m=66.3%
+  2015: nascidos=175,789 | matriculados <12m=20.8% <24m=46.6% <36m=68.6% | inscritos <12m=48.6% <24m=69.4%
+  2016: nascidos=167,005 | matriculados <12m=22.7% <24m=53.8% <36m=nan% | inscritos <12m=50.1% <24m=70.9%
+  2017: nascidos=169,147 | matriculados <12m=25.1% <24m=nan% <36m=nan% | inscritos <12m=50.9% <24m=nan%

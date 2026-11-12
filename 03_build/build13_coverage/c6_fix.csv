@@ -1,0 +1,7 @@
+versao,timing,coef,se,N,distritos
+build10 (original),contemporaneous,0.0043,0.0139,448,64
+build10 (original),lag,-0.0049,0.0123,448,64
+build10 (original),lead,0.0115,0.0185,448,64
+corrigida,contemporaneous,0.0086,0.0097,672,96
+corrigida,lag,-0.0079,0.0111,672,96
+corrigida,lead,0.0031,0.0134,672,96

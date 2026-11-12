@@ -1,0 +1,83 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag04_C6.log
+  log type:  text
+ opened on:  22 Jul 2026, 11:28:28
+
+. 
+. di "########## C6 — event study cru (abertura mais proxima no tempo, <=1km) ##########"
+########## C6 — event study cru (abertura mais proxima no tempo, <=1km) ##########
+
+. use "$aud\cep_cei_pairs.dta", clear
+
+. keep if dist_km<=1
+(796,129 observations deleted)
+
+. rename cep cepk
+
+. tempfile p1
+
+. save `p1'
+file <HOME>\AppData\Local\Temp\ST_553c_000001.tmp saved as .dta format
+
+. 
+. use cd_aluno_sme cep_aluno dt_sol idade_entrada using "$aud\universo_B4.dta", clear
+
+. rename cep_aluno cepk
+
+. joinby cepk using `p1'
+
+. di "N linhas (crianca x CEI <=1km) = " _N
+N linhas (crianca x CEI <=1km) = 11932867
+
+. gen double relm = (ceiopen - dt_sol)/30.44
+
+. gen double absrel = abs(relm)
+
+. * abertura mais proxima NO TEMPO por crianca
+. bysort cd_aluno_sme (absrel): keep if _n==1
+(10,667,768 observations deleted)
+
+. di "N criancas com >=1 CEI <=1km = " _N
+N criancas com >=1 CEI <=1km = 1265099
+
+. gen bin = 3*floor(relm/3)
+
+. di "--- idade_entrada media por bin de 3 meses (rel. sol -> abertura), -24..+24 ---"
+--- idade_entrada media por bin de 3 meses (rel. sol -> abertura), -24..+24 ---
+
+. table bin if inrange(relm,-24,24), stat(count idade_entrada) stat(mean idade_entrada)
+
+--------------------------------------------------
+        |  Number of non-missing values       Mean
+--------+-----------------------------------------
+bin     |                                         
+  -24   |                        16,310   29.87658
+  -21   |                        21,104   30.74882
+  -18   |                        25,470   30.47774
+  -15   |                        35,521   30.04597
+  -12   |                        47,048   28.73871
+  -9    |                        67,806   28.38461
+  -6    |                       104,249   28.75796
+  -3    |                       167,976   28.01311
+  0     |                       150,409   27.80322
+  3     |                        98,664   28.73502
+  6     |                        74,351   29.69709
+  9     |                        58,004   30.82865
+  12    |                        41,192   30.49141
+  15    |                        34,472   31.54827
+  18    |                        27,776     32.933
+  21    |                        24,214   33.79458
+  Total |                       994,566   29.20847
+--------------------------------------------------
+
+. 
+. di "=== FIM C6 ==="
+=== FIM C6 ===
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag04_C6.log
+  log type:  text
+ closed on:  22 Jul 2026, 11:29:27
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,98 @@
+
+  ___  ____  ____  ____  ____ ©
+ /__    /   ____/   /   ____/      17.0
+___/   /   /___/   /   /___/       MP—Parallel Edition
+
+ Statistics and Data Science       Copyright 1985-2021 StataCorp LLC
+                                   StataCorp
+                                   4905 Lakeway Drive
+                                   College Station, Texas 77845 USA
+                                   800-STATA-PC        https://www.stata.com
+                                   979-696-4600        stata@stata.com
+
+
+Notes:
+      1. Stata is running in batch mode.
+      2. Unicode is supported; see help unicode_advice.
+      3. More than 2 billion observations are allowed; see help obs_advice.
+      4. Maximum number of variables is set to 5,000; see help set_maxvar.
+
+. do <HOME>/AppData/Local/Temp/claude/C--Users-<usuario>/77920dcf-0071-450c
+> -8f01-8c1e5dfdd4d8/scratchpad/desc.do 
+
+. set more off
+
+. global aud "<NE_ROOT>/_audit"
+
+. cap log close
+
+. log using "<HOME>/AppData/Local/Temp/claude/C--Users-<usuario>/77920dcf-0
+> 071-450c-8f01-8c1e5dfdd4d8/scratchpad/desc.log", text replace
+-------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <HOME>/AppData/Local/Temp/claude/C--Users-<usuario>/77920dcf-0
+> 071-450c-8f01-8c1e5dfdd4d8/scratchpad/desc.log
+  log type:  text
+ opened on:  22 Jul 2026, 20:20:55
+
+. foreach f in B_novo child_expo cep_setor cap_full cap_levels berc_child traj_
+> child cep_cei_pairs_novo cei_openings_novo {
+  2.     di "==================== `f' ===================="
+  3.     cap use "$aud/`f'.dta", clear
+  4.     if _rc {
+  5.         di "  ERRO ao abrir `f' rc=" _rc
+  6.         continue
+  7.     }
+  8.     di "  N = " _N
+  9.     ds
+ 10. }
+==================== B_novo ====================
+  N = 1524560
+cd_aluno_sme  mes_nasc      dt_sol        ano_sol
+dt_solicit~o  ano_nasc      nasc_ok       dt_mat_first
+an_letivo_~o  cep_aluno     cep_ok        ever_mat
+==================== child_expo ====================
+  N = 1524560
+cd_aluno_sme  ano_nasc      cep_ok        expo12_500    post_1km
+dt_solicit~o  cep_aluno     ano_sol       expo12_1km    estoque_1km
+an_letivo_~o  dt_sol        dt_mat_first  expo12_2km
+mes_nasc      nasc_ok       ever_mat      pre12_1km
+==================== cep_setor ====================
+  N = 45362
+cep        setor_cep  dist_km
+==================== cap_full ====================
+  N = 25932
+codesc      cap_berc    rede        ano         level_date
+sidx        setor       delta_berc  sem
+cap_creche  distrito    delta_cre   event_date
+==================== cap_levels ====================
+  N = 25932
+ceicode     sidx        cap_creche  cap_berc    level_date
+==================== berc_child ====================
+  N = 593913
+cd_aluno_sme  tipo_prior~o  cep           anosol        enc180
+dt_solicit~o  cd_sexo_al~o  dt_sol        feminino      idade_entr~a
+cd_serie_e~o  tp_raca_cor   dt_enc        branco        mat365
+dt_encamin~o  mes_nasc      dt_mat        sol_sidx
+dt_matricula  ano_nasc      idade_sol     espera
+==================== traj_child ====================
+  N = 2120679
+cd_aluno_sme  tem3ano       ano_ent_1ano  mes_nasc_a~o  ontime
+tem1ano       ever_reprov   ano_nasc_a~o  esperado
+==================== cep_cei_pairs_novo ====================
+  N = 1326550
+cep          ceicode      dt_abertura  dist_km
+==================== cei_openings_novo ====================
+  N = 2313
+ceicode      tipoesc      codinep      ceilat       ceilon       dt_abertura
+
+. log close
+      name:  <unnamed>
+       log:  <HOME>/AppData/Local/Temp/claude/C--Users-<usuario>/77920dcf-0
+> 071-450c-8f01-8c1e5dfdd4d8/scratchpad/desc.log
+  log type:  text
+ closed on:  22 Jul 2026, 20:20:55
+-------------------------------------------------------------------------------
+
+. 
+end of do-file

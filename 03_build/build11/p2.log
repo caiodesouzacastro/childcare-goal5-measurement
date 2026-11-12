@@ -1,0 +1,69 @@
+## (i) amostra atual (referral)
+  2010: CIF365=0.563 RMST=218 med=304 N=106,300
+  2011: CIF365=0.530 RMST=249 med=346 N=126,766
+  2012: CIF365=0.631 RMST=237 med=287 N=139,440
+  2013: CIF365=0.753 RMST=203 med=223 N=140,811
+  2014: CIF365=0.761 RMST=215 med=233 N=146,665
+  2015: CIF365=0.814 RMST=195 med=194 N=146,232
+  2016: CIF365=0.876 RMST=181 med=171 N=128,143
+
+## 1. follow-up comum: d_sol <= panel-365d
+  2010: CIF365=0.563 RMST=218 N=106,300
+  2011: CIF365=0.530 RMST=249 N=126,766
+  2012: CIF365=0.631 RMST=237 N=139,440
+  2013: CIF365=0.753 RMST=203 N=140,811
+  2014: CIF365=0.761 RMST=215 N=146,665
+  2015: CIF365=0.813 RMST=196 N=145,551
+  2016: CIF365=0.876 RMST=182 N=127,130
+  >> 0.56->0.88 vira 0.56->0.88 (atual) / 0.56->0.88 (fu comum)
+
+## 2. endpoint = matricula
+  2010: CIF365(mat)=0.468 RMST=238 N=106,300
+  2011: CIF365(mat)=0.427 RMST=269 N=126,766
+  2012: CIF365(mat)=0.523 RMST=260 N=139,440
+  2013: CIF365(mat)=0.644 RMST=230 N=140,811
+  2014: CIF365(mat)=0.639 RMST=244 N=146,665
+  2015: CIF365(mat)=0.686 RMST=230 N=146,232
+  2016: CIF365(mat)=0.747 RMST=220 N=128,143
+  >> matricula: 0.47->0.75 (vs referral 0.56->0.88)
+
+## 3. desistencia como evento competitivo (referral)
+  2010: CIF365(ref, wd compet)=0.559 (vs 0.563 sem wd)
+  2011: CIF365(ref, wd compet)=0.527 (vs 0.530 sem wd)
+  2012: CIF365(ref, wd compet)=0.628 (vs 0.631 sem wd)
+  2013: CIF365(ref, wd compet)=0.750 (vs 0.753 sem wd)
+  2014: CIF365(ref, wd compet)=0.758 (vs 0.761 sem wd)
+  2015: CIF365(ref, wd compet)=0.810 (vs 0.814 sem wd)
+  2016: CIF365(ref, wd compet)=0.872 (vs 0.876 sem wd)
+  >> com desistencia competitiva: 0.56->0.87
+
+## 4. quebra 2012->2013
+  (a) excl quebra 2010: CIF365=0.474 N=68,725
+  (a) excl quebra 2011: CIF365=0.508 N=77,501
+  (a) excl quebra 2012: CIF365=0.730 N=64,636
+  (a) excl quebra 2013: CIF365=0.793 N=98,906
+  (a) excl quebra 2014: CIF365=0.761 N=146,665
+  (a) excl quebra 2015: CIF365=0.814 N=146,232
+  (a) excl quebra 2016: CIF365=0.876 N=128,143
+  >> excl janela quebra: 0.47->0.88
+  (b) H1 apenas: 0.61->0.91 | H2 apenas: 0.50->0.83
+
+## 5. reconciliacao: coorte total vs amostra de duracao
+  2010: total=128,352 duracao=106,300 excl(idade>47)=20,322 | CIF excl=0.563 CIF incl>47=0.473
+  2011: total=146,693 duracao=126,766 excl(idade>47)=18,556 | CIF excl=0.530 CIF incl>47=0.463
+  2012: total=155,292 duracao=139,440 excl(idade>47)=14,638 | CIF excl=0.631 CIF incl>47=0.571
+  2013: total=153,033 duracao=140,811 excl(idade>47)=11,178 | CIF excl=0.753 CIF incl>47=0.698
+  2014: total=151,772 duracao=146,665 excl(idade>47)=4,144 | CIF excl=0.761 CIF incl>47=0.740
+  2015: total=146,293 duracao=146,232 excl(idade>47)=0 | CIF excl=0.814 CIF incl>47=0.814
+  2016: total=128,143 duracao=128,143 excl(idade>47)=0 | CIF excl=0.876 CIF incl>47=0.876
+  >> incluindo os aplicantes >47m como aging-out: 0.47->0.88 (vs 0.56->0.88)
+
+## 6. gradiente de renda Q4-Q1 (CIF365 referral)
+  2010: Q1=0.530 Q4=0.652 gap=+0.122
+  2011: Q1=0.505 Q4=0.613 gap=+0.108
+  2012: Q1=0.607 Q4=0.701 gap=+0.094
+  2013: Q1=0.722 Q4=0.815 gap=+0.093
+  2014: Q1=0.734 Q4=0.828 gap=+0.094
+  2015: Q1=0.790 Q4=0.876 gap=+0.086
+  2016: Q1=0.855 Q4=0.923 gap=+0.068
+  >> gap Q4-Q1: 12.2 -> 6.8 p.p.

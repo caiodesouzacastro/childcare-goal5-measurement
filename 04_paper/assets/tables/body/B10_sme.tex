@@ -1,0 +1,19 @@
+% Float do corpo (revisao pos-EE). Tabulars copiados verbatim por 02_audit/build12_bodyfloats.py.
+\begin{table}[htbp]\centering
+\caption{What the municipal education secretariat publishes about childcare demand}
+\label{tab:SMEpub}
+\label{tab:SMEshort}
+\footnotesize
+\fitbox{%
+\begin{tabular}{p{3.9cm}p{1.5cm}p{1.4cm}cp{1.9cm}cc}
+\toprule
+Indicator & Frequency & Source & Stock? & Duration? & Age at appl.? & Flows? \\
+\midrule
+Registered demand stock, by district & Every two months & Open Data (EOL) & \checkmark & binary ($\le$/$>$30d) & --- & --- \\
+Demand with option for a specific center & Every two months & Open Data (EOL) & \checkmark & --- & --- & --- \\
+Enrollments by stage, by district & Every two months & Open Data (EOL) & \checkmark & --- & --- & --- \\
+``Vaga na Creche'' public tool (current local counts and vacancies) & Not a fixed series & SME & \checkmark\,(local) & --- & --- & --- \\
+\bottomrule
+\end{tabular}}
+\tabnote{\emph{Source:} recurring public products of the S\~ao Paulo municipal education secretariat: Demanda Escolar reporting \citep{sme_demanda_escolar}, the S\~ao Paulo Open Data Portal series on registered demand and enrollments (EOL) \citep{sme_dados_abertos}, a representative bimonthly district release \citep{sme_demanda_junho2026}, and the ``Vaga na Creche'' platform \citep{sme_vaga_creche}; all accessed 24 July 2026. \emph{Sample:} products current in July 2026 and the historical series. \emph{Variables:} \checkmark\ reported, --- not reported. Duration: the childcare stock is split only into waits up to and over 30 days. None of the products reports the distribution of age at application, an exact or mean waiting time, or the entry, referral and exit flows that generate the stock. The historical series in Figure~\ref{fig:F10} is quarterly; the current release is bimonthly. \emph{Exercise:} inventory of published indicators.}
+\end{table}

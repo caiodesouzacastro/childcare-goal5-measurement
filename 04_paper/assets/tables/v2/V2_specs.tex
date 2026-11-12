@@ -1,0 +1,25 @@
+% Gerado por 02_audit/build15_tables.py (25/10/2026). Nao editar a mao.
+\begin{table}[htbp]\centering
+\caption{The 2013--2016 gain in one-year referral under alternative specifications}
+\label{tab:specs}
+\footnotesize
+\fitbox{%
+\begin{tabular}{lrrrl}
+\toprule
+Specification & 2013 & 2016 & $\Delta$ & Interval or range \\
+\midrule
+Base: referral, aging out competing & 0.753 & 0.876 & +0.123 & -- \\
+Recorded withdrawal as a further competing event & 0.750 & 0.872 & +0.122 & -- \\
+Children who applied after 47 months counted as aging out & 0.698 & 0.876 & +0.178 & -- \\
+Applications in the first calendar semester only & 0.820 & 0.911 & +0.091 & -- \\
+Applications dated July 2012--December 2013 excluded & 0.793 & 0.876 & +0.083 & -- \\
+Window starting with the 2014 cohort & 0.761 & 0.876 & +0.115 & -- \\
+Enrollment as the terminal event & 0.644 & 0.747 & +0.103 & -- \\
+Composition held at 2013 (main cells) & 0.753 & 0.885 & +0.132 & [+0.128, +0.134] \\
+Composition held at 2013, coarse / fine cells & -- & -- & +0.132 / +0.124 & -- \\
+Composition and service environment held fixed & 0.753 & 0.870 & +0.116 & coarse +0.127, fine +0.115 \\
+Unweighted, bootstrap interval & 0.753 & 0.876 & +0.123 & [+0.120, +0.126] \\
+\bottomrule
+\end{tabular}}
+\tabnote{\emph{Source:} SME childcare request record (2010--2018 applications, referral and enrollment dates through November 2019). \emph{Sample:} applicants of birth cohorts 2013--2016 with eligible time, except where a row says otherwise. \emph{Variables:} cumulative incidence of referral (or enrollment) within 365 days of the first application. \emph{Exercise:} $\Delta$ is computed from unrounded incidences. Aalen--Johansen estimator; reweighting to the 2013 cohort's joint distribution of applicant attributes (main cells: age at application, priority, postcode-income quartile, district, semester; coarse: age, priority, income; fine: eight age bins, priority, income, district, month), weights trimmed at the 1st and 99th percentiles; service environment adds the number of centers open within 2\,km at the application date. Intervals: 1,000 bootstrap replications resampling children within the 2013 and 2016 cohorts, weights recomputed in each, percentile interval, seed 20260726; they reflect sampling variability only. In the exact decomposition of the raw change, composition contributes $-$0.009 and the service environment +0.016, leaving +0.116. Descriptive.}
+\end{table}

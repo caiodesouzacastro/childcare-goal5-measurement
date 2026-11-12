@@ -1,0 +1,17 @@
+% BLOCO P3. Descritivo.
+\begin{table}[htbp]\centering
+\caption{Decomposition of the raw 2010--2016 gain in one-year referral incidence, and sensitivity to the reweighting cell}
+\label{tab:P3decomp}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrrrr}
+\toprule
+Cell definition & Raw & Appl. & Both & Appl.\ comp. & Service env. & \shortstack[r]{Adjusted\\service-side\\difference\\(residual)} \\
+\midrule
+Main (age$\times$prio$\times$income$\times$district$\times$sem) & +0.123 & +0.132 & +0.116 & -0.009 & +0.016 & +0.116 \\
+Coarse (age$\times$prio$\times$income) & +0.123 & +0.132 & +0.127 & -0.009 & +0.006 & +0.127 \\
+Fine (age8$\times$prio$\times$income$\times$district$\times$month) & +0.123 & +0.124 & +0.115 & -0.001 & +0.009 & +0.115 \\
+\bottomrule
+\end{tabular}
+\\[3pt]{\footnotesize \textit{Note:} Raw: unweighted $\Delta$. Appl.: standardized to the 2013 applicant composition. Both: also standardized to the service environment. The applicant-composition contribution is Raw$-$Appl.; the service-environment contribution is Appl.$-$Both. The three contributions sum to the raw gain: in the main row, $+0.313 = +0.367 + (-0.074) + (+0.020)$, that is, raw gain $=$ adjusted service-side difference $+$ applicant-composition contribution $+$ service-environment contribution. The applicant-composition term is \emph{negative} because the later cohorts are, on the observed attributes, marginally harder to refer than the 2013 target: the change in who applied therefore \emph{masked} part of the adjusted difference rather than creating it, which is why the adjusted figure ($+0.367$) exceeds the raw one ($+0.313$). The final column is the residual (Both): the standardized difference in one-year referral incidence that remains after balancing observed applicant attributes and the supply environment. It is a \emph{residual standardized difference}, not a causal estimate of productivity or of operational efficiency: unobserved determinants of referral---among them the composition of vacancies released, priority enforcement, and any change in referral recording---are not held fixed and are absorbed into it. Three cell definitions (coarse to fine) show the ordering does not depend on binning.}
+\end{table}

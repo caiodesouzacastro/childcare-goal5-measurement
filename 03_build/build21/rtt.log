@@ -1,0 +1,5 @@
+meses abr/2016-ago/2026: 125 | primeiro 2016-04-01 ultimo 2026-08-01
+sem 2020-2021: variacoes mensais 100; media |var| 0.49 p.p.; fev->mar/2026 +2.7 p.p., posto 1; maiores: [['2026-03-01', 2.6999999999999957], ['2022-05-01', 1.7999999999999972], ['2023-05-01', 1.2000000000000028]]
+sem mar/2020-jun/2021: variacoes mensais 108; media |var| 0.50 p.p.; fev->mar/2026 +2.7 p.p., posto 1; maiores: [['2026-03-01', 2.6999999999999957], ['2022-05-01', 1.7999999999999972], ['2023-05-01', 1.2000000000000028]]
+fev/2026 62.6 | mar/2026 65.3 | abr-ago/2026 [65.0, 65.6, 65.8, 65.4, 65.2]
+ano fiscal abr/2025-mar/2026: media dos 11 meses antes de marco 61.4 | max antes de marco 62.6

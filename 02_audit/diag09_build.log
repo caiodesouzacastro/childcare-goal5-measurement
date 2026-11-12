@@ -1,0 +1,282 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag09_build.log
+  log type:  text
+ opened on:  22 Jul 2026, 14:52:29
+
+. 
+. * programa de harmonizacao: cria `tgt' a partir do 1o candidato existente
+. capture program drop pick
+
+. program define pick
+  1.     args tgt
+  2.     gettoken tgt cands : 0
+  3.     cap confirm variable `tgt'
+  4.     if !_rc exit
+  5.     gen `tgt' = .
+  6.     foreach c of local cands {
+  7.         cap confirm variable `c'
+  8.         if !_rc {
+  9.             cap replace `tgt' = `c'
+ 10.             if _rc {
+ 11.                 cap destring `c', gen(_tmp) force dpcomma
+ 12.                 cap replace `tgt' = _tmp
+ 13.                 cap drop _tmp
+ 14.             }
+ 15.             continue, break
+ 16.         }
+ 17.     }
+ 18. end
+
+. 
+. tempfile acc
+
+. clear
+
+. gen byte _x=.
+
+. save `acc', emptyok
+(dataset contains 0 observations)
+file <HOME>\AppData\Local\Temp\ST_f94_000001.tmp saved as .dta format
+
+. 
+. foreach spec in "cpf_fila_07 2007" "cpf_fila_081 2008" "cpf_fila_092 2009" "cpf_fila_101 2010" "cpf_fila_102 2010" "cpf_fila_11 2011" "cpf_fila_12 2012" "cpf_fila_13 2013" "cpf_fila_14 2014" {
+  2.     gettoken f yr : spec
+  3.     use "$rc/`f'.dta", clear
+  4.     * harmonizar (nomes numericos)
+.     gen byte emp_raw = .
+  5.     cap replace emp_raw = empem3112
+  6.     cap replace emp_raw = vínculoativo3112
+  7.     gen byte sex_raw = .
+  8.     cap replace sex_raw = genero
+  9.     cap replace sex_raw = sexotrabalhador
+ 10.     gen byte estabsz = .
+ 11.     cap replace estabsz = tamestab
+ 12.     cap replace estabsz = tamanhoestabelecimento
+ 13.     gen double njur = .
+ 14.     cap replace njur = naturjur
+ 15.     cap replace njur = natjuridica
+ 16.     cap replace njur = naturezajurídica
+ 17.     * strings -> destring
+.     gen double wnom = .
+ 18.     cap destring remmedia, gen(_w1) force dpcomma
+ 19.     cap replace wnom = _w1
+ 20.     cap destring vlremunmédianom, gen(_w2) force dpcomma
+ 21.     cap replace wnom = _w2
+ 22.     cap drop _w1 _w2
+ 23.     gen double hrs = .
+ 24.     cap destring horascontr, gen(_h1) force dpcomma
+ 25.     cap replace hrs = _h1
+ 26.     cap confirm variable qtdhoracontr
+ 27.     if !_rc cap replace hrs = qtdhoracontr
+ 28.     cap drop _h1
+ 29.     * nascimento da mae
+.     gen int maeb = .
+ 30.     cap replace maeb = `yr' - idade
+ 31.     cap replace maeb = floor(dtnasciment/10000) if missing(maeb) & dtnasciment>19000000 & dtnasciment<20200000
+ 32.     gen int rais_year = `yr'
+ 33.     keep cd_aluno_sme cpf emp_raw sex_raw estabsz njur wnom hrs maeb rais_year ano_nasc mes_nasc
+ 34.     append using `acc'
+ 35.     save `acc', replace
+ 36.     di "  `f' (`yr') carregado"
+ 37. }
+(409,227 missing values generated)
+(409,227 missing values generated)
+(409,227 missing values generated)
+(409,227 missing values generated)
+(409,227 missing values generated)
+(409,227 missing values generated)
+(409,227 missing values generated)
+file <HOME>\AppData\Local\Temp\ST_f94_000001.tmp saved as .dta format
+  cpf_fila_07 ( 2007) carregado
+(289,810 missing values generated)
+(289,810 missing values generated)
+(289,810 missing values generated)
+(289,810 missing values generated)
+(289,810 missing values generated)
+(289,810 missing values generated)
+(289,810 missing values generated)
+file <HOME>\AppData\Local\Temp\ST_f94_000001.tmp saved as .dta format
+  cpf_fila_081 ( 2008) carregado
+(311,423 missing values generated)
+(311,423 missing values generated)
+(311,423 missing values generated)
+(311,423 missing values generated)
+(311,423 missing values generated)
+(311,423 missing values generated)
+(311,423 missing values generated)
+file <HOME>\AppData\Local\Temp\ST_f94_000001.tmp saved as .dta format
+  cpf_fila_092 ( 2009) carregado
+(256,765 missing values generated)
+(256,765 missing values generated)
+(256,765 missing values generated)
+(256,765 missing values generated)
+(256,765 missing values generated)
+(256,765 missing values generated)
+(256,765 missing values generated)
+file <HOME>\AppData\Local\Temp\ST_f94_000001.tmp saved as .dta format
+  cpf_fila_101 ( 2010) carregado
+(346,485 missing values generated)
+(346,485 missing values generated)
+(346,485 missing values generated)
+(346,485 missing values generated)
+(346,485 missing values generated)
+(346,485 missing values generated)
+(346,485 missing values generated)
+file <HOME>\AppData\Local\Temp\ST_f94_000001.tmp saved as .dta format
+  cpf_fila_102 ( 2010) carregado
+(677,823 missing values generated)
+(677,823 missing values generated)
+(677,823 missing values generated)
+(677,823 missing values generated)
+(677,823 missing values generated)
+(677,823 missing values generated)
+(677,823 missing values generated)
+file <HOME>\AppData\Local\Temp\ST_f94_000001.tmp saved as .dta format
+  cpf_fila_11 ( 2011) carregado
+(706,676 missing values generated)
+(706,676 missing values generated)
+(706,676 missing values generated)
+(706,676 missing values generated)
+(706,676 missing values generated)
+(706,676 missing values generated)
+(706,676 missing values generated)
+file <HOME>\AppData\Local\Temp\ST_f94_000001.tmp saved as .dta format
+  cpf_fila_12 ( 2012) carregado
+(731,684 missing values generated)
+(731,684 missing values generated)
+(731,684 missing values generated)
+(731,684 missing values generated)
+(731,684 missing values generated)
+(731,684 missing values generated)
+(731,684 missing values generated)
+file <HOME>\AppData\Local\Temp\ST_f94_000001.tmp saved as .dta format
+  cpf_fila_13 ( 2013) carregado
+(744,703 missing values generated)
+(744,703 missing values generated)
+(744,703 missing values generated)
+(744,703 missing values generated)
+(744,703 missing values generated)
+(744,703 missing values generated)
+(744,703 missing values generated)
+file <HOME>\AppData\Local\Temp\ST_f94_000001.tmp saved as .dta format
+  cpf_fila_14 ( 2014) carregado
+
+. 
+. use `acc', clear
+
+. drop _x
+
+. egen long respid = group(cpf)
+
+. drop cpf
+
+. gen byte emp = (emp_raw==1)
+
+. gen byte fem = (sex_raw==2)
+
+. gen minw = .
+(4,474,596 missing values generated)
+
+. replace minw = 380 if rais_year==2007
+(409,227 real changes made)
+
+. replace minw = 415 if rais_year==2008
+(289,810 real changes made)
+
+. replace minw = 465 if rais_year==2009
+(311,423 real changes made)
+
+. replace minw = 510 if rais_year==2010
+(603,250 real changes made)
+
+. replace minw = 545 if rais_year==2011
+(677,823 real changes made)
+
+. replace minw = 622 if rais_year==2012
+(706,676 real changes made)
+
+. replace minw = 678 if rais_year==2013
+(731,684 real changes made)
+
+. replace minw = 724 if rais_year==2014
+(744,703 real changes made)
+
+. gen double wage_sm = wnom/minw if !missing(wnom) & wnom>0
+(67,392 missing values generated)
+
+. gen byte publico = inrange(njur,1000,1999) if !missing(njur)
+
+. keep cd_aluno_sme respid rais_year ano_nasc mes_nasc emp fem wage_sm hrs estabsz publico maeb
+
+. compress
+  variable hrs was double now byte
+  (31,322,172 bytes saved)
+
+. save "$aud\panel_es.dta", replace
+(file <NE_ROOT>\_audit\panel_es.dta not found)
+file <NE_ROOT>\_audit\panel_es.dta saved
+
+. di "N painel rico = " _N
+N painel rico = 4474596
+
+. 
+. di "--- sexo (fem=1 se codigo 2) ---"
+--- sexo (fem=1 se codigo 2) ---
+
+. tab fem, miss
+
+        fem |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |  2,049,706       45.81       45.81
+          1 |  2,424,890       54.19      100.00
+------------+-----------------------------------
+      Total |  4,474,596      100.00
+
+. di "--- publico (natjur 1xxx) ---"
+--- publico (natjur 1xxx) ---
+
+. tab publico, miss
+
+    publico |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |  4,286,382       95.79       95.79
+          1 |    188,214        4.21      100.00
+------------+-----------------------------------
+      Total |  4,474,596      100.00
+
+. di "--- wage_sm ---"
+--- wage_sm ---
+
+. sum wage_sm, detail
+
+                           wage_sm
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     .0018039       .0005882
+ 5%     .0024706       .0005882
+10%     .0029474       .0005882       Obs           4,407,204
+25%     .0046316       .0005882       Sum of wgt.   4,407,204
+
+50%     1.201945                      Mean           1.262054
+                        Largest       Std. dev.      1.684304
+75%     1.695223       143.3628
+90%     2.630627       145.1833       Variance       2.836881
+95%     3.674941       145.7529       Skewness       10.84614
+99%     6.875994       146.2577       Kurtosis       451.9045
+
+. di "--- maeb (ano nasc mae) nao-missing ---"
+--- maeb (ano nasc mae) nao-missing ---
+
+. count if !missing(maeb)
+  2,967,493
+
+. di "=== FIM build ==="
+=== FIM build ===
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag09_build.log
+  log type:  text
+ closed on:  22 Jul 2026, 14:54:19
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,176 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag06_A6.log
+  log type:  text
+ opened on:  22 Jul 2026, 13:19:45
+
+. 
+. di "########## A6 — balanco MARCO vs ABRIL (nascidos) ##########"
+########## A6 — balanco MARCO vs ABRIL (nascidos) ##########
+
+. * sexo/raca do Fila
+. use cd_aluno_sme cd_sexo_aluno tp_raca_cor using "$fila", clear
+
+. gen byte fem = cd_sexo_aluno=="F"
+
+. gen byte branco = tp_raca_cor==1
+
+. collapse (firstnm) fem branco, by(cd_aluno_sme)
+
+. tempfile sr
+
+. save `sr'
+file <HOME>\AppData\Local\Temp\ST_5fc8_000001.tmp saved as .dta format
+
+. 
+. * distancia ao CEI mais proximo por cep
+. use cep dist_km using "$aud\cep_cei_pairs_novo.dta", clear
+
+. bysort cep (dist_km): keep if _n==1
+(1,281,883 observations deleted)
+
+. rename dist_km dist_nearest_cei
+
+. tempfile dn
+
+. save `dn'
+file <HOME>\AppData\Local\Temp\ST_5fc8_000002.tmp saved as .dta format
+
+. 
+. use "$aud\B_novo.dta", clear
+
+. merge 1:1 cd_aluno_sme using `sr', keep(master match) nogen
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                         1,524,560  
+    -----------------------------------------
+
+. rename cep_aluno cep
+
+. merge m:1 cep using "$ba\cep_renda_pop_2010.dta", keepusing(renda) keep(master match) nogen
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                        25,004
+        from master                    25,004  
+        from using                          0  
+
+    Matched                         1,499,556  
+    -----------------------------------------
+
+. merge m:1 cep using `dn', keep(master match) nogen
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                        21,827
+        from master                    21,827  
+        from using                          0  
+
+    Matched                         1,502,733  
+    -----------------------------------------
+
+. keep if inlist(mes_nasc,3,4)
+(1,252,016 observations deleted)
+
+. gen byte abril = mes_nasc==4
+
+. di "--- N marco / abril ---"
+--- N marco / abril ---
+
+. tab mes_nasc
+
+   mes_nasc |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          3 |    138,065       50.66       50.66
+          4 |    134,479       49.34      100.00
+------------+-----------------------------------
+      Total |    272,544      100.00
+
+. foreach v in fem branco renda dist_nearest_cei {
+  2.     di "==== `v' : marco vs abril ===="
+  3.     ttest `v', by(abril)
+  4. }
+==== fem : marco vs abril ====
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. err.   Std. dev.   [95% conf. interval]
+---------+--------------------------------------------------------------------
+       0 | 138,065    .4883135    .0013453    .4998652    .4856768    .4909502
+       1 | 134,479    .4879498    .0013631    .4998566    .4852782    .4906214
+---------+--------------------------------------------------------------------
+Combined | 272,544     .488134    .0009575    .4998601    .4862574    .4900107
+---------+--------------------------------------------------------------------
+    diff |            .0003637    .0019151               -.0033899    .0041173
+------------------------------------------------------------------------------
+    diff = mean(0) - mean(1)                                      t =   0.1899
+H0: diff = 0                                     Degrees of freedom =   272542
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = 0.5753         Pr(|T| > |t|) = 0.8494          Pr(T > t) = 0.4247
+==== branco : marco vs abril ====
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. err.   Std. dev.   [95% conf. interval]
+---------+--------------------------------------------------------------------
+       0 | 138,065    .3206823    .0012561    .4667405    .3182203    .3231443
+       1 | 134,479    .3206077    .0012727    .4667119    .3181132    .3231021
+---------+--------------------------------------------------------------------
+Combined | 272,544    .3206455     .000894    .4667256    .3188932    .3223977
+---------+--------------------------------------------------------------------
+    diff |            .0000746    .0017882               -.0034302    .0035794
+------------------------------------------------------------------------------
+    diff = mean(0) - mean(1)                                      t =   0.0417
+H0: diff = 0                                     Degrees of freedom =   272542
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = 0.5166         Pr(|T| > |t|) = 0.9667          Pr(T > t) = 0.4834
+==== renda : marco vs abril ====
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. err.   Std. dev.   [95% conf. interval]
+---------+--------------------------------------------------------------------
+       0 | 135,772    1211.866    3.191739    1176.068     1205.61    1218.122
+       1 | 132,241    1211.874    3.158604    1148.625    1205.684    1218.065
+---------+--------------------------------------------------------------------
+Combined | 268,013     1211.87    2.245715    1162.606    1207.469    1216.272
+---------+--------------------------------------------------------------------
+    diff |           -.0082855    4.491829               -8.812148    8.795577
+------------------------------------------------------------------------------
+    diff = mean(0) - mean(1)                                      t =  -0.0018
+H0: diff = 0                                     Degrees of freedom =   268011
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = 0.4993         Pr(|T| > |t|) = 0.9985          Pr(T > t) = 0.5007
+==== dist_nearest_cei : marco vs abril ====
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. err.   Std. dev.   [95% conf. interval]
+---------+--------------------------------------------------------------------
+       0 | 136,005    .2896969    .0005635    .2078027    .2885925    .2908013
+       1 | 132,570    .2893849     .000572    .2082581    .2882639     .290506
+---------+--------------------------------------------------------------------
+Combined | 268,575    .2895429    .0004014    .2080273    .2887562    .2903297
+---------+--------------------------------------------------------------------
+    diff |             .000312    .0008029               -.0012616    .0018856
+------------------------------------------------------------------------------
+    diff = mean(0) - mean(1)                                      t =   0.3886
+H0: diff = 0                                     Degrees of freedom =   268573
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = 0.6512         Pr(|T| > |t|) = 0.6976          Pr(T > t) = 0.3488
+
+. di "=== FIM A6 ==="
+=== FIM A6 ===
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag06_A6.log
+  log type:  text
+ closed on:  22 Jul 2026, 13:19:55
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

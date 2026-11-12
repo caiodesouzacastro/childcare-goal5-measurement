@@ -1,0 +1,177 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag11_Cfix.log
+  log type:  text
+ opened on:  22 Jul 2026, 19:28:38
+
+. * cap_base por crianca
+. use "$aud\child_cei.dta", clear
+
+. collapse (sum) cap_base=capb, by(cd_aluno_sme)
+
+. merge 1:1 cd_aluno_sme using "$aud\child_shock_cei.dta", nogen
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                           593,913  
+    -----------------------------------------
+
+. foreach v in choque_neg choque_pos choque_pre choque_fut {
+  2.     replace `v'=0 if missing(`v')
+  3. }
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+
+. save "$aud\child_shock.dta", replace
+(file <NE_ROOT>\_audit\child_shock.dta not found)
+file <NE_ROOT>\_audit\child_shock.dta saved
+
+. * juntar desfechos
+. use "$aud\berc_child.dta", clear
+
+. merge 1:1 cd_aluno_sme using "$aud\child_shock.dta", keep(master match) nogen
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                           593,913  
+    -----------------------------------------
+
+. foreach v in choque_neg choque_pos choque_pre choque_fut cap_base {
+  2.     replace `v'=0 if missing(`v')
+  3. }
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+
+. compress
+  variable capb2 was float now int
+  variable cap_base was double now int
+  variable choque_neg was double now int
+  variable choque_pos was double now int
+  variable choque_pre was double now int
+  variable choque_fut was double now int
+  (19,005,216 bytes saved)
+
+. save "$aud\berc_design.dta", replace
+(file <NE_ROOT>\_audit\berc_design.dta not found)
+file <NE_ROOT>\_audit\berc_design.dta saved
+
+. di "N final design = " _N
+N final design = 593913
+
+. di "--- distribuicao dos choques (creche vagas) ---"
+--- distribuicao dos choques (creche vagas) ---
+
+. sum choque_neg choque_pos choque_pre choque_fut cap_base, detail
+
+                        (sum) neg180
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs             593,913
+25%            0              0       Sum of wgt.     593,913
+
+50%            0                      Mean           27.69798
+                        Largest       Std. dev.       66.9616
+75%           26            767
+90%           82            767       Variance       4483.856
+95%          135            767       Skewness       4.814793
+99%          325            772       Kurtosis       34.61603
+
+                        (sum) pos180
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs             593,913
+25%            0              0       Sum of wgt.     593,913
+
+50%           18                      Mean           55.36277
+                        Largest       Std. dev.      85.09569
+75%           79            877
+90%          172            877       Variance       7241.277
+95%          233            877       Skewness        2.41483
+99%          364            877       Kurtosis       11.22402
+
+                        (sum) neg_pre
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs             593,913
+25%            0              0       Sum of wgt.     593,913
+
+50%            0                      Mean           22.30347
+                        Largest       Std. dev.      60.67332
+75%           17            756
+90%           68            766       Variance       3681.251
+95%          112            767       Skewness       5.491565
+99%          290            767       Kurtosis       44.04255
+
+                        (sum) neg_fut
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs             593,913
+25%            0              0       Sum of wgt.     593,913
+
+50%            0                      Mean            40.0208
+                        Largest       Std. dev.      83.56743
+75%           44            767
+90%          118            767       Variance       6983.516
+95%          206            767       Skewness       3.658545
+99%          427            772       Kurtosis       20.02811
+
+                         (sum) capb
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%          239              0
+10%          367              0       Obs             593,913
+25%          627              0       Sum of wgt.     593,913
+
+50%          986                      Mean           1229.872
+                        Largest       Std. dev.      857.3679
+75%         1629           4819
+90%         2563           4819       Variance       735079.7
+95%         3040           4819       Skewness        1.16965
+99%         3820           4819       Kurtosis       3.956733
+
+. count if choque_neg>0
+  234,675
+
+. di "  criancas com choque_neg>0 (perda de capacidade elegivel em 180d)"
+  criancas com choque_neg>0 (perda de capacidade elegivel em 180d)
+
+. count if choque_pos>0
+  340,370
+
+. di "  criancas com choque_pos>0"
+  criancas com choque_pos>0
+
+. count if choque_pre>0
+  195,660
+
+. di "  criancas com choque_pre>0 (placebo)"
+  criancas com choque_pre>0 (placebo)
+
+. di "--- C3: solicitacao em 2017 ---"
+--- C3: solicitacao em 2017 ---
+
+. count if anosol==2017
+  103,583
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag11_Cfix.log
+  log type:  text
+ closed on:  22 Jul 2026, 19:29:00
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

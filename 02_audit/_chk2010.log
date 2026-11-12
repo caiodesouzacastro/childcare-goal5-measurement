@@ -1,0 +1,17 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\_chk2010.log
+  log type:  text
+ opened on:  22 Jul 2026, 13:05:43
+
+. use "$ba\matriculas_2010.dta" in 1, clear
+
+. di "N vars=" c(k)
+N vars=96
+
+. ds *serie* *letivo* *nasc* *aluno* *3103* *reprov* *aprov* *setor*
+variable *3103* not found
+r(111);
+
+end of do-file
+r(111);

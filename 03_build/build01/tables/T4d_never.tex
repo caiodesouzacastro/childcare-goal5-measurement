@@ -1,0 +1,21 @@
+% requer \usepackage{booktabs}. Tabela descritiva; sem interpretacao causal.
+\begin{table}[htbp]\centering
+\caption{Requests that never resulted in enrolment, compared with all others}
+\label{tab:T4d_never}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrr}
+\toprule
+Variable & Never enrolled & Enrolled & Difference & (SE) \\
+\midrule
+Age at application (months) & 29.22 & 21.45 & 7.77 & (0.049) \\
+Postcode income (R\$) & 1,295.32 & 1,201.24 & 94.07 & (3.023) \\
+IPVS group (1-6) & 3.16 & 3.25 & -0.09 & (0.003) \\
+N of centres $\leq$2km & 34.35 & 36.21 & -1.86 & (0.049) \\
+Distance to nearest centre (km) & 0.30 & 0.29 & 0.01 & (0.001) \\
+\% with priority & 4.05 & 16.08 & -12.03 & (0.054) \\
+Year of application & 2,013.34 & 2,014.16 & -0.82 & (0.007) \\
+\bottomrule
+\end{tabular}
+\\[3pt]{\footnotesize \textit{Note:} 203,715 requests never followed by enrolment, compared with 1,320,845 that were. The difference is the mean among the never-enrolled minus the mean among the enrolled; standard errors in parentheses, computed from group variances. Priority shares in percentage points and year in years. Descriptive; no causal interpretation.}
+\end{table}

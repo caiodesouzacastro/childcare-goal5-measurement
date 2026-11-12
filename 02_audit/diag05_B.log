@@ -1,0 +1,251 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag05_B.log
+  log type:  text
+ opened on:  22 Jul 2026, 12:00:04
+
+. 
+. use "$aud\B_novo.dta", clear
+
+. di "N B_novo = " _N
+N B_novo = 1524560
+
+. rename cep_aluno cep
+
+. joinby cep using "$aud\cep_cei_pairs_novo.dta", unmatched(master)
+
+. di "N linhas apos joinby = " _N
+N linhas apos joinby = 54845925
+
+. gen byte m = !missing(dist_km)
+
+. * janelas relativas a dt_sol (NUNCA usa dt_matricula)
+. gen byte in_expo = (dt_abertura>=dt_sol & dt_abertura<=dt_sol+365) if m
+(21,827 missing values generated)
+
+. gen byte in_pre  = (dt_abertura>=dt_sol-365 & dt_abertura<=dt_sol) if m
+(21,827 missing values generated)
+
+. gen byte in_post = (dt_abertura>=dt_sol+366 & dt_abertura<=dt_sol+730) if m
+(21,827 missing values generated)
+
+. gen byte in_stk  = (dt_abertura<=dt_sol) if m
+(21,827 missing values generated)
+
+. * radios
+. gen byte expo05 = in_expo & dist_km<=0.5
+
+. gen byte expo1  = in_expo & dist_km<=1
+
+. gen byte expo2  = in_expo & dist_km<=2
+
+. gen byte pre1   = in_pre  & dist_km<=1
+
+. gen byte post1  = in_post & dist_km<=1
+
+. gen byte stk1   = in_stk  & dist_km<=1
+
+. collapse (sum) expo12_500=expo05 expo12_1km=expo1 expo12_2km=expo2 ///
+>                pre12_1km=pre1 post_1km=post1 estoque_1km=stk1, by(cd_aluno_sme)
+
+. save "$aud\child_expo_raw.dta", replace
+(file <NE_ROOT>\_audit\child_expo_raw.dta not found)
+file <NE_ROOT>\_audit\child_expo_raw.dta saved
+
+. 
+. use "$aud\B_novo.dta", clear
+
+. merge 1:1 cd_aluno_sme using "$aud\child_expo_raw.dta", keep(master match) nogen
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                         1,524,560  
+    -----------------------------------------
+
+. foreach v in expo12_500 expo12_1km expo12_2km pre12_1km post_1km estoque_1km {
+  2.     replace `v'=0 if missing(`v')
+  3. }
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+
+. compress
+  variable expo12_500 was double now byte
+  variable expo12_1km was double now byte
+  variable expo12_2km was double now byte
+  variable pre12_1km was double now byte
+  variable post_1km was double now byte
+  variable estoque_1km was double now byte
+  (64,031,520 bytes saved)
+
+. save "$aud\child_expo.dta", replace
+(file <NE_ROOT>\_audit\child_expo.dta not found)
+file <NE_ROOT>\_audit\child_expo.dta saved
+
+. 
+. program define distrib
+  1.     args v
+  2.     di "--- `v' : distribuicao 0/1/2/3+ e media ---"
+  3.     gen __c = `v'
+  4.     replace __c = 3 if `v'>=3
+  5.     tab __c
+  6.     qui sum `v'
+  7.     di "  media `v' = " r(mean) "   % >=1 = " %5.2f 100*(1 - (`=r(N)'>0)*0)  /* placeholder */
+  8.     qui count if `v'>=1
+  9.     di "  N >=1 = " r(N) "  (" %5.2f 100*r(N)/_N "%)"
+ 10.     drop __c
+ 11. end
+
+. 
+. di ""
+
+
+. di "########## B1 — expo12 (janela [sol, sol+365]) ##########"
+########## B1 — expo12 (janela [sol, sol+365]) ##########
+
+. distrib expo12_500
+--- expo12_500 : distribuicao 0/1/2/3+ e media ---
+(2,256 real changes made)
+
+        __c |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |  1,261,454       82.74       82.74
+          1 |    215,686       14.15       96.89
+          2 |     37,723        2.47       99.36
+          3 |      9,697        0.64      100.00
+------------+-----------------------------------
+      Total |  1,524,560      100.00
+  media expo12_500 = .21184604   % >=1 = 100.00
+  N >=1 = 263106  (17.26%)
+
+. distrib expo12_1km
+--- expo12_1km : distribuicao 0/1/2/3+ e media ---
+(53,587 real changes made)
+
+        __c |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |    856,293       56.17       56.17
+          1 |    384,388       25.21       81.38
+          2 |    160,250       10.51       91.89
+          3 |    123,629        8.11      100.00
+------------+-----------------------------------
+      Total |  1,524,560      100.00
+  media expo12_1km = .76808981   % >=1 = 100.00
+  N >=1 = 668267  (43.83%)
+
+. distrib expo12_2km
+--- expo12_2km : distribuicao 0/1/2/3+ e media ---
+(420,814 real changes made)
+
+        __c |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |    379,354       24.88       24.88
+          1 |    315,812       20.71       45.60
+          2 |    242,175       15.88       61.48
+          3 |    587,219       38.52      100.00
+------------+-----------------------------------
+      Total |  1,524,560      100.00
+  media expo12_2km = 2.6222097   % >=1 = 100.00
+  N >=1 = 1145206  (75.12%)
+
+. di ""
+
+
+. di "########## B2 — pre12 (janela [sol-365, sol]) placebo ##########"
+########## B2 — pre12 (janela [sol-365, sol]) placebo ##########
+
+. distrib pre12_1km
+--- pre12_1km : distribuicao 0/1/2/3+ e media ---
+(52,880 real changes made)
+
+        __c |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |    866,060       56.81       56.81
+          1 |    380,058       24.93       81.74
+          2 |    158,094       10.37       92.11
+          3 |    120,348        7.89      100.00
+------------+-----------------------------------
+      Total |  1,524,560      100.00
+  media pre12_1km = .75577347   % >=1 = 100.00
+  N >=1 = 658500  (43.19%)
+
+. di ""
+
+
+. di "########## B3 — post (janela [sol+366, sol+730]) ##########"
+########## B3 — post (janela [sol+366, sol+730]) ##########
+
+. distrib post_1km
+--- post_1km : distribuicao 0/1/2/3+ e media ---
+(44,855 real changes made)
+
+        __c |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |    925,917       60.73       60.73
+          1 |    345,773       22.68       83.41
+          2 |    146,078        9.58       93.00
+          3 |    106,792        7.00      100.00
+------------+-----------------------------------
+      Total |  1,524,560      100.00
+  media post_1km = .67929435   % >=1 = 100.00
+  N >=1 = 598643  (39.27%)
+
+. di ""
+
+
+. di "########## B4 — estoque (CEIs <=1km abertos na data de solicitacao) ##########"
+########## B4 — estoque (CEIs <=1km abertos na data de solicitacao) ##########
+
+. di "--- distribuicao estoque_1km ---"
+--- distribuicao estoque_1km ---
+
+. sum estoque_1km, detail
+
+                         (sum) stk1
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            1              0
+10%            1              0       Obs           1,524,560
+25%            3              0       Sum of wgt.   1,524,560
+
+50%            5                      Mean           6.711639
+                        Largest       Std. dev.      5.363832
+75%            9             38
+90%           14             38       Variance       28.77069
+95%           18             38       Skewness       1.483419
+99%           25             38       Kurtosis       5.701086
+
+. gen ec=estoque_1km
+
+. replace ec=6 if estoque_1km>=6
+(621,342 real changes made)
+
+. tab ec
+
+         ec |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |     68,800        4.51        4.51
+          1 |     98,388        6.45       10.97
+          2 |    142,518        9.35       20.31
+          3 |    166,091       10.89       31.21
+          4 |    163,877       10.75       41.96
+          5 |    141,244        9.26       51.22
+          6 |    743,642       48.78      100.00
+------------+-----------------------------------
+      Total |  1,524,560      100.00
+
+. 
+. di "=== FIM diag05_B ==="
+=== FIM diag05_B ===
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag05_B.log
+  log type:  text
+ closed on:  22 Jul 2026, 12:05:28
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

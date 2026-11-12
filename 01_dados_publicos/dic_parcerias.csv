@@ -1,0 +1,31 @@
+CAMPOS;DESCRIÇÃO
+Nº Protocolo;Número de Protocolo do Termo de Parceria
+Código DRE;Código da Diretoria Regional de Educação no Sistema EOL 
+DRE;Diretoria Regional de Educação
+Processo ;Número do processo administrativo que deu origem à Parceria
+Código OSC Parceira;Código da entidade mantenedora da creche no Sistema EOL 
+OSC Parceira;Nome da entidade mantenedora da Unidade Educacional
+CNPJ;Cadastro Nacional da Pessoa Jurídica da entidade mantenedora
+Código Escola;Código da Escola no Sistema EOL 
+Unidade Educacional;Nome da Unidade Educacional
+Vagas Contratadas;Número de vagas contratadas para atendimento no Termo de Parceria
+Vagas Berçário Contratadas;Número de vagas de berçário previstas para atendimento no Termo de Parceria
+Valor Mensal;Valor mensal previsto a ser repassado à Organização para a manutenção da parceria celebrada, em função das vagas atendidas
+Verba Locação;Repasse de verba pela Municipalidade à Organização referente ao custeio do imóvel a ser locado, conforme legislação vigente
+Valor Mensal IPTU;IPTU – Imposto Territorial e Urbano do imóvel, quando aplicável
+Data Início;Data de início de vigência do Termo de Parceria
+Data Término;Data prevista para término do Termo de Parceria
+Situação Parceria;"Aprovado -Termo de Parceria aprovado e vigente
+Encerrado - Parceria finalizada
+Em análise - Processo de parceria em andamento
+Reprovado - Termos de parcerias que não foram lavrados"
+Data Solicitação Parceria;Data do início do cadastro da parceria no sistema EOL-Convênios
+Data Lavratura do Termo;Data em que Termo de Parceria inicial ou de aditamento foi assinado, após a publicação do Despacho Autorizatório
+Data do Encerramento;A data em que a parceria foi encerrada
+;
+"Nota Técnica:
+
+1 - O módulo do sistema EOL-Convênios teve início de funcionamento a partir de 2014;
+2 - O início da inserção das informações no sistema ocorreu a partir de maio/2014, tendo sidoregulamentado pelo Comunicado 1548/2015 e detalhado na Portaria SME nº 4.548/2017 e alterações posteriores, dessa forma todas as Parcerias vigentes desde maio/2014 foram devidamente cadastradas com seus respectivos históricos. 
+Entretanto, o campo ""data_solicitação"" é atualizado automaticamente pelo sistema e o ""data_lavratura_do_termo"" é inserido manualmente pelo operador.
+Isto gerou divergências nas datas apresentadas, podendo a data de solicitação ser posterior a data de lavratura da parceria.";

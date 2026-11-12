@@ -1,0 +1,144 @@
+carregando Fila1018 + child_master...
+frame: 1,524,560 criancas.
+
+## PARTE A - faixa corrente vs futura
+A1: variavel = cd_serie_ensino_solicitacao (Fila) -> agrup_sol (child_master). Mapa creche: 1=Bercario I, 4=Bercario II, 27=Minigrupo I, 28=Minigrupo II. Series 8/14/16/18/23/25 = niveis acima da creche (pre-escola; idade mediana 37-68m), classificadas NONCRECHE.
+A2: distribuicao (todas as 1as solicitacoes):
+     CURRENT: 958,501 (62.9%)
+     FUTURE: 18,534 (1.2%)
+     PAST: 326,260 (21.4%)
+     NONCRECHE: 221,265 (14.5%)
+A3: fracao para FAIXA CORRENTE, por ano de solicitacao:
+     2010: current=27.9%  future=0.2%  noncreche=53.8%
+     2011: current=48.0%  future=0.1%  noncreche=15.5%
+     2012: current=55.1%  future=0.1%  noncreche=13.1%
+     2013: current=59.2%  future=0.1%  noncreche=15.3%
+     2014: current=64.5%  future=0.2%  noncreche=11.6%
+     2015: current=71.3%  future=0.5%  noncreche=9.2%
+     2016: current=75.8%  future=3.2%  noncreche=7.9%
+     2017: current=76.7%  future=3.4%  noncreche=7.3%
+     2018: current=77.4%  future=3.4%  noncreche=6.6%
+A3: por coorte de nascimento:
+     2010: current=47.1%  future=0.2%
+     2011: current=58.4%  future=0.2%
+     2012: current=68.9%  future=0.3%
+     2013: current=74.9%  future=0.6%
+     2014: current=79.2%  future=0.5%
+     2015: current=84.5%  future=3.8%
+     2016: current=85.7%  future=4.2%
+A4: por faixa de idade na solicitacao (frac current / future / noncreche / pediu BercI):
+     0-5m: n=383,156  current=100.0%  future=0.0%  noncreche=0.0%  pediu_BercI=100.0%
+     6-11m: n=224,683  current=97.6%  future=2.4%  noncreche=0.0%  pediu_BercI=97.6%
+     12-23m: n=321,010  current=61.0%  future=3.9%  noncreche=0.0%  pediu_BercI=46.9%
+     24m+: n=595,711  current=26.9%  future=0.1%  noncreche=37.1%  pediu_BercI=0.0%
+A5: fracao da coorte com 1a solic <12m -- TODAS vs so FAIXA CORRENTE (denom=SINASC):
+     coorte 2010: todas=11.0%  faixa_corrente=11.0%
+     coorte 2011: todas=27.4%  faixa_corrente=27.4%
+     coorte 2012: todas=38.3%  faixa_corrente=38.3%
+     coorte 2013: todas=41.5%  faixa_corrente=41.5%
+     coorte 2014: todas=44.1%  faixa_corrente=44.1%
+     coorte 2015: todas=48.6%  faixa_corrente=47.7%
+     coorte 2016: todas=50.1%  faixa_corrente=49.0%
+
+## PARTE B - quem e chamado aceita?
+B1: intervalo encaminhamento->matricula (dias), percentis por ano de encaminhamento:
+     2010: n=50,507  p25=1 p50=4 p75=8 p90=22
+     2011: n=51,932  p25=1 p50=3 p75=7 p90=20
+     2012: n=192,630  p25=3 p50=6 p75=12 p90=69
+     2013: n=167,653  p25=1 p50=3 p75=15 p90=66
+     2014: n=163,849  p25=2 p50=6 p75=10 p90=78
+     2015: n=180,010  p25=2 p50=6 p75=20 p90=98
+     2016: n=166,656  p25=2 p50=7 p75=16 p90=121
+     2017: n=168,775  p25=4 p50=10 p75=32 p90=62
+     2018: n=162,008  p25=1 p50=6 p75=28 p90=49
+B2: fracao de encaminhamentos SEM matricula em 30/60/90 dias (e nunca), por ano:
+     2010: nao30=19.6% nao60=15.5% nao90=14.1% nunca=12.9%
+     2011: nao30=17.2% nao60=15.4% nao90=15.3% nunca=10.9%
+     2012: nao30=24.5% nao60=19.7% nao90=17.7% nunca=9.8%
+     2013: nao30=22.6% nao60=17.3% nao90=15.8% nunca=7.7%
+     2014: nao30=22.5% nao60=18.0% nao90=16.5% nunca=7.8%
+     2015: nao30=25.1% nao60=19.5% nao90=17.3% nunca=7.7%
+     2016: nao30=25.3% nao60=20.7% nao90=18.7% nunca=8.0%
+     2017: nao30=31.1% nao60=17.3% nao90=15.3% nunca=7.7%
+     2018: nao30=33.7% nao60=20.3% nao90=18.9% nunca=14.0%
+B3 (DECISIVA): gap mediano e nao-matricula por faixa de IDADE NA SOLICITACAO:
+     0-5m: n=377,604  gap_med=7d  nao90=14.0%  nunca=6.3%
+     6-11m: n=220,254  gap_med=7d  nao90=17.0%  nunca=8.4%
+     12-23m: n=312,475  gap_med=6d  nao90=20.1%  nunca=11.0%
+     24m+: n=547,030  gap_med=5d  nao90=17.4%  nunca=11.0%
+B4: nao-matricula apos encaminhamento por ano de solicitacao:
+     2010: nao90=13.9%  nunca=10.9%
+     2011: nao90=17.1%  nunca=10.8%
+     2012: nao90=17.5%  nunca=8.9%
+     2013: nao90=16.2%  nunca=7.7%
+     2014: nao90=16.6%  nunca=7.6%
+     2015: nao90=16.6%  nunca=6.8%
+     2016: nao90=17.3%  nunca=7.7%
+     2017: nao90=16.1%  nunca=8.6%
+     2018: nao90=19.1%  nunca=15.3%
+B5: idade no encaminhamento menos idade minima da faixa solicitada (meses): p25=9 mediana=14 p75=21; 0% encaminhados ANTES da idade minima da faixa.
+
+## PARTE C - contabilidade mensal da fila
+C1: serie mensal 2010-2018 (108 meses). estoque(com censura) dez/2010=6,515 -> dez/2018=19,600.
+C2: estoque construido (com censura) vs oficial DEM_CRECHE, por trimestre (razao):
+     2010q3: constr=6,057  oficial=78,284  razao=0.08
+     2010q6: constr=2,177  oficial=94,974  razao=0.02
+     2010q9: constr=2,030  oficial=125,437  razao=0.02
+     2010q12: constr=6,515  oficial=100,401  razao=0.06
+     2011q3: constr=19,506  oficial=127,651  razao=0.15
+     2011q6: constr=22,009  oficial=147,027  razao=0.15
+     2011q9: constr=32,929  oficial=174,168  razao=0.19
+     2011q12: constr=53,777  oficial=101,165  razao=0.53
+     2012q3: constr=92,487  oficial=126,662  razao=0.73
+     2012q6: constr=111,120  oficial=148,185  razao=0.75
+     2012q9: constr=133,954  oficial=174,213  razao=0.77
+     2012q12: constr=57,077  oficial=97,160  razao=0.59
+     2013q3: constr=84,349  oficial=103,309  razao=0.82
+     2013q6: constr=103,467  oficial=127,361  razao=0.81
+     2013q9: constr=127,221  oficial=156,982  razao=0.81
+     2013q12: constr=69,580  oficial=96,696  razao=0.72
+     2014q3: constr=93,751  oficial=110,639  razao=0.85
+     2014q6: constr=105,161  oficial=128,519  razao=0.82
+     2014q9: constr=130,004  oficial=160,495  razao=0.81
+     2014q12: constr=65,515  oficial=94,191  razao=0.70
+     2015q3: constr=86,417  oficial=105,967  razao=0.82
+     2015q6: constr=98,182  oficial=124,741  razao=0.79
+     2015q9: constr=113,900  oficial=145,864  razao=0.78
+     2015q12: constr=51,572  oficial=75,194  razao=0.69
+     2016q3: constr=72,275  oficial=88,356  razao=0.82
+     2016q6: constr=83,267  oficial=103,496  razao=0.80
+     2016q9: constr=106,470  oficial=133,005  razao=0.80
+     2016q12: constr=47,312  oficial=65,040  razao=0.73
+     2017q3: constr=74,198  oficial=87,906  razao=0.84
+     2017q6: constr=87,545  oficial=104,268  razao=0.84
+     2017q9: constr=112,023  oficial=132,365  razao=0.85
+     2017q12: constr=32,739  oficial=44,092  razao=0.74
+C3: diferenca estoque construido - oficial (dez), nivel e %:
+     2010: sem_cens=66,583 com_cens=6,515 oficial=100,401 | dif_semcens=-33,818 (-34%)
+     2011: sem_cens=132,564 com_cens=53,777 oficial=101,165 | dif_semcens=31,399 (31%)
+     2012: sem_cens=139,662 com_cens=57,077 oficial=97,160 | dif_semcens=42,502 (44%)
+     2013: sem_cens=149,163 com_cens=69,580 oficial=96,696 | dif_semcens=52,467 (54%)
+     2014: sem_cens=146,130 com_cens=65,515 oficial=94,191 | dif_semcens=51,939 (55%)
+     2015: sem_cens=130,884 com_cens=51,572 oficial=75,194 | dif_semcens=55,690 (74%)
+     2016: sem_cens=121,977 com_cens=47,312 oficial=65,040 | dif_semcens=56,937 (88%)
+     2017: sem_cens=102,995 com_cens=32,739 oficial=44,092 | dif_semcens=58,903 (134%)
+C4: estoque sem vs com censura por idade (dez); diferenca = saidas por idade acumuladas:
+     2010: sem_cens=66,583 com_cens=6,515 dif=60,068
+     2011: sem_cens=132,564 com_cens=53,777 dif=78,787
+     2012: sem_cens=139,662 com_cens=57,077 dif=82,585
+     2013: sem_cens=149,163 com_cens=69,580 dif=79,583
+     2014: sem_cens=146,130 com_cens=65,515 dif=80,615
+     2015: sem_cens=130,884 com_cens=51,572 dif=79,312
+     2016: sem_cens=121,977 com_cens=47,312 dif=74,665
+     2017: sem_cens=102,995 com_cens=32,739 dif=70,256
+     2018: sem_cens=80,022 com_cens=19,600 dif=60,422
+C5: decomposicao anual do estoque (com censura): Delta = sol - enc - saidas_idade + residuo:
+     2010: estoque=6,515 delta=-- sol=81,004 enc=33,559 saidas_idade=37,783 resid=--
+     2011: estoque=53,777 delta=+47,262 sol=124,240 enc=33,649 saidas_idade=43,329 resid=+0
+     2012: estoque=57,077 delta=+3,300 sol=220,922 enc=158,529 saidas_idade=59,093 resid=+0
+     2013: estoque=69,580 delta=+12,503 sol=191,149 enc=139,842 saidas_idade=38,804 resid=+0
+     2014: estoque=65,515 delta=-4,065 sol=174,676 enc=146,197 saidas_idade=32,544 resid=+0
+     2015: estoque=51,572 delta=-13,943 sol=179,869 enc=161,165 saidas_idade=32,647 resid=+0
+     2016: estoque=47,312 delta=-4,260 sol=172,341 enc=154,473 saidas_idade=22,128 resid=+0
+     2017: estoque=32,739 delta=-14,573 sol=163,922 enc=162,420 saidas_idade=16,075 resid=+0
+     2018: estoque=19,600 delta=-13,139 sol=165,331 enc=172,530 saidas_idade=5,940 resid=+0

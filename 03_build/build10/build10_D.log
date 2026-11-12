@@ -1,0 +1,31 @@
+## Enrolled-only (paper): entry = matricula age, wait = mat-sol (OBSERVADA)
+  d_ent=-9.37 sol=-8.68(92.7%) wait=-0.70(7.5%) resid=0.010
+    2010: N=85,602 ent=32.03 sol=22.13 wait=9.94
+    2011: N=101,164 ent=27.47 sol=16.10 wait=11.41
+    2012: N=120,633 ent=25.05 sol=14.27 wait=10.81
+    2013: N=125,780 ent=22.51 sol=13.78 wait=8.75
+    2014: N=133,685 ent=22.66 sol=13.45 wait=9.24
+
+## Referral-based (aligned w/ identity text 'application to referral'): entry = referral age, wait = sol->enc (OBSERVADA p/ encaminhadas)
+  d_ent=-9.62 sol=-8.35(86.8%) wait=-1.25(13.0%) resid=-0.027
+    2010: N=97,629 refage=31.62 sol=22.37 wait=9.19
+    2011: N=115,447 refage=27.14 sol=16.66 wait=10.42
+    2012: N=134,701 refage=24.71 sol=14.91 wait=9.74
+    2013: N=137,780 refage=22.09 sol=14.39 wait=7.63
+    2014: N=146,222 refage=22.00 sol=14.02 wait=7.95
+
+## Selecao por coorte: aging-out (nunca entra) e taxa de matricula<=48m
+  coorte | %aged-out %enr<=48 %ref<=48 | wait_enr wait_ref
+   2010  |   27.4    66.7    76.1  |   9.94    9.19
+   2011  |   24.7    69.0    78.7  |  11.41   10.42
+   2012  |   15.7    77.7    86.7  |  10.81    9.74
+   2013  |   11.8    82.2    90.0  |   8.75    7.63
+   2014  |    5.2    88.1    96.3  |   9.24    7.95
+
+## D5: tres janelas
+  Row1 by year full panel (enrolled, uncapped): d_ent=-19.09 appl=80% wait=20% resid=-0.028
+  Row2 by year 2010-2016 (enrolled, uncapped): d_ent=-15.11 appl=99% wait=1% resid=0.019
+  Row3 birth cohort 2010-2014 (enrolled, <=48): d_ent=-9.37 appl=93% wait=7% resid=0.010
+    ref Row1: d_ent=-20.52 appl=79% wait=21% resid=-0.070
+    ref Row2: d_ent=-16.41 appl=93% wait=8% resid=0.043
+    ref Row3: d_ent=-9.62 appl=87% wait=13% resid=-0.027

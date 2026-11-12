@@ -1,0 +1,192 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag04_A2fix.log
+  log type:  text
+ opened on:  22 Jul 2026, 11:13:09
+
+. 
+. use "$aud\escolas_parsed.dta", clear
+
+. di "N=" _N
+N=4753
+
+. 
+. di "===== diagnostico de tipoesc (comprimento e valores entre aspas) ====="
+===== diagnostico de tipoesc (comprimento e valores entre aspas) =====
+
+. gen L = strlen(tipoesc)
+
+. tab L
+
+          L |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         12 |      4,753      100.00      100.00
+------------+-----------------------------------
+      Total |      4,753      100.00
+
+. levelsof tipoesc, local(lv)
+`"CCI/CIPS    "' `"CEI DIRET   "' `"CEI INDIR   "' `"CEMEI       "' `"CEU CEI     "' `"CEU EMEF    "' `"CEU EMEI    "' `"CIEJA       "' `"CMCT        "' `"CR.P.CONV   "' `"EMEBS       "' `"EMEF       
+>  "' `"EMEFM       "' `"EMEI        "' `"ESC.PART.   "' `"MOVA        "'
+
+. foreach t of local lv {
+  2.     di "valor=[`t']"
+  3. }
+valor=[CCI/CIPS    ]
+valor=[CEI DIRET   ]
+valor=[CEI INDIR   ]
+valor=[CEMEI       ]
+valor=[CEU CEI     ]
+valor=[CEU EMEF    ]
+valor=[CEU EMEI    ]
+valor=[CIEJA       ]
+valor=[CMCT        ]
+valor=[CR.P.CONV   ]
+valor=[EMEBS       ]
+valor=[EMEF        ]
+valor=[EMEFM       ]
+valor=[EMEI        ]
+valor=[ESC.PART.   ]
+valor=[MOVA        ]
+
+. 
+. di ""
+
+
+. di "===== reconstruindo flag CEI (strpos robusto) ====="
+===== reconstruindo flag CEI (strpos robusto) =====
+
+. cap drop cei
+
+. gen byte cei = (strpos(tipoesc,"CEI")>0 | strpos(tipoesc,"CR.P")>0 | strpos(tipoesc,"CEMEI")>0 | strpos(tipoesc,"CCI")>0)
+
+. di "--- A3: tipoesc x cei ---"
+--- A3: tipoesc x cei ---
+
+. tab tipoesc cei, miss
+
+             |          cei
+     tipoesc |         0          1 |     Total
+-------------+----------------------+----------
+CCI/CIPS     |         0          3 |         3 
+CEI DIRET    |         0        317 |       317 
+CEI INDIR    |         0        376 |       376 
+CEMEI        |         0         14 |        14 
+CEU CEI      |         0         45 |        45 
+CEU EMEF     |        46          0 |        46 
+CEU EMEI     |        47          0 |        47 
+CIEJA        |        16          0 |        16 
+CMCT         |         2          0 |         2 
+CR.P.CONV    |         0      1,629 |     1,629 
+EMEBS        |         6          0 |         6 
+EMEF         |       501          0 |       501 
+EMEFM        |         8          0 |         8 
+EMEI         |       508          0 |       508 
+ESC.PART.    |       892          0 |       892 
+MOVA         |       343          0 |       343 
+-------------+----------------------+----------
+       Total |     2,369      2,384 |     4,753 
+
+. di "--- total CEI ---"
+--- total CEI ---
+
+. count if cei==1
+  2,384
+
+. di "--- CEI por tipo (contagem) ---"
+--- CEI por tipo (contagem) ---
+
+. tab tipoesc if cei==1
+
+     tipoesc |      Freq.     Percent        Cum.
+-------------+-----------------------------------
+CCI/CIPS     |          3        0.13        0.13
+CEI DIRET    |        317       13.30       13.42
+CEI INDIR    |        376       15.77       29.19
+CEMEI        |         14        0.59       29.78
+CEU CEI      |         45        1.89       31.67
+CR.P.CONV    |      1,629       68.33      100.00
+-------------+-----------------------------------
+       Total |      2,384      100.00
+
+. 
+. di ""
+
+
+. di "===== A4 (refeito) ====="
+===== A4 (refeito) =====
+
+. gen long codesc = escola
+
+. merge m:1 codesc using "$aud\fila_codesc.dta", gen(mfila)
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                         1,814
+        from master                     1,411  (mfila==1)
+        from using                        403  (mfila==2)
+
+    Matched                             3,342  (mfila==3)
+    -----------------------------------------
+
+. drop if mfila==2
+(403 observations deleted)
+
+. gen byte in_fila = (mfila==3)
+
+. di "CEI total: "
+CEI total: 
+
+. count if cei==1
+  2,384
+
+. di "CEI com coord: "
+CEI com coord: 
+
+. count if cei==1 & !missing(lat,lon)
+  2,383
+
+. di "CEI com coord & casa Fila: "
+CEI com coord & casa Fila: 
+
+. count if cei==1 & !missing(lat,lon) & in_fila==1
+  2,378
+
+. di ""
+
+
+. di "--- A4 dt_criacao 2008-2016 + coord + Fila (NUMERO CRITICO) ---"
+--- A4 dt_criacao 2008-2016 + coord + Fila (NUMERO CRITICO) ---
+
+. count if cei==1 & inrange(year(dt_criacao_d),2008,2016) & !missing(lat,lon) & in_fila==1
+  1,037
+
+. di "--- idem dt_ini_func ---"
+--- idem dt_ini_func ---
+
+. count if cei==1 & inrange(year(dt_ini_func_d),2008,2016) & !missing(lat,lon) & in_fila==1
+  351
+
+. di "--- idem dt_ini_conv ---"
+--- idem dt_ini_conv ---
+
+. count if cei==1 & inrange(year(dt_ini_conv_d),2008,2016) & !missing(lat,lon) & in_fila==1
+  938
+
+. di "--- CEI dt_criacao 2008-2016 + coord (sem exigir Fila) ---"
+--- CEI dt_criacao 2008-2016 + coord (sem exigir Fila) ---
+
+. count if cei==1 & inrange(year(dt_criacao_d),2008,2016) & !missing(lat,lon)
+  1,038
+
+. di ""
+
+
+. di "--- distribuicao por ano (dt_criacao) SOMENTE CEI que casam com Fila e tem coord ---"
+--- distribuicao por ano (dt_criacao) SOMENTE CEI que casam com Fila e tem coord ---
+
+. tab yr_dt_criacao_d if cei==1 & in_fila==1 & !missing(lat,lon) & inrange(yr_dt_criacao_d,2005,2018)
+variable yr_dt_criacao_d not found
+r(111);
+
+end of do-file
+r(111);

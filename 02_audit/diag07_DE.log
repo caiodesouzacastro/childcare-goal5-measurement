@@ -1,0 +1,317 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag07_DE.log
+  log type:  text
+ opened on:  22 Jul 2026, 13:57:49
+
+. 
+. *==============================================================
+. di "########## PARTE D — desfechos de trabalho (RAIS e' SECAO TRANSVERSAL: 1 ano/crianca) ##########"
+########## PARTE D — desfechos de trabalho (RAIS e' SECAO TRANSVERSAL: 1 ano/crianca) ##########
+
+. di "########## D1 — taxa de emp por ano sobre TODO B_novo (nao-RAIS=0) ##########"
+########## D1 — taxa de emp por ano sobre TODO B_novo (nao-RAIS=0) ##########
+
+. use cd_aluno_sme using "$aud\B_novo.dta", clear
+
+. gen byte inbnovo=1
+
+. merge 1:m cd_aluno_sme using "$aud\rais_panel.dta", keep(master match) nogen
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                       767,458
+        from master                   767,458  
+        from using                          0  
+
+    Matched                           757,102  
+    -----------------------------------------
+
+. di "  N B_novo (total) = "
+  N B_novo (total) = 
+
+. egen tag=tag(cd_aluno_sme)
+
+. count if tag==1
+  1,524,560
+
+. scalar NB = r(N)
+
+. di "  (denominador D1 = todo B_novo)"
+  (denominador D1 = todo B_novo)
+
+. forvalues t=2010/2018 {
+  2.     qui count if ano==`t' & emp==1
+  3.     di "  ano `t': emp_t medio (sobre B_novo) = " %6.4f r(N)/NB "   (N emp=`r(N)')"
+  4. }
+  ano 2010: emp_t medio (sobre B_novo) = 0.0178   (N emp=27097)
+  ano 2011: emp_t medio (sobre B_novo) = 0.0236   (N emp=35946)
+  ano 2012: emp_t medio (sobre B_novo) = 0.0461   (N emp=70341)
+  ano 2013: emp_t medio (sobre B_novo) = 0.0465   (N emp=70824)
+  ano 2014: emp_t medio (sobre B_novo) = 0.0437   (N emp=66683)
+  ano 2015: emp_t medio (sobre B_novo) = 0.0444   (N emp=67729)
+  ano 2016: emp_t medio (sobre B_novo) = 0.0566   (N emp=86345)
+  ano 2017: emp_t medio (sobre B_novo) = 0.0488   (N emp=74429)
+  ano 2018: emp_t medio (sobre B_novo) = 0.0880   (N emp=134236)
+
+. di "  --- distribuicao do UNICO ano RAIS por crianca (entre com RAIS) ---"
+  --- distribuicao do UNICO ano RAIS por crianca (entre com RAIS) ---
+
+. tab ano if !missing(ano) & inrange(ano,2010,2018)
+
+        Ano |      Freq.     Percent        Cum.
+------------+-----------------------------------
+       2010 |     31,668        4.18        4.18
+       2011 |     42,673        5.64        9.82
+       2012 |     84,084       11.11       20.93
+       2013 |     85,186       11.25       32.18
+       2014 |     80,694       10.66       42.84
+       2015 |     80,873       10.68       53.52
+       2016 |    103,093       13.62       67.13
+       2017 |     89,401       11.81       78.94
+       2018 |    159,430       21.06      100.00
+------------+-----------------------------------
+      Total |    757,102      100.00
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## D2 — event study cru: emp por tempo relativo (ano_rais - ano_nasc) ##########"
+########## D2 — event study cru: emp por tempo relativo (ano_rais - ano_nasc) ##########
+
+. use "$aud\rais_panel.dta", clear
+
+. merge m:1 cd_aluno_sme using "$aud\B_novo.dta", keep(match) keepusing(mes_nasc) nogen
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                           757,102  
+    -----------------------------------------
+
+. keep if inrange(ano_nasc,2009,2015)
+(244,042 observations deleted)
+
+. gen reltime = ano - ano_nasc
+
+. di "--- range de reltime (min/max) — ha tempo negativo (pre-parto)? ---"
+--- range de reltime (min/max) — ha tempo negativo (pre-parto)? ---
+
+. sum reltime
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+     reltime |    513,060    2.490122    1.651303          0          9
+
+. gen grp = cond(mes_nasc<=3,"marco",cond(mes_nasc>=4,"abril",""))
+
+. di "--- taxa de emp por reltime (marco) ---"
+--- taxa de emp por reltime (marco) ---
+
+. table reltime if mes_nasc==3 & inrange(reltime,-3,8), stat(mean emp) stat(count emp)
+
+--------------------------------------------------
+        |      Mean   Number of non-missing values
+--------+-----------------------------------------
+reltime |                                         
+  0     |  .8748224                          7,741
+  1     |  .8341232                          9,284
+  2     |  .8156885                          8,860
+  3     |  .8164181                          8,247
+  4     |  .8139483                          8,890
+  5     |  .8035773                          3,019
+  6     |  .8333333                             24
+  7     |        .5                              4
+  8     |  .6666667                              3
+  Total |  .8283122                         46,072
+--------------------------------------------------
+
+. di "--- taxa de emp por reltime (abril) ---"
+--- taxa de emp por reltime (abril) ---
+
+. table reltime if mes_nasc==4 & inrange(reltime,-3,8), stat(mean emp) stat(count emp)
+
+--------------------------------------------------
+        |      Mean   Number of non-missing values
+--------+-----------------------------------------
+reltime |                                         
+  0     |   .872879                          7,308
+  1     |  .8264159                          8,987
+  2     |  .8244265                          7,803
+  3     |  .8129216                          7,708
+  4     |  .8090965                          4,903
+  5     |  .7987248                          5,803
+  6     |  .7891892                          1,480
+  7     |  .8695652                             23
+  8     |       .75                              4
+  Total |  .8245985                         44,019
+--------------------------------------------------
+
+. 
+. di ""
+
+
+. di "########## D3 — remuneracao (SM) por reltime, condicional a emp ##########"
+########## D3 — remuneracao (SM) por reltime, condicional a emp ##########
+
+. di "--- marco ---"
+--- marco ---
+
+. table reltime if mes_nasc==3 & emp==1 & inrange(reltime,0,8), stat(mean remun) stat(p50 remun) stat(count remun)
+
+--------------------------------------------------------------------
+        |      Mean   50th percentile   Number of non-missing values
+--------+-----------------------------------------------------------
+reltime |                                                           
+  0     |  2.355284              1.74                          6,772
+  1     |   2.39657              1.79                          7,744
+  2     |  2.483968               1.8                          7,227
+  3     |  2.441322              1.79                          6,733
+  4     |  2.449431              1.77                          7,236
+  5     |  2.306777              1.72                          2,426
+  6     |      2.08              1.64                             20
+  7     |      1.37              1.37                              2
+  8     |      1.73              1.73                              2
+  Total |  2.417751              1.77                         38,162
+--------------------------------------------------------------------
+
+. di "--- abril ---"
+--- abril ---
+
+. table reltime if mes_nasc==4 & emp==1 & inrange(reltime,0,8), stat(mean remun) stat(p50 remun)
+
+-------------------------------------
+        |      Mean   50th percentile
+--------+----------------------------
+reltime |                            
+  0     |  2.348109              1.77
+  1     |  2.350672              1.75
+  2     |  2.502778              1.79
+  3     |  2.444662               1.8
+  4     |  2.467018              1.77
+  5     |  2.371325              1.76
+  6     |   2.26482              1.71
+  7     |    2.1925              1.85
+  8     |      1.79              1.82
+  Total |  2.405861              1.77
+-------------------------------------
+
+. 
+. di ""
+
+
+. di "########## D4 — horas contratadas por reltime, condicional a emp ##########"
+########## D4 — horas contratadas por reltime, condicional a emp ##########
+
+. di "--- marco ---"
+--- marco ---
+
+. table reltime if mes_nasc==3 & emp==1 & inrange(reltime,0,8), stat(mean horas) stat(count horas)
+
+--------------------------------------------------
+        |      Mean   Number of non-missing values
+--------+-----------------------------------------
+reltime |                                         
+  0     |   42.8039                          6,772
+  1     |   42.9016                          7,744
+  2     |  42.79563                          7,227
+  3     |  42.81227                          6,733
+  4     |  42.90478                          7,236
+  5     |  43.07502                          2,426
+  6     |      43.6                             20
+  7     |        44                              2
+  8     |        44                              2
+  Total |  42.86054                         38,162
+--------------------------------------------------
+
+. di "--- abril ---"
+--- abril ---
+
+. table reltime if mes_nasc==4 & emp==1 & inrange(reltime,0,8), stat(mean horas)
+
+-------------------
+        |      Mean
+--------+----------
+reltime |          
+  0     |  42.82819
+  1     |  42.88798
+  2     |  42.82326
+  3     |  42.82206
+  4     |  42.92614
+  5     |  42.94908
+  6     |  42.99572
+  7     |        43
+  8     |        44
+  Total |  42.87021
+-------------------
+
+. 
+. di ""
+
+
+. di "########## D5 — N com emp em >=3 anos consecutivos incl >=1 antes do nascimento ##########"
+########## D5 — N com emp em >=3 anos consecutivos incl >=1 antes do nascimento ##########
+
+. use "$aud\rais_panel.dta", clear
+
+. gen byte pre = ano < ano_nasc
+
+. bysort cd_aluno_sme: egen npre = total(pre)
+
+. bysort cd_aluno_sme: egen nyears = total(1)
+
+. di "  criancas com >=1 ano RAIS antes do nascimento: "
+  criancas com >=1 ano RAIS antes do nascimento: 
+
+. egen tagc=tag(cd_aluno_sme)
+
+. count if tagc==1 & npre>=1
+  0
+
+. di "  criancas com >=3 anos RAIS observados: "
+  criancas com >=3 anos RAIS observados: 
+
+. count if tagc==1 & nyears>=3
+  0
+
+. di "  --> N event-study (>=3 anos incl >=1 pre-nasc) = "
+  --> N event-study (>=3 anos incl >=1 pre-nasc) = 
+
+. count if tagc==1 & nyears>=3 & npre>=1
+  0
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## PARTE E — quebra de 2013 e balanco ##########"
+########## PARTE E — quebra de 2013 e balanco ##########
+
+. di "########## E1 — ano de elegibilidade ao Bercario I vs 2013 ##########"
+########## E1 — ano de elegibilidade ao Bercario I vs 2013 ##########
+
+. di "  (elegibilidade Berc I = ano_nasc se mes<=3, senao ano_nasc+1)"
+  (elegibilidade Berc I = ano_nasc se mes<=3, senao ano_nasc+1)
+
+. use "$aud\B_novo.dta", clear
+
+. keep if inrange(ano_nasc,2009,2015)
+(528,417 observations deleted)
+
+. gen elig_berc1 = ano_nasc + (mes_nasc>=4)
+
+. di "--- distribuicao ano elegibilidade Berc I por coorte (marco vs abril) ---"
+--- distribuicao ano elegibilidade Berc I por coorte (marco vs abril) ---
+
+. gen grp = cond(mes_nasc==3,"mar",cond(mes_nasc==4,"abr",""))
+(819,702 missing values generated)
+
+. table ano_nasc grp if inlist(mes_nasc,3,4), stat(min elig_berc1) stat(max elig_berc1)
+string variables not allowed in layout; grp is a string variable
+r(109);
+
+end of do-file
+r(109);

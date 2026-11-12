@@ -1,0 +1,287 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag08_C.log
+  log type:  text
+ opened on:  22 Jul 2026, 14:32:04
+
+. 
+. di "########## Universo C: 1o encaminhamento, SEM prioridade ##########"
+########## Universo C: 1o encaminhamento, SEM prioridade ##########
+
+. use cd_aluno_sme dt_solicitacao dt_encaminhamento cd_esc_encaminhamento cep_aluno ///
+>     cd_sexo_aluno tp_raca_cor mes_nasc ano_nasc tipo_prioridade_encaminhamento ///
+>     using "$fila", clear
+
+. gen double dt_sol = date(dt_solicitacao,"DMY hms")
+
+. gen double dt_enc = date(dt_encaminhamento,"DMY hms")
+(417,675 missing values generated)
+
+. keep if !missing(dt_enc) & !missing(cd_esc_encaminhamento) & !missing(cep_aluno)
+(417,680 observations deleted)
+
+. keep if missing(tipo_prioridade_encaminhamento)   /* EXCLUI prioridade */
+(314,091 observations deleted)
+
+. gsort cd_aluno_sme dt_enc
+
+. by cd_aluno_sme: keep if _n==1
+(1,214,140 observations deleted)
+
+. gen ym_sol = ym(year(dt_sol),month(dt_sol))
+
+. gen idade_sol = (year(dt_sol)-ano_nasc)*12 + (month(dt_sol)-mes_nasc)
+
+. gen byte feminino = cd_sexo_aluno=="F"
+
+. gen byte branco = tp_raca_cor==1
+
+. rename cep_aluno cep
+
+. rename cd_esc_encaminhamento escola
+
+. * atributos da escola atribuida
+. merge m:1 escola using "$aud\escolas_parsed.dta", keepusing(tipoesc codinep lat lon) keep(master match) nogen
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                        65,695
+        from master                    65,695  
+        from using                          0  
+
+    Matched                         1,286,458  
+    -----------------------------------------
+
+. merge m:1 codinep using "$dsme\escolas\censo2018.dta", keepusing(in_bercario qt_salas_existentes qt_funcionarios) keep(master match) nogen
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                        84,406
+        from master                    84,406  
+        from using                          0  
+
+    Matched                         1,267,747  
+    -----------------------------------------
+
+. * distancia CEP -> escola
+. merge m:1 cep using "$dsme\cepcentroide.dta", keepusing(latitude longitude) keep(master match) nogen
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                         5,937
+        from master                     5,937  
+        from using                          0  
+
+    Matched                         1,346,216  
+    -----------------------------------------
+
+. gen double a = sin((lat-latitude)*_pi/360)^2 + cos(latitude*_pi/180)*cos(lat*_pi/180)*sin((lon-longitude)*_pi/360)^2
+(71,631 missing values generated)
+
+. gen double dist_km = 2*6371*asin(sqrt(a))
+(71,631 missing values generated)
+
+. cap encode tipoesc, gen(modal)
+
+. gen byte conveniada = strpos(tipoesc,"CR.P")>0
+
+. * celula
+. egen cell = group(cep ym_sol)
+
+. bysort cell: gen ncell = _N
+
+. save "$aud\c_assign.dta", replace
+(file <NE_ROOT>\_audit\c_assign.dta not found)
+file <NE_ROOT>\_audit\c_assign.dta saved
+
+. 
+. di ""
+
+
+. di "########## C1 — N apos exclusao de prioridade e celulas >=2 ##########"
+########## C1 — N apos exclusao de prioridade e celulas >=2 ##########
+
+. di "  N criancas (1o enc, sem prioridade) = " _N
+  N criancas (1o enc, sem prioridade) = 1352153
+
+. count if ncell>=2
+  738,810
+
+. di "  N criancas em celulas >=2 = " r(N)
+  N criancas em celulas >=2 = 738810
+
+. preserve
+
+.     keep if ncell>=2
+(613,343 observations deleted)
+
+.     egen tagcell = tag(cell)
+
+.     count if tagcell==1
+  259,165
+
+.     di "  N celulas (>=2 criancas) = " r(N)
+  N celulas (>=2 criancas) = 259165
+
+. restore
+
+. 
+. di ""
+
+
+. di "########## C2 — caracteristicas da escola atribuida (celulas >=2) ##########"
+########## C2 — caracteristicas da escola atribuida (celulas >=2) ##########
+
+. keep if ncell>=2
+(613,343 observations deleted)
+
+. foreach v in qt_salas_existentes in_bercario qt_funcionarios dist_km conveniada {
+  2.     qui sum `v'
+  3.     local m=r(mean)
+  4.     local sd=r(sd)
+  5.     qui reghdfe `v', absorb(cell) nocons
+  6.     di "  `v': media=" %8.3f `m' "  SD_total=" %8.3f `sd' "  SD_within(rmse)=" %8.3f e(rmse)
+  7. }
+  qt_salas_existentes: media=   8.638  SD_total=   3.951  SD_within(rmse)=   3.368
+  in_bercario: media=   0.565  SD_total=   0.496  SD_within(rmse)=   0.394
+  qt_funcionarios: media=  36.195  SD_total=  51.244  SD_within(rmse)=  45.716
+  dist_km: media=   2.451  SD_total=  13.711  SD_within(rmse)=   3.206
+  conveniada: media=   0.459  SD_total=   0.498  SD_within(rmse)=   0.432
+
+. 
+. di ""
+
+
+. di "########## C3 — BALANCO: caract. escola ~ chars da crianca, absorb(cell) cluster(cep) ##########"
+########## C3 — BALANCO: caract. escola ~ chars da crianca, absorb(cell) cluster(cep) ##########
+
+. foreach dep in qt_salas_existentes in_bercario qt_funcionarios dist_km conveniada {
+  2.     di ""
+  3.     di "==== DEP: `dep' ===="
+  4.     cap reghdfe `dep' feminino branco mes_nasc idade_sol, absorb(cell) vce(cluster cep)
+  5.     if !_rc {
+  6.         di "  b_fem=" %8.4f _b[feminino] " (se " %7.4f _se[feminino] ")  b_branco=" %8.4f _b[branco] " (se " %7.4f _se[branco] ")"
+  7.         di "  b_mesnasc=" %8.4f _b[mes_nasc] " (se " %7.4f _se[mes_nasc] ")  b_idadesol=" %8.4f _b[idade_sol] " (se " %7.4f _se[idade_sol] ")"
+  8.         test feminino branco mes_nasc idade_sol
+  9.         di "  >>> F conjunto = " %8.3f r(F) "  p = " %6.4f r(p) "  N=" e(N)
+ 10.     }
+ 11.     else di "  ERRO rc=`=_rc'"
+ 12. }
+
+==== DEP: qt_salas_existentes ====
+  b_fem=  0.0005 (se  0.0102)  b_branco= -0.0957 (se  0.0125)
+  b_mesnasc=  0.0007 (se  0.0015)  b_idadesol= -0.0323 (se  0.0007)
+
+ ( 1)  feminino = 0
+ ( 2)  branco = 0
+ ( 3)  mes_nasc = 0
+ ( 4)  idade_sol = 0
+
+       F(  4, 26411) =  629.07
+            Prob > F =    0.0000
+  >>> F conjunto =  629.071  p = 0.0000  N=672298
+
+==== DEP: in_bercario ====
+  b_fem=  0.0009 (se  0.0011)  b_branco=  0.0011 (se  0.0013)
+  b_mesnasc=  0.0001 (se  0.0002)  b_idadesol= -0.0108 (se  0.0001)
+
+ ( 1)  feminino = 0
+ ( 2)  branco = 0
+ ( 3)  mes_nasc = 0
+ ( 4)  idade_sol = 0
+
+       F(  4, 26411) = 2754.35
+            Prob > F =    0.0000
+  >>> F conjunto = 2754.346  p = 0.0000  N=672298
+
+==== DEP: qt_funcionarios ====
+  b_fem=  0.2351 (se  0.1363)  b_branco=  0.1377 (se  0.1628)
+  b_mesnasc= -0.0102 (se  0.0196)  b_idadesol=  0.1297 (se  0.0045)
+
+ ( 1)  feminino = 0
+ ( 2)  branco = 0
+ ( 3)  mes_nasc = 0
+ ( 4)  idade_sol = 0
+
+       F(  4, 26411) =  211.54
+            Prob > F =    0.0000
+  >>> F conjunto =  211.543  p = 0.0000  N=672298
+
+==== DEP: dist_km ====
+  b_fem= -0.0226 (se  0.0094)  b_branco=  0.1242 (se  0.0119)
+  b_mesnasc=  0.0037 (se  0.0014)  b_idadesol=  0.0041 (se  0.0003)
+
+ ( 1)  feminino = 0
+ ( 2)  branco = 0
+ ( 3)  mes_nasc = 0
+ ( 4)  idade_sol = 0
+
+       F(  4, 26444) =   70.99
+            Prob > F =    0.0000
+  >>> F conjunto =   70.986  p = 0.0000  N=689471
+
+==== DEP: conveniada ====
+  b_fem=  0.0007 (se  0.0012)  b_branco= -0.0041 (se  0.0015)
+  b_mesnasc=  0.0019 (se  0.0002)  b_idadesol= -0.0075 (se  0.0001)
+
+ ( 1)  feminino = 0
+ ( 2)  branco = 0
+ ( 3)  mes_nasc = 0
+ ( 4)  idade_sol = 0
+
+       F(  4, 27195) = 3464.47
+            Prob > F =    0.0000
+  >>> F conjunto = 3464.471  p = 0.0000  N=738810
+
+. 
+. di ""
+
+
+. di "########## C5 — celulas com variacao utilizavel ##########"
+########## C5 — celulas com variacao utilizavel ##########
+
+. egen tagcell = tag(cell)
+
+. bysort cell: egen sd_salas = sd(qt_salas_existentes)
+(44,421 missing values generated)
+
+. bysort cell: egen mx_salas = max(qt_salas_existentes)
+(7,581 missing values generated)
+
+. bysort cell: egen mn_salas = min(qt_salas_existentes)
+(7,581 missing values generated)
+
+. gen byte var_salas2 = (mx_salas-mn_salas)>=2 & !missing(mx_salas,mn_salas)
+
+. bysort cell: egen sd_berc = sd(in_bercario)
+(44,421 missing values generated)
+
+. gen byte var_berc = sd_berc>0 & !missing(sd_berc)
+
+. di "--- celulas com range qt_salas >=2 ---"
+--- celulas com range qt_salas >=2 ---
+
+. count if tagcell==1 & var_salas2==1
+  154,792
+
+. qui count if tagcell==1
+
+. di "    de " r(N) " celulas"
+    de 259165 celulas
+
+. di "--- celulas com variacao em in_bercario ---"
+--- celulas com variacao em in_bercario ---
+
+. count if tagcell==1 & var_berc==1
+  94,835
+
+. 
+. di "=== FIM C ==="
+=== FIM C ===
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag08_C.log
+  log type:  text
+ closed on:  22 Jul 2026, 14:32:57
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

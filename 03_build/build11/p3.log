@@ -1,0 +1,15 @@
+carregando spine + covariaveis...
+  contando CEIs abertos na data de solicitacao...
+  N=1,524,560. distrito ok=0.98, rq ok=0.98
+
+## Celula PRINCIPAL: idade(5) x prio x rq x distrito x semestre
+  S1 bruta:              CIF365 2010=0.563 2016=0.876  Delta=+0.313
+  S2 solicitante:        CIF365 2010=0.498 2016=0.885  Delta=+0.387
+  S3 solicitante+oferta: CIF365 2010=0.503 2016=0.870  Delta=+0.367
+  Decomposicao do Delta bruto +0.313: solicitante -0.074, oferta +0.020, operacional +0.367
+
+## Celula GROSSA: idade(4) x prio x rq (sem distrito, sem tempo); oferta grossa
+  grossa: S2=+0.421  S3=+0.409
+
+## Celula FINA: idade(8) x prio x rq x distrito x mes; oferta fina
+  fina:   S2=+0.365  S3=+0.342

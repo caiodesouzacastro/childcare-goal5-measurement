@@ -1,0 +1,26 @@
+% requer \usepackage{booktabs}. Tabela descritiva.
+\begin{table}[htbp]\centering
+\caption{Kaplan--Meier median time to referral, treating aging out of eligibility as
+censoring. Reported as a diagnostic only: censoring a competing event estimates a
+hypothetical net distribution, not the queue's realized experience. The
+paper's duration results use the competing-risks estimates of
+Section~\ref{sec:incidence} (cumulative incidence and restricted mean time).}
+\label{tab:R2b_km}
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+Year of application & S(90) & S(180) & S(365) & S(730) & Median KM (days) \\
+\midrule
+2010 & 0.612 & 0.528 & 0.420 & 0.293 & 220 \\
+2011 & 0.732 & 0.677 & 0.549 & 0.137 & 387 \\
+2012 & 0.649 & 0.522 & 0.279 & 0.072 & 198 \\
+2013 & 0.684 & 0.562 & 0.295 & 0.074 & 227 \\
+2014 & 0.725 & 0.578 & 0.269 & 0.037 & 226 \\
+2015 & 0.677 & 0.491 & 0.172 & 0.026 & 176 \\
+2016 & 0.662 & 0.473 & 0.194 & 0.012 & 167 \\
+2017 & 0.684 & 0.467 & 0.077 &  & 163 \\
+2018 & 0.518 & 0.282 & 0.039 &  & 96 \\
+\bottomrule
+\end{tabular}
+\\[3pt]{\footnotesize \textit{Note:} Estimator diagnostic, not the main analysis: this Kaplan--Meier censors aging out of eligibility rather than treating it as a competing event, and therefore estimates a hypothetical net distribution. The main duration results use cumulative incidence and restricted mean time. The survivor function S(t) is the fraction not yet referred at t days. Children never referred are treated as censored at the end of the panel, not as absent. Censoring increases for the 2017 and 2018 cohorts. Cells are left blank where the panel does not provide the full follow-up horizon.}
+\end{table}

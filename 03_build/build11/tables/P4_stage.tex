@@ -1,0 +1,19 @@
+% BLOCO P4. Descritivo.
+\begin{table}[htbp]\centering
+\caption{Within-family birth-order coefficient by the older sibling's stage at the younger's application date}
+\label{tab:P4stage}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrr}
+\toprule
+Sample & Coef. & (SE) & Pairs \\
+\midrule
+All pairs (baseline) & -7.20 & (0.11) & 79,893 \\
+(a) older applied only & -5.89 & (0.18) & 24,439 \\
+(b) older referred, not enrolled & 3.42 & (0.52) & 4,246 \\
+(c) older already enrolled & 4.22 & (0.15) & 51,208 \\
+Older applied before younger's birth & 3.21 & (0.13) & 53,561 \\
+\bottomrule
+\end{tabular}
+\\[3pt]{\footnotesize \textit{Note:} Dependent: age at first application (months); coefficient is the younger-minus-older difference, absorbing family and birth-year fixed effects, standard errors clustered by family. Rows (a)--(c) classify the older sibling's furthest stage on the day the younger applied. This classification is \emph{endogenous to the younger's own application timing}: for the older to be enrolled by then, the younger must typically have applied late, so rows (b)--(c) select on late younger applications and the coefficient loses its meaning as a prior-contact effect. The last row---the older applied before the younger was born---does not condition on the younger's timing and is the cleaner test of prior experience.}
+\end{table}

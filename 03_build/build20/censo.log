@@ -1,0 +1,31 @@
+2007 escolas 5445 | creche total 116331 | mun+conv 33770 | 0-3 total 164981 | colunas ausentes: [] | conveniada sem TP_CONVENIO: 2245
+2008 escolas 5664 | creche total 149880 | mun+conv 113691 | 0-3 total 201572 | colunas ausentes: [] | conveniada sem TP_CONVENIO: 0
+2009 escolas 5843 | creche total 160259 | mun+conv 123292 | 0-3 total 206718 | colunas ausentes: [] | conveniada sem TP_CONVENIO: 0
+2010 escolas 5899 | creche total 170720 | mun+conv 128212 | 0-3 total 218470 | colunas ausentes: [] | conveniada sem TP_CONVENIO: 0
+2011 escolas 6840 | creche total 246020 | mun+conv 195348 | 0-3 total 213843 | colunas ausentes: [] | conveniada sem TP_CONVENIO: 0
+2012 escolas 6823 | creche total 262612 | mun+conv 205677 | 0-3 total 228912 | colunas ausentes: [] | conveniada sem TP_CONVENIO: 0
+2013 escolas 6953 | creche total 267307 | mun+conv 208246 | 0-3 total 253900 | colunas ausentes: [] | conveniada sem TP_CONVENIO: 0
+2014 escolas 6995 | creche total 282235 | mun+conv 220533 | 0-3 total 268475 | colunas ausentes: [] | conveniada sem TP_CONVENIO: 0
+2015 escolas 7594 | creche total 298502 | mun+conv 237684 | 0-3 total 285769 | colunas ausentes: [] | conveniada sem TP_CONVENIO: 0
+2016 escolas 7756 | creche total 330872 | mun+conv 272960 | 0-3 total 317116 | colunas ausentes: [] | conveniada sem TP_CONVENIO: 0
+2017 escolas 7839 | creche total 343296 | mun+conv 286748 | 0-3 total 327213 | colunas ausentes: [] | conveniada sem TP_CONVENIO: 0
+2018 escolas 8020 | creche total 365854 | mun+conv 309947 | 0-3 total 349750 | colunas ausentes: [] | conveniada sem TP_CONVENIO: 0
+2019 escolas 8204 | creche total 387188 | mun+conv 330888 | 0-3 total 369425 | colunas ausentes: [] | conveniada sem TP_CONVENIO: 0
+2020 escolas 8345 | creche total 380783 | mun+conv 336711 | 0-3 total 361000 | colunas ausentes: [] | conveniada sem TP_CONVENIO: 0
+2021 escolas 8462 | creche total 377862 | mun+conv 345974 | 0-3 total 355605 | colunas ausentes: [] | conveniada sem TP_CONVENIO: 0
+2022 escolas 8529 | creche total 389561 | mun+conv 53417 | 0-3 total 365416 | colunas ausentes: [] | conveniada sem TP_CONVENIO: 0
+2023 escolas 8449 | creche total 376676 | mun+conv 52357 | 0-3 total 353147 | colunas ausentes: ['IN_CONVENIADA_PP', 'TP_CONVENIO_PODER_PUBLICO'] | conveniada sem TP_CONVENIO: 0
+2024 escolas 8023 | creche total 370706 | mun+conv 50478 | 0-3 total 348386 | colunas ausentes: ['IN_CONVENIADA_PP', 'TP_CONVENIO_PODER_PUBLICO'] | conveniada sem TP_CONVENIO: 0
+[gravado e relido] <NE_ROOT>/03_build/build20/creche_mat_sp_2007_2024.csv
+confere 2010-2018 contra build13 (diferenca):
+       QT_MAT_INF_CRE  QT_MAT_BAS_0_3
+ano                                 
+2010             0.0             0.0
+2011             0.0             0.0
+2012             0.0             0.0
+2013             0.0             0.0
+2014             0.0             0.0
+2015             0.0             0.0
+2016             0.0             0.0
+2017             0.0             0.0
+2018             0.0             0.0

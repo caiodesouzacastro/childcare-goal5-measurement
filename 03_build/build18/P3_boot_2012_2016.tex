@@ -1,0 +1,16 @@
+% BLOCO F (revisao r1). Bootstrap do Delta padronizado.
+\begin{table}[htbp]\centering
+\caption{Bootstrap interval for the 2013--2016 change in one-year referral incidence}
+\label{tab:P3boot}
+\footnotesize
+\setlength{\tabcolsep}{6pt}
+\begin{tabular}{lrrc}
+\toprule
+Series & $\Delta$ (2016$-$2013) & Bootstrap s.e. & 95\% CI \\
+\midrule
+Raw (unweighted) & +0.245 & 0.002 & [+0.242, +0.249] \\
+Applicant composition (2013 target) & +0.259 & 0.002 & [+0.256, +0.262] \\
+\bottomrule
+\end{tabular}
+\\[3pt]{\footnotesize \textit{Note:} Bootstrap of the 2013--2016 change in the one-year cumulative incidence of referral (Aalen--Johansen, aging out of eligibility treated as a competing event), for the unweighted series and for the series reweighted to the 2013 cohort's joint distribution of applicant attributes---age at application, priority, postcode income quartile, district and semester of application. These are the first two rows of Table~\ref{tab:P3series}. 1000 replications; children are resampled with replacement within each of the 2010 and 2016 cohorts and within the 2013 cohort, the last included because it supplies the target composition, and the standardization weights (including the 1st/99th percentile trimming) are recomputed in every replication. Percentile interval; random seed 20260726. The interval describes sampling variability in a reweighted descriptive difference; it is not a confidence interval for a causal quantity.}
+\end{table}

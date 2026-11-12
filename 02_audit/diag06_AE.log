@@ -1,0 +1,258 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag06_AE.log
+  log type:  text
+ opened on:  22 Jul 2026, 13:16:38
+
+. 
+. *==============================================================
+. di "########## A4 — regra 31/03 na Educacao Infantil? ##########"
+########## A4 — regra 31/03 na Educacao Infantil? ##########
+
+. use "$aud\matri_traj.dta", clear
+
+. * EI series: 241 BercI, 242 BercII, 267 MiniI, 268 MiniII, 270 InfI, 274 InfII
+. * primeira aparicao por (crianca, serie)
+. bysort cd_aluno_sme cd_serie (an_letivo): keep if _n==1
+(730,853 observations deleted)
+
+. di "--- Bercario I (241): mes_nasc x ano de entrada, coorte 2015 ---"
+--- Bercario I (241): mes_nasc x ano de entrada, coorte 2015 ---
+
+. tab mes_nasc_aluno an_letivo if cd_serie==241 & ano_nasc_aluno==2015
+
+MES_NASC_A |            AN_LETIVO
+      LUNO |      2015       2016       2017 |     Total
+-----------+---------------------------------+----------
+         1 |       620          2          0 |       622 
+         2 |       381          0          0 |       381 
+         3 |       255          1          0 |       256 
+         4 |       173      5,432          1 |     5,606 
+         5 |       102      5,207          2 |     5,311 
+         6 |        41      4,465          0 |     4,506 
+         7 |        17      4,007          0 |     4,024 
+         8 |         7      3,369          0 |     3,376 
+         9 |         3      2,796          2 |     2,801 
+        10 |         1      2,070          0 |     2,071 
+        11 |         0      1,620          0 |     1,620 
+        12 |         0      1,214          1 |     1,215 
+-----------+---------------------------------+----------
+     Total |     1,600     30,183          6 |    31,789 
+
+. di "--- Infantil I (270): mes_nasc x ano de entrada, coorte 2011 ---"
+--- Infantil I (270): mes_nasc x ano de entrada, coorte 2011 ---
+
+. tab mes_nasc_aluno an_letivo if cd_serie==270 & ano_nasc_aluno==2011
+
+MES_NASC_A |                       AN_LETIVO
+      LUNO |      2012       2014       2015       2016       2017 |     Total
+-----------+-------------------------------------------------------+----------
+         1 |         0          1      8,528         61          0 |     8,590 
+         2 |         0          0      8,130         41          0 |     8,171 
+         3 |         0          0      9,370         74          0 |     9,444 
+         4 |         0          0         13      9,058          4 |     9,075 
+         5 |         1          1          8      9,529          1 |     9,540 
+         6 |         0          0          4      8,884          4 |     8,892 
+         7 |         0          0          8      9,029          4 |     9,041 
+         8 |         0          0          7      8,881          2 |     8,890 
+         9 |         0          0          3      8,221          7 |     8,231 
+        10 |         0          0          2      7,988          6 |     7,996 
+        11 |         0          0          6      7,809          1 |     7,816 
+        12 |         0          0          2      8,542          5 |     8,549 
+-----------+-------------------------------------------------------+----------
+     Total |         1          2     26,081     78,117         34 |   104,235 
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## A5 — DOSE: anos de EI antes do 1o ano (marco vs abril) ##########"
+########## A5 — DOSE: anos de EI antes do 1o ano (marco vs abril) ##########
+
+. use "$aud\matri_traj.dta", clear
+
+. gen byte is_ei = inlist(cd_serie,241,242,267,268,270,274)
+
+. keep if is_ei
+(3,104,458 observations deleted)
+
+. * n de anos letivos distintos em EI por crianca
+. bysort cd_aluno_sme an_letivo: keep if _n==1
+(439,430 observations deleted)
+
+. bysort cd_aluno_sme: gen n_ei_anos = _N
+
+. by cd_aluno_sme: keep if _n==1
+(2,462,753 observations deleted)
+
+. di "--- coorte 2011: anos de EI por mes de nascimento ---"
+--- coorte 2011: anos de EI por mes de nascimento ---
+
+. table mes_nasc_aluno if ano_nasc_aluno==2011, stat(count n_ei_anos) stat(mean n_ei_anos) stat(p50 n_ei_anos)
+
+---------------------------------------------------------------------------
+               |  Number of non-missing values       Mean   50th percentile
+---------------+-----------------------------------------------------------
+MES_NASC_ALUNO |                                                           
+  1            |                        11,849   3.066925                 3
+  2            |                        11,345   3.014191                 3
+  3            |                        12,987   2.984446                 3
+  4            |                        12,199   3.584064                 4
+  5            |                        12,785    3.52937                 4
+  6            |                        11,926   3.473671                 4
+  7            |                        12,048   3.403718                 4
+  8            |                        11,740   3.390204                 3
+  9            |                        10,894   3.287589                 3
+  10           |                        10,599   3.263232                 3
+  11           |                        10,408   3.222713                 3
+  12           |                        11,217   3.161897                 3
+  Total        |                       139,997   3.284263                 3
+---------------------------------------------------------------------------
+
+. di "--- coorte 2010 ---"
+--- coorte 2010 ---
+
+. table mes_nasc_aluno if ano_nasc_aluno==2010, stat(mean n_ei_anos) stat(p50 n_ei_anos)
+
+--------------------------------------------
+               |      Mean   50th percentile
+---------------+----------------------------
+MES_NASC_ALUNO |                            
+  1            |  3.015287                 3
+  2            |  3.008825                 3
+  3            |  2.935936                 3
+  4            |  3.466385                 4
+  5            |  3.470163                 4
+  6            |  3.404957                 4
+  7            |  3.340498                 3
+  8            |  3.316074                 3
+  9            |  3.242185                 3
+  10           |  3.159779                 3
+  11           |  3.124284                 3
+  12           |  3.100517                 3
+  Total        |  3.218065                 3
+--------------------------------------------
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## E1/E2/E3 — desfechos administrativos ##########"
+########## E1/E2/E3 — desfechos administrativos ##########
+
+. use "$aud\matri_traj.dta", clear
+
+. di "--- tab sit_al_reprov ---"
+--- tab sit_al_reprov ---
+
+. tab sit_al_reprov, miss
+
+SIT_AL_REPR |
+         OV |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |  7,519,556       98.76       98.76
+          1 |     94,150        1.24      100.00
+------------+-----------------------------------
+      Total |  7,613,706      100.00
+
+. * por crianca: tem 1o ano, tem 3o ano, primeira serie 110 ano, ever reprov
+. gen byte s110 = cd_serie==110
+
+. gen byte s112 = cd_serie==112
+
+. gen byte rep = (sit_al_reprov==1)
+
+. gen ano110 = an_letivo if s110==1
+(7,046,620 missing values generated)
+
+. collapse (max) tem1ano=s110 tem3ano=s112 ever_reprov=rep (min) ano_ent_1ano=ano110 ///
+>          (firstnm) ano_nasc_aluno mes_nasc_aluno, by(cd_aluno_sme)
+
+. * on-time: esperado = ano_nasc+6 se mes<=3, senao +7
+. gen esperado = ano_nasc_aluno + cond(mes_nasc_aluno<=3,6,7)
+
+. gen byte ontime = (ano_ent_1ano==esperado) if tem1ano==1
+(1,603,222 missing values generated)
+
+. save "$aud\traj_child.dta", replace
+(file <NE_ROOT>\_audit\traj_child.dta not found)
+file <NE_ROOT>\_audit\traj_child.dta saved
+
+. 
+. di "--- E1: por coorte, N com 1o ano e 3o ano observados ---"
+--- E1: por coorte, N com 1o ano e 3o ano observados ---
+
+. forvalues c=2008/2012 {
+  2.     qui count if ano_nasc_aluno==`c'
+  3.     local nt=r(N)
+  4.     qui count if ano_nasc_aluno==`c' & tem1ano==1
+  5.     local n1=r(N)
+  6.     qui count if ano_nasc_aluno==`c' & tem3ano==1
+  7.     local n3=r(N)
+  8.     di "  coorte `c': N traj=`nt'  ; 1o ano=`n1'  ; 3o ano=`n3'"
+  9. }
+  coorte 2008: N traj=144554  ; 1o ano=57431  ; 3o ano=51665
+  coorte 2009: N traj=143713  ; 1o ano=57942  ; 3o ano=50648
+  coorte 2010: N traj=141281  ; 1o ano=57018  ; 3o ano=13690
+  coorte 2011: N traj=143260  ; 1o ano=51634  ; 3o ano=2
+  coorte 2012: N traj=144321  ; 1o ano=13413  ; 3o ano=1
+
+. di ""
+
+
+. di "--- E2: taxa on-time no 1o ano e taxa de repeticao (fundamental), por coorte ---"
+--- E2: taxa on-time no 1o ano e taxa de repeticao (fundamental), por coorte ---
+
+. forvalues c=2008/2012 {
+  2.     qui sum ontime if ano_nasc_aluno==`c' & tem1ano==1
+  3.     local ot=r(mean)
+  4.     local n1=r(N)
+  5.     qui sum ever_reprov if ano_nasc_aluno==`c'
+  6.     local rr=r(mean)
+  7.     di "  coorte `c': on-time(1oano)=" %5.3f `ot' " (N=`n1')  ; taxa reprov=" %5.3f `rr'
+  8. }
+  coorte 2008: on-time(1oano)=0.988 (N=57431)  ; taxa reprov=0.027
+  coorte 2009: on-time(1oano)=0.987 (N=57942)  ; taxa reprov=0.023
+  coorte 2010: on-time(1oano)=0.989 (N=57018)  ; taxa reprov=0.010
+  coorte 2011: on-time(1oano)=0.994 (N=51634)  ; taxa reprov=0.002
+  coorte 2012: on-time(1oano)=0.991 (N=13413)  ; taxa reprov=0.001
+
+. di ""
+
+
+. di "--- E3: N disponivel por desfecho administrativo (coortes 2008-2012) ---"
+--- E3: N disponivel por desfecho administrativo (coortes 2008-2012) ---
+
+. count if inrange(ano_nasc_aluno,2008,2012) & tem1ano==1
+  237,438
+
+. di "  com 1o ano fundamental: " r(N)
+  com 1o ano fundamental: 237438
+
+. count if inrange(ano_nasc_aluno,2008,2012) & tem3ano==1
+  116,006
+
+. di "  com 3o ano fundamental: " r(N)
+  com 3o ano fundamental: 116006
+
+. count if inrange(ano_nasc_aluno,2008,2012) & !missing(ontime)
+  237,438
+
+. di "  com on-time calculavel: " r(N)
+  com on-time calculavel: 237438
+
+. di "  (comparar com ~27 mil / ~115 mil da PSP)"
+  (comparar com ~27 mil / ~115 mil da PSP)
+
+. 
+. di "=== FIM AE ==="
+=== FIM AE ===
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag06_AE.log
+  log type:  text
+ closed on:  22 Jul 2026, 13:17:42
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

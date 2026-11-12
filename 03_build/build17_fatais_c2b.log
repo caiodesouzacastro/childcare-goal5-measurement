@@ -1,0 +1,73 @@
+validacao coorte (Tabela 1: 0.563 0.530 0.631 0.753 0.761 0.814 0.876): {2010: np.float64(0.563), 2011: np.float64(0.53), 2012: np.float64(0.631), 2013: np.float64(0.753), 2014: np.float64(0.761), 2015: np.float64(0.814), 2016: np.float64(0.876)}
+
+coortes: parcela das solicitacoes antes de jul/2012 e completude ponderada pelos semestres de solicitacao (%):
+ coorte  solicitantes  pct_sol_antes_2012S2  pct_sol_2012S1  completude_ponderada
+   2010        128352                  47.6            18.6                  82.8
+   2011        146693                  35.6            21.8                  92.0
+   2012        155292                   8.2             8.2                  97.9
+   2013        153033                   0.0             0.0                  98.4
+   2014        151772                   0.0             0.0                  98.6
+   2015        146293                   0.0             0.0                  99.0
+   2016        128143                   0.0             0.0                  99.4
+[gravado e relido] <NE_ROOT>\03_build\build17_fatais\c2_coorte_semestres.csv (7 linhas)
+
+ganho por inicio da janela:
+                                              serie inicio  fim  passos         N  valor_inicio  valor_fim  ganho  completude_inicio
+       encaminhamento 1 ano, por ano de solicitacao   2010 2017     7.0 1089173.0         0.510      0.903  0.393               21.1
+       encaminhamento 1 ano, por ano de solicitacao   2011 2017     6.0 1037305.0         0.351      0.903  0.552               51.5
+       encaminhamento 1 ano, por ano de solicitacao   2012 2017     5.0  938046.0         0.640      0.903  0.263               95.4
+       encaminhamento 1 ano, por ano de solicitacao 2012S2 2017     4.5  838381.0         0.562      0.903  0.342               98.0
+       encaminhamento 1 ano, por ano de solicitacao   2013 2017     4.0  764751.0         0.646      0.903  0.257               98.3
+       encaminhamento 1 ano, por ano de solicitacao   2014 2017     3.0  609827.0         0.684      0.903  0.220               97.9
+                   encaminhamento 1 ano, por coorte   2010 2016     6.0  934357.0         0.563      0.876  0.313               82.8
+                   encaminhamento 1 ano, por coorte   2011 2016     5.0  828057.0         0.530      0.876  0.346               92.0
+                   encaminhamento 1 ano, por coorte   2012 2016     4.0  701291.0         0.631      0.876  0.245               97.9
+                   encaminhamento 1 ano, por coorte   2013 2016     3.0  561851.0         0.753      0.876  0.123               98.4
+                   encaminhamento 1 ano, por coorte   2014 2016     2.0  421040.0         0.761      0.876  0.115               98.6
+                        matricula 1 ano, por coorte   2010 2016     6.0  934357.0         0.468      0.747  0.279               82.8
+                        matricula 1 ano, por coorte   2011 2016     5.0  828057.0         0.427      0.747  0.320               92.0
+                        matricula 1 ano, por coorte   2012 2016     4.0  701291.0         0.523      0.747  0.224               97.9
+                        matricula 1 ano, por coorte   2013 2016     3.0  561851.0         0.644      0.747  0.103               98.4
+                        matricula 1 ano, por coorte   2014 2016     2.0  421040.0         0.639      0.747  0.109               98.6
+registro antes de 12 meses (% nascidos), por coorte   2010 2016     6.0       NaN        11.000     50.100 39.200               82.8
+registro antes de 12 meses (% nascidos), por coorte   2011 2016     5.0       NaN        27.400     50.100 22.800               92.0
+registro antes de 12 meses (% nascidos), por coorte   2012 2016     4.0       NaN        38.300     50.100 11.900               97.9
+registro antes de 12 meses (% nascidos), por coorte   2013 2016     3.0       NaN        41.500     50.100  8.700               98.4
+registro antes de 12 meses (% nascidos), por coorte   2014 2016     2.0       NaN        44.100     50.100  6.100               98.6
+[gravado e relido] <NE_ROOT>\03_build\build17_fatais\c2_inicio_janela.csv (21 linhas)
+
+coorte 2012, so solicitacoes a partir de jul/2012: 0.607 (N=126,690) contra 0.631 na coorte inteira
+          serie periodo     N  ref365  mat365  sol_antes_12m_pct_solicitantes  N_solicitantes
+ano_solicitacao  2010S1 30006  0.5670  0.5188                             NaN             NaN
+ano_solicitacao  2010S2 21862  0.4328  0.3935                             NaN             NaN
+ano_solicitacao  2011S1 41470  0.3939  0.3508                             NaN             NaN
+ano_solicitacao  2011S2 57789  0.3204  0.2386                             NaN             NaN
+ano_solicitacao  2012S1 99665  0.6987  0.5779                             NaN             NaN
+ano_solicitacao  2012S2 73630  0.5616  0.4646                             NaN             NaN
+ano_solicitacao  2013S1 87365  0.7067  0.6107                             NaN             NaN
+ano_solicitacao  2013S2 67559  0.5685  0.4737                             NaN             NaN
+ano_solicitacao  2014S1 80344  0.7385  0.6379                             NaN             NaN
+ano_solicitacao  2014S2 69068  0.6203  0.5190                             NaN             NaN
+ano_solicitacao  2015S1 82977  0.8097  0.6908                             NaN             NaN
+ano_solicitacao  2015S2 74548  0.7599  0.6394                             NaN             NaN
+ano_solicitacao  2016S1 87782  0.7995  0.6819                             NaN             NaN
+ano_solicitacao  2016S2 66841  0.7239  0.6163                             NaN             NaN
+ano_solicitacao  2017S1 83849  0.9160  0.7655                             NaN             NaN
+ano_solicitacao  2017S2 64418  0.8870  0.7621                             NaN             NaN
+ano_solicitacao  2018S1 85583  0.9738  0.8213                             NaN             NaN
+ano_solicitacao  2018S2 65690  0.9300  0.7449                             NaN             NaN
+coorte_semestre  2010S1 51907  0.5617  0.4644                           10.50         63374.0
+coorte_semestre  2010S2 54393  0.5646  0.4718                           19.32         64978.0
+coorte_semestre  2011S1 63417  0.5208  0.4196                           26.19         74074.0
+coorte_semestre  2011S2 63349  0.5401  0.4354                           39.73         72619.0
+coorte_semestre  2012S1 72322  0.6470  0.5366                           43.48         79903.0
+coorte_semestre  2012S2 67118  0.6140  0.5089                           43.18         75389.0
+coorte_semestre  2013S1 73261  0.7390  0.6328                           46.74         79638.0
+coorte_semestre  2013S2 67550  0.7687  0.6562                           46.96         73395.0
+coorte_semestre  2014S1 75412  0.7723  0.6552                           50.04         78752.0
+coorte_semestre  2014S2 71253  0.7489  0.6211                           51.96         73020.0
+coorte_semestre  2015S1 78027  0.8146  0.6903                           57.03         78088.0
+coorte_semestre  2015S2 68205  0.8130  0.6816                           60.11         68205.0
+coorte_semestre  2016S1 70248  0.8562  0.7311                           64.23         70248.0
+coorte_semestre  2016S2 57895  0.9009  0.7672                           66.83         57895.0
+[gravado e relido] <NE_ROOT>\03_build\build17_fatais\c3x_series_semestre.csv (32 linhas)

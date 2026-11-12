@@ -1,0 +1,98 @@
+================================================================================
+BUILD01 -- PRODUCAO DE TABELAS E FIGURAS (paper descritivo da fila de creche SP)
+Data: 2026-07-22
+================================================================================
+
+OBJETIVO
+  Producao (nao auditoria) das tabelas/figuras que caracterizam como a fila
+  centralizada de creche de Sao Paulo se reequilibrou na expansao 2010-2019.
+
+REGRAS HONRADAS
+  [OK] Linguagem descritiva: nenhum titulo/nota/comentario usa efeito, impacto,
+       causa, "leva a" ou "resulta em". Verificado por grep sobre tables/ e facts.md.
+  [OK] Capacidade SEMPRE de VAGOFER / MODULO / CAPREAL / vagas_contratadas.
+       Matricula (MATRIC/MATRICULA) so aparece como numerador da razao de ocupacao
+       (T6b) e como coluna comparativa (T6a) -- nunca para DEFINIR capacidade.
+  [OK] Nenhum artefato do pipeline invalidado usado como insumo (rvar, dt_corte,
+       dt_corte_escola, trat_ber_*, trat20**ber, escola_rdd). Aparecem apenas
+       NOMEADOS no apendice T10, que documenta por que falharam.
+  [OK] Nada modificado em Dropbox\ (exceto _audit\) nem em <D>\. Leituras apenas:
+       Fila1018.dta, cepcen(nao usado), cep_renda_pop_2010.dta, BaseIPVS2010.csv.
+  [OK] Reaproveitados: B_novo.dta, child_master(feather novo), cep_setor.dta,
+       cap_full/esc_sem_cap.csv, cep_cei_pairs_novo.dta, traj_child.dta,
+       eventos_conv.csv, perfil (_sme_publico), turmas_modulo.
+  [OK] Numeros que nao sairam: escritos como "nao disponivel" (T8b), sem interpolar.
+
+FERRAMENTAS
+  Python 3.12 (pandas 2.3.3, matplotlib 3.11) para todo o build. Stata 17 usado
+  apenas para inspecao de esquemas (StataMP-64 em modo -b hospeda mal; as .dta
+  foram lidas via pandas.read_stata, mais robusto neste ambiente).
+
+--------------------------------------------------------------------------------
+PIPELINE (scripts em ...\Neighborhood Effects\_audit\)
+--------------------------------------------------------------------------------
+1. build01_perfil.py
+   Entrada: 13 CSV de perfil (_sme_publico), 2013s1..2019s1 (2018s1 = jun2018;
+   2019s2 excluido, estrutura incompativel). Filtro MODAL=CRECHE; agrupamento de
+   DESCSERIE (BERC1/BERC2/MINI1/MINI2). Capacidade = soma VAGOFER.
+   -> 299.117 turmas-creche; painel perfil_turma.csv.
+   -> T2a/T2b/T2c, T6b, T6c, T7a.
+
+2. build01_cepcovars.py
+   cep_renda_pop_2010.dta (renda media domiciliar do setor censitario, Censo 2010)
+   + BaseIPVS2010.csv (grupo IPVS por setor censitario, municipio 3550308), unidos
+   ao CEP pelo cod_setor. -> cep_covars.csv (43.495 CEP; IPVS casado 99,5%).
+
+3. build01_child.py
+   Spine = B_novo (1.524.560 solicitacoes, 1 por crianca). Extras de Fila1018
+   (3.298.064 linhas): sexo, raca, prioridade, serie solicitada, escola de matricula
+   (1a solicitacao / 1a matricula por crianca). Covariaveis por CEP (renda 98,4%,
+   IPVS), n de CEIs <=2km, rank/distancia do CEI de matricula (cep_cei_pairs_novo,
+   2.313 CEIs geolocalizados). Idades em meses; espera = dt_mat_first - dt_sol.
+   -> child_master.feather.
+
+4. build01_child_tables.py -> T1, T3(+medianas,b,c,d), T4(a,b,c,d), T5(a,b,c).
+5. build01_rest.py        -> T6a (turmas_modulo, MODULO), T7b (eventos_conv),
+                             T7c (cap_berc/solicitacoes por setor), T8a (traj_child).
+6. build01_figures.py     -> F1..F5 (pdf + *_data.csv).
+7. build01_tex.py         -> tables/*.tex (booktabs, notas autossuficientes) +
+                             tables/*.csv + facts.md.
+
+--------------------------------------------------------------------------------
+CONFERENCIAS DE CONSISTENCIA
+--------------------------------------------------------------------------------
+  B_novo unico por cd_aluno_sme: 1.524.560 (1 copia cada).           [OK]
+  ever_mat=1: 1.320.845 ; nunca matriculado: 203.715.                [OK, bate T4d]
+  ano_sol 2010-2018 = 1.473.454 ; 2006-2009 = 51.106 (so em Total).
+  T2a capacidade 2019s1 (DIR+CON) por agrupamento:
+     Berc.I 32.620 ; Berc.II 86.402 ; Mini I 104.040 ; Mini II 115.831
+     -> identicos aos numeros reportados no DIAG11.                  [OK]
+  T7b aberturas 2013=341 / 2015=692 ; vagas fechadas 2018=14.505 / 2019=12.158
+     -> batem com DIAG11 (B3/B4).                                    [OK]
+  T3 verificacao da identidade (media): |col5| <= 0,042 mes.         [OK]
+
+--------------------------------------------------------------------------------
+RESULTADOS-CHAVE (ver facts.md para todos os numeros e fontes)
+--------------------------------------------------------------------------------
+  - Idade media de entrada em creche cai de 40,7 (2010) para 21,6 meses (2018).
+    Da queda 2010->2018, ~80% vem de solicitacao mais precoce e ~20% de menor espera.
+  - Capacidade autorizada cresce em todos os agrupamentos; expansao concentrada na
+    rede conveniada (CEIs em operacao 1.641->2.406; conveniada 1.223->2.004).
+  - Composicao das matriculas: Conveniada 51%->70%; Direta 24%->14% (2010->2018).
+  - 12,4% das criancas matriculam-se no CEI mais proximo; 39,5% num CEI >2km/s/coord.
+  - Cap. de Bercario por solicitacao (mediana entre setores) sobe e converge entre
+    quartis de renda do setor (~0,31-0,45 em 2013 -> ~0,62-0,65 em 2018).
+  - Nunca-matriculados: solicitam mais tarde, renda do CEP levemente maior, menos
+    CEIs proximos, muito menos prioridade.
+
+--------------------------------------------------------------------------------
+SAIDAS
+--------------------------------------------------------------------------------
+  tables/  : 24 tabelas em .tex (booktabs) + .csv equivalentes ; T8b = nota "nao
+             disponivel" ; T10 = apendice metodologico (DIAG01-11).
+  figures/ : F1..F5 em .pdf + *_data.csv.
+  facts.md : todo numero das tabelas/figuras em texto corrido, com script de origem,
+             e a lista do que nao saiu.
+  _staging/: CSVs intermediarios e child_master.feather (insumos das tabelas).
+
+FIM DO BUILD01.

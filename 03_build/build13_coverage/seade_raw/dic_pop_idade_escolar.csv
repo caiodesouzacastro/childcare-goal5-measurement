@@ -1,0 +1,12 @@
+variavel;tipo;descricao;fonte
+cod_ibge;numérico;Código oficial de 7 dígitos definido pelo IBGE para município;Instituto Brasileiro de Geografia e Estatística – IBGE 
+ano;texto;Ano de referência;Fundação Sistema Estadual de Análise de Dados – Seade
+00_03anos ;numérico;População residente de 0 a 3 anos de idade;Fundação Sistema Estadual de Análise de Dados – Seade
+04_05anos ;numérico;População residente de 4 e 5 anos de idade;Fundação Sistema Estadual de Análise de Dados – Seade
+ 06_10anos ;numérico;População residente de 6 a 10 anos de idade;Fundação Sistema Estadual de Análise de Dados – Seade
+11_14anos ;numérico;População residente de 11 a 14 anos de idade;Fundação Sistema Estadual de Análise de Dados – Seade
+15_17anos ;numérico;População residente de 15 a 17 anos de idade;Fundação Sistema Estadual de Análise de Dados – Seade
+populacao_total ;numérico;População residente total;Fundação Sistema Estadual de Análise de Dados – Seade
+ate17anos ;numérico;População residente de 0 a 17 anos de idade;Fundação Sistema Estadual de Análise de Dados – Seade
+demais_idades ;numérico;População residente de 18 anos e mais de idade;Fundação Sistema Estadual de Análise de Dados – Seade
+partic_ate17anos;numérico;Participação percentual da população residente de 0 a 17 anos no total da população;Fundação Sistema Estadual de Análise de Dados – Seade

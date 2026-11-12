@@ -1,0 +1,209 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag11_D.log
+  log type:  text
+ opened on:  22 Jul 2026, 19:36:04
+
+. 
+. * --- escola mais proxima + distrito/setor por CEP ---
+. use codesc distrito setor using "$aud\cap_full.dta", clear
+
+. rename codesc ceicode
+
+. bysort ceicode: keep if _n==1
+(23,198 observations deleted)
+
+. tempfile escmeta
+
+. save `escmeta'
+file <HOME>\AppData\Local\Temp\ST_4b0_000001.tmp saved as .dta format
+
+. use cep ceicode dist_km using "$aud\cep_cei_pairs_novo.dta", clear
+
+. bysort cep (dist_km): keep if _n==1
+(1,281,883 observations deleted)
+
+. rename ceicode esc_prox
+
+. tempfile nearest
+
+. save `nearest'
+file <HOME>\AppData\Local\Temp\ST_4b0_000002.tmp saved as .dta format
+
+. 
+. use "$aud\berc_design.dta", clear
+
+. merge m:1 cep using `nearest', keep(master match) nogen
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                         6,905
+        from master                     6,905  
+        from using                          0  
+
+    Matched                           587,008  
+    -----------------------------------------
+
+. rename esc_prox ceicode
+
+. merge m:1 ceicode using `escmeta', keep(master match) nogen
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                         7,629
+        from master                     7,629  
+        from using                          0  
+
+    Matched                           586,284  
+    -----------------------------------------
+
+. egen distid = group(distrito)
+(7,629 missing values generated)
+
+. egen setorid = group(setor)
+(7,629 missing values generated)
+
+. gen dsem = distid*100 + sol_sidx
+(7,629 missing values generated)
+
+. gen ssem = setorid*100 + sol_sidx
+(7,629 missing values generated)
+
+. * escalar choques para 100 vagas
+. foreach v in choque_neg choque_pos choque_pre choque_fut cap_base {
+  2.     gen `v'100 = `v'/100
+  3. }
+
+. di "N = " _N
+N = 593913
+
+. 
+. program define R
+  1.     args dep xs absv
+  2.     qui reghdfe `dep' `xs', absorb(`absv') vce(cluster ceicode)
+  3.     di "  [`dep' | abs=`absv'] N=" %9.0f e(N) ///
+>        "  bNEG=" %8.4f _b[choque_neg100] " (se " %7.4f _se[choque_neg100] ")" ///
+>        "  bPOS=" %8.4f _b[choque_pos100] " (se " %7.4f _se[choque_pos100] ")"
+  4. end
+
+. 
+. di ""
+
+
+. di "########## D1 — primeiro estagio (choque_neg/pos + cap_base) ##########"
+########## D1 — primeiro estagio (choque_neg/pos + cap_base) ##########
+
+. di "  Deps: espera(dias), enc180(0/1), idade_entrada(m), mat365(0/1)."
+  Deps: espera(dias), enc180(0/1), idade_entrada(m), mat365(0/1).
+
+. di "  --- spec A: absorb(distrito#semestre) ---"
+  --- spec A: absorb(distrito#semestre) ---
+
+. foreach d in espera enc180 idade_entrada mat365 {
+  2.     R `d' "choque_neg100 choque_pos100 cap_base100" dsem
+  3. }
+  [espera | abs=dsem] N=   513844  bNEG=  3.2876 (se  1.1306)  bPOS=  0.6366 (se  0.9952)
+  [enc180 | abs=dsem] N=   586284  bNEG= -0.0063 (se  0.0024)  bPOS=  0.0002 (se  0.0019)
+  [idade_entrada | abs=dsem] N=   391206  bNEG=  0.1074 (se  0.0539)  bPOS=  0.0367 (se  0.0434)
+  [mat365 | abs=dsem] N=   586284  bNEG= -0.0080 (se  0.0030)  bPOS= -0.0016 (se  0.0024)
+
+. di "  --- spec B: absorb(cep) ---"
+  --- spec B: absorb(cep) ---
+
+. foreach d in espera enc180 idade_entrada mat365 {
+  2.     R `d' "choque_neg100 choque_pos100 cap_base100" cep
+  3. }
+  [espera | abs=cep] N=   508484  bNEG=  6.9525 (se  0.9150)  bPOS= 10.7054 (se  0.6943)
+  [enc180 | abs=cep] N=   581201  bNEG= -0.0682 (se  0.0034)  bPOS= -0.0880 (se  0.0029)
+  [idade_entrada | abs=cep] N=   385200  bNEG=  0.4171 (se  0.0357)  bPOS=  0.5609 (se  0.0243)
+  [mat365 | abs=cep] N=   581201  bNEG=  0.0004 (se  0.0019)  bPOS=  0.0124 (se  0.0018)
+
+. di "  --- spec C: absorb(setor#semestre) ---"
+  --- spec C: absorb(setor#semestre) ---
+
+. foreach d in espera enc180 idade_entrada mat365 {
+  2.     R `d' "choque_neg100 choque_pos100 cap_base100" ssem
+  3. }
+  [espera | abs=ssem] N=   513833  bNEG=  0.4223 (se  1.1684)  bPOS=  1.0842 (se  0.8552)
+  [enc180 | abs=ssem] N=   586274  bNEG= -0.0004 (se  0.0029)  bPOS= -0.0015 (se  0.0023)
+  [idade_entrada | abs=ssem] N=   391197  bNEG= -0.0347 (se  0.0678)  bPOS= -0.0051 (se  0.0489)
+  [mat365 | abs=ssem] N=   586274  bNEG= -0.0015 (se  0.0037)  bPOS=  0.0010 (se  0.0028)
+
+. 
+. di ""
+
+
+. di "########## D2 — PLACEBO 1: choque nos 180d ANTERIORES (deve ser nulo) ##########"
+########## D2 — PLACEBO 1: choque nos 180d ANTERIORES (deve ser nulo) ##########
+
+. foreach d in espera enc180 idade_entrada mat365 {
+  2.     qui reghdfe `d' choque_pre100 choque_pos100 cap_base100, absorb(dsem) vce(cluster ceicode)
+  3.     di "  [`d'] bPRE=" %8.4f _b[choque_pre100] " (se " %7.4f _se[choque_pre100] ")  N=" e(N)
+  4. }
+  [espera] bPRE=  4.8689 (se  1.1639)  N=513844
+  [enc180] bPRE= -0.0086 (se  0.0034)  N=586284
+  [idade_entrada] bPRE=  0.1398 (se  0.0536)  N=391206
+  [mat365] bPRE= -0.0044 (se  0.0032)  N=586284
+
+. 
+. di ""
+
+
+. di "########## D3 — PLACEBO 2: choque futuro (366-545d) ##########"
+########## D3 — PLACEBO 2: choque futuro (366-545d) ##########
+
+. foreach d in espera enc180 idade_entrada mat365 {
+  2.     qui reghdfe `d' choque_fut100 choque_pos100 cap_base100, absorb(dsem) vce(cluster ceicode)
+  3.     di "  [`d'] bFUT=" %8.4f _b[choque_fut100] " (se " %7.4f _se[choque_fut100] ")  N=" e(N)
+  4. }
+  [espera] bFUT= -1.3750 (se  0.8782)  N=513844
+  [enc180] bFUT=  0.0136 (se  0.0026)  N=586284
+  [idade_entrada] bFUT= -0.0044 (se  0.0420)  N=391206
+  [mat365] bFUT= -0.0104 (se  0.0022)  N=586284
+
+. 
+. di ""
+
+
+. di "########## D5 — dose-resposta: efeito por quartil de (choque_neg/cap_base) ##########"
+########## D5 — dose-resposta: efeito por quartil de (choque_neg/cap_base) ##########
+
+. gen fracperda = choque_neg/cap_base if cap_base>0
+(7,765 missing values generated)
+
+. replace fracperda = 0 if choque_neg==0
+(7,749 real changes made)
+
+. xtile qperda = fracperda if choque_neg>0, nq(4)
+
+. replace qperda = 0 if choque_neg==0
+(359,238 real changes made)
+
+. di "--- media de enc180 e espera por quartil de fracao de capacidade perdida ---"
+--- media de enc180 e espera por quartil de fracao de capacidade perdida ---
+
+. table qperda, stat(mean enc180) stat(mean espera) stat(mean idade_entrada) stat(count enc180)
+
+----------------------------------------------------------------------------------------------
+                         |                  Mean                  Number of non-missing values
+                         |    enc180     espera   idade_entrada                         enc180
+-------------------------+--------------------------------------------------------------------
+4 quantiles of fracperda |                                                                    
+  0                      |   .455002   227.8068         15.0385                        359,238
+  1                      |  .5055983   166.9441        13.54034                         58,679
+  2                      |  .3355269   203.9973        14.97651                         58,657
+  3                      |  .3170075   213.7576        15.37274                         58,680
+  4                      |  .2305134   268.7377        17.02322                         58,643
+  Total                  |  .4123998   221.8727        15.10402                        593,897
+----------------------------------------------------------------------------------------------
+
+. 
+. di "=== FIM D ==="
+=== FIM D ===
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag11_D.log
+  log type:  text
+ closed on:  22 Jul 2026, 19:36:53
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,1311 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag02_scanA.log
+  log type:  text
+ opened on:  22 Jul 2026, 10:24:16
+
+. 
+. * Diretórios a varrer
+. local dirs `" "<NE_ROOT>\dados_restritos\Dados - SME/Atual (25.06)" "<NE_ROOT>\dados_restritos\Dados - SME/Atual (25.06)/ceps" "<NE_ROOT>\dados_restritos\Dados - SME/Atual (25.06)/escolas" "<NE_ROOT>\dados_restritos\Dados - SME/Atual (25.06)/matriculas" "<NE_ROOT>\dados_restritos\Dados - SME/Atual (25.06)/Microdados_Demanda_Infantil_Escola_Especifica_
+> FGV" "<NE_ROOT>\dados_restritos\Dados - SME/01.07" "<NE_ROOT>\dados_restritos\Dados - SME/01.07/matriculas" "'
+
+. 
+. * palavras-chave
+. local kw corte vaga capac limite class posic ordem rank fila prior chamada convoc sorteio data_lim
+
+. 
+. foreach d of local dirs {
+  2.     local fl : dir "`d'" files "*.dta"
+  3.     foreach f of local fl {
+  4.         local path "`d'/`f'"
+  5.         cap use "`path'" in 1, clear
+  6.         if _rc {
+  7.             di "ERRO ao abrir `path' : rc=" _rc
+  8.             continue
+  9.         }
+ 10.         foreach v of varlist _all {
+ 11.             local vl : variable label `v'
+ 12.             local vlow = lower("`v'")
+ 13.             local llow = lower(`"`vl'"')
+ 14.             local hit 0
+ 15.             foreach k of local kw {
+ 16.                 if strpos("`vlow'","`k'")>0 | strpos(`"`llow'"',"`k'")>0 local hit 1
+ 17.             }
+ 18.             if `hit' {
+ 19.                 local ty : type `v'
+ 20.                 di "MATCH | `f' | `v' | `ty' | `vl'"
+ 21.             }
+ 22.         }
+ 23.     }
+ 24. }
+MATCH | corteescolaunique.dta | dt_corte_escola | float | (mean) dt_corte_escola
+MATCH | corteescolaunique.dta | dt_corte | float | (mean) dt_corte
+MATCH | cpf.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | cpf_fila_101.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | cpf_fila_101_old.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | cpf_fila_102.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | cpf_fila_102_old.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | cpf_fila_11.dta | cnae95classe | long | CNAE 95 Classe
+MATCH | cpf_fila_11.dta | cnae20classe | long | CNAE 2.0 Classe
+MATCH | cpf_fila_11.dta | cnae20subclasse | long | CNAE 2.0 Subclasse
+MATCH | cpf_fila_11.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | cpf_fila_11_old.dta | cnae95classe | long | CNAE 95 Classe
+MATCH | cpf_fila_11_old.dta | cnae20classe | long | CNAE 2.0 Classe
+MATCH | cpf_fila_11_old.dta | cnae20subclasse | long | CNAE 2.0 Subclasse
+MATCH | cpf_fila_11_old.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | cpf_fila_12.dta | cnae95classe | long | CNAE 95 Classe
+MATCH | cpf_fila_12.dta | cnae20classe | long | CNAE 2.0 Classe
+MATCH | cpf_fila_12.dta | cnae20subclasse | long | CNAE 2.0 Subclasse
+MATCH | cpf_fila_12.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | cpf_fila_12_old.dta | cnae95classe | long | CNAE 95 Classe
+MATCH | cpf_fila_12_old.dta | cnae20classe | long | CNAE 2.0 Classe
+MATCH | cpf_fila_12_old.dta | cnae20subclasse | long | CNAE 2.0 Subclasse
+MATCH | cpf_fila_12_old.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | cpf_fila_13.dta | cnae95classe | long | CNAE 95 Classe
+MATCH | cpf_fila_13.dta | cnae20classe | long | CNAE 2.0 Classe
+MATCH | cpf_fila_13.dta | cnae20subclasse | long | CNAE 2.0 Subclasse
+MATCH | cpf_fila_13.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | cpf_fila_13_old.dta | cnae95classe | long | CNAE 95 Classe
+MATCH | cpf_fila_13_old.dta | cnae20classe | long | CNAE 2.0 Classe
+MATCH | cpf_fila_13_old.dta | cnae20subclasse | long | CNAE 2.0 Subclasse
+MATCH | cpf_fila_13_old.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | cpf_fila_14.dta | cnae95classe | long | CNAE 95 Classe
+MATCH | cpf_fila_14.dta | cnae20classe | long | CNAE 2.0 Classe
+MATCH | cpf_fila_14.dta | cnae20subclasse | long | CNAE 2.0 Subclasse
+MATCH | cpf_fila_14.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | cpf_fila_14_old.dta | cnae95classe | long | CNAE 95 Classe
+MATCH | cpf_fila_14_old.dta | cnae20classe | long | CNAE 2.0 Classe
+MATCH | cpf_fila_14_old.dta | cnae20subclasse | long | CNAE 2.0 Subclasse
+MATCH | cpf_fila_14_old.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | fila1018.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | fila1018ber.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | fila1018ber12.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | fila1018ber12_psp.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | fila1018ber_psp.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | fila1018min1.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | fila1018min1_psp.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | fila1018min2.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | fila1018min2_psp.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | trat2010ber.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | trat2010ber.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat2010ber.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat2010ber.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat2010ber.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat2010ber.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat2010ber.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat2010ber.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat2010ber.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat2010ber.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat2010ber.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat2010ber.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat2010ber.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat2010ber.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat2010ber.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat2010ber.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat2010ber.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat2010ber.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat2010ber.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat2010ber.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat2010ber.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat2010ber.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat2010ber.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat2010ber.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat2010ber.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat2010ber.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat2010ber.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat2010ber.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat2010ber.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat2010ber.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat2010ber.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat2010ber.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat2010ber2.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | trat2010ber2.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat2010ber2.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat2010ber2.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat2010ber2.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat2010ber2.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat2010ber2.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat2010ber2.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat2010ber2.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat2010ber2.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat2010ber2.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat2010ber2.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat2010ber2.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat2010ber2.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat2010ber2.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat2010ber2.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat2010ber2.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat2010ber2.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat2010ber2.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat2010ber2.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat2010ber2.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat2010ber2.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat2010ber2.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat2010ber2.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat2010ber2.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat2010ber2.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat2010ber2.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat2010ber2.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat2010ber2.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat2010ber2.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat2010ber2.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat2010ber2.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat2010bernodup.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | trat2010bernodup.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat2010bernodup.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat2010bernodup.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat2010bernodup.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat2010bernodup.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat2010bernodup.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat2010bernodup.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat2010bernodup.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat2010bernodup.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat2010bernodup.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat2010bernodup.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat2010bernodup.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat2010bernodup.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat2010bernodup.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat2010bernodup.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat2010bernodup.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat2010bernodup.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat2010bernodup.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat2010bernodup.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat2010bernodup.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat2010bernodup.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat2010bernodup.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat2010bernodup.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat2010bernodup.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat2010bernodup.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat2010bernodup.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat2010bernodup.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat2010bernodup.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat2010bernodup.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat2010bernodup.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat2010bernodup.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat2010ber_psp.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | trat2010ber_psp.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat2010ber_psp.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat2010ber_psp.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat2010ber_psp.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat2010ber_psp.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat2010ber_psp.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat2010ber_psp.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat2010ber_psp.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat2010ber_psp.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat2010ber_psp.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat2010ber_psp.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat2010ber_psp.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat2010ber_psp.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat2010ber_psp.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat2010ber_psp.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat2010ber_psp.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat2010ber_psp.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat2010ber_psp.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat2010ber_psp.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat2010ber_psp.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat2010ber_psp.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat2010ber_psp.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat2010ber_psp.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat2010ber_psp.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat2010ber_psp.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat2010ber_psp.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat2010ber_psp.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat2010ber_psp.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat2010ber_psp.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat2010ber_psp.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat2010ber_psp.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat2011ber.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | trat2011ber.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat2011ber.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat2011ber.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat2011ber.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat2011ber.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat2011ber.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat2011ber.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat2011ber.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat2011ber.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat2011ber.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat2011ber.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat2011ber.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat2011ber.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat2011ber.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat2011ber.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat2011ber.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat2011ber.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat2011ber.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat2011ber.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat2011ber.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat2011ber.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat2011ber.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat2011ber.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat2011ber.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat2011ber.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat2011ber.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat2011ber.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat2011ber.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat2011ber.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat2011ber.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat2011ber.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat2011ber2.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | trat2011ber2.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat2011ber2.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat2011ber2.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat2011ber2.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat2011ber2.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat2011ber2.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat2011ber2.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat2011ber2.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat2011ber2.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat2011ber2.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat2011ber2.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat2011ber2.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat2011ber2.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat2011ber2.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat2011ber2.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat2011ber2.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat2011ber2.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat2011ber2.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat2011ber2.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat2011ber2.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat2011ber2.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat2011ber2.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat2011ber2.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat2011ber2.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat2011ber2.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat2011ber2.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat2011ber2.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat2011ber2.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat2011ber2.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat2011ber2.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat2011ber2.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat2011ber2_psp.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat2011ber2_psp.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat2011ber2_psp.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat2011ber2_psp.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat2011ber2_psp.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat2011ber2_psp.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat2011ber2_psp.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat2011ber2_psp.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat2011ber2_psp.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat2011ber2_psp.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat2011ber2_psp.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat2011ber2_psp.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat2011ber2_psp.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat2011ber2_psp.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat2011ber2_psp.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat2011ber2_psp.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat2011ber2_psp.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat2011ber2_psp.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat2011ber2_psp.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat2011ber2_psp.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat2011ber2_psp.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat2011ber2_psp.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat2011ber2_psp.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat2011ber2_psp.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat2011ber2_psp.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat2011ber2_psp.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat2011ber2_psp.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat2011ber2_psp.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat2011ber2_psp.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat2011ber2_psp.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat2011ber2_psp.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat2011bernodup.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | trat2011bernodup.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat2011bernodup.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat2011bernodup.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat2011bernodup.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat2011bernodup.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat2011bernodup.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat2011bernodup.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat2011bernodup.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat2011bernodup.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat2011bernodup.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat2011bernodup.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat2011bernodup.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat2011bernodup.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat2011bernodup.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat2011bernodup.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat2011bernodup.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat2011bernodup.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat2011bernodup.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat2011bernodup.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat2011bernodup.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat2011bernodup.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat2011bernodup.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat2011bernodup.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat2011bernodup.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat2011bernodup.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat2011bernodup.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat2011bernodup.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat2011bernodup.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat2011bernodup.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat2011bernodup.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat2011bernodup.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat2011ber_psp.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | trat2011ber_psp.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat2011ber_psp.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat2011ber_psp.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat2011ber_psp.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat2011ber_psp.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat2011ber_psp.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat2011ber_psp.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat2011ber_psp.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat2011ber_psp.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat2011ber_psp.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat2011ber_psp.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat2011ber_psp.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat2011ber_psp.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat2011ber_psp.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat2011ber_psp.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat2011ber_psp.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat2011ber_psp.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat2011ber_psp.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat2011ber_psp.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat2011ber_psp.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat2011ber_psp.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat2011ber_psp.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat2011ber_psp.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat2011ber_psp.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat2011ber_psp.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat2011ber_psp.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat2011ber_psp.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat2011ber_psp.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat2011ber_psp.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat2011ber_psp.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat2011ber_psp.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat2011min1.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | trat2011min1.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat2011min1.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat2011min1.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat2011min1.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat2011min1.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat2011min1.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat2011min1.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat2011min1.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat2011min1.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat2011min1.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat2011min1.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat2011min1.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat2011min1.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat2011min1.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat2011min1.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat2011min1.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat2011min1.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat2011min1.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat2011min1.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat2011min1.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat2011min1.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat2011min1.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat2011min1.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat2011min1.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat2011min1.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat2011min1.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat2011min1.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat2011min1.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat2011min1.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat2011min1.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat2011min1.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat2011min2.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | trat2011min2.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat2011min2.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat2011min2.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat2011min2.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat2011min2.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat2011min2.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat2011min2.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat2011min2.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat2011min2.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat2011min2.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat2011min2.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat2011min2.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat2011min2.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat2011min2.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat2011min2.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat2011min2.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat2011min2.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat2011min2.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat2011min2.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat2011min2.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat2011min2.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat2011min2.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat2011min2.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat2011min2.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat2011min2.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat2011min2.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat2011min2.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat2011min2.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat2011min2.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat2011min2.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat2011min2.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat2012ber.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | trat2012ber.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat2012ber.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat2012ber.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat2012ber.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat2012ber.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat2012ber.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat2012ber.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat2012ber.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat2012ber.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat2012ber.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat2012ber.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat2012ber.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat2012ber.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat2012ber.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat2012ber.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat2012ber.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat2012ber.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat2012ber.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat2012ber.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat2012ber.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat2012ber.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat2012ber.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat2012ber.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat2012ber.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat2012ber.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat2012ber.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat2012ber.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat2012ber.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat2012ber.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat2012ber.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat2012ber.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat2012ber2.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | trat2012ber2.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat2012ber2.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat2012ber2.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat2012ber2.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat2012ber2.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat2012ber2.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat2012ber2.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat2012ber2.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat2012ber2.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat2012ber2.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat2012ber2.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat2012ber2.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat2012ber2.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat2012ber2.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat2012ber2.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat2012ber2.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat2012ber2.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat2012ber2.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat2012ber2.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat2012ber2.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat2012ber2.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat2012ber2.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat2012ber2.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat2012ber2.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat2012ber2.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat2012ber2.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat2012ber2.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat2012ber2.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat2012ber2.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat2012ber2.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat2012ber2.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat2012ber2_psp.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat2012ber2_psp.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat2012ber2_psp.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat2012ber2_psp.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat2012ber2_psp.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat2012ber2_psp.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat2012ber2_psp.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat2012ber2_psp.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat2012ber2_psp.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat2012ber2_psp.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat2012ber2_psp.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat2012ber2_psp.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat2012ber2_psp.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat2012ber2_psp.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat2012ber2_psp.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat2012ber2_psp.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat2012ber2_psp.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat2012ber2_psp.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat2012ber2_psp.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat2012ber2_psp.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat2012ber2_psp.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat2012ber2_psp.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat2012ber2_psp.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat2012ber2_psp.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat2012ber2_psp.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat2012ber2_psp.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat2012ber2_psp.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat2012ber2_psp.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat2012ber2_psp.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat2012ber2_psp.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat2012ber2_psp.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat2012ber_psp.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | trat2012ber_psp.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat2012ber_psp.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat2012ber_psp.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat2012ber_psp.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat2012ber_psp.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat2012ber_psp.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat2012ber_psp.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat2012ber_psp.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat2012ber_psp.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat2012ber_psp.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat2012ber_psp.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat2012ber_psp.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat2012ber_psp.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat2012ber_psp.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat2012ber_psp.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat2012ber_psp.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat2012ber_psp.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat2012ber_psp.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat2012ber_psp.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat2012ber_psp.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat2012ber_psp.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat2012ber_psp.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat2012ber_psp.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat2012ber_psp.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat2012ber_psp.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat2012ber_psp.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat2012ber_psp.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat2012ber_psp.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat2012ber_psp.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat2012ber_psp.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat2012ber_psp.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat2012min1.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | trat2012min1.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat2012min1.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat2012min1.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat2012min1.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat2012min1.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat2012min1.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat2012min1.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat2012min1.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat2012min1.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat2012min1.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat2012min1.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat2012min1.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat2012min1.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat2012min1.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat2012min1.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat2012min1.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat2012min1.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat2012min1.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat2012min1.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat2012min1.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat2012min1.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat2012min1.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat2012min1.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat2012min1.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat2012min1.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat2012min1.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat2012min1.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat2012min1.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat2012min1.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat2012min1.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat2012min1.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat2012min2.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | trat2012min2.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat2012min2.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat2012min2.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat2012min2.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat2012min2.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat2012min2.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat2012min2.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat2012min2.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat2012min2.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat2012min2.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat2012min2.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat2012min2.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat2012min2.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat2012min2.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat2012min2.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat2012min2.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat2012min2.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat2012min2.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat2012min2.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat2012min2.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat2012min2.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat2012min2.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat2012min2.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat2012min2.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat2012min2.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat2012min2.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat2012min2.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat2012min2.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat2012min2.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat2012min2.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat2012min2.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat2013ber.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | trat2013ber.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat2013ber.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat2013ber.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat2013ber.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat2013ber.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat2013ber.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat2013ber.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat2013ber.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat2013ber.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat2013ber.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat2013ber.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat2013ber.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat2013ber.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat2013ber.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat2013ber.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat2013ber.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat2013ber.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat2013ber.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat2013ber.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat2013ber.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat2013ber.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat2013ber.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat2013ber.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat2013ber.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat2013ber.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat2013ber.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat2013ber.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat2013ber.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat2013ber.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat2013ber.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat2013ber.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat2013ber2.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | trat2013ber2.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat2013ber2.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat2013ber2.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat2013ber2.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat2013ber2.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat2013ber2.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat2013ber2.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat2013ber2.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat2013ber2.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat2013ber2.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat2013ber2.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat2013ber2.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat2013ber2.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat2013ber2.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat2013ber2.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat2013ber2.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat2013ber2.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat2013ber2.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat2013ber2.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat2013ber2.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat2013ber2.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat2013ber2.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat2013ber2.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat2013ber2.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat2013ber2.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat2013ber2.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat2013ber2.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat2013ber2.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat2013ber2.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat2013ber2.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat2013ber2.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat2013ber2_psp.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat2013ber2_psp.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat2013ber2_psp.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat2013ber2_psp.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat2013ber2_psp.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat2013ber2_psp.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat2013ber2_psp.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat2013ber2_psp.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat2013ber2_psp.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat2013ber2_psp.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat2013ber2_psp.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat2013ber2_psp.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat2013ber2_psp.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat2013ber2_psp.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat2013ber2_psp.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat2013ber2_psp.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat2013ber2_psp.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat2013ber2_psp.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat2013ber2_psp.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat2013ber2_psp.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat2013ber2_psp.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat2013ber2_psp.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat2013ber2_psp.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat2013ber2_psp.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat2013ber2_psp.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat2013ber2_psp.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat2013ber2_psp.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat2013ber2_psp.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat2013ber2_psp.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat2013ber2_psp.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat2013ber2_psp.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat2013min1.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | trat2013min1.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat2013min1.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat2013min1.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat2013min1.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat2013min1.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat2013min1.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat2013min1.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat2013min1.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat2013min1.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat2013min1.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat2013min1.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat2013min1.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat2013min1.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat2013min1.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat2013min1.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat2013min1.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat2013min1.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat2013min1.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat2013min1.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat2013min1.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat2013min1.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat2013min1.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat2013min1.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat2013min1.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat2013min1.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat2013min1.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat2013min1.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat2013min1.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat2013min1.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat2013min1.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat2013min1.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat2013min1_psp.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | trat2013min1_psp.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat2013min1_psp.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat2013min1_psp.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat2013min1_psp.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat2013min1_psp.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat2013min1_psp.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat2013min1_psp.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat2013min1_psp.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat2013min1_psp.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat2013min1_psp.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat2013min1_psp.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat2013min1_psp.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat2013min1_psp.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat2013min1_psp.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat2013min1_psp.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat2013min1_psp.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat2013min1_psp.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat2013min1_psp.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat2013min1_psp.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat2013min1_psp.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat2013min1_psp.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat2013min1_psp.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat2013min1_psp.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat2013min1_psp.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat2013min1_psp.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat2013min1_psp.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat2013min1_psp.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat2013min1_psp.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat2013min1_psp.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat2013min1_psp.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat2013min1_psp.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat2013min2.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | trat2013min2.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat2013min2.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat2013min2.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat2013min2.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat2013min2.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat2013min2.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat2013min2.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat2013min2.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat2013min2.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat2013min2.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat2013min2.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat2013min2.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat2013min2.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat2013min2.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat2013min2.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat2013min2.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat2013min2.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat2013min2.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat2013min2.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat2013min2.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat2013min2.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat2013min2.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat2013min2.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat2013min2.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat2013min2.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat2013min2.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat2013min2.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat2013min2.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat2013min2.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat2013min2.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat2013min2.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat2014ber.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | trat2014ber.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat2014ber.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat2014ber.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat2014ber.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat2014ber.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat2014ber.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat2014ber.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat2014ber.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat2014ber.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat2014ber.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat2014ber.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat2014ber.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat2014ber.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat2014ber.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat2014ber.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat2014ber.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat2014ber.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat2014ber.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat2014ber.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat2014ber.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat2014ber.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat2014ber.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat2014ber.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat2014ber.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat2014ber.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat2014ber.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat2014ber.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat2014ber.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat2014ber.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat2014ber.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat2014ber.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat2014ber2.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | trat2014ber2.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat2014ber2.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat2014ber2.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat2014ber2.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat2014ber2.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat2014ber2.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat2014ber2.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat2014ber2.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat2014ber2.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat2014ber2.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat2014ber2.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat2014ber2.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat2014ber2.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat2014ber2.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat2014ber2.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat2014ber2.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat2014ber2.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat2014ber2.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat2014ber2.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat2014ber2.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat2014ber2.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat2014ber2.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat2014ber2.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat2014ber2.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat2014ber2.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat2014ber2.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat2014ber2.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat2014ber2.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat2014ber2.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat2014ber2.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat2014ber2.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat2014min1.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | trat2014min1.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat2014min1.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat2014min1.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat2014min1.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat2014min1.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat2014min1.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat2014min1.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat2014min1.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat2014min1.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat2014min1.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat2014min1.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat2014min1.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat2014min1.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat2014min1.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat2014min1.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat2014min1.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat2014min1.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat2014min1.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat2014min1.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat2014min1.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat2014min1.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat2014min1.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat2014min1.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat2014min1.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat2014min1.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat2014min1.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat2014min1.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat2014min1.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat2014min1.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat2014min1.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat2014min1.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat2014min1_psp.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | trat2014min1_psp.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat2014min1_psp.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat2014min1_psp.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat2014min1_psp.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat2014min1_psp.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat2014min1_psp.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat2014min1_psp.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat2014min1_psp.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat2014min1_psp.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat2014min1_psp.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat2014min1_psp.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat2014min1_psp.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat2014min1_psp.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat2014min1_psp.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat2014min1_psp.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat2014min1_psp.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat2014min1_psp.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat2014min1_psp.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat2014min1_psp.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat2014min1_psp.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat2014min1_psp.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat2014min1_psp.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat2014min1_psp.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat2014min1_psp.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat2014min1_psp.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat2014min1_psp.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat2014min1_psp.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat2014min1_psp.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat2014min1_psp.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat2014min1_psp.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat2014min1_psp.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat2014min2.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | trat2014min2.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat2014min2.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat2014min2.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat2014min2.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat2014min2.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat2014min2.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat2014min2.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat2014min2.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat2014min2.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat2014min2.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat2014min2.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat2014min2.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat2014min2.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat2014min2.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat2014min2.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat2014min2.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat2014min2.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat2014min2.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat2014min2.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat2014min2.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat2014min2.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat2014min2.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat2014min2.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat2014min2.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat2014min2.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat2014min2.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat2014min2.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat2014min2.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat2014min2.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat2014min2.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat2014min2.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat2014min2_psp.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | trat2014min2_psp.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat2014min2_psp.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat2014min2_psp.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat2014min2_psp.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat2014min2_psp.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat2014min2_psp.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat2014min2_psp.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat2014min2_psp.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat2014min2_psp.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat2014min2_psp.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat2014min2_psp.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat2014min2_psp.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat2014min2_psp.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat2014min2_psp.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat2014min2_psp.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat2014min2_psp.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat2014min2_psp.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat2014min2_psp.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat2014min2_psp.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat2014min2_psp.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat2014min2_psp.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat2014min2_psp.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat2014min2_psp.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat2014min2_psp.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat2014min2_psp.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat2014min2_psp.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat2014min2_psp.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat2014min2_psp.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat2014min2_psp.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat2014min2_psp.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat2014min2_psp.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat2015ber.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | trat2015ber.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat2015ber.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat2015ber.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat2015ber.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat2015ber.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat2015ber.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat2015ber.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat2015ber.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat2015ber.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat2015ber.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat2015ber.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat2015ber.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat2015ber.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat2015ber.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat2015ber.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat2015ber.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat2015ber.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat2015ber.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat2015ber.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat2015ber.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat2015ber.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat2015ber.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat2015ber.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat2015ber.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat2015ber.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat2015ber.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat2015ber.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat2015ber.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat2015ber.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat2015ber.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat2015ber.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat2015ber2.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | trat2015ber2.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat2015ber2.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat2015ber2.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat2015ber2.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat2015ber2.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat2015ber2.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat2015ber2.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat2015ber2.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat2015ber2.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat2015ber2.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat2015ber2.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat2015ber2.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat2015ber2.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat2015ber2.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat2015ber2.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat2015ber2.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat2015ber2.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat2015ber2.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat2015ber2.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat2015ber2.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat2015ber2.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat2015ber2.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat2015ber2.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat2015ber2.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat2015ber2.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat2015ber2.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat2015ber2.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat2015ber2.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat2015ber2.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat2015ber2.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat2015ber2.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat2016ber.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | trat2016ber.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat2016ber.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat2016ber.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat2016ber.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat2016ber.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat2016ber.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat2016ber.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat2016ber.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat2016ber.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat2016ber.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat2016ber.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat2016ber.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat2016ber.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat2016ber.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat2016ber.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat2016ber.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat2016ber.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat2016ber.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat2016ber.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat2016ber.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat2016ber.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat2016ber.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat2016ber.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat2016ber.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat2016ber.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat2016ber.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat2016ber.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat2016ber.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat2016ber.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat2016ber.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat2016ber.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat2017ber.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | trat2017ber.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat2017ber.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat2017ber.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat2017ber.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat2017ber.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat2017ber.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat2017ber.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat2017ber.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat2017ber.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat2017ber.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat2017ber.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat2017ber.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat2017ber.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat2017ber.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat2017ber.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat2017ber.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat2017ber.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat2017ber.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat2017ber.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat2017ber.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat2017ber.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat2017ber.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat2017ber.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat2017ber.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat2017ber.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat2017ber.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat2017ber.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat2017ber.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat2017ber.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat2017ber.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat2017ber.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat2018ber.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | trat2018ber.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat2018ber.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat2018ber.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat2018ber.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat2018ber.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat2018ber.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat2018ber.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat2018ber.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat2018ber.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat2018ber.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat2018ber.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat2018ber.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat2018ber.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat2018ber.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat2018ber.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat2018ber.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat2018ber.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat2018ber.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat2018ber.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat2018ber.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat2018ber.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat2018ber.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat2018ber.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat2018ber.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat2018ber.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat2018ber.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat2018ber.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat2018ber.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat2018ber.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat2018ber.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat2018ber.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat_min1_2011.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat_min1_2011.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat_min1_2011.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat_min1_2011.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat_min1_2011.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat_min1_2011.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat_min1_2011.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat_min1_2011.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat_min1_2011.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat_min1_2011.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat_min1_2011.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat_min1_2011.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat_min1_2011.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat_min1_2011.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat_min1_2011.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat_min1_2011.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat_min1_2011.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat_min1_2011.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat_min1_2011.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat_min1_2011.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat_min1_2011.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat_min1_2011.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat_min1_2011.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat_min1_2011.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat_min1_2011.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat_min1_2011.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat_min1_2011.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat_min1_2011.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat_min1_2011.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat_min1_2011.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat_min1_2011.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat_min1_2012.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat_min1_2012.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat_min1_2012.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat_min1_2012.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat_min1_2012.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat_min1_2012.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat_min1_2012.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat_min1_2012.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat_min1_2012.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat_min1_2012.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat_min1_2012.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat_min1_2012.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat_min1_2012.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat_min1_2012.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat_min1_2012.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat_min1_2012.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat_min1_2012.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat_min1_2012.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat_min1_2012.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat_min1_2012.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat_min1_2012.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat_min1_2012.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat_min1_2012.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat_min1_2012.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat_min1_2012.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat_min1_2012.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat_min1_2012.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat_min1_2012.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat_min1_2012.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat_min1_2012.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat_min1_2012.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat_min1_2013.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat_min1_2013.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat_min1_2013.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat_min1_2013.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat_min1_2013.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat_min1_2013.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat_min1_2013.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat_min1_2013.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat_min1_2013.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat_min1_2013.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat_min1_2013.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat_min1_2013.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat_min1_2013.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat_min1_2013.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat_min1_2013.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat_min1_2013.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat_min1_2013.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat_min1_2013.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat_min1_2013.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat_min1_2013.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat_min1_2013.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat_min1_2013.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat_min1_2013.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat_min1_2013.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat_min1_2013.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat_min1_2013.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat_min1_2013.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat_min1_2013.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat_min1_2013.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat_min1_2013.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat_min1_2013.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | trat_min1_2014.dta | dt_corte_escola1 | float | 1 dt_corte_escola
+MATCH | trat_min1_2014.dta | dt_corte_escola2 | float | 2 dt_corte_escola
+MATCH | trat_min1_2014.dta | dt_corte_escola3 | float | 3 dt_corte_escola
+MATCH | trat_min1_2014.dta | dt_corte_escola4 | float | 4 dt_corte_escola
+MATCH | trat_min1_2014.dta | dt_corte_escola5 | float | 5 dt_corte_escola
+MATCH | trat_min1_2014.dta | dt_corte_escola6 | float | 6 dt_corte_escola
+MATCH | trat_min1_2014.dta | dt_corte_escola7 | float | 7 dt_corte_escola
+MATCH | trat_min1_2014.dta | dt_corte_escola8 | float | 8 dt_corte_escola
+MATCH | trat_min1_2014.dta | dt_corte_escola9 | float | 9 dt_corte_escola
+MATCH | trat_min1_2014.dta | dt_corte_escola10 | float | 10 dt_corte_escola
+MATCH | trat_min1_2014.dta | dt_corte_escola11 | float | 11 dt_corte_escola
+MATCH | trat_min1_2014.dta | dt_corte_escola12 | float | 12 dt_corte_escola
+MATCH | trat_min1_2014.dta | dt_corte_escola13 | float | 13 dt_corte_escola
+MATCH | trat_min1_2014.dta | dt_corte_escola14 | float | 14 dt_corte_escola
+MATCH | trat_min1_2014.dta | dt_corte_escola15 | float | 15 dt_corte_escola
+MATCH | trat_min1_2014.dta | dt_corte_escola16 | float | 16 dt_corte_escola
+MATCH | trat_min1_2014.dta | dt_corte_escola17 | float | 17 dt_corte_escola
+MATCH | trat_min1_2014.dta | dt_corte_escola18 | float | 18 dt_corte_escola
+MATCH | trat_min1_2014.dta | dt_corte_escola19 | float | 19 dt_corte_escola
+MATCH | trat_min1_2014.dta | dt_corte_escola20 | float | 20 dt_corte_escola
+MATCH | trat_min1_2014.dta | dt_corte_escola21 | float | 21 dt_corte_escola
+MATCH | trat_min1_2014.dta | dt_corte_escola22 | float | 22 dt_corte_escola
+MATCH | trat_min1_2014.dta | dt_corte_escola23 | float | 23 dt_corte_escola
+MATCH | trat_min1_2014.dta | dt_corte_escola24 | float | 24 dt_corte_escola
+MATCH | trat_min1_2014.dta | dt_corte_escola25 | float | 25 dt_corte_escola
+MATCH | trat_min1_2014.dta | dt_corte_escola26 | float | 26 dt_corte_escola
+MATCH | trat_min1_2014.dta | dt_corte_escola27 | float | 27 dt_corte_escola
+MATCH | trat_min1_2014.dta | dt_corte_escola28 | float | 28 dt_corte_escola
+MATCH | trat_min1_2014.dta | dt_corte_escola29 | float | 29 dt_corte_escola
+MATCH | trat_min1_2014.dta | dt_corte_escola30 | float | 30 dt_corte_escola
+MATCH | trat_min1_2014.dta | dt_corte_escola31 | float | 31 dt_corte_escola
+MATCH | fila1018.dta | tipo_prioridade_encaminhamento | byte | 
+ERRO ao abrir <NE_ROOT>\dados_restritos\Dados - SME/Atual (25.06)/escolas/escolaspsp3.dta : rc=610
+MATCH | fila1018.dta | tipo_prioridade_encaminhamento | byte | 
+MATCH | matriculas1018.dta | tipo_prioridade_encaminhamento | byte | 
+
+. di "=== FIM SCAN A ==="
+=== FIM SCAN A ===
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag02_scanA.log
+  log type:  text
+ closed on:  22 Jul 2026, 10:24:22
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

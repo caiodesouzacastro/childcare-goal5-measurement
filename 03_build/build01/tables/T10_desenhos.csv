@@ -1,0 +1,7 @@
+desenho,fonte_variacao,teste_falhou,estatistica_chave,diagnostico
+Corte da fila (RDD por escola),Descontinuidade artificial (rvar/dt_corte por escola),Corte nao e regra de elegibilidade; densidade e desfechos saltam por construcao,Manipulacao/nao-aleatoriedade do corte (McCrary),DIAG01: corte definido ex-post pela propria alocacao
+Leave-one-out do corte,Variacao no corte deixando uma escola de fora,Sem primeiro estagio exogeno; corte co-determinado com a demanda,Placebos nao nulos,"DIAG02: corte segue a fila, nao a oferta"
+Abertura de CEI perto de casa (IV),Novos CEIs <=1km apos a solicitacao,Abertura correlacionada com demanda local reprimida,Exposicao pre-solicitacao ja preve desfechos,DIAG05: oferta responde ao territorio
+Regra de corte etario 31/03,Idade em 31/03 do ano da vaga,Descontinuidade fraca/endogena a serie solicitada,Primeiro estagio fraco; composicao muda no limiar,DIAG06: regra nao vincula alocacao
+Alocacao (quase-aleatoria) entre escolas,Qual CEI dentro do conjunto elegivel,Alocacao nao e aleatoria; segue distancia e vaga,Balanco falha; distancia preve escola,DIAG08: fila ordena por distancia/prioridade
+Choque de capacidade (VAGOFER/parceria),Reducoes/fechamentos de vagas no conjunto elegivel,"Primeiro estagio pequeno, some sob setor$\times$semestre; fechamentos selecionados por repasse","Placebo pre-solicitacao $\geq$ coeficiente da janela real; b(pre) espera +4,87 vs +3,29",DIAG11: choque segue tendencia de setor

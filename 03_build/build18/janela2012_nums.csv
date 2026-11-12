@@ -1,0 +1,22 @@
+item,valor,validacao
+"registro <6/<12/<24 meses (% nascidos), coorte 2012",23.5 / 38.3 / 59.4,2013 publicado: 26.1 / 41.5 / 62.3
+"registro <6/<12/<24 meses (% nascidos), coorte 2013",26.1 / 41.5 / 62.3,2013 publicado: 26.1 / 41.5 / 62.3
+"mediana nascimento -> 1a solicitacao (meses), coortes 2012 / 2013 / 2016",18 / 17 / 12,"publicado: 2013 = 17, 2016 = 12"
+"<12m restrito a faixa corrente (% nascidos), coortes 2012 / 2013 / 2016",38.3 / 41.5 / 49.0,publicado: 41.5 -> 49.0
+faixa pedida = faixa corrente; faixa futura (% solicitacoes de creche a partir de jul./2012),75.5 / 1.7,2013+: 89.4 / 1.7
+"0-5 meses pedindo Bercario I (%, a partir de jul./2012)",100.0,2013+: 100
+distritos 2013-2016: N / sobe / mediana / min / max,96 / 85 / +0.042 / -0.060 / +0.171,2013-2016 publicado: 96 / 85 / +0.042 / -0.060 / +0.171
+distritos 2012-2016: N / sobe / mediana / min / max,96 / 93 / +0.060 / -0.023 / +0.252,2013-2016 publicado: 96 / 85 / +0.042 / -0.060 / +0.171
+coorte 2012 elegivel: solicitou a partir de jul./2016 (%),0.5,2013 publicado: 8.2
+coorte 2012 elegivel: solicitou antes de jul./2012 (%),9.1,
+coorte 2012 elegivel: solicitou em jul./2012-dez./2013 (%),53.6,2013 publicado: 29.8
+"coorte 2012: solicitou depois do limite de elegibilidade, por dia (% de todos os solicitantes)","10.2 (N=155,292)",2013 publicado: 8.0
+coorte 2013 elegivel: solicitou a partir de jul./2016 (%),8.2,2013 publicado: 8.2
+coorte 2013 elegivel: solicitou antes de jul./2012 (%),0.0,
+coorte 2013 elegivel: solicitou em jul./2012-dez./2013 (%),29.8,2013 publicado: 29.8
+"coorte 2013: solicitou depois do limite de elegibilidade, por dia (% de todos os solicitantes)","8.0 (N=153,033)",2013 publicado: 8.0
+"coorte 2012, so solicitacoes a partir de jul./2012: ref365 / mat365 / N","0.607 / 0.498 / 126,690",FATAIS: 0.607
+solicitacoes 2012S2: ref365 / mat365 / N,"0.562 / 0.465 / 73,630",c3x: 0.562
+validacao 2013S1 ref365,0.707,reforma_semestral: 0.707
+1as solicitacoes a partir de 1/7/2012,"1,140,848","a partir de 2013: 1,047,288"
+"idade media na 1a solicitacao (meses), todos: 2010 / 2012S2 / 2013 / 2018",35.64 / 26.22 / 24.35 / 16.78,publicado: 35.64 / - / 24.35 / 16.78

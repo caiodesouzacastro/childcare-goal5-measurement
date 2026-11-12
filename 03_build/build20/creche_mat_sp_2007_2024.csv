@@ -1,0 +1,102 @@
+ano,rede,QT_MAT_INF_CRE,QT_MAT_INF_PRE,QT_MAT_BAS_0_3,fonte
+2007,estadual,24.0,0.0,15.0,local
+2007,federal,172.0,97.0,184.0,local
+2007,municipal_direta,33770.0,270561.0,61075.0,local
+2007,privada_conveniada_estadual,50197.0,70981.0,63578.0,local
+2007,privada_nao_conveniada,32168.0,30611.0,40129.0,local
+2008,estadual,164.0,153.0,197.0,local
+2008,federal,125.0,46.0,130.0,local
+2008,municipal_direta,41295.0,273780.0,69894.0,local
+2008,privada_conveniada_estadual,598.0,707.0,610.0,local
+2008,privada_conveniada_municipal,72396.0,45054.0,87541.0,local
+2008,privada_nao_conveniada,35302.0,60248.0,43200.0,local
+2009,estadual,196.0,116.0,189.0,local
+2009,federal,121.0,56.0,126.0,local
+2009,municipal_direta,43406.0,269263.0,70591.0,local
+2009,privada_conveniada_estadual,222.0,365.0,267.0,local
+2009,privada_conveniada_municipal,79886.0,39384.0,92288.0,local
+2009,privada_nao_conveniada,36428.0,61621.0,43257.0,local
+2010,estadual,208.0,90.0,186.0,local
+2010,federal,160.0,87.0,165.0,local
+2010,municipal_direta,42968.0,244720.0,71444.0,local
+2010,privada_conveniada_estadual,953.0,1666.0,991.0,local
+2010,privada_conveniada_municipal,85244.0,43928.0,101890.0,local
+2010,privada_nao_conveniada,41187.0,56669.0,43794.0,local
+2011,estadual,218.0,95.0,209.0,local
+2011,federal,158.0,94.0,161.0,local
+2011,municipal_direta,55512.0,183449.0,43904.0,local
+2011,privada_conveniada_estadual,1583.0,2555.0,1675.0,local
+2011,privada_conveniada_municipal,139836.0,5742.0,116150.0,local
+2011,privada_nao_conveniada,48713.0,62515.0,51744.0,local
+2012,estadual,255.0,105.0,227.0,local
+2012,federal,161.0,92.0,166.0,local
+2012,municipal_direta,60621.0,182286.0,47961.0,local
+2012,privada_conveniada_estadual,768.0,1703.0,819.0,local
+2012,privada_conveniada_municipal,145056.0,2684.0,120978.0,local
+2012,privada_nao_conveniada,55751.0,72365.0,58761.0,local
+2013,estadual,266.0,116.0,243.0,local
+2013,federal,155.0,84.0,160.0,local
+2013,municipal_direta,55812.0,195426.0,50863.0,local
+2013,privada_conveniada_estadual,661.0,1518.0,682.0,local
+2013,privada_conveniada_municipal,152434.0,5933.0,140775.0,local
+2013,privada_nao_conveniada,57979.0,77479.0,61177.0,local
+2014,estadual,275.0,135.0,268.0,local
+2014,federal,158.0,97.0,160.0,local
+2014,municipal_direta,57367.0,196582.0,52083.0,local
+2014,privada_conveniada_estadual,611.0,1157.0,655.0,local
+2014,privada_conveniada_municipal,163166.0,6877.0,151374.0,local
+2014,privada_nao_conveniada,60658.0,82031.0,63935.0,local
+2015,estadual,206.0,115.0,205.0,local
+2015,federal,159.0,97.0,163.0,local
+2015,municipal_direta,55663.0,197374.0,51177.0,local
+2015,privada_conveniada_estadual,32.0,63.0,33.0,local
+2015,privada_conveniada_municipal,182021.0,6358.0,170347.0,local
+2015,privada_nao_conveniada,60421.0,83518.0,63844.0,local
+2016,estadual,166.0,94.0,145.0,local
+2016,federal,150.0,94.0,152.0,local
+2016,municipal_direta,56751.0,206502.0,52362.0,local
+2016,privada_conveniada_estadual,71.0,221.0,81.0,local
+2016,privada_conveniada_municipal,216209.0,7006.0,203645.0,local
+2016,privada_nao_conveniada,57525.0,80236.0,60731.0,local
+2017,estadual,132.0,94.0,128.0,local
+2017,federal,156.0,91.0,146.0,local
+2017,municipal_direta,56823.0,213830.0,52326.0,local
+2017,privada_conveniada_estadual,152.0,1123.0,167.0,local
+2017,privada_conveniada_municipal,229925.0,5554.0,215551.0,local
+2017,privada_nao_conveniada,56108.0,74908.0,58895.0,local
+2018,estadual,69.0,98.0,90.0,local
+2018,federal,114.0,79.0,113.0,local
+2018,municipal_direta,56719.0,213964.0,52544.0,local
+2018,privada_conveniada_estadual,42.0,85.0,5.0,local
+2018,privada_conveniada_municipal,253228.0,4927.0,237705.0,local
+2018,privada_nao_conveniada,55682.0,76435.0,59293.0,local
+2019,estadual,72.0,73.0,70.0,local
+2019,federal,105.0,83.0,94.0,local
+2019,municipal_direta,55536.0,215469.0,51476.0,local
+2019,privada_conveniada_estadual,166.0,303.0,174.0,local
+2019,privada_conveniada_municipal,275352.0,8152.0,258742.0,local
+2019,privada_nao_conveniada,55957.0,78152.0,58869.0,local
+2020,estadual,69.0,75.0,56.0,zip INEP
+2020,federal,0.0,0.0,0.0,zip INEP
+2020,municipal_direta,53581.0,221842.0,49852.0,zip INEP
+2020,privada_conveniada_estadual,0.0,0.0,0.0,zip INEP
+2020,privada_conveniada_municipal,283130.0,8604.0,266690.0,zip INEP
+2020,privada_nao_conveniada,44003.0,70008.0,44402.0,zip INEP
+2021,estadual,42.0,56.0,36.0,zip INEP
+2021,federal,72.0,65.0,70.0,zip INEP
+2021,municipal_direta,54951.0,222109.0,51280.0,zip INEP
+2021,privada_conveniada_estadual,0.0,0.0,0.0,zip INEP
+2021,privada_conveniada_municipal,291023.0,9440.0,273289.0,zip INEP
+2021,privada_nao_conveniada,31774.0,55802.0,30930.0,zip INEP
+2022,estadual,47.0,50.0,45.0,zip INEP
+2022,federal,77.0,76.0,73.0,zip INEP
+2022,municipal_direta,53417.0,214779.0,50007.0,zip INEP
+2022,privada_nao_conveniada,336020.0,71259.0,315291.0,zip INEP
+2023,estadual,82.0,76.0,76.0,zip INEP
+2023,federal,80.0,79.0,71.0,zip INEP
+2023,municipal_direta,52357.0,209404.0,49103.0,zip INEP
+2023,privada_nao_conveniada,324157.0,80263.0,303897.0,zip INEP
+2024,estadual,44.0,76.0,37.0,zip INEP
+2024,federal,80.0,80.0,76.0,zip INEP
+2024,municipal_direta,50478.0,197499.0,47420.0,zip INEP
+2024,privada_nao_conveniada,320104.0,83674.0,300853.0,zip INEP

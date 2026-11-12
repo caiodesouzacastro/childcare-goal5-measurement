@@ -1,0 +1,25 @@
+% requer booktabs. Descritivo (BUILD09).
+\begin{table}[htbp]\centering
+\caption{Share of first applications sharing an exact-second timestamp, by year of application}
+\label{tab:N1}
+\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lrrrrr}
+\toprule
+Year of application & N & $\geq$2 & $\geq$10 & $\geq$50 & $\geq$100 \\
+\midrule
+2010 & 81,004 & 1.7 & 0.1 & 0.0 & 0.0 \\
+2011 & 124,240 & 1.8 & 0.0 & 0.0 & 0.0 \\
+2012 & 220,922 & 3.0 & 0.0 & 0.0 & 0.0 \\
+2013 & 191,149 & 2.4 & 0.0 & 0.0 & 0.0 \\
+2014 & 174,676 & 2.7 & 0.0 & 0.0 & 0.0 \\
+2015 & 179,869 & 2.9 & 0.6 & 0.6 & 0.6 \\
+2016 & 172,341 & 2.5 & 0.0 & 0.0 & 0.0 \\
+2017 & 163,922 & 2.7 & 0.0 & 0.0 & 0.0 \\
+2018 & 165,331 & 2.7 & 0.0 & 0.0 & 0.0 \\
+\midrule
+Total (todos) & 1,524,560 & 2.7 & 0.1 & 0.1 & 0.1 \\
+\bottomrule
+\end{tabular}
+\\[3pt]{\footnotesize \textit{Note:} Universe: first application per child (B\_novo, 1,524,560 with a valid timestamp), the panel used throughout the paper. A first application is ``in a batch'' if its timestamp, recorded to the second, is shared by at least $k$ children's first applications \emph{anywhere in the city} that same second (no conditioning on centre, band, or year). Columns give $k=2,10,50,100$. For comparison, the referral-cell definition of DIAG10 (share of non-priority childcare referrals whose application second is shared within the centre-of-referral $\times$ band $\times$ academic-year cell) gives 32.4 percent on 1,906,180 referrals.}
+\end{table}

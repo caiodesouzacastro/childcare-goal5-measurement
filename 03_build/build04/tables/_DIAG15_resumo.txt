@@ -1,0 +1,102 @@
+# DIAG15 base: 1,524,560 criancas (1 por crianca = 1a solicitacao). match fila=100.00%
+
+## PARTE A - forma do inicio do painel
+A1: serie mensal 2010-2013 (48 meses). N medio/mes=12861; min=4138 (2010-06); max=35594 (2012-02).
+A1 primeiros 6 meses (ym,N,idade_med,frac_lt12):
+    2010-01  N= 10417  idade_med=  46  frac<12m=  9.1
+    2010-02  N= 13162  idade_med=  38  frac<12m= 16.1
+    2010-03  N= 10025  idade_med=  34  frac<12m= 14.9
+    2010-04  N=  5581  idade_med=  35  frac<12m= 14.7
+    2010-05  N=  5105  idade_med=  32  frac<12m= 14.2
+    2010-06  N=  4138  idade_med=  29  frac<12m= 16.4
+A1 frac<12m: jan2010=9.1 -> dez2012=37.1 -> dez2013=37.8
+A2: 51,106 solicitacoes com data 2006-2009 (aparecem com a data ORIGINAL, nao de importacao).
+    2006: N=  1470  idade_med=  21m  frac_com_hora= 56.9%
+    2007: N=  2329  idade_med=  26m  frac_com_hora= 73.2%
+    2008: N=  7747  idade_med=  33m  frac_com_hora= 90.7%
+    2009: N= 39560  idade_med=  34m  frac_com_hora= 98.8%
+A3: 5 maiores meses 2010-2012 (ym,N,idade_med,frac<12m,frac_em_lote>=10):
+    2012-02  N= 35594  idade_med= 25  frac<12m= 26.4  frac_lote10=  0.0
+    2012-03  N= 25310  idade_med= 22  frac<12m= 30.4  frac_lote10=  0.0
+    2012-08  N= 22591  idade_med= 22  frac<12m= 31.3  frac_lote10=  0.0
+    2012-05  N= 18714  idade_med= 20  frac<12m= 33.7  frac_lote10=  0.0
+    2012-11  N= 17780  idade_med= 25  frac<12m= 30.6  frac_lote10=  0.0
+
+## PARTE B - registro em lote (timestamp compartilhado)
+B1: frac de 1as-solicitacoes com timestamp compartilhado por >=2/10/50/100 criancas, por ano:
+    2010: N= 81004  >=2:  1.7%  >=10:  0.1%  >=50:  0.0%  >=100:  0.0%
+    2011: N=124240  >=2:  1.8%  >=10:  0.0%  >=50:  0.0%  >=100:  0.0%
+    2012: N=220922  >=2:  3.0%  >=10:  0.0%  >=50:  0.0%  >=100:  0.0%
+    2013: N=191149  >=2:  2.4%  >=10:  0.0%  >=50:  0.0%  >=100:  0.0%
+    2014: N=174676  >=2:  2.7%  >=10:  0.0%  >=50:  0.0%  >=100:  0.0%
+    2015: N=179869  >=2:  2.9%  >=10:  0.6%  >=50:  0.6%  >=100:  0.6%
+    2016: N=172341  >=2:  2.5%  >=10:  0.0%  >=50:  0.0%  >=100:  0.0%
+    2017: N=163922  >=2:  2.7%  >=10:  0.0%  >=50:  0.0%  >=100:  0.0%
+    2018: N=165331  >=2:  2.7%  >=10:  0.0%  >=50:  0.0%  >=100:  0.0%
+B2: tamanho do lote (n criancas c/ timestamp exato) por ano (mediana,p90,max):
+    2010: mediana=  1  p90=    1  max=    11
+    2011: mediana=  1  p90=    1  max=    41
+    2012: mediana=  1  p90=    1  max=     3
+    2013: mediana=  1  p90=    1  max=     5
+    2014: mediana=  1  p90=    1  max=     5
+    2015: mediana=  1  p90=    1  max=  1092
+    2016: mediana=  1  p90=    1  max=    20
+    2017: mediana=  1  p90=    1  max=     4
+    2018: mediana=  1  p90=    1  max=    12
+B3: idade mediana na 1a solicitacao, lote(>=10) vs individual, por ano:
+    2010: lote10=74  individual=35
+    2011: lote10=72  individual=23
+    2012: lote10=nan  individual=23
+    2013: lote10=nan  individual=19
+    2014: lote10=nan  individual=15
+    2015: lote10=55  individual=13
+    2016: lote10=43  individual=12
+    2017: lote10=nan  individual=11
+    2018: lote10=13  individual=11
+B4: frac da coorte de nascimento com 1a solic <12m -- COMPLETA vs SEM LOTES(>=10). denom=SINASC:
+    coorte 2010: full= 11.0  sem_lote= 11.0  (%lote na coorte=0.1)
+    coorte 2011: full= 27.4  sem_lote= 27.4  (%lote na coorte=0.6)
+    coorte 2012: full= 38.3  sem_lote= 38.3  (%lote na coorte=0.0)
+    coorte 2013: full= 41.5  sem_lote= 41.5  (%lote na coorte=0.0)
+    coorte 2014: full= 44.1  sem_lote= 44.1  (%lote na coorte=0.0)
+    coorte 2015: full= 48.6  sem_lote= 48.6  (%lote na coorte=0.0)
+    coorte 2016: full= 50.1  sem_lote= 50.1  (%lote na coorte=0.0)
+B4 subida 2010->2012: full 11.0->38.3 (+27.3); sem_lote 11.0->38.3 (+27.3)
+
+## PARTE C - marcadores administrativos
+C1/C2: frac preenchido por ano (cpf, sexo, cep-casado, raca-declarada, prioridade):
+    2010: cpf= 94.2  sexo=100.0  cep= 97.2  raca_decl= 63.9  prio=  3.7
+    2011: cpf= 96.3  sexo=100.0  cep= 97.9  raca_decl= 61.9  prio=  7.7
+    2012: cpf= 98.1  sexo=100.0  cep= 98.3  raca_decl= 60.8  prio= 11.1
+    2013: cpf= 99.3  sexo=100.0  cep= 98.4  raca_decl= 59.8  prio= 16.6
+    2014: cpf= 99.5  sexo=100.0  cep= 98.5  raca_decl= 56.5  prio= 18.9
+    2015: cpf= 99.6  sexo=100.0  cep= 98.5  raca_decl= 57.9  prio= 19.4
+    2016: cpf= 99.6  sexo=100.0  cep= 98.6  raca_decl= 55.6  prio= 20.4
+    2017: cpf= 99.7  sexo=100.0  cep= 98.6  raca_decl= 54.0  prio= 13.9
+    2018: cpf= 99.5  sexo=100.0  cep= 98.6  raca_decl= 65.1  prio= 15.0
+C3: composicao de tipo_prioridade (%), 2010-2012 (0=nan/sem prioridade):
+     asol     0    1    3    4    5    6
+     2010 96.32 3.46 0.02 0.00 0.00 0.21
+     2011 92.27 5.49 0.08 0.00 0.21 1.95
+     2012 88.90 5.78 0.14 0.01 1.44 3.74
+C4: cd_esc_solicitacao -- n unidades distintas e dispersao da frac<12m entre unidades (n>=50):
+    2010: n_units= 2503  (n>=50: 504)  frac<12m entre-unid p25/med/p75=0/1/26
+    2011: n_units= 2412  (n>=50: 934)  frac<12m entre-unid p25/med/p75=11/32/43
+    2012: n_units= 2120  (n>=50:1663)  frac<12m entre-unid p25/med/p75=2/34/44
+    2013: n_units= 2143  (n>=50:1556)  frac<12m entre-unid p25/med/p75=5/43/53
+    2014: n_units= 2253  (n>=50:1399)  frac<12m entre-unid p25/med/p75=35/50/58
+    2015: n_units= 2459  (n>=50:1408)  frac<12m entre-unid p25/med/p75=42/53/61
+    2016: n_units= 2610  (n>=50:1319)  frac<12m entre-unid p25/med/p75=47/57/63
+    2017: n_units= 2692  (n>=50:1257)  frac<12m entre-unid p25/med/p75=50/57/64
+    2018: n_units= 2916  (n>=50:1285)  frac<12m entre-unid p25/med/p75=50/58/64
+
+## PARTE D - a subida e uniforme no espaco?
+D: CEP->distrito casado em 98.4% das criancas.
+D1: 96 distritos com dados 2010-2012. salto frac<12m 2010->2012 entre distritos:
+    distritos com salto>0: 96/96 (100%). salto: min=16.6, p25=25.2, mediana=28.9, p75=31.9, max=41.4
+D2: 5 menores saltos: VILA ANDRADE=17, MARSILAC=17, SANTO AMARO=17, PARI=19, CAMPO LIMPO=19
+D2: 5 maiores saltos: CIDADE TIRADENTES=38, JAGUARE=39, BELA VISTA=40, LIBERDADE=41, VILA PRUDENTE=41
+D3: correlacao (Pearson) do salto 2010->2012 do distrito com:
+    cap13: r=0.217
+    nceis13: r=0.235
+    renda_dist: r=-0.023

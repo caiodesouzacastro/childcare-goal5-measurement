@@ -1,0 +1,30 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\_chkfila.log
+  log type:  text
+ opened on:  22 Jul 2026, 10:31:43
+
+. * Fila completo usado pelo pipeline (Ciro brutos)
+. use "<NE_ROOT>\dados_restritos\Ciro\01_dados\brutos\fila_espera\Fila1018.dta" in 1, clear
+
+. di "Fila1018 (Ciro brutos) — 1 obs; vars:"
+Fila1018 (Ciro brutos) — 1 obs; vars:
+
+. ds
+ano           cd_esc_sol~o  dt_encamin~o  cd_serie_~to  cd_esc_mat~a  an_letivo~ia  cd_tipo_m~ia  cd_esc_rec~a  tipo_prior~o  mes_nasc      cep_aluno
+cd_aluno_sme  an_letivo~ao  an_letivo~to  dt_matricula  cd_serie_~la  cd_esc_des~a  dt_recusa     cd_serie_~sa  cd_sexo_al~o  ano_nasc      cpf_resp_a~o
+dt_solicit~o  cd_serie_~ao  cd_esc_enc~o  an_letivo~la  dt_desiste~a  cd_serie_~ia  an_letivo~sa  cd_tipo_m~sa  tp_raca_cor   cd_pais_mec
+
+. di "--- tipos das chaves ---"
+--- tipos das chaves ---
+
+. foreach v in cd_aluno_sme cd_esc_encaminhamento an_letivo_encaminhamento cd_serie_ensino_encaminhamento tipo_prioridade_encaminhamento dt_solicitacao dt_encaminhamento {
+  2.     cap confirm variable `v'
+  3.     if !_rc { local ty : type `v'; di "  `v' : `ty'" }
+  4.     else di "  `v' : NAO EXISTE"
+  5. }
+program error:  matching close brace not found
+r(198);
+
+end of do-file
+r(198);

@@ -1,0 +1,206 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag06_matri.log
+  log type:  text
+ opened on:  22 Jul 2026, 13:07:20
+
+. 
+. di "########## Construindo trajetoria (fundamental 110-120 + EI) dos paineis ##########"
+########## Construindo trajetoria (fundamental 110-120 + EI) dos paineis ##########
+
+. tempfile acc
+
+. clear
+
+. gen byte _x=.
+
+. save `acc', emptyok
+(dataset contains 0 observations)
+file <HOME>\AppData\Local\Temp\ST_6f64_000001.tmp saved as .dta format
+
+. foreach y in 2010 2011 2012 2013 2014 2015 2016 2017 2018 {
+  2.     di "  ... `y'"
+  3.     use cd_aluno_sme an_letivo cd_serie ano_nasc_aluno mes_nasc_aluno sit_al_reprov ///
+>         using "$ba\matriculas_`y'.dta", clear
+  4.     keep if inlist(cd_serie,110,111,112,115,116,117,118,119,120) | inlist(cd_serie,241,242,267,268,270,274)
+  5.     append using `acc'
+  6.     save `acc', replace
+  7. }
+  ... 2010
+(1,616,837 observations deleted)
+file <HOME>\AppData\Local\Temp\ST_6f64_000001.tmp saved as .dta format
+  ... 2011
+(1,159,860 observations deleted)
+file <HOME>\AppData\Local\Temp\ST_6f64_000001.tmp saved as .dta format
+  ... 2012
+(1,310,565 observations deleted)
+file <HOME>\AppData\Local\Temp\ST_6f64_000001.tmp saved as .dta format
+  ... 2013
+(1,258,273 observations deleted)
+file <HOME>\AppData\Local\Temp\ST_6f64_000001.tmp saved as .dta format
+  ... 2014
+(459,630 observations deleted)
+file <HOME>\AppData\Local\Temp\ST_6f64_000001.tmp saved as .dta format
+  ... 2015
+(533,260 observations deleted)
+file <HOME>\AppData\Local\Temp\ST_6f64_000001.tmp saved as .dta format
+  ... 2016
+(550,976 observations deleted)
+file <HOME>\AppData\Local\Temp\ST_6f64_000001.tmp saved as .dta format
+  ... 2017
+(581,612 observations deleted)
+file <HOME>\AppData\Local\Temp\ST_6f64_000001.tmp saved as .dta format
+  ... 2018
+(533,935 observations deleted)
+file <HOME>\AppData\Local\Temp\ST_6f64_000001.tmp saved as .dta format
+
+. di "N linhas trajetoria = " _N
+N linhas trajetoria = 7613706
+
+. compress
+  (0 bytes saved)
+
+. save "$aud\matri_traj.dta", replace
+(file <NE_ROOT>\_audit\matri_traj.dta not found)
+file <NE_ROOT>\_audit\matri_traj.dta saved
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## A3 — entrada no 1o ano fundamental (cd_serie==110) ##########"
+########## A3 — entrada no 1o ano fundamental (cd_serie==110) ##########
+
+. use "$aud\matri_traj.dta", clear
+
+. keep if cd_serie==110
+(7,046,620 observations deleted)
+
+. * primeira aparicao no 1o ano por crianca
+. bysort cd_aluno_sme (an_letivo): keep if _n==1
+(49,629 observations deleted)
+
+. di "N criancas distintas com 1o ano observado = " _N
+N criancas distintas com 1o ano observado = 517457
+
+. di "--- cruzamento mes_nasc x ano de entrada no 1o ano (freq) ---"
+--- cruzamento mes_nasc x ano de entrada no 1o ano (freq) ---
+
+. tab mes_nasc_aluno an_letivo
+
+MES_NASC_A |                                             AN_LETIVO
+      LUNO |      2010       2011       2012       2013       2014       2015       2016       2017       2018 |     Total
+-----------+---------------------------------------------------------------------------------------------------+----------
+         1 |     6,254      4,758      4,639      5,052      4,744      4,913      5,031      5,078      4,322 |    44,791 
+         2 |     4,381      4,927      4,452      4,821      4,836      4,860      4,876      4,947      4,323 |    42,423 
+         3 |     5,317      6,181      5,466      5,414      5,400      5,514      5,573      5,582      4,883 |    49,330 
+         4 |     5,254      4,870      4,888      4,982      4,736      4,777      4,776      4,612      4,198 |    43,093 
+         5 |     5,228      4,945      5,211      5,188      5,011      5,002      4,691      4,735      4,313 |    44,324 
+         6 |     5,172      4,840      4,795      4,787      4,709      4,654      4,524      4,610      4,011 |    42,102 
+         7 |     5,045      4,814      4,903      4,971      4,911      4,885      4,767      4,846      4,289 |    43,431 
+         8 |     4,938      4,884      4,832      4,789      4,721      4,865      4,927      4,523      4,176 |    42,655 
+         9 |     5,067      4,820      4,825      5,025      4,645      4,841      5,156      4,697      3,929 |    43,005 
+        10 |     4,916      4,669      4,687      4,780      4,598      4,649      4,841      4,548      3,832 |    41,520 
+        11 |     4,644      4,549      4,534      4,411      4,350      4,272      4,459      4,372      3,687 |    39,278 
+        12 |     4,896      4,558      4,534      4,732      4,641      4,824      4,609      4,702      4,009 |    41,505 
+-----------+---------------------------------------------------------------------------------------------------+----------
+     Total |    61,112     58,815     57,766     58,952     57,302     58,056     58,230     57,252     49,972 |   517,457 
+
+. di ""
+
+
+. di "--- por coorte de nascimento: ano modal de entrada no 1o ano ---"
+--- por coorte de nascimento: ano modal de entrada no 1o ano ---
+
+. forvalues c=2008/2012 {
+  2.     di "  coorte `c':"
+  3.     tab an_letivo if ano_nasc_aluno==`c'
+  4. }
+  coorte 2008:
+
+  AN_LETIVO |      Freq.     Percent        Cum.
+------------+-----------------------------------
+       2010 |          2        0.00        0.00
+       2012 |          1        0.00        0.01
+       2013 |          2        0.00        0.01
+       2014 |     14,721       25.63       25.64
+       2015 |     42,279       73.62       99.26
+       2016 |        344        0.60       99.86
+       2017 |         59        0.10       99.96
+       2018 |         24        0.04      100.00
+------------+-----------------------------------
+      Total |     57,432      100.00
+  coorte 2009:
+
+  AN_LETIVO |      Freq.     Percent        Cum.
+------------+-----------------------------------
+       2013 |          1        0.00        0.00
+       2014 |          5        0.01        0.01
+       2015 |     15,209       26.25       26.26
+       2016 |     42,366       73.12       99.37
+       2017 |        310        0.53       99.91
+       2018 |         53        0.09      100.00
+------------+-----------------------------------
+      Total |     57,944      100.00
+  coorte 2010:
+
+  AN_LETIVO |      Freq.     Percent        Cum.
+------------+-----------------------------------
+       2010 |          2        0.00        0.00
+       2013 |          1        0.00        0.01
+       2016 |     15,373       26.96       26.97
+       2017 |     41,318       72.47       99.44
+       2018 |        321        0.56      100.00
+------------+-----------------------------------
+      Total |     57,015      100.00
+  coorte 2011:
+
+  AN_LETIVO |      Freq.     Percent        Cum.
+------------+-----------------------------------
+       2016 |          1        0.00        0.00
+       2017 |     15,524       30.07       30.07
+       2018 |     36,109       69.93      100.00
+------------+-----------------------------------
+      Total |     51,634      100.00
+  coorte 2012:
+
+  AN_LETIVO |      Freq.     Percent        Cum.
+------------+-----------------------------------
+       2018 |     13,413      100.00      100.00
+------------+-----------------------------------
+      Total |     13,413      100.00
+
+. di "--- SALTO marco/abril: para coorte 2011, ano de entrada por mes_nasc ---"
+--- SALTO marco/abril: para coorte 2011, ano de entrada por mes_nasc ---
+
+. tab mes_nasc_aluno an_letivo if ano_nasc_aluno==2011
+
+MES_NASC_A |            AN_LETIVO
+      LUNO |      2016       2017       2018 |     Total
+-----------+---------------------------------+----------
+         1 |         0      5,028         60 |     5,088 
+         2 |         1      4,882         52 |     4,935 
+         3 |         0      5,499         74 |     5,573 
+         4 |         0         41      4,123 |     4,164 
+         5 |         0         40      4,236 |     4,276 
+         6 |         0         29      3,936 |     3,965 
+         7 |         0          3      4,231 |     4,234 
+         8 |         0          0      4,142 |     4,142 
+         9 |         0          1      3,874 |     3,875 
+        10 |         0          0      3,784 |     3,784 
+        11 |         0          0      3,647 |     3,647 
+        12 |         0          1      3,950 |     3,951 
+-----------+---------------------------------+----------
+     Total |         1     15,524     36,109 |    51,634 
+
+. 
+. di "=== FIM matri ==="
+=== FIM matri ===
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag06_matri.log
+  log type:  text
+ closed on:  22 Jul 2026, 13:09:34
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

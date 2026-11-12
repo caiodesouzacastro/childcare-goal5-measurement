@@ -1,0 +1,24 @@
+% requer \usepackage{booktabs}. Tabela descritiva.
+\begin{table}[htbp]\centering
+\caption{Janela de observabilidade de uma solicitacao, por coorte de nascimento (painel jan/2010--dez/2018)}
+\label{tab:S1a_janelas}
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Coorte nasc. & Idade min.\ obs. & Idade max.\ obs. & Plena 0--24 & Plena 0--36 \\
+\midrule
+2008 & 24 & 120 & nao & nao \\
+2009 & 12 & 108 & nao & nao \\
+2010 & 0 & 96 & sim & sim \\
+2011 & 0 & 84 & sim & sim \\
+2012 & 0 & 72 & sim & sim \\
+2013 & 0 & 60 & sim & sim \\
+2014 & 0 & 48 & sim & sim \\
+2015 & 0 & 36 & sim & sim \\
+2016 & 0 & 24 & sim & nao \\
+2017 & 0 & 12 & nao & nao \\
+2018 & 0 & 0 & nao & nao \\
+\bottomrule
+\end{tabular}
+\\[3pt]{\footnotesize \textit{Note:} Para cada coorte de nascimento, idade minima e maxima (meses) em que uma solicitacao seria plenamente observavel para toda a coorte, dado o painel: idade minima $=\max(0,(2010-c)\times 12)$; idade maxima $=(2018-c)\times 12$. Coortes anteriores a 2010 sao truncadas a esquerda; de 2017 em diante, a direita. }
+\end{table}

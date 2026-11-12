@@ -1,0 +1,22 @@
+carregando Fila1018 bruto...
+Traceback (most recent call last):
+  File "<NE_ROOT>\02_audit\verificacao_final.py", line 37, in <module>
+    fa=pd.read_stata(FILA,columns=cols)
+  File "<HOME>\AppData\Roaming\Python\Python313\site-packages\pandas\io\stata.py", line 2305, in read_stata
+    return reader.read()
+           ~~~~~~~~~~~^^
+  File "<HOME>\AppData\Roaming\Python\Python313\site-packages\pandas\io\stata.py", line 1705, in read
+    self._ensure_open()
+    ~~~~~~~~~~~~~~~~~^^
+  File "<HOME>\AppData\Roaming\Python\Python313\site-packages\pandas\io\stata.py", line 1152, in _ensure_open
+    self._open_file()
+    ~~~~~~~~~~~~~~~^^
+  File "<HOME>\AppData\Roaming\Python\Python313\site-packages\pandas\io\stata.py", line 1165, in _open_file
+    handles = get_handle(
+        self._original_path_or_buf,
+    ...<3 lines>...
+        compression=self._compression,
+    )
+  File "<HOME>\AppData\Roaming\Python\Python313\site-packages\pandas\io\common.py", line 948, in get_handle
+    handle = open(handle, ioargs.mode)
+FileNotFoundError: [Errno 2] No such file or directory: '<NE_ROOT>\dados_restritos\Ciro\\01_dados\\brutos\\fila_espera\\Fila1018.dta'

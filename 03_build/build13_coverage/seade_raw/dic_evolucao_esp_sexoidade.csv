@@ -1,0 +1,6 @@
+variavel;tipo;descricao;fonte
+cod_ibge;numérico;Código oficial de 7 dígitos definido pelo IBGE para município;Instituto Brasileiro de Geografia e Estatística – IBGE 
+ano;texto;Ano de referência - 2000 a 2010 população censitária ajustada e 2015 a 2050  população projetada (de cinco em cinco anos);Fundação Sistema Estadual de Análise de Dados – Seade
+sexo;texto;Homens e Mulheres;Fundação Sistema Estadual de Análise de Dados – Seade
+faixa_etaria;texto; 16 faixas etárias quinquenais - de 0 a 4 anos até 75 anos e mais;Fundação Sistema Estadual de Análise de Dados – Seade
+populacao;numérico;População residente, por sexo e faixa etária quinquenal;Fundação Sistema Estadual de Análise de Dados – Seade

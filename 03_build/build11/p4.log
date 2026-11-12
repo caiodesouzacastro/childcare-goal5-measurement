@@ -1,0 +1,22 @@
+# guardioes com cpf valido: 1,175,659 cobrindo 1,495,152 criancas (98.1% do universo)
+  distribuicao de filhos por guardiao: 1=918,674, 2=208,740, 3=38,751, 4=7,268, 5=1,539, 6=380, 6+=687
+# pares base (2 filhos, ambos 2010-2016, espac>0): 79,893
+# baseline replicado: coef=-7.20 (EP 0.11) N=159,786 pares=79,893
+
+## 1. estagio do mais velho na d_sol do mais novo
+  a_applied: coef=-5.89 (EP 0.18) pares=24,439
+  b_referred: coef=3.42 (EP 0.52) pares=4,246
+  c_enrolled: coef=4.22 (EP 0.15) pares=51,208
+  pre-birth (solic velho < nasc novo): coef=3.21 (EP 0.13) pares=53,561
+
+## 2. validacao do guardiao
+  espac impossivel (<9m): 1,244 (1.6% dos pares)
+  mudanca de CEP entre filhos: 30,235 (37.8%)
+  amostra de pares = 159,786 criancas (10.5% do universo)
+  quartil renda medio: pares=2.46 universo=2.50 | % prioridade: pares=19.5 universo=14.5
+  (i) excl espac<9m: coef=-7.65 (EP 0.11) pares=78,649
+  (ii) so grupos de exatamente 2 filhos: JA e a amostra base (coef=-7.20)
+
+## 3. distribuicao das diferencas (idade_sol mais novo - mais velho)
+  media=-11.4 | p10=-31 p25=-20 med=-10 p75=-1 p90=5
+  fracao com mais novo inscrito mais cedo (diff<0): 78.1%

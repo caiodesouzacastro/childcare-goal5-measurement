@@ -1,0 +1,164 @@
+[M3] build27_populacao.py (analise): execucao 1 de 3 na rodada notas-2026-10-27
+[gravado e relido] combinacoes_pop6.csv 3744 linhas
+CHECAGEM: principal, SEADE e linear reproduzem 03_build/build25/combinacoes.csv nas 1.872 linhas ( avaliavel, A, AB, obriga, dem, cumpre )
+[gravado e relido] populacao_series.csv 78 linhas
+=== (1a) populacao 0-3 por serie (milhares)
+serie  principal  SEADE  linear  SEADE_ancorada  censo2010_fixo  nascidos
+ano                                                                      
+2010       564.2  570.0   564.2           498.2           564.2     692.7
+2011       564.4  568.8   555.9           497.1           564.2     695.3
+2012       565.6  567.6   547.6           496.1           564.2     699.1
+2013       564.5  566.4   539.4           495.0           564.2     700.1
+2014       562.7  565.2   531.1           494.0           564.2     700.2
+2015       561.4  564.0   522.8           492.9           564.2     701.0
+2016       556.6  561.2   514.5           490.5           564.2     697.3
+2017       549.6  558.5   506.2           488.1           564.2     690.8
+2018       542.6  555.7   498.0           485.7           564.2     684.3
+2019       530.2  552.9   489.7           483.3           564.2     670.8
+2020       513.7  550.2   481.4           480.9           564.2     652.1
+2021       492.1  541.0   473.1           472.8           564.2     626.8
+2022       464.8  531.8   464.8           464.8           564.2     594.0
+=== (1b) braco A, etapa, todas as redes (%), por serie
+serie  principal  SEADE  linear  SEADE_ancorada  censo2010_fixo  nascidos
+ano                                                                      
+2010        30.3   30.0    30.3            34.3            30.3      24.6
+2011        43.6   43.3    44.3            49.5            43.6      35.4
+2012        46.4   46.3    48.0            52.9            46.5      37.6
+2013        47.4   47.2    49.6            54.0            47.4      38.2
+2014        50.2   49.9    53.1            57.1            50.0      40.3
+2015        53.2   52.9    57.1            60.6            52.9      42.6
+2016        59.4   59.0    64.3            67.5            58.6      47.4
+2017        62.5   61.5    67.8            70.3            60.8      49.7
+2018        67.4   65.8    73.5            75.3            64.8      53.5
+2019        73.0   70.0    79.1            80.1            68.6      57.7
+2020        74.1   69.2    79.1            79.2            67.5      58.4
+2021        76.8   69.8    79.9            79.9            67.0      60.3
+2022        83.8   73.3    83.8            83.8            69.0      65.6
+=== (1c) braco A, idade (0-3 em qualquer etapa) (%), por serie
+serie  principal  SEADE  linear  SEADE_ancorada  censo2010_fixo  nascidos
+ano                                                                      
+2010        38.7   38.3    38.7            43.9            38.7      31.5
+2011        37.9   37.6    38.5            43.0            37.9      30.8
+2012        40.5   40.3    41.8            46.1            40.6      32.7
+2013        45.0   44.8    47.1            51.3            45.0      36.3
+2014        47.7   47.5    50.6            54.3            47.6      38.3
+2015        50.9   50.7    54.7            58.0            50.6      40.8
+2016        57.0   56.5    61.6            64.6            56.2      45.5
+2017        59.5   58.6    64.6            67.0            58.0      47.4
+2018        64.5   62.9    70.2            72.0            62.0      51.1
+2019        69.7   66.8    75.4            76.4            65.5      55.1
+2020        70.3   65.6    75.0            75.1            64.0      55.4
+2021        72.3   65.7    75.2            75.2            63.0      56.7
+2022        78.6   68.7    78.6            78.6            64.8      61.5
+=== (1d) A/B em dezembro (75% da populacao / matricula SME + lista publicada); > 1: A e o maior
+serie  principal  SEADE  linear  SEADE_ancorada  censo2010_fixo  nascidos
+ano                                                                      
+2010       1.833  1.852   1.833           1.619           1.833     2.251
+2011       1.426  1.438   1.405           1.257           1.426     1.757
+2012       1.363  1.368   1.320           1.195           1.360     1.685
+2013       1.361  1.365   1.300           1.193           1.360     1.688
+2014       1.309  1.315   1.235           1.149           1.313     1.629
+2015       1.253  1.259   1.167           1.100           1.259     1.565
+2016       1.195  1.205   1.105           1.053           1.212     1.498
+2017       1.211  1.231   1.116           1.076           1.243     1.522
+2018       1.151  1.179   1.056           1.030           1.197     1.451
+2019       1.120  1.168   1.034           1.021           1.192     1.417
+2020       1.027  1.100   0.962           0.961           1.128     1.304
+2021       0.957  1.052   0.920           0.919           1.097     1.219
+2022       0.963  1.102   0.963           0.963           1.169     1.231
+=== (1e) variacao da populacao que levaria o braco A (etapa, todas as redes) a 75% (%); negativo: a populacao teria de ser menor
+serie  principal  SEADE  linear  SEADE_ancorada  censo2010_fixo  nascidos
+ano                                                                      
+2010       -59.7  -60.1   -59.7           -54.3           -59.7     -67.1
+2011       -41.9  -42.3   -41.0           -34.0           -41.9     -52.8
+2012       -38.1  -38.3   -36.1           -29.4           -37.9     -49.9
+2013       -36.9  -37.1   -33.9           -28.0           -36.8     -49.1
+2014       -33.1  -33.4   -29.1           -23.8           -33.3     -46.3
+2015       -29.1  -29.4   -23.9           -19.3           -29.5     -43.2
+2016       -20.7  -21.4   -14.3           -10.1           -21.8     -36.7
+2017       -16.7  -18.0    -9.6            -6.2           -18.9     -33.7
+2018       -10.1  -12.2    -2.0             0.4           -13.5     -28.7
+2019        -2.6   -6.6     5.4             6.8            -8.5     -23.0
+2020        -1.2   -7.7     5.5             5.6           -10.0     -22.1
+2021         2.4   -6.9     6.5             6.5           -10.7     -19.6
+2022        11.7   -2.3    11.7            11.7            -7.9     -12.6
+=== (1f) serie sobre a principal (%)
+serie  principal  SEADE  linear  SEADE_ancorada  censo2010_fixo  nascidos
+ano                                                                      
+2010         0.0    1.0     0.0           -11.7             0.0      22.8
+2011         0.0    0.8    -1.5           -11.9            -0.0      23.2
+2012         0.0    0.4    -3.2           -12.3            -0.2      23.6
+2013         0.0    0.3    -4.4           -12.3            -0.0      24.0
+2014         0.0    0.4    -5.6           -12.2             0.3      24.4
+2015         0.0    0.5    -6.9           -12.2             0.5      24.9
+2016         0.0    0.8    -7.6           -11.9             1.4      25.3
+2017         0.0    1.6    -7.9           -11.2             2.7      25.7
+2018         0.0    2.4    -8.2           -10.5             4.0      26.1
+2019         0.0    4.3    -7.6            -8.8             6.4      26.5
+2020         0.0    7.1    -6.3            -6.4             9.8      26.9
+2021         0.0    9.9    -3.9            -3.9            14.6      27.4
+2022         0.0   14.4     0.0             0.0            21.4      27.8
+anos com braco A (etapa, todas) >= 75, por serie: {'principal': [2021, 2022], 'SEADE': [], 'linear': [2019, 2020, 2021, 2022], 'SEADE_ancorada': [2018, 2019, 2020, 2021, 2022], 'censo2010_fixo': [], 'nascidos': []}
+maximo do braco A (etapa, todas) 2010-2022, por serie: {'principal': np.float64(83.8), 'SEADE': np.float64(73.3), 'linear': np.float64(83.8), 'SEADE_ancorada': np.float64(83.8), 'censo2010_fixo': np.float64(69.0), 'nascidos': np.float64(65.6)}
+SEADE_ancorada contra o Censo 2010: -11.7% | SEADE contra o Censo 2010: +1.0%
+SEADE 2025 na serie do projeto: 504289 | SME, noticia de 11/08/2025: '566 mil criancas (dados do SEADE)' | razao 566.000 / serie = 1.122
+=== (2) Tabela 1 com as seis series (31/12; braco A todas as redes; so o braco maior): anos cumpridos | anos avaliaveis
+           pop                fila fonte_B                anos      aval  monotona
+         SEADE sem_unid_especifica   Censo               nunca 2019-2021      True
+         SEADE sem_unid_especifica     SME               nunca 2019-2022      True
+         SEADE               total   Censo               nunca 2010-2021      True
+         SEADE               total     SME               nunca 2010-2022      True
+SEADE_ancorada sem_unid_especifica   Censo      2019,2020,2021 2019-2021      True
+SEADE_ancorada sem_unid_especifica     SME 2019,2020,2021,2022 2019-2022      True
+SEADE_ancorada               total   Censo 2018,2019,2020,2021 2010-2021      True
+SEADE_ancorada               total     SME           2018,2019 2010-2022     False
+censo2010_fixo sem_unid_especifica   Censo               nunca 2019-2021      True
+censo2010_fixo sem_unid_especifica     SME               nunca 2019-2022      True
+censo2010_fixo               total   Censo               nunca 2010-2021      True
+censo2010_fixo               total     SME               nunca 2010-2022      True
+        linear sem_unid_especifica   Censo      2019,2020,2021 2019-2021      True
+        linear sem_unid_especifica     SME 2019,2020,2021,2022 2019-2022      True
+        linear               total   Censo      2019,2020,2021 2010-2021      True
+        linear               total     SME                2019 2010-2022     False
+      nascidos sem_unid_especifica   Censo               nunca 2019-2021      True
+      nascidos sem_unid_especifica     SME               nunca 2019-2022      True
+      nascidos               total   Censo               nunca 2010-2021      True
+      nascidos               total     SME               nunca 2010-2022      True
+     principal sem_unid_especifica   Censo                2021 2019-2021      True
+     principal sem_unid_especifica     SME           2021,2022 2019-2022      True
+     principal               total   Censo                2021 2010-2021      True
+     principal               total     SME               nunca 2010-2022      True
+  Tabela 1 hoje (principal, linear): 8 combinacoes; com algum ano 7; nunca 1; primeiro ano {'2019': 4, '2021': 3}; nao monotonas 1; conjuntos distintos 6
+  com a SEADE: 12 combinacoes; com algum ano 7; nunca 5; primeiro ano {'2019': 4, '2021': 3}; nao monotonas 1; conjuntos distintos 6
+  com as cinco series de populacao: 20 combinacoes; com algum ano 11; nunca 9; primeiro ano {'2018': 2, '2019': 6, '2021': 3}; nao monotonas 2; conjuntos distintos 8
+=== (3) por serie, nas 48 combinacoes da estrutura da A13 (fila x data x matricula em B x rede em A x clausula)
+  principal: 9 de 48 com algum ano
+  SEADE: 0 de 48 com algum ano
+  linear: 12 de 48 com algum ano
+  SEADE_ancorada: 12 de 48 com algum ano
+  censo2010_fixo: 0 de 48 com algum ano
+  nascidos: 0 de 48 com algum ano
+combinacoes (de 48) cumpridas em cada ano, por serie:
+ano             2018  2019  2020  2021  2022
+pop                                         
+principal          0     0     0     9     2
+SEADE              0     0     0     0     0
+linear             0     4    11     8     2
+SEADE_ancorada     2     4    11     8     2
+censo2010_fixo     0     0     0     0     0
+nascidos           0     0     0     0     0
+combinacoes avaliaveis em cada ano (iguais para toda serie com populacao no ano):
+ano
+2010    24
+2011    24
+2012    24
+2013    24
+2014    24
+2015    24
+2016    24
+2017    24
+2018    24
+2019    40
+2020    48
+2021    48
+2022    12

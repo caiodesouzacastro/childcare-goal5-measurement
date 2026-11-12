@@ -1,0 +1,94 @@
+# BUILD05 - painel de irmaos. child_master + Fila1018 (cpf_resp_aluno). Descritivo.
+
+## S1 - construir o painel de irmaos
+S1a: 1,175,658 responsaveis (cpf valido) cobrindo 1,495,127 criancas (98.1% do painel).
+     distribuicao de filhos por responsavel: 1:918,674, 2:208,740, 3:38,751, 4:7,268, 5:1,539, 6:380, 7+:306
+     criancas em familias com 2+ filhos: 576,453 em 256,984 familias.
+S1b: 208,740 familias com exatamente 2 filhos. espacamento entre nascimentos (meses):
+     0(gemeos): 21,378 (10.2%)
+     1-11: 3,631 (1.7%)
+     12-23: 34,888 (16.7%)
+     24-35: 39,335 (18.8%)
+     36-47: 32,511 (15.6%)
+     48+: 76,997 (36.9%)
+     espacamento mediano (excl.\ gemeos): 41 meses
+S1c: pares com AMBOS nascidos 2010-2016 e espacamento>=1m: 79,893 pares.
+
+## S2 - a estatistica central (idade na 1a solicitacao)
+S2a: idade na 1a solicitacao -- filho1 (mais velho): media 23.0, mediana 19 meses; filho2 (mais novo): media 11.6, mediana 8.
+     diferenca (filho2 - filho1): media -11.37, mediana -10 meses.
+S2b: fracao de pares com filho2 inscrito MAIS CEDO (em idade) que filho1: 78.1%.
+S2c: diferenca de idade de inscricao por faixa de espacamento (filho2-filho1):
+     12-23: n=24,044  dif_media=-8.95  mediana=-11  %antecipa=78.7
+     24-35: n=22,444  dif_media=-11.28  mediana=-9  %antecipa=77.5
+     36-47: n=16,333  dif_media=-11.75  mediana=-8  %antecipa=75.4
+     48+: n=17,072  dif_media=-14.53  mediana=-11  %antecipa=80.5
+S2d(i) FE familia: idade_sol ~ ordem + ano_nasc | familia. ordem=-7.091 (EP 0.113); ano_nasc=-1.522 (EP 0.041); N=159,786
+S2d(ii) FE familia + distrito x ano_nasc: ordem=-7.147 (EP 0.112); N=159,786
+
+## S3 - o teste de aprendizado (espera do filho 1)
+S3a: 79,041 pares com filho1 referido. espera_enc do filho1 (dias) por quartil: Q1 (curta):3, Q2:138, Q3:302, Q4 (longa):549
+S3b: diferenca de idade de inscricao (filho2-filho1) por quartil de espera do filho1:
+     Q1 (curta): n=19,773  espera1_med=3d  dif_media=-21.60  mediana=-21  %antecipa=91.2
+     Q2: n=19,787  espera1_med=138d  dif_media=-10.86  mediana=-10  %antecipa=77.8
+     Q3: n=19,786  espera1_med=302d  dif_media=-7.29  mediana=-6  %antecipa=72.9
+     Q4 (longa): n=19,695  espera1_med=549d  dif_media=-5.51  mediana=-5  %antecipa=70.1
+     Q4-Q1 na diferenca media: 16.10 meses
+S3c: dif ~ espera_filho1(dias) + ano_nasc_filho2 | FE(distrito). espera1=2.717 meses/100d (EP 0.023); N=77,959
+S3c(confound): corr(idade_sol_1, espera_enc_1)=-0.428. Controlando a idade de inscricao do proprio 1o filho, o coeficiente da espera do 1o sobre a idade de inscricao do 2o cai de 2.72 para 0.135 meses/100d (EP 0.019) -- ~0.
+S3d: antecipacao media (dif filho2-filho1): filho1 NUNCA matriculado=-14.87 (n=4,688) vs filho1 atendido rapido (Q1 espera)=-21.60 (n=19,773); diferenca=6.73 meses.
+
+## S4 - placebos e ameacas
+S4a PLACEBO (23,603 pares onde a espera do filho1 se realiza APOS a inscricao do filho2): espera1=2.348 meses/100d (EP 0.030); N=23,251. (nao-observavel pela familia no ato -> nao deveria prever)
+S4b: 30.6% dos pares tem o filho2 inscrito ANTES de o filho1 ser encaminhado (familia ainda nao observou a espera completa).
+S4b (refeito, so pares com filho1 JA encaminhado antes da inscricao do filho2):
+     Q1: n=13,919  espera1_med=7d  dif_media=-16.11
+     Q2: n=13,841  espera1_med=161d  dif_media=-5.73
+     Q3: n=13,826  espera1_med=305d  dif_media=-3.83
+     Q4: n=13,852  espera1_med=536d  dif_media=-1.98
+     Q4-Q1: 14.13 meses
+     regressao (espera observada): espera1=2.533 meses/100d (EP 0.028); N=54,708
+S4c: filho2 encaminhado para a MESMA escola do filho1 em 14.0% dos pares; matriculado na mesma escola em 16.6%.
+S4d: composicao familias 1 filho vs 2+ filhos (media):
+     renda CEP: 1=1250 vs 2+=1155
+     % com prioridade: 1=13.8 vs 2+=16.0
+     idade 1a solic (m): 1=22.4 vs 2+=21.9
+     % nunca matriculado: 1=12.9 vs 2+=12.5
+
+=== S5 robustez ===
+# S5 robustez: 79,893 pares (identico a S1c). Painel longo = 159,786 obs.
+
+## S5a-S5d: idade_sol ~ ordem, variando o controle de coorte
+  Linear (original): coef(ordem)=-7.091 (EP 0.113); N=159,786
+  Dummies de ano (S5a): coef(ordem)=-7.201 (EP 0.112); N=159,786  
+  Dummies de ano-mes (S5b): coef(ordem)=-6.757 (EP 0.116); N=159,786  
+  Dummies de ano + distrito x ano (S5c): coef(ordem)=-7.147 (EP 0.112); N=159,786  
+
+## S5e: restrito a espacamento 24-48 meses
+  Ano dummies, espac 24-48 (S5e): coef(ordem)=-10.599 (EP 0.322); N=79,728  (39,864 pares)
+
+## S5f: placebo de composicao (desfecho pre-determinado; nao deveria variar com ordem)
+  PLACEBO sexo feminino ~ ordem (S5f): coef(ordem)=0.010 (EP 0.006); N=159,786  
+  PLACEBO negra ~ ordem (S5f): coef(ordem)=-0.005 (EP 0.004); N=159,786  
+
+## Leitura: linear=-7.09 -> dummies de ano=-7.20 (variacao -0.11 meses, +2%).
+  O coeficiente e ESTAVEL entre linear e dummies (muda 0.11 meses, <0,5): a curvatura residual nao contaminava materialmente a estimativa linear.
+
+=== S5 robustez ===
+# S5 robustez: 79,893 pares (identico a S1c). Painel longo = 159,786 obs.
+
+## S5a-S5d: idade_sol ~ ordem, variando o controle de coorte
+  Linear (original): coef(ordem)=-7.091 (EP 0.113); N=159,786
+  Birth-year dummies (S5a): coef(ordem)=-7.201 (EP 0.112); N=159,786  
+  Birth year-month dummies (S5b): coef(ordem)=-6.757 (EP 0.116); N=159,786  
+  Year dummies + district$\times$year (S5c): coef(ordem)=-7.147 (EP 0.112); N=159,786  
+
+## S5e: restrito a espacamento 24-48 meses
+  Year dummies, spacing 24--48m (S5e): coef(ordem)=-10.599 (EP 0.322); N=79,728  (39,864 pares)
+
+## S5f: placebo de composicao (desfecho pre-determinado; nao deveria variar com ordem)
+  Placebo: female $\sim$ order (S5f): coef(ordem)=0.010 (EP 0.006); N=159,786  
+  Placebo: Black $\sim$ order (S5f): coef(ordem)=-0.005 (EP 0.004); N=159,786  
+
+## Leitura: linear=-7.09 -> dummies de ano=-7.20 (variacao -0.11 meses, +2%).
+  O coeficiente e ESTAVEL entre linear e dummies (muda 0.11 meses, <0,5): a curvatura residual nao contaminava materialmente a estimativa linear.

@@ -1,0 +1,225 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag04_D.log
+  log type:  text
+ opened on:  22 Jul 2026, 11:30:47
+
+. 
+. *==============================================================
+. di "########## D1 — describe dos arquivos PSP ##########"
+########## D1 — describe dos arquivos PSP ##########
+
+. foreach f in "$ba\psp_2017.dta" "$ba\psp_2018.dta" "$ba\psp_2019.dta" "$dsme\Microdados_PSP_2018_2ano.dta" {
+  2.     di ""
+  3.     di "==== `f' ===="
+  4.     cap describe using "`f'", short
+  5.     cap describe using "`f'"
+  6. }
+
+==== <NE_ROOT>\dados_restritos\Ciro\01_dados\processados\bases_analise\psp_2017.dta ====
+
+==== <NE_ROOT>\dados_restritos\Ciro\01_dados\processados\bases_analise\psp_2018.dta ====
+
+==== <NE_ROOT>\dados_restritos\Ciro\01_dados\processados\bases_analise\psp_2019.dta ====
+
+==== <NE_ROOT>\dados_restritos\Dados - SME\Atual (25.06)\Microdados_PSP_2018_2ano.dta ====
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## D2/D3 — match com universo_B4 ##########"
+########## D2/D3 — match com universo_B4 ##########
+
+. * universo
+. use cd_aluno_sme using "$aud\universo_B4.dta", clear
+
+. duplicates drop
+
+Duplicates in terms of all variables
+
+(0 observations are duplicates)
+
+. gen byte inuniv = 1
+
+. tempfile univ
+
+. save `univ'
+file <HOME>\AppData\Local\Temp\ST_79a8_000001.tmp saved as .dta format
+
+. di "N universo (cd_aluno distintos) = " _N
+N universo (cd_aluno distintos) = 1320845
+
+. 
+. * processar cada PSP -> distinct cd_aluno com proficiencia
+. local yr 2017 2018 2019
+
+. foreach y of local yr {
+  2.     di ""
+  3.     di "===== PSP `y' ====="
+  4.     use cd_aluno_sme proficiencia_mat proficiencia_lp using "$ba\psp_`y'.dta", clear
+  5.     cap destring proficiencia_mat proficiencia_lp, replace force dpcomma
+  6.     gen byte hasprof = !missing(proficiencia_mat) | !missing(proficiencia_lp)
+  7.     di "  N linhas PSP `y' = " _N
+  8.     keep if hasprof==1
+  9.     keep cd_aluno_sme
+ 10.     duplicates drop
+ 11.     di "  N criancas distintas com proficiencia = " _N
+ 12.     gen byte psp`y' = 1
+ 13.     save "$aud\psp`y'_ids.dta", replace
+ 14.     * match com universo
+.     merge 1:1 cd_aluno_sme using `univ', keep(match) nogen
+ 15.     di "  N casadas com universo B4 = " _N
+ 16. }
+
+===== PSP 2017 =====
+  N linhas PSP 2017 = 227005
+(16,782 observations deleted)
+
+Duplicates in terms of all variables
+
+(0 observations are duplicates)
+  N criancas distintas com proficiencia = 210223
+(file <NE_ROOT>\_audit\psp2017_ids.dta not found)
+file <NE_ROOT>\_audit\psp2017_ids.dta saved
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                            42,459  
+    -----------------------------------------
+  N casadas com universo B4 = 42459
+
+===== PSP 2018 =====
+  N linhas PSP 2018 = 394040
+(25,538 observations deleted)
+
+Duplicates in terms of all variables
+
+(0 observations are duplicates)
+  N criancas distintas com proficiencia = 368502
+(file <NE_ROOT>\_audit\psp2018_ids.dta not found)
+file <NE_ROOT>\_audit\psp2018_ids.dta saved
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                           114,999  
+    -----------------------------------------
+  N casadas com universo B4 = 114999
+
+===== PSP 2019 =====
+  N linhas PSP 2019 = 378957
+(28,160 observations deleted)
+
+Duplicates in terms of all variables
+
+(0 observations are duplicates)
+  N criancas distintas com proficiencia = 350797
+(file <NE_ROOT>\_audit\psp2019_ids.dta not found)
+file <NE_ROOT>\_audit\psp2019_ids.dta saved
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                           144,703  
+    -----------------------------------------
+  N casadas com universo B4 = 144703
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## D3 — universo B4 x PSP (algum ano) ##########"
+########## D3 — universo B4 x PSP (algum ano) ##########
+
+. use `univ', clear
+
+. foreach y in 2017 2018 2019 {
+  2.     merge 1:1 cd_aluno_sme using "$aud\psp`y'_ids.dta", keep(master match) nogen
+  3.     replace psp`y' = 0 if missing(psp`y')
+  4. }
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                     1,278,386
+        from master                 1,278,386  
+        from using                          0  
+
+    Matched                            42,459  
+    -----------------------------------------
+(1,278,386 real changes made)
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                     1,205,846
+        from master                 1,205,846  
+        from using                          0  
+
+    Matched                           114,999  
+    -----------------------------------------
+(1,205,846 real changes made)
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                     1,176,142
+        from master                 1,176,142  
+        from using                          0  
+
+    Matched                           144,703  
+    -----------------------------------------
+(1,176,142 real changes made)
+
+. gen byte psp_any = (psp2017==1 | psp2018==1 | psp2019==1)
+
+. di "--- N universo com PSP em ALGUM ano (N do paper) ---"
+--- N universo com PSP em ALGUM ano (N do paper) ---
+
+. count if psp_any==1
+  162,808
+
+. di "--- por ano ---"
+--- por ano ---
+
+. foreach y in 2017 2018 2019 {
+  2.     qui count if psp`y'==1
+  3.     di "  PSP `y' (no universo): " r(N)
+  4. }
+  PSP 2017 (no universo): 42459
+  PSP 2018 (no universo): 114999
+  PSP 2019 (no universo): 144703
+
+. di "--- so 2018 ---"
+--- so 2018 ---
+
+. count if psp2018==1
+  114,999
+
+. di "--- em >=2 anos ---"
+--- em >=2 anos ---
+
+. gen npsp = psp2017+psp2018+psp2019
+
+. tab npsp
+
+       npsp |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |  1,158,037       87.67       87.67
+          1 |     56,840        4.30       91.98
+          2 |     72,583        5.50       97.47
+          3 |     33,385        2.53      100.00
+------------+-----------------------------------
+      Total |  1,320,845      100.00
+
+. 
+. di "=== FIM D ==="
+=== FIM D ===
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag04_D.log
+  log type:  text
+ closed on:  22 Jul 2026, 11:31:14
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,21 @@
+% requer booktabs. Descritivo (BUILD10).
+\begin{table}[htbp]\centering
+\caption{Duration to referral by birth cohort: KM medians (before/after age censoring), competing-risks cumulative incidence at 365 days, and restricted mean time}
+\label{tab:C1f}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrrrrr}
+\toprule
+Cohort & N & Med.\ a & Med.\ d & $\Delta$ & cif\,ref$_{365}$ & cif\,age$_{365}$ & RMST$_{365}$ \\
+\midrule
+2010 & 128,352 & 232 & 297 & +65 & 0.563 & 0.068 & 230 \\
+2011 & 146,693 & 291 & 330 & +39 & 0.529 & 0.063 & 260 \\
+2012 & 155,292 & 249 & 283 & +34 & 0.630 & 0.036 & 243 \\
+2013 & 153,033 & 196 & 221 & +25 & 0.752 & 0.024 & 207 \\
+2014 & 151,772 & 222 & 232 & +10 & 0.760 & 0.010 & 217 \\
+2015 & 146,293 & 194 & 195 & +1 & 0.813 & 0.002 & 196 \\
+2016 & 128,143 & 172 & 172 & +0 & 0.876 & 0.000 & 182 \\
+\bottomrule
+\end{tabular}
+\\[3pt]{\footnotesize \textit{Note:} By birth cohort. Med.\ a/d: KM median days to referral censoring at panel end vs.\ at the earlier of panel end and 47 months of age. cif\_ref/cif\_age: Aalen--Johansen cumulative incidence at 365 days of referral and of aging out (reaching 47 months unreferred), treated as competing events. RMST365: restricted mean days-to-referral within 365 days (area under the age-censored survival curve).}
+\end{table}

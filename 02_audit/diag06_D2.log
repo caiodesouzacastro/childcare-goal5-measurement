@@ -1,0 +1,224 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag06_D2.log
+  log type:  text
+ opened on:  22 Jul 2026, 13:28:47
+
+. 
+. *==============================================================
+. di "########## D1 — rank de distancia da escola atribuida ##########"
+########## D1 — rank de distancia da escola atribuida ##########
+
+. * rank dos CEIs dentro de cada CEP (1 = mais proximo)
+. use cep ceicode dist_km using "$aud\cep_cei_pairs_novo.dta", clear
+
+. bysort cep (dist_km): gen rank_in_cep = _n
+
+. bysort cep: gen n_cei_cep = _N
+
+. rename ceicode esc_atrib
+
+. tempfile ranks
+
+. save `ranks'
+file <HOME>\AppData\Local\Temp\ST_6a14_000001.tmp saved as .dta format
+
+. 
+. use "$aud\d_assign.dta", clear
+
+. di "N criancas com encaminhamento = " _N
+N criancas com encaminhamento = 1457427
+
+. merge m:1 cep esc_atrib using `ranks', keep(master match) gen(mr)
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                       562,584
+        from master                   562,584  (mr==1)
+        from using                          0  (mr==2)
+
+    Matched                           894,843  (mr==3)
+    -----------------------------------------
+
+. di "--- escola atribuida esta entre CEIs<=2km com dt_abertura (mr==3) ---"
+--- escola atribuida esta entre CEIs<=2km com dt_abertura (mr==3) ---
+
+. count if mr==3
+  894,843
+
+. di "--- NAO esta (mr==1): atribuida sem dt_abertura ou >2km ---"
+--- NAO esta (mr==1): atribuida sem dt_abertura ou >2km ---
+
+. count if mr==1
+  562,584
+
+. di "--- distribuicao do RANK de distancia da escola atribuida (1=mais proxima) ---"
+--- distribuicao do RANK de distancia da escola atribuida (1=mais proxima) ---
+
+. gen rc = rank_in_cep
+(562,584 missing values generated)
+
+. replace rc = 6 if rank_in_cep>=6 & !missing(rank_in_cep)
+(388,277 real changes made)
+
+. tab rc
+
+         rc |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |    162,322       18.14       18.14
+          2 |    103,877       11.61       29.75
+          3 |     78,570        8.78       38.53
+          4 |     62,646        7.00       45.53
+          5 |     53,747        6.01       51.54
+          6 |    433,681       48.46      100.00
+------------+-----------------------------------
+      Total |    894,843      100.00
+
+. di "--- % rank==1 entre as com rank definido ---"
+--- % rank==1 entre as com rank definido ---
+
+. qui count if !missing(rank_in_cep)
+
+. local den=r(N)
+
+. qui count if rank_in_cep==1
+
+. di "  rank==1: " r(N) " / " `den' " = " %6.4f r(N)/`den'
+  rank==1: 162322 / 894843 = 0.1814
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## D2 — celulas CEP x mes_sol com >=2 criancas: variacao de escola ##########"
+########## D2 — celulas CEP x mes_sol com >=2 criancas: variacao de escola ##########
+
+. use "$aud\d_assign.dta", clear
+
+. egen cellid = group(cep ym_sol)
+
+. bysort cellid: gen ncel = _N
+
+. preserve
+
+.     keep if ncel>=2
+(634,869 observations deleted)
+
+.     bysort cellid esc_atrib: gen firstesc = _n==1
+
+.     bysort cellid: egen nescolas = total(firstesc)
+
+.     bysort cellid: keep if _n==1
+(538,543 observations deleted)
+
+.     di "  N celulas (>=2 criancas) = " _N
+  N celulas (>=2 criancas) = 284015
+
+.     gen byte variou = nescolas>=2
+
+.     qui count if variou==1
+
+.     di "  celulas com >=2 escolas distintas = " r(N)
+  celulas com >=2 escolas distintas = 247410
+
+.     qui sum variou
+
+.     di "  % celulas com variacao de escola = " %6.4f r(mean)
+  % celulas com variacao de escola = 0.8711
+
+.     di "  --- distribuicao nescolas por celula ---"
+  --- distribuicao nescolas por celula ---
+
+.     gen nc=nescolas
+
+.     replace nc=5 if nescolas>=5
+(7,987 real changes made)
+
+.     tab nc
+
+         nc |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |     36,605       12.89       12.89
+          2 |    162,425       57.19       70.08
+          3 |     50,444       17.76       87.84
+          4 |     18,699        6.58       94.42
+          5 |     15,842        5.58      100.00
+------------+-----------------------------------
+      Total |    284,015      100.00
+
+. restore
+
+. 
+. *==============================================================
+. di ""
+
+
+. di "########## D4 — SD within-celula da qualidade (>=2 criancas) ##########"
+########## D4 — SD within-celula da qualidade (>=2 criancas) ##########
+
+. use "$aud\d_assign.dta", clear
+
+. merge m:1 codinep using "$dsme\escolas\censo2018.dta", ///
+>     keepusing(in_bercario qt_salas_existentes) keep(master match) nogen
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                        95,083
+        from master                    95,083  
+        from using                          0  
+
+    Matched                         1,362,344  
+    -----------------------------------------
+
+. cap encode tipoesc, gen(modal)
+
+. egen cellid = group(cep ym_sol)
+
+. bysort cellid: gen ncel=_N
+
+. keep if ncel>=2
+(634,869 observations deleted)
+
+. foreach v in modal in_bercario qt_salas_existentes {
+  2.     bysort cellid: egen sd_`v' = sd(`v')
+  3. }
+(34,243 missing values generated)
+(50,669 missing values generated)
+(50,669 missing values generated)
+
+. bysort cellid: keep if _n==1
+(538,543 observations deleted)
+
+. di "--- media do SD within-celula (celulas >=2 criancas) ---"
+--- media do SD within-celula (celulas >=2 criancas) ---
+
+. sum sd_modal sd_in_bercario sd_qt_salas_existentes
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+    sd_modal |    267,993     2.15389    2.025099          0   7.071068
+sd_in_berc~o |    260,657    .2432052    .3061635          0   .7071068
+sd_qt_sala~s |    260,657    2.291321    2.543106          0   22.62742
+
+. gen byte var_modal = sd_modal>0 & !missing(sd_modal)
+
+. di "--- % celulas com variacao de MODALIDADE da escola atribuida ---"
+--- % celulas com variacao de MODALIDADE da escola atribuida ---
+
+. sum var_modal
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+   var_modal |    284,015    .5985353    .4901955          0          1
+
+. 
+. di "=== FIM D2 ==="
+=== FIM D2 ===
+
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\diag06_D2.log
+  log type:  text
+ closed on:  22 Jul 2026, 13:29:29
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

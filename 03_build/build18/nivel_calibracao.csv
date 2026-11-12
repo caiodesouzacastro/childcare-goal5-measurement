@@ -1,0 +1,7 @@
+grupo,N,desfecho,observado,imputado_R1,celulas_sem_ref
+cobertos que entraram em 2013 (fora de R1),122750,solicitou antes de 12 meses,46.5,48.1,0
+cobertos que entraram em 2013 (fora de R1),122750,encaminhado em 365 dias,67.0,69.3,0
+cobertos que entraram em 2013 (fora de R1),122750,matriculado em 365 dias,61.8,62.7,0
+cobertos das coortes 2013-2014 (teste do FATAIS),255210,solicitou antes de 12 meses,55.1,57.6,0
+cobertos das coortes 2013-2014 (teste do FATAIS),255210,encaminhado em 365 dias,77.8,74.1,0
+cobertos das coortes 2013-2014 (teste do FATAIS),255210,matriculado em 365 dias,71.2,67.8,0

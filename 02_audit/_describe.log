@@ -1,0 +1,186 @@
+-------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\_describ
+> e.log
+  log type:  text
+ opened on:  22 Jul 2026, 09:57:43
+
+. 
+. di "==================== trat2011ber.dta (Ciro bruto) ===================="
+==================== trat2011ber.dta (Ciro bruto) ====================
+
+. use "$bruto\trat2011ber.dta", clear
+
+. di "N obs = " _N
+N obs = 5522
+
+. di "N vars = " c(k)
+N vars = 174
+
+. ds
+cd_aluno_sme  ber2011       cd_esc_en~10  trat_~201121  esc5D
+serie_aluno   ber2012       dt_corte_~10  cd_esc_en~22  esc6D
+dt_solicit~o  ber2013       trat_~201110  dt_corte_~22  esc7D
+dup           ber2014       cd_esc_en~11  trat_~201122  esc8D
+ano           ber2015       dt_corte_~11  cd_esc_en~23  esc9D
+cd_esc_sol~o  ber2016       trat_~201111  dt_corte_~23  esc10D
+an_letivo~ao  ber2017       cd_esc_en~12  trat_~201123  esc11D
+cd_serie_~ao  ber2018       dt_corte_~12  cd_esc_en~24  esc12D
+dt_encamin~o  cd_esc_en~o1  trat_~201112  dt_corte_~24  esc13D
+an_letivo~to  dt_corte_~a1  cd_esc_en~13  trat_~201124  esc14D
+cd_esc_enc~o  trat_b~20111  dt_corte_~13  cd_esc_en~25  esc15D
+cd_serie_~to  cd_esc_en~o2  trat_~201113  dt_corte_~25  esc16D
+dt_matricula  dt_corte_~a2  cd_esc_en~14  trat_~201125  esc17D
+an_letivo~la  trat_b~20112  dt_corte_~14  cd_esc_en~26  esc18D
+cd_esc_mat~a  cd_esc_en~o3  trat_~201114  dt_corte_~26  esc19D
+cd_serie_~la  dt_corte_~a3  cd_esc_en~15  trat_~201126  esc20D
+dt_desiste~a  trat_b~20113  dt_corte_~15  cd_esc_en~27  esc21D
+an_letivo~ia  cd_esc_en~o4  trat_~201115  dt_corte_~27  esc22D
+cd_esc_des~a  dt_corte_~a4  cd_esc_en~16  trat_~201127  esc23D
+cd_serie_~ia  trat_b~20114  dt_corte_~16  cd_esc_en~28  esc24D
+cd_tipo_m~ia  cd_esc_en~o5  trat_~201116  dt_corte_~28  esc25D
+dt_recusa     dt_corte_~a5  cd_esc_en~17  trat_~201128  esc26D
+an_letivo~sa  trat_b~20115  dt_corte_~17  cd_esc_en~29  esc27D
+cd_esc_rec~a  cd_esc_en~o6  trat_~201117  dt_corte_~29  esc28D
+cd_serie_~sa  dt_corte_~a6  cd_esc_en~18  trat_~201129  esc29D
+cd_tipo_m~sa  trat_b~20116  dt_corte_~18  cd_esc_en~30  esc30D
+tipo_prior~o  cd_esc_en~o7  trat_~201118  dt_corte_~30  esc31D
+cd_sexo_al~o  dt_corte_~a7  cd_esc_en~19  trat_~201130  trat2011ber
+tp_raca_cor   trat_b~20117  dt_corte_~19  cd_esc_en~31  esc_trat
+mes_nasc      cd_esc_en~o8  trat_~201119  dt_corte_~31  encaminhado
+ano_nasc      dt_corte_~a8  cd_esc_en~20  trat_~201131  dt_encamin~3
+cd_pais_mec   trat_b~20118  dt_corte_~20  esc1D         mes_encami~o
+cep_aluno     cd_esc_en~o9  trat_~201120  esc2D         ano_encami~o
+cpf_resp_a~o  dt_corte_~a9  cd_esc_en~21  esc3D         exp_tratam~o
+ber2010       trat_b~20119  dt_corte_~21  esc4D
+
+. di "---- describe (short) ----"
+---- describe (short) ----
+
+. describe, short
+
+Contains data from <NE_ROOT>\dados_restritos\Ciro\01_dados\
+> brutos\fila_espera\trat2011ber.dta
+ Observations:         5,522                  
+    Variables:           174                  25 Jun 2020 01:01
+Sorted by: 
+
+. 
+. di "==================== varlist detail: esc / dt_corte / cd_esc / trat =====
+> ==============="
+==================== varlist detail: esc / dt_corte / cd_esc / trat ===========
+> =========
+
+. foreach stub in esc dt_corte cd_esc trat trat_ber trat2011 dt_solic cd_aluno 
+> {
+  2.     di "---- vars matching *`stub'* ----"
+  3.     ds *`stub'*,
+  4. }
+---- vars matching *esc* ----
+cd_esc_sol~o  dt_corte_~a8  dt_corte_~18  dt_corte_~28  esc14D
+cd_esc_enc~o  cd_esc_en~o9  cd_esc_en~19  cd_esc_en~29  esc15D
+cd_esc_mat~a  dt_corte_~a9  dt_corte_~19  dt_corte_~29  esc16D
+cd_esc_des~a  cd_esc_en~10  cd_esc_en~20  cd_esc_en~30  esc17D
+cd_esc_rec~a  dt_corte_~10  dt_corte_~20  dt_corte_~30  esc18D
+cd_esc_en~o1  cd_esc_en~11  cd_esc_en~21  cd_esc_en~31  esc19D
+dt_corte_~a1  dt_corte_~11  dt_corte_~21  dt_corte_~31  esc20D
+cd_esc_en~o2  cd_esc_en~12  cd_esc_en~22  esc1D         esc21D
+dt_corte_~a2  dt_corte_~12  dt_corte_~22  esc2D         esc22D
+cd_esc_en~o3  cd_esc_en~13  cd_esc_en~23  esc3D         esc23D
+dt_corte_~a3  dt_corte_~13  dt_corte_~23  esc4D         esc24D
+cd_esc_en~o4  cd_esc_en~14  cd_esc_en~24  esc5D         esc25D
+dt_corte_~a4  dt_corte_~14  dt_corte_~24  esc6D         esc26D
+cd_esc_en~o5  cd_esc_en~15  cd_esc_en~25  esc7D         esc27D
+dt_corte_~a5  dt_corte_~15  dt_corte_~25  esc8D         esc28D
+cd_esc_en~o6  cd_esc_en~16  cd_esc_en~26  esc9D         esc29D
+dt_corte_~a6  dt_corte_~16  dt_corte_~26  esc10D        esc30D
+cd_esc_en~o7  cd_esc_en~17  cd_esc_en~27  esc11D        esc31D
+dt_corte_~a7  dt_corte_~17  dt_corte_~27  esc12D        esc_trat
+cd_esc_en~o8  cd_esc_en~18  cd_esc_en~28  esc13D
+---- vars matching *dt_corte* ----
+dt_corte_~a1  dt_corte_~a8  dt_corte_~15  dt_corte_~22  dt_corte_~29
+dt_corte_~a2  dt_corte_~a9  dt_corte_~16  dt_corte_~23  dt_corte_~30
+dt_corte_~a3  dt_corte_~10  dt_corte_~17  dt_corte_~24  dt_corte_~31
+dt_corte_~a4  dt_corte_~11  dt_corte_~18  dt_corte_~25
+dt_corte_~a5  dt_corte_~12  dt_corte_~19  dt_corte_~26
+dt_corte_~a6  dt_corte_~13  dt_corte_~20  dt_corte_~27
+dt_corte_~a7  dt_corte_~14  dt_corte_~21  dt_corte_~28
+---- vars matching *cd_esc* ----
+cd_esc_sol~o  cd_esc_en~o4  cd_esc_en~12  cd_esc_en~20  cd_esc_en~28
+cd_esc_enc~o  cd_esc_en~o5  cd_esc_en~13  cd_esc_en~21  cd_esc_en~29
+cd_esc_mat~a  cd_esc_en~o6  cd_esc_en~14  cd_esc_en~22  cd_esc_en~30
+cd_esc_des~a  cd_esc_en~o7  cd_esc_en~15  cd_esc_en~23  cd_esc_en~31
+cd_esc_rec~a  cd_esc_en~o8  cd_esc_en~16  cd_esc_en~24
+cd_esc_en~o1  cd_esc_en~o9  cd_esc_en~17  cd_esc_en~25
+cd_esc_en~o2  cd_esc_en~10  cd_esc_en~18  cd_esc_en~26
+cd_esc_en~o3  cd_esc_en~11  cd_esc_en~19  cd_esc_en~27
+---- vars matching *trat* ----
+trat_b~20111  trat_b~20118  trat_~201115  trat_~201122  trat_~201129
+trat_b~20112  trat_b~20119  trat_~201116  trat_~201123  trat_~201130
+trat_b~20113  trat_~201110  trat_~201117  trat_~201124  trat_~201131
+trat_b~20114  trat_~201111  trat_~201118  trat_~201125  trat2011ber
+trat_b~20115  trat_~201112  trat_~201119  trat_~201126  esc_trat
+trat_b~20116  trat_~201113  trat_~201120  trat_~201127  exp_tratam~o
+trat_b~20117  trat_~201114  trat_~201121  trat_~201128
+---- vars matching *trat_ber* ----
+trat_b~20111  trat_b~20118  trat_~201115  trat_~201122  trat_~201129
+trat_b~20112  trat_b~20119  trat_~201116  trat_~201123  trat_~201130
+trat_b~20113  trat_~201110  trat_~201117  trat_~201124  trat_~201131
+trat_b~20114  trat_~201111  trat_~201118  trat_~201125
+trat_b~20115  trat_~201112  trat_~201119  trat_~201126
+trat_b~20116  trat_~201113  trat_~201120  trat_~201127
+trat_b~20117  trat_~201114  trat_~201121  trat_~201128
+---- vars matching *trat2011* ----
+trat2011ber
+---- vars matching *dt_solic* ----
+dt_solicit~o
+---- vars matching *cd_aluno* ----
+cd_aluno_sme
+
+. 
+. di "==================== D: copy trat2011ber.dta ===================="
+==================== D: copy trat2011ber.dta ====================
+
+. use "<NE_ROOT>\dados_restritos\Dados - SME\Atual (25.06)\trat2011ber.dta", clear
+
+. di "N obs = " _N
+N obs = 34258
+
+. di "N vars = " c(k)
+N vars = 175
+
+. describe, short
+
+Contains data from <NE_ROOT>\dados_restritos\Dados - SME\Atual (25.06)\trat2011ber.dta
+ Observations:        34,258                  
+    Variables:           175                  15 Sep 2020 00:52
+Sorted by: 
+
+. 
+. di "==================== amostra RDD final ===================="
+==================== amostra RDD final ====================
+
+. use "$amost", clear
+
+. di "N obs = " _N
+N obs = 33748
+
+. di "N vars = " c(k)
+N vars = 169
+
+. describe, short
+
+Contains data from <NE_ROOT>\dados_restritos\Ciro\01_dados\
+> processados\amostra_rdd\Fila1018_amostraRDD.dta
+ Observations:        33,748                  
+    Variables:           169                  9 Aug 2021 12:58
+Sorted by: cd_aluno_sme  dt_solicitacao3
+
+. 
+. log close
+      name:  <unnamed>
+       log:  <NE_ROOT>\_audit\_describ
+> e.log
+  log type:  text
+ closed on:  22 Jul 2026, 09:57:44
+-------------------------------------------------------------------------------
