@@ -143,3 +143,12 @@ From `04_paper/`: `pdflatex paper_v4`, `bibtex paper_v4`, `pdflatex paper_v4`, `
 | Third-party documents in `fontes_saidaC/` (144) | redistribution licence not stated |
 | Compilation by-products, the obsolete title page, the old `REPLICATION_NOTES.md` | not needed or superseded |
 | 7 inputs outside the project folder (restricted SME folders and a download folder) | restricted or external |
+
+## 6. Diagnostic reports (`00_diagnosticos/`)
+
+The folder holds thirteen diagnostic reports, the sources of Table B1: DIAG01, DIAG02 and DIAG04 to DIAG14.
+
+- **Reconstructed from execution logs:** DIAG01, DIAG02 and DIAG04 to DIAG10 (`DIAG*_reconstruido.md`). The original reports were not preserved as files. Each reconstruction opens with a note saying so. DIAG10 declares itself partial.
+- **Original reports:** DIAG11 to DIAG14.
+- **DIAG03 never existed.** It is a gap in the numbering, not a missing file: no `diag03` script or log exists in `02_audit/`. A placeholder, `DIAG03_reconstruido.md`, recorded this; it was removed on 16 Nov 2026.
+- **DIAG15 is not in this folder.** It is a separate exploratory diagnostic of the start of the request panel (2010–2012), with no report, and it is not a source of Table B1. Its scripts are in `utilitarios_nao_necessarios/` (`build04_diag15*.py`) and its outputs in `03_build/build04/tables/` (`_DIAG15_*` and `D15_*`).
